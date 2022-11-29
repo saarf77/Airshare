@@ -5,7 +5,10 @@ export const utilService = {
     debounce,
     randomPastTime,
     saveToStorage,
-    loadFromStorage
+    loadFromStorage,
+    getImgUrl,
+    getImgUrlFilter,
+    getImgUrlMap
 }
 
 function makeId(length = 6) {
@@ -61,3 +64,18 @@ function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return (data) ? JSON.parse(data) : undefined
 }
+
+
+function getImgUrl(file) {
+    const imgUrl = new URL(`../assets/images/${file}`, import.meta.url);
+    return imgUrl;
+  }
+  function getImgUrlFilter(file) {
+    const imgUrl = new URL(`../assets/app-filter-img/${file}`, import.meta.url);
+    return imgUrl;
+  }
+  function getImgUrlMap(file) {
+    const imgUrl = new URL(`../assets/maps/${file}`, import.meta.url);
+    return imgUrl;
+  }
+  
