@@ -73,8 +73,7 @@ function getEmptyCar() {
 
 
 // TEST DATA
-// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
-
-
-
-
+;(async ()=>{
+    await storageService.post(STORAGE_KEY, {vendor: 'Subali Karov 1', price: 180})
+    await storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 240})
+})()

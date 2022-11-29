@@ -3,13 +3,15 @@
     <section class="main-footer">
       <div class="left-nav">
         <p>© 2023 Triman, Inc.</p><p>·</p>
-        <p>About</p><p>·</p>
+        <p>Privacy</p><p>·</p>
         <p>Login</p><p>·</p>
-        <p>Become a host</p>
+        <p>Terms</p>
       </div>
         <div class="right-nav">
-        <img  src="../assets/imgs/icons/global.png" />
+        <img  src="../assets/img/icons/global.png" />
         <p>English</p>
+        <p>$</p>
+        <p>USD</p>
         <div class="socials">
           <ul class="main-nav clean-list flex">
             <li class="social-links-footer flex">
