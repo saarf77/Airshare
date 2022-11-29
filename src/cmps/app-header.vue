@@ -52,6 +52,17 @@
     <div v-if="headerLocation" :class="{ 'hide-expend': isExpend }"
       class="header-labels flex justify-space-between align-center">
       <div class="container">
+        <div v-if="path === '/explore' || path === '/'" class="header-bottom flex justify-space-between">
+          <explore-labels v-if="!isExplore" />
+          <h3 v-if="isExplore">Stays : {{ staysLength }}</h3>
+          <div v-if="desktop" @click="isShow = !isShow" class="stand-alone-filter">
+            <img src="/src/assets/icons/filter-icon.svg" alt="" />
+            <span class="filter-btn">Filters</span>
+          </div>
+          <Transition duration="200" name="nested">
+            <standAlone-filter @closeFilersForm="closeModal" v-if="isShow" v-click-away="onClickAway" />
+          </Transition>
+        </div>
       </div>
     </div>
   </header>
