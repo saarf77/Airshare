@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 
 import { router } from './router.js'
 import { store } from './store/store.js'
-
+import {stayService} from './services/stay.service.local'
 
 import './assets/styles/main.scss'
 import rootCmp from './root-cmp.vue'

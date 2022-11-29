@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="container home">
     <ul class="car-list">
       <li v-for="car in cars" :key="car._id">
@@ -27,7 +27,7 @@
 
 <script>
 import {showErrorMsg, showSuccessMsg} from '../services/event-bus.service'
-import {carService} from '../services/stays.service.local'
+// import {carService} from '../services/stay.service.local'
 import { getActionRemoveCar, getActionUpdateCar, getActionAddCarMsg } from '../store/car.store'
 export default {
   data() {
@@ -95,4 +95,4 @@ export default {
 
   
 }
-</script>
+</script> -->
