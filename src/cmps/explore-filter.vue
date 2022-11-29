@@ -74,7 +74,9 @@ export default {
     };
   },
   methods: {
-
+    dropDownMenu() {
+      this.showModal = true;
+    },
   },
 
 
