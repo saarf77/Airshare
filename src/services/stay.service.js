@@ -7,7 +7,7 @@ import { userService } from './user.service.js'
 
 const STORAGE_KEY = 'car'
 
-export const carService = {
+export const stayService = {
     query,
     getById,
     save,
@@ -15,7 +15,7 @@ export const carService = {
     getEmptyCar,
     addCarMsg
 }
-window.cs = carService
+window.ss = stayService
 
 
 async function query(filterBy = { txt: '', price: 0 }) {
