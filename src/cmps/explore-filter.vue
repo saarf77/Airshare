@@ -9,6 +9,7 @@
     </div>
     <div  class="filter-expend flex">
       <div class="navigation">
+        <!-- routerlinks -->
         <a href="http://">Stays</a>
         <a href="http://">Experiences</a>
         <a href="http://">Online Experiences</a>
@@ -19,12 +20,12 @@
           <label for="where">Where</label>
           <input id="where" list="where" name="where" v-model="filterBy.where" placeholder="Search destination" />
         </div>
-        <div class="filter-option check">
+        <!-- <div class="filter-option check">
           <div class="labels-wrap">
             <v-date-picker :columns="2" v-model="filterBy.date" is-range>
             </v-date-picker>
           </div>
-        </div>
+        </div> -->
         <div @click.native="activeTab('guest')" class="filter-option guest-dropdown"
           :class="{ 'active-btn': guestActive }">
           <div @click="dropDownMenu($event)" class="add-guest-wrapper">
@@ -35,7 +36,7 @@
             <div class="btn-container on-filter">
               <div class="content filter-content">
                 <button class="action-btn">
-                  <div class="material-icons search"> search </div>
+                  <div class="search"> search </div>
                   <span>Search</span>
                 </button>
               </div>
@@ -74,9 +75,7 @@ export default {
     };
   },
   methods: {
-    dropDownMenu() {
-      this.showModal = true;
-    },
+
   },
 
 

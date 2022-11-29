@@ -31,21 +31,6 @@
               </div>
             </div>
           </div>
-          <div v-if="!desktop" class="mobile-view">
-            <div class="mobile-nav">
-              <div class="search-icon">
-                <span><img src="../assets/icons/search-icon.svg" @click="search" /></span>
-              </div>
-              <div class="mobile-content">
-                <input class="mobile-sech-title" type="text" placeholder="Where to?" input="searchCountry"
-                  v-model="country">
-
-              </div>
-              <div class="adjustment-bar">
-                <span @click="isShow = !isShow"><img src="../assets/icons/adjustment-icon.svg" /></span>
-              </div>
-            </div>
-          </div>
         </nav>
       </div>
     </div>
@@ -59,9 +44,6 @@
             <img src="/src/assets/icons/filter-icon.svg" alt="" />
             <span class="filter-btn">Filters</span>
           </div>
-          <Transition duration="200" name="nested">
-            <standAlone-filter @closeFilersForm="closeModal" v-if="isShow" v-click-away="onClickAway" />
-          </Transition>
         </div>
       </div>
     </div>
@@ -72,8 +54,7 @@
 
 <script>
 import exploreFilter from './explore-filter.vue';
-import exploreLabels from './explore-labels.vue';
-// import standAloneFilter from './standAlone-filter.vue';
+// import exploreLabels from './explore-labels.vue';
 import { eventBus } from '../services/event-bus.service.js';
 
 export default {
@@ -110,7 +91,7 @@ export default {
 
     userImg() {
       var user = this.$store.getters.loggedinUser;
-      return user ? user.imgUrl : 'https://res.cloudinary.com/nisan/image/upload/v1658872030/air2b/unprofile_ji7zus.png';
+      return user ? user.imgUrl : '';
     },
 
   },
@@ -131,8 +112,7 @@ export default {
 
   components: {
     exploreFilter,
-    exploreLabels,
-    // standAloneFilter,
+    // exploreLabels,
     eventBus,
   },
   setup() { },
