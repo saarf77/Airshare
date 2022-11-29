@@ -1,0 +1,94 @@
+.search-wrapper {
+  cursor: pointer;
+  width: fit-content;
+
+  align-items: center;
+  margin: auto;
+
+  .filter-preview {
+    width: 354px;
+    height: 48px;
+    padding: 0 8px 0 18px;
+    text-align: start;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+    border-radius: 40px;
+
+    .filter.btn.header-guests {
+      display: flex;
+      justify-content: space-between;
+      flex: 1.1;
+      align-items: center;
+
+      span {
+        background: $clr2;
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+        padding: 8px 0 10px 10px;
+
+        img {
+          width: 12px;
+          height: 12px;
+          color: $clr3;
+        }
+      }
+    }
+  }
+
+  .filter-expend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.filter {
+  font-size: 14px;
+  position: relative;
+  flex: 1;
+}
+
+.material-icons.search {
+  color: white;
+}
+
+.search-wrapper :nth-child(-n + 2) {
+  font-weight: 500;
+}
+
+.filter.header-guests {
+  font-weight: 400;
+}
+
+.filter:nth-child(-n + 2)::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 24px;
+  background: $clr6;
+  right: 22px;
+}
+
+form.el-form.el-form--default.el-form--label-right {
+  width: 100%;
+  display: flex;
+}
+
+.bounce-enter-active {
+  animation: bounce-in 0.5s;
+}
+
+.bounce-leave-active {
+  animation: bounce-in 0.7ms;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.7);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+

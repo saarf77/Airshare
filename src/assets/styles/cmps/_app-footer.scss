@@ -1,76 +1,107 @@
-.footer-container {
-    padding-top: 71px;
-    height: 159px;
-    font-family: airbnb;
-    color: black;
-    background-color: #F7F7F7;
+.app-footer {
+    border-top: 1px solid rgb(221, 221, 221);
+    // padding-bottom: 14px;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
     bottom: 0;
+    background-color: $clr8;
+    padding: 4px 0px 4px 0px;
+    font-size: 0.875rem;
+    padding-inline-start: 60px;
+    padding-inline-end: 80px;
+    font-family:  Circular, -apple-system, BlinkMacSystemFont, Helvetica Neue, sans-serif;
 
-    .main-footer {
-        padding-top: 15px;
-        padding-bottom: 15px;
-        border-top: 1px solid #ddd;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        
-        .left-nav {
-            display: flex;
+    .gap {
+        gap: 8px;
+    }
 
-            p {
-                margin-inline-end: 10px;
-            }
-        }
-
-        .right-nav {
-            display: flex;
-            img {
-                margin-inline-end: 10px;
-                width: 20px;
-                height: 20px;
-            }
-
-            p {
-                margin-inline-end: 10px;
-            }
-
-            p:first-of-type {
-                font-family: airbnb-medium;
-                text-decoration: underline;
-                margin-inline-end: 27px;
-            }
-
-            p:nth-of-type(3) {
-                font-family: airbnb-medium;
-                text-decoration: underline;
-                padding-inline-end: 67px;
-            }
-
-            span {
-                margin-inline-start: 10px;
-            }
-        }
-
-        .socials {
-            img:not(:last-of-type) {
-                margin-inline-end: 30px;
-            }
-        }
+    .left-side {
+        color: $clr7;
+    }
+    .right-side {
+        color: $clr1;
+        gap: 25px;
+        // font-weight: 600;
     }
 }
 
 
 
-// @media (max-width: $break-narrow) {
-//     .footer-container {
-//        display: none;
 
-//     }
+// .footer-container {
+//     padding-top: 71px;
+//     height: 159px;
+//     font-family: airbnb;
+//     color: black;
+//     background-color: #F7F7F7;
+//     bottom: 0;
 
-//     .main-footer { 
-//         display: none;
-//         // max-width: $break-narrow;
-//         // grid-column: 1 / -1;
-//         // flex-direction: column;
+//     .main-footer {
+//         padding-top: 15px;
+//         padding-bottom: 15px;
+//         border-top: 1px solid #ddd;
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+        
+//         .left-nav {
+//             display: flex;
+
+//             p {
+//                 margin-inline-end: 10px;
+//             }
+//         }
+
+//         .right-nav {
+//             display: flex;
+//             img {
+//                 margin-inline-end: 10px;
+//                 width: 20px;
+//                 height: 20px;
+//             }
+
+//             p {
+//                 margin-inline-end: 10px;
+//             }
+
+//             p:first-of-type {
+//                 font-family: airbnb-medium;
+//                 text-decoration: underline;
+//                 margin-inline-end: 27px;
+//             }
+
+//             p:nth-of-type(3) {
+//                 font-family: airbnb-medium;
+//                 text-decoration: underline;
+//                 padding-inline-end: 67px;
+//             }
+
+//             span {
+//                 margin-inline-start: 10px;
+//             }
+//         }
+
+//         .socials {
+//             img:not(:last-of-type) {
+//                 margin-inline-end: 30px;
+//             }
+//         }
 //     }
 // }
+
+
+
+// // @media (max-width: $break-narrow) {
+// //     .footer-container {
+// //        display: none;
+
+// //     }
+
+// //     .main-footer { 
+// //         display: none;
+// //         // max-width: $break-narrow;
+// //         // grid-column: 1 / -1;
+// //         // flex-direction: column;
+// //     }
+// // }

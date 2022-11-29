@@ -1,8 +1,8 @@
-import { storageService } from './async-storage.service'
+import { storageService } from './async-storage.service.js'
 // import { httpService } from './http.service'
-import { store } from '../store/store'
-import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from './socket.service'
-import { showSuccessMsg } from './event-bus.service'
+import { store } from '../store/store.js'
+import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from './socket.service.js'
+import { showSuccessMsg } from './event-bus.service.js'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 

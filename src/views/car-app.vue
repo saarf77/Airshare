@@ -32,7 +32,7 @@ import { getActionRemoveCar, getActionUpdateCar, getActionAddCarMsg } from '../s
 export default {
   data() {
     return {
-      carToAdd: carService.getEmptyCar()
+      carToAdd: stayService.getEmptyCar()
     }
   },
   computed: {
@@ -51,7 +51,7 @@ export default {
       try {
         await this.$store.dispatch({type: 'addCar', car: this.carToAdd})
         showSuccessMsg('Car added')
-        this.carToAdd = carService.getEmptyCar()
+        this.carToAdd = stayService.getEmptyCar()
       } catch(err) {
         console.log(err)
         showErrorMsg('Cannot add car')
