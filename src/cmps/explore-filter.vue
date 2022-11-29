@@ -14,7 +14,7 @@
         <a href="http://">Online Experiences</a>
       </div>
       <el-form :model="filterBy">
-        <div  class="filter-option where" data-field="where"
+        <div class="filter-option where" data-field="where"
           :class="{ 'active-btn': isExpend ? isActive : !isActive }">
           <label for="where">Where</label>
           <input id="where" list="where" name="where" v-model="filterBy.where" placeholder="Search destination" />

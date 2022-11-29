@@ -13,17 +13,31 @@ export const stayService = {
     getEmptyStay,
     addStayMsg
 }
-window.cs = stayService
+window.stayService = stayService
 
 
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy) {
+  console.log('FROM SERVICE',filterBy)
+  const {range,rooms,beds,type,amenities} = filterBy
     var stays = await storageService.query(STORAGE_KEY)
-    if (filterBy.txt) {
-        const regex = new RegExp(filterBy.txt, 'i')
-        stays = stays.filter(stay => regex.test(stay.vendor) || regex.test(stay.description))
+  
+    if (range) {
+      stays = stays.filter(stay => stay.price >= range[0] && stay.price <= range[1] )
     }
-    if (filterBy.price) {
-        stays = stays.filter(stay => stay.price <= filterBy.price)
+    if (rooms) {
+      stays = stays.filter(stay => stay.rooms >= +rooms)
+    }
+    if(beds){
+      stays = stays.filter(stay => stay.beds >= +beds)
+    }
+    if(type){
+      stays = stays.filter(stay => stay.type === type)
+    }
+    if(amenities){
+      stays = stays.filter(stay => {
+        console.log(stay)
+        return amenities.every(amenity => stay.amenities.includes(amenity))
+      })
     }
     return stays
 }
@@ -75,7 +89,7 @@ function getEmptyStay() {
 // TEST DATA
 ;(async ()=>{
     await storageService.post(STORAGE_KEY,  {
-        "_id": "10006546",
+      "_id": "10006546",
         "name": "Ribeira Charming Duplex",
         "rooms":3,
         "beds":3,
@@ -88,9 +102,9 @@ function getEmptyStay() {
           "TV",
           "Wifi",
           "Kitchen",
-          "Smoking allowed",
-          "Pets allowed",
-          "Cooking basics"
+          // "Smoking allowed",
+          // "Pets allowed",
+          // "Cooking basics"
         ],
         "labels": [
           "Top of the world",
@@ -99,7 +113,7 @@ function getEmptyStay() {
           "Tropical"
         ]
       })
-    await storageService.post(STORAGE_KEY,  {
+      await storageService.post(STORAGE_KEY,  {
         "_id": "10006546",
         "name": "Ribeira Charming Duplex",
         "rooms":2,
@@ -110,8 +124,8 @@ function getEmptyStay() {
         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
         "capacity": 8,
         "amenities": [
-          "TV",
-          "Wifi",
+          // "TV",
+          // "Wifi",
           "Kitchen",
           "Smoking allowed",
           "Pets allowed",
@@ -124,7 +138,7 @@ function getEmptyStay() {
           "Tropical"
         ]
       })
-    await storageService.post(STORAGE_KEY,  {
+      await storageService.post(STORAGE_KEY,  {
         "_id": "10006546",
         "name": "Ribeira Charming Duplex",
         "rooms":1,

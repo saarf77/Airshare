@@ -29,17 +29,21 @@ export function getActionAddStayMsg(stayId) {
 
 export const stayStore = {
     state: {
-        stays: []
+        stays: [],
+        filterBy: null,
     },
     getters: {
         stays({ stays }) {
-             return stays 
-            },
+            return stays
+        },
     },
     mutations: {
         setStays(state, { stays }) {
             state.stays = stays
         },
+        setFilter(state,{filterBy}){
+            state.filterBy = filterBy
+          },
         addStay(state, { stay }) {
             state.stays.push(stay)
         },
@@ -79,12 +83,18 @@ export const stayStore = {
         },
         async loadStays(context) {
             try {
-                const stays = await stayService.query()
+                var filterBy = context.state.filterBy ? context.state.filterBy : ''
+                const stays = await stayService.query(filterBy)
                 context.commit({ type: 'setStays', stays })
+                console.log(stays)
             } catch (err) {
                 console.log('stayStore: Error in loadStays', err)
                 throw err
             }
+        },
+        setFilter({ commit, dispatch }, { filterBy }) {
+            commit({ type: 'setFilter', filterBy })
+            dispatch({ type: 'loadStays' })
         },
         async removeStay(context, { stayId }) {
             try {
