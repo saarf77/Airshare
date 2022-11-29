@@ -5,6 +5,7 @@ import chat from './views/chat.vue'
 import carApp from './views/car-app.vue'
 import reviewApp from './views/review-app.vue'
 import loginSignup from './views/login-signup.vue'
+import stayDetails from './views/stay-details.vue'
 import userDetails from './views/user-details.vue'
 
 
@@ -40,7 +41,12 @@ const routes = [
     path: '/user/:id',
     name: 'user-details',
     component: userDetails
-  }
+  }, 
+  {
+    path: '/details/:id',
+    name: 'stay-details',
+    component: stayDetails
+  },
 ]
 
 
