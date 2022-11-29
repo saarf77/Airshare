@@ -1,4 +1,4 @@
-import { carService } from '../services/stays.service.local'
+import { carService } from '../services/stay.service.local'
 
 export function getActionRemoveCar(carId) {
     return {

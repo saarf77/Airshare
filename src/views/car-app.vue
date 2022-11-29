@@ -27,8 +27,8 @@
 
 <script>
 import {showErrorMsg, showSuccessMsg} from '../services/event-bus.service'
-import {carService} from '../services/stays.service.local'
-import { getActionRemoveCar, getActionUpdateCar, getActionAddCarMsg } from '../store/car.store'
+import {carService} from '../services/stay.service.local'
+import { getActionRemoveCar, getActionUpdateCar, getActionAddCarMsg } from '../store/stay.store'
 export default {
   data() {
     return {
