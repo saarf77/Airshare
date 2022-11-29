@@ -8,21 +8,43 @@
 }
 
 html {
-    font-family: montserrat;
-    line-height: 1.6;
+    font-family: 'Cereal';
     color: $clr2;
 }
 
 body {
     font-size: rem(18px);
     margin: 0;
+    font-family: 'Cereal';
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: caveat;
     margin: 0 0 0.6em;
     line-height: 1;
 }
+
+h1{
+      font-family: 'Cereal-medium', Helvetica, sans-serif;
+}
+
+h2 {
+    font-size: em(24px);
+  }
+  p {
+    margin: 0;
+    padding: 0;
+    line-height: em(24px);
+  }
+
+  .stared::before {
+    content: '\e838';
+    font-family: 'Material Icons';
+  }
+  .stared {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
 
 
 section, main, footer {
@@ -36,6 +58,7 @@ section, main, footer {
 p {
     margin: 0 0 1em;
     max-width: 40ch;
+    line-height: em(24px);
 }
 
 a {

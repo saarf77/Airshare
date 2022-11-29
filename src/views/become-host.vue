@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <section class="become-host-page">
           <div>become host</div>
     </section>
@@ -13,4 +13,4 @@ export default {
 
 <style>
 
-</style>
+</style> -->

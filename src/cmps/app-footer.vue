@@ -1,36 +1,63 @@
 <template>
+  <section class="app-footer ">
+    <div class="container flex justify-space-between align-center">
+
+      <div class="left-side flex gap align-center">
+        <span>© 2022 Airshare, Inc</span>
+        <span>·</span>
+        <span>Privacy</span>
+        <span>·</span>
+        <span>Terms</span>
+        <span>·</span>
+        <span>Sitemap</span>
+      </div>
+
+      <div class="right-side flex gap bold fs14 align-center">
+        <img src="../assets/img/icons/global.png" style="height: 15px;">
+        <span>English (US)</span>
+        <span>$ USD</span>
+        <span>Support & resources</span>
+        <span class="">^</span>
+
+      </div>
+
+    </div>
+  </section>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+<style lang="scss" scoped>
+</style>
+
+
+<!-- <template>
   <section class="footer-container home-layout">
     <section class="main-footer">
       <div class="left-nav">
-        <p>© 2023 Triman, Inc.</p><p>·</p>
-        <p>Privacy</p><p>·</p>
-        <p>Login</p><p>·</p>
-        <p>Terms</p>
+
+        <span>© 2023 Airshare, inc.</span>
+        <span>·</span>
+        <span>Privacy</span>
+        <span>·</span>
+        <span>Terms</span>
+        <span>·</span>
+        <span>Sitemap</span>
       </div>
         <div class="right-nav">
         <img  src="../assets/img/icons/global.png" />
         <p>English</p>
         <p>$</p>
         <p>USD</p>
-        <div class="socials">
-          <ul class="main-nav clean-list flex">
-            <li class="social-links-footer flex">
-                <a href="https://www.instagram.com/airbnb/" target="_blank">
-                  <img src="../assets/img/icons/instagram.png" alt="">
-                </a>
-            </li>
-            <li class="social-links-footer flex">
-                <a href="https://www.facebook.com/airbnb/" target="_blank">
-                  <img src="../assets/img/icons/facebook.png" alt="">
-                </a>
-            </li>
-            <li class="social-links-footer flex">
-                <a href="https://www.linkedin.com/company/airbnb/" target="_blank">
-                    <img src="../assets/img/icons/linkedin.png" alt="">
-                </a>
-            </li>
-        </ul>
-        </div>
+        <img src="../assets/icons/global.png" style="height: 15px;">
+        <span>English (US)</span>
+        <span>$ USD</span>
+        <span>Support & resources</span>
+        <span class="material-icons-two-tone">expand_less</span>
+
       </div>
     </section>
   </section>
@@ -41,4 +68,4 @@ export default {
   name: "Footer",
 };
 </script>
-
+ -->

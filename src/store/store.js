@@ -9,7 +9,7 @@ export const store = Vuex.createStore({
   modules: {
     userStore,
     carStore,
-    reviewStore
+    reviewStore,
   },
   state: {
   },
