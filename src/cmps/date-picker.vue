@@ -1,6 +1,6 @@
 <template>
-    <section class="dashboard-container dashboard-page">
-          <div>dashboard</div>
+    <section class="dates-container">
+          <div>date picker</div>
     </section>
 
 </template>

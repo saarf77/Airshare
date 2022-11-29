@@ -1,6 +1,6 @@
 <template>
-    <section class="dashboard-container dashboard-page">
-          <div>dashboard</div>
+    <section class="orders-host-container order-host-page">
+          <div>orders host</div>
     </section>
 
 </template>

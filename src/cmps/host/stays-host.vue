@@ -1,6 +1,6 @@
 <template>
-    <section class="dashboard-container dashboard-page">
-          <div>dashboard</div>
+    <section class="stay-host-page">
+          <div>stays host</div>
     </section>
 
 </template>

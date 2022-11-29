@@ -1,6 +1,6 @@
 <template>
-    <section class="dashboard-container dashboard-page">
-          <div>dashboard</div>
+    <section class="create-stay-container creat-stay-page">
+          <div>create stays</div>
     </section>
 
 </template>

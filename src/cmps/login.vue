@@ -1,6 +1,6 @@
 <template>
-    <section class="dashboard-container dashboard-page">
-          <div>dashboard</div>
+    <section class="notifications-page home-layout">
+          <div>login</div>
     </section>
 
 </template>
