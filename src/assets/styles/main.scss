@@ -5,6 +5,9 @@
 // @import "setup/typography";
 // @import "../styles/setup/_typography.scss";
 
+@import 'v-calendar/dist/style.css';
+
+
 // Basics
 @import "basics/helpers";
 @import "basics/layout";
@@ -34,7 +37,6 @@
 // @import "cmps/preview";
 
 
-// @import 'v-calendar/dist/style.css';
 
 // Views
 // @import 'views/stay-app';
