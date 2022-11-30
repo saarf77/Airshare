@@ -16,7 +16,6 @@
 // stay reviews
 // map section
 // more details 
-
 // {{ stay-details model page for: reviews, description, extended options as icons }}
 
 
@@ -26,7 +25,6 @@ import detailsOptionsList from '../cmps/details-options-list.vue';
 import detailsReviewsList from '../cmps/details-reviews-list.vue';
 
 export default {
-    
     data(){
         return{
             
@@ -45,9 +43,7 @@ export default {
         detailsAchievements,
         detailsOptionsList,
         detailsReviewsList,
-
     }
-    
 }
 
 </script>
@@ -55,7 +51,7 @@ export default {
 <template>
     <section class="details-page">
         <section class="short-display">
-          <div class="name"></div>
+          <div class="name">test test test test test</div>
           <div class="star-score"></div>
           <div class="reviews-count"></div>
           <div class="label-list"></div>
@@ -103,7 +99,6 @@ export default {
         </section>
         <details-reviews-list/>
     </section>
-    <section class="details-page model">
-          
+    <section class="details-page model"> 
     </section>
 </template>

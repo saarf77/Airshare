@@ -1,9 +1,10 @@
 
 // import { storageService } from './async-storage.service.js'
-import { httpService } from './http.service.js'
-import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
-
+import { httpService } from './http.service.js';
+import { utilService } from './util.service.js';
+import { userService } from './user.service.js';
+import { store } from '../store/store.js';
+import { createStore } from 'vuex';
 
 const STORAGE_KEY = 'car'
 
@@ -13,10 +14,14 @@ export const stayService = {
     save,
     remove,
     getEmptyCar,
-    addCarMsg
+    addCarMsg,
+    demoStoreSetup
 }
 window.ss = stayService
 
+async function demoStoreSetup(){
+    store.dispatch('loadStays');
+}
 
 async function query(filterBy = { txt: '', price: 0 }) {
     return httpService.get(STORAGE_KEY, filterBy)

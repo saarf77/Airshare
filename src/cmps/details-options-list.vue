@@ -10,7 +10,6 @@ export default {
     computed: {
        svgAirConditioner(){
               const svgHtml = svgService.getSvgIcon('airConditioner') + `<div class="icon-txt"> AC - split type ductless system </div>`;
-              console.log(svgHtml);
             return  svgHtml ;
         }
     },
