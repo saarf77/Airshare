@@ -2,7 +2,6 @@ import { createApp } from 'vue'
 
 import { router } from './router.js'
 import { store } from './store/store.js'
-import {stayService} from './services/stay.service.local'
 import VCalendar from 'v-calendar';
 
 
