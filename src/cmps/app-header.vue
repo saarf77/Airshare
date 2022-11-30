@@ -10,7 +10,7 @@
             <router-link class="logo" to="/">
               <div class="main-logo flex">
                 <div><img class="logo-img" src="../assets/icons/airbnb-logo.svg" /></div>
-                <h1 @click="showList">Airshare</h1>
+                <h2 @click="showList">airshare</h2>
               </div>
             </router-link>
             <div class="explore-filter">
