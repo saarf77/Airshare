@@ -21,6 +21,7 @@ import {svgService} from '../services/svg.service.js';
 import detailsAchievements from '../cmps/details-achievement.vue';
 import detailsOptionsList from '../cmps/details-options-list.vue';
 import detailsReviewsList from '../cmps/details-reviews-list.vue';
+import detailsPhotosDisplay from '../cmps/details-photos-display.vue';
 
 //TODO: get it from the store when we will got a BACKEND;
 //import {store} from '../store/store.js';
@@ -29,7 +30,8 @@ import { stayService } from '../services/demo-data.service.js';
 export default {
     data(){
         return{
-            currStay: null
+            currStay: null,
+            
         }
     }, 
     created() {
@@ -76,8 +78,10 @@ export default {
                 str = str.substr(0, str.length - 1);
             }
             return str;
+        }, 
+        imageUrls(){
+            return (this.currStay?.imgUrls?.length > 0)? this.currStay.imgUrls : [];
         }
-
     }, 
     components: {
         svgService,
@@ -85,6 +89,7 @@ export default {
         detailsAchievements,
         detailsOptionsList,
         detailsReviewsList,
+        detailsPhotosDisplay,
     }
 }
 
@@ -103,13 +108,7 @@ export default {
           <button class="details-btn share"></button>
           <button class="details-btn save"></button>
         </section>
-        <section class="photo-display">
-            <img class="main-photo" src="" alt="">
-            <img class="photo-item" src="" alt="">
-            <img class="photo-item" src="" alt="">
-            <img class="photo-item" src="" alt="">
-            <img class="photo-item" src="" alt="">
-        </section>
+        <details-photos-display :urls="imageUrls"/>
         <section class="details-display">
             <div class="details-container">
                 <div class="details-name">
