@@ -4,8 +4,8 @@
       class="filter-preview flex align-center">
       <div class="filter btn header-location">Anywhere</div>
       <div class="filter btn header-time">Any week</div>
-      <div class="filter btn header-guests search" value="hellow">Add guests <span><img
-            src="../assets/icons/search-icon.svg" /></span>
+      <div class="filter btn header-guests search" value="hellow">Add guests 
+        <span class="search"><img src="../assets/icons/search-icon.svg" /></span>
       </div>
     </div>
     <div v-show="isExpend" class="filter-expend flex">
@@ -29,6 +29,12 @@
                   <div @click.native="activeTab('checkin')" class="checkin" data-field="checkin"
                     :class="{ 'hover-btn': isExpend ? isHover : !isHover, 'active-btn': startActive }">
                     <label for="checkin">Check in</label>
+                    <date-picker
+              :placeholder="getCheckinDate"
+              @input="renderDates($event)"
+              v-model="checkinDate"
+              range
+            ></date-picker>
                     <input name="checkin" :value="inputValue.start" v-on="inputEvents.start" placeholder="Add dates"
                       class="border px-2 py-1 w-32 rounded focus:outline-none focus:border-indigo-300" />
                   </div>
@@ -126,6 +132,38 @@
       </div>
     </div>
   </div>
+  <!-- 
+    <section class="mobile-header">
+      <div ">
+        <div class="">
+          <img
+            class="search-icon"
+            src=""
+          />
+        </div>
+          <dynamic-modal  />
+      </div>
+    </section> -->
+
+    <!-- <section class="mobile-nav">
+      <div class="mobile-option">
+        <img src= "" />
+        <span  >Explore</span>
+      </div>
+      <div class="mobile-option">
+        <img src= ""  />
+        <span>Wishlists</span>
+      </div>
+      <div class="mobile-option">
+        <img src= "" />
+        <span>Trips</span>
+      </div>
+           <div class="mobile-option">
+        <img src= "" />
+        <span>Profile</span>
+        <login/>
+      </div>
+    </section> -->
 </template>
 
 <script>
