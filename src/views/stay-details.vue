@@ -48,8 +48,36 @@ export default {
             return this.currStay? this.currStay.name : '';
         },
         starRate(){
-            return svgService.getSvgIcon('blackStarIcon') + ' ';
+            return svgService.getSvgIcon('blackStarIcon') + this.calcStarRate;
+        },
+        calcStarRate(){
+            let rate = '?';
+            let counter = 0;
+            if(this.currStay?.reviews?.length > 0 ){
+                rate = this.currStay.reviews.map((review) => { 
+                    return !isNaN(review.starRate)?  review.starRate : 0;
+                });
+                counter = rate.length;
+                rate = rate.reduce((acc, num) => acc + num)
+                rate = rate/counter;
+                rate = rate - rate % 0.1;
+            }
+            return rate + '';
+        },
+        reviewsCount(){
+            return this.currStay?.reviews?.length || 0;
+        }, 
+        labelsTxt (){
+            let str = '';
+            if (this.currStay?.labels?.length > 0){
+                this.currStay.labels.forEach(label => {
+                    str +=  `<a class="label" href='#'> ${label}, </a>`;
+                });
+                str = str.substr(0, str.length - 1);
+            }
+            return str;
         }
+
     }, 
     components: {
         svgService,
@@ -65,10 +93,13 @@ export default {
 <template>
     <section class="details-page">
         <section class="short-display">
-          <div class="name">{{ stayName }}</div>
-          <div class="star-score" v-html="starRate"></div>
-          <div class="reviews-count"></div>
-          <div class="label-list"></div>
+            <div class="name">{{ stayName }}</div>
+            <div class="short-container">
+                <div class="star-score" v-html="starRate"></div> · 
+                <div class="reviews-count">reviews {{reviewsCount}}</div> · 
+                <div class="host-level">?</div> · 
+                <div class="area-scope-labels" v-html="labelsTxt"></div>
+            </div>
           <button class="details-btn share"></button>
           <button class="details-btn save"></button>
         </section>
