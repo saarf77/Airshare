@@ -9,6 +9,7 @@ stayService.demoStoreSetup();
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import './assets/styles/main.scss'
+import './assets/styles/setup/_typography.scss'
 import rootCmp from './root-cmp.vue'
 
 const app = createApp(rootCmp)
