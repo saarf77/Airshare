@@ -1,0 +1,23 @@
+*:has(.details-page){
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+}
+
+.details-page{
+       height: auto;
+       width: 1300px;
+       padding-inline: 80px;
+
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+
+       color: black;
+       
+
+       .short-display{
+
+              width: 100%;
+       }
+}

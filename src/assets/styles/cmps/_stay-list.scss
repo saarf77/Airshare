@@ -1,0 +1,11 @@
+.stay-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    justify-items: stretch;
+    justify-content: space-between;
+    grid-auto-rows: minmax(0,1fr);
+    grid-gap: 48px 24px;
+    min-height: 100vh;
+    padding-block-start: 20px;
+    padding-block-end: 20px;
+}
