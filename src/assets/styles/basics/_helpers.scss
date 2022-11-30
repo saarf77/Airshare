@@ -21,6 +21,18 @@
   text-decoration: underline;
 }
 
+.sticky {
+  position: sticky;
+  top: 130px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.gray-box {
+  box-shadow: inset 0 -0.5px 0 0 #bebebefc;
+}
 
 
 
@@ -65,16 +77,6 @@
         flex: 1;
       }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 // Media helpers
