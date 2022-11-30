@@ -35,7 +35,6 @@ async function query(filterBy) {
     }
     if(amenities){
       stays = stays.filter(stay => {
-        console.log(stay)
         return amenities.every(amenity => stay.amenities.includes(amenity))
       })
     }
@@ -43,7 +42,7 @@ async function query(filterBy) {
 }
 
 function getById(stayId) {
-    return storageService.get(STORAGE_KEY, stayId)
+    return storageService.get(STORAGE_KEY, stayId);
 }
 
 async function remove(stayId) {
