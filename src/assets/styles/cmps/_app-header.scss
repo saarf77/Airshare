@@ -51,16 +51,19 @@ header {
     }
   
     .main-logo {
-      h1 {
+      h2 {
         text-align: center;
-        font-size: 30px;
         color: $clr2;
+        font-size: 23px;
         font-family: Cereal-medium;
+        margin-bottom: 0;
+        padding-top: 7px;
       }
-  
+
       .logo-img {
         margin-top: 5px;
         margin-right: 5px;
+        margin-left: 8px;
       }
     }
   

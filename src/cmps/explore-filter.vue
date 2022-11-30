@@ -4,8 +4,8 @@
       class="filter-preview flex align-center">
       <div class="filter btn header-location">Anywhere</div>
       <div class="filter btn header-time">Any week</div>
-      <div class="filter btn header-guests search" value="hellow">Add guests <span><img
-            src="../assets/icons/search-icon.svg" /></span>
+      <div class="filter btn header-guests search" value="hellow">Add guests 
+        <span class="search"><img src="../assets/icons/search-icon.svg" /></span>
       </div>
     </div>
     <div v-show="isExpend" class="filter-expend flex">
@@ -19,8 +19,7 @@
           :class="{ 'active-btn': isExpend ? isActive : !isActive }">
           <label for="where">Where</label>
 
-          <input id="where" list="where" name="where" v-model="filterBy.where" placeholder="Search destination" />
-
+          <input id="where" list="where" name="where" v-model="filterBy.where" placeholder="Search destinations" />
         </div>
         <div class="filter-option check">
           <div class="labels-wrap">
@@ -30,28 +29,25 @@
                   <div @click.native="activeTab('checkin')" class="checkin" data-field="checkin"
                     :class="{ 'hover-btn': isExpend ? isHover : !isHover, 'active-btn': startActive }">
                     <label for="checkin">Check in</label>
+                    <date-picker
+              :placeholder="getCheckinDate"
+              @input="renderDates($event)"
+              v-model="checkinDate"
+              range
+            ></date-picker>
                     <input name="checkin" :value="inputValue.start" v-on="inputEvents.start" placeholder="Add dates"
                       class="border px-2 py-1 w-32 rounded focus:outline-none focus:border-indigo-300" />
                   </div>
-                  <!-- add choose dates and im flexible to the date picker -->
                   <div :class="{ 'active-btn': endActive }" class="checkout" @click.native="activeTab('checkout')">
                     <label for="checkout">Check out</label>
                     <input name="checkout" :value="inputValue.end" v-on="inputEvents.end" placeholder="Add dates"
                       class="border px-2 py-1 w-32 rounded focus:outline-none focus:border-indigo-300" />
                   </div>
-                  <!-- todo: -->
-                  <span>exact dates</span>
-                  <span>1 day</span>
-                  <span>2 days</span>
-                  <span>3 days</span>
-                  <span>7 days</span>
-
                 </div>
               </template>
             </v-date-picker>
           </div>
         </div>
-        
         <div @click.native="activeTab('guest')" class="filter-option guest-dropdown"
           :class="{ 'active-btn': guestActive }">
           <div @click="dropDownMenu($event)" class="add-guest-wrapper">
@@ -64,8 +60,7 @@
               <div v-for="i in 100" class="cell"></div>
               <div class="content filter-content">
                 <button class="action-btn">
-                  <!-- <div class="material-icons search"> search </div> -->
-                  <span>Search</span>
+                  <div class="material-icons search"> search </div>
                 </button>
               </div>
             </div>
@@ -124,7 +119,7 @@
     <div class="row-card flex">
       <div class="lft-crd">
         <span class="title-sm"> Pets</span>
-        <span class="txt-sm service-animal">Bringing a service animal?</span>
+        <span class="txt-sm">Serve animals</span>
       </div>
       <div class="rit-crd guests-btns">
         <button @click.stop="updateGuests('pets', -1)">
@@ -137,6 +132,38 @@
       </div>
     </div>
   </div>
+  <!-- 
+    <section class="mobile-header">
+      <div ">
+        <div class="">
+          <img
+            class="search-icon"
+            src=""
+          />
+        </div>
+          <dynamic-modal  />
+      </div>
+    </section> -->
+
+    <!-- <section class="mobile-nav">
+      <div class="mobile-option">
+        <img src= "" />
+        <span  >Explore</span>
+      </div>
+      <div class="mobile-option">
+        <img src= ""  />
+        <span>Wishlists</span>
+      </div>
+      <div class="mobile-option">
+        <img src= "" />
+        <span>Trips</span>
+      </div>
+           <div class="mobile-option">
+        <img src= "" />
+        <span>Profile</span>
+        <login/>
+      </div>
+    </section> -->
 </template>
 
 <script>
@@ -202,7 +229,45 @@ export default {
         this.endActive = true;
       }
     },
- 
+    formSubmit() {
+      this.isShow = !this.isShow;
+      eventBus.emit('overlay', this.isShow);
+      eventBus.emit('getFilterStay');
+      let url = `/explore?location=${this.filterBy.where}`;
+      this.$router.push(url);
+
+      this.$emit('expendForm', false);
+    },
+    expendForm(value) {
+      this.firstClick = value;
+      this.$emit('expendForm', true);
+    },
+    showInitModal(ev) {
+      this.toggleShowModal();
+
+    },
+    dropDownMenu() {
+      this.showModal = true;
+    },
+    updateGuests(type, number) {
+      this.filterBy.guests[type] += number;
+    },
+    toggleShowModal(ev) {
+      this.showModal = !this.showModal;
+    },
+    onClickAway(ev) {
+      this.showModal = false;
+      if (this.firstClick) {
+        this.isActive = true;
+        this.firstClick = false;
+      } else {
+        this.isActive = false;
+      }
+    },
+
+    setFilter(loc) {
+      this.filterBy.where = loc
+    }
   },
 
   created() {
