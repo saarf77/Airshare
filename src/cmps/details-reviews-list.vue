@@ -8,7 +8,8 @@ export default {
     }, 
     computed: {
     svgBlackStar(){
-            return svgService.getSvgIcon('blackStarIcon');
+            const svgHtml = svgService.getSvgIcon('blackStarIcon') + `<span class="average-reviews">5</span>·<span class="reviewers-count">5</span>reviews`
+            return svgHtml;
         }
     },
     components:{
@@ -19,12 +20,7 @@ export default {
 
 <template>
        <section class="reviews-display">
-            <div class="details-title">
-                {{svgBlackStar}}
-                <span class="average-reviews">5</span>
-                ·
-                <span class="reviewers-count">5</span>
-                reviews
+            <div class="details-title" v-html="svgBlackStar">
             </div>
             <div class="stay-attributes">
                 <div class="attribute">
