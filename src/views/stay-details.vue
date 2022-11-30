@@ -1,6 +1,3 @@
-
-
-
 <script>
 // page structure => 
 // stay name
@@ -19,27 +16,39 @@
 // {{ stay-details model page for: reviews, description, extended options as icons }}
 
 
+
 import {svgService} from '../services/svg.service.js';
 import detailsAchievements from '../cmps/details-achievement.vue';
 import detailsOptionsList from '../cmps/details-options-list.vue';
 import detailsReviewsList from '../cmps/details-reviews-list.vue';
 
+//TODO: get it from the store when we will got a BACKEND;
+//import {store} from '../store/store.js';
+import { stayService } from '../services/stay.service.local.js';
+
 export default {
     data(){
         return{
-            
+            currStay: null
         }
     }, 
+    created() {
+        ;(async () => {
+            try{
+                this.currStay = await stayService.getById(this.$route.params.id);
+                throw err;
+            }catch (err) {
+                console.log('details page: can\'t get stay by using this id ', err);
+                throw err;
+            }
+        })();
+        
+    },
     computed: {
-        svgFlowerIcon(){
-            return svgService.getSvgIcon('flowerPot');
-        },
-        svgBlackStar(){
-            return svgService.getSvgIcon('blackStarIcon');
-        }
     }, 
     components: {
         svgService,
+        stayService,
         detailsAchievements,
         detailsOptionsList,
         detailsReviewsList,
