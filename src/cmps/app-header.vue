@@ -109,6 +109,16 @@ export default {
   },
 
   computed: {
+    getCheckinDate() {
+      return this.checkinDate;
+    },
+    getCheckoutDate() {
+      return this.checkoutDate;
+    },
+    getGuestsAmount() {
+      if (!this.guests) return "Add guests";
+      return this.guests;
+    },
     headerLocation() {
       let { params, path } = this.$route || {};
       this.isExplore = path !== '/';

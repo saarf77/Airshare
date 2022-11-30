@@ -164,7 +164,32 @@ export default {
   methods: {
     activeTab(value, ev) {
 
+      if (value === 'where') {
+        this.isActive = true;
+        this.startActive = false;
+        this.endActive = false;
+        this.guestActive = false;
+      }
+      if (value === 'guest') {
+        this.isActive = false;
+        this.guestActive = true;
+        this.startActive = false;
+        this.endActive = false;
+      }
 
+      if (value === 'checkin') {
+        this.isActive = false;
+        this.guestActive = false;
+        this.startActive = true;
+        this.endActive = false;
+        this.isHover = false;
+      }
+      if (value === 'checkout') {
+        this.isActive = false;
+        this.guestActive = false;
+        this.startActive = false;
+        this.endActive = true;
+      }
     },
     formSubmit() {
       this.isShow = !this.isShow;
