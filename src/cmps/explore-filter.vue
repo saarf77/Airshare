@@ -61,6 +61,7 @@
               <div class="content filter-content">
                 <button class="action-btn">
                   <div class="material-icons search"> search </div>
+                  <span>Search</span>
                 </button>
               </div>
             </div>
