@@ -2,9 +2,8 @@ import { createApp } from 'vue'
 
 import { router } from './router.js'
 import { store } from './store/store.js'
-import {stayService} from './services/stay.service'
 import VCalendar from 'v-calendar';
-stayService.demoStoreSetup();
+
 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'

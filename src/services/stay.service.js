@@ -15,13 +15,8 @@ export const stayService = {
     remove,
     getEmptyCar,
     addCarMsg,
-    demoStoreSetup
 }
 window.ss = stayService
-
-async function demoStoreSetup(){
-    store.dispatch('loadStays');
-}
 
 async function query(filterBy = { txt: '', price: 0 }) {
     return httpService.get(STORAGE_KEY, filterBy)
