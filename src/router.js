@@ -53,6 +53,7 @@ const routes = [
     name: 'stay-details',
     component: stayDetails
   },
+
 ]
 
 

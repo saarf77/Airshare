@@ -15,7 +15,7 @@
               <explore-filter :isExpend="isExpend" @expend-form="expendForm" />
             </div>
             <div class="last-section-nav flex align-center">
-              <a class="right-header become-host" href="/#/login">Become a host</a>
+              <a class="right-header become-host" href="/#/login">Switch to hosting</a>
 
               <a class="right-header" href="/#/explore"><img class="explore-btn" src="../assets/icons/en.svg" /></a>
               <div class="user-menu-btn">
@@ -32,6 +32,7 @@
             </div>
           </div>
         </nav>
+        <hr>
       </div>
     </div>
     <div v-if="headerLocation" :class="{ 'hide-expend': isExpend }"
@@ -44,6 +45,7 @@
             <img src="/src/assets/icons/filter-icon.svg" alt="" />
             <span class="filter-btn">Filters</span>
           </div>
+
         </div>
       </div>
     </div>
@@ -56,6 +58,7 @@
 import exploreFilter from './explore-filter.vue';
 // import exploreLabels from './explore-labels.vue';
 import { eventBus } from '../services/event-bus.service.js';
+
 
 export default {
   data() {
@@ -91,7 +94,7 @@ export default {
 
     userImg() {
       var user = this.$store.getters.loggedinUser;
-      return user ? user.imgUrl : '';
+      return user ? user.imgUrl : 'https://res.cloudinary.com/sprint4-triman/image/upload/q_80,r_180/a_0/v1669793675/elon_mask_ltbtp6.jpg';
     },
 
   },
