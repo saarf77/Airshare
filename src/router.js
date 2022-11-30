@@ -16,18 +16,18 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: home
+    component: stayApp
   },
   // {
   //   path: '/car',
   //   name: 'car-app',
   //   component: carApp
   // },
-  {
-    path: '/stay',
-    name: 'stay-app',
-    component: stayApp
-  },
+  // {
+  //   path: '/stay',
+  //   name: 'stay-app',
+  //   component: stayApp
+  // },
   {
     path: '/review',
     name: 'review',

@@ -1,0 +1,30 @@
+.stay-preview{
+    position: relative;
+    max-width: 100%;
+    cursor: pointer;
+    .el-carousel{
+        border-radius: 12px;
+    }
+    .el-carousel__button{
+        height: 6px;
+        width: 6px;
+        margin-bottom: 15px;
+        border-radius: 50%;
+    }
+    .img-wrapper{
+        height: 100%;
+        img{
+            object-fit: cover;
+            height: 100%;
+        }
+    }
+    .content{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 6px;
+        padding-block-start: 12px;
+        line-height: 19px;
+        font-size: 0.95rem;
+    }
+    
+}

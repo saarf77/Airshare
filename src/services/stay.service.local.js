@@ -111,7 +111,15 @@ function getEmptyStay() {
           "Trending",
           "Play",
           "Tropical"
-        ]
+        ],
+        "loc": {
+          "country": "United States",
+          "countryCode": "PT",
+          "city": "Maui",
+          "address": "17 Kombo st",
+          "lat": -8.61308,
+          "lng": 41.1413
+        },
       })
       await storageService.post(STORAGE_KEY,  {
         "_id": "10006546",
@@ -136,7 +144,15 @@ function getEmptyStay() {
           "Trending",
           "Play",
           "Tropical"
-        ]
+        ],
+        "loc": {
+          "country": "Spain",
+          "countryCode": "PT",
+          "city": "Madrid",
+          "address": "17 Kombo st",
+          "lat": -8.61308,
+          "lng": 41.1413
+        },
       })
       await storageService.post(STORAGE_KEY,  {
         "_id": "10006546",
@@ -161,6 +177,14 @@ function getEmptyStay() {
           "Trending",
           "Play",
           "Tropical"
-        ]
+        ],
+        "loc": {
+          "country": "Portugal",
+          "countryCode": "PT",
+          "city": "Porto",
+          "address": "17 Kombo st",
+          "lat": -8.61308,
+          "lng": 41.1413
+        },
       })
 })()
