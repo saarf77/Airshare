@@ -24,7 +24,7 @@ import detailsReviewsList from '../cmps/details-reviews-list.vue';
 
 //TODO: get it from the store when we will got a BACKEND;
 //import {store} from '../store/store.js';
-import { stayService } from '../services/stay.service.local.js';
+import { stayService } from '../services/demo-data.service.js';
 
 export default {
     data(){
@@ -36,7 +36,6 @@ export default {
         ;(async () => {
             try{
                 this.currStay = await stayService.getById(this.$route.params.id);
-                throw err;
             }catch (err) {
                 console.log('details page: can\'t get stay by using this id ', err);
                 throw err;
@@ -45,6 +44,12 @@ export default {
         
     },
     computed: {
+        stayName(){
+            return this.currStay? this.currStay.name : '';
+        },
+        starRate(){
+            return svgService.getSvgIcon('blackStarIcon') + ' ';
+        }
     }, 
     components: {
         svgService,
@@ -60,8 +65,8 @@ export default {
 <template>
     <section class="details-page">
         <section class="short-display">
-          <div class="name">test test test test test</div>
-          <div class="star-score"></div>
+          <div class="name">{{ stayName }}</div>
+          <div class="star-score" v-html="starRate"></div>
           <div class="reviews-count"></div>
           <div class="label-list"></div>
           <button class="details-btn share"></button>
@@ -111,3 +116,4 @@ export default {
     <section class="details-page model"> 
     </section>
 </template>
+
