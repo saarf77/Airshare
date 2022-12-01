@@ -292,9 +292,11 @@ span.el-radio-button__inner {
 .filter-footer button:nth-child(2){
     background: #222222;
     padding: 8px;
-    border-radius: 6px;
+    border-radius: 8px;
     text-align: center;
     width: 161px;
+    font-weight: $bold;
+    font-family: 'Circular',-apple-system,'BlinkMacSystemFont','Roboto','Helvetica Neue',sans-serif;;
     height: 48px;
     align-items: end;
     box-sizing: border-box;

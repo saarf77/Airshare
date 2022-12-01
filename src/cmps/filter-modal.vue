@@ -2,7 +2,7 @@
     <form class="form-filter">
         <div class="filter-header">
             <div class="close-filter">
-                    <span><img src="../assets/icons/close-icon.svg"></span>
+                    <span @click="closeModal"><img src="../assets/icons/close-icon.svg"></span>
             </div>
             <h2>Filters</h2>
         </div>
@@ -206,6 +206,10 @@ export default {
         }
     },
     methods: {
+        closeModal(){
+            console.log('HELLO')
+            this.$emit('onClickAway')
+        },
         setBorder(type){
             if(this.filterBy.type.includes(type)){
                 return 'active'
