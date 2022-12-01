@@ -28,14 +28,16 @@
               </div>
               <div class="user-nav" v-if="showMenu" v-click-away="onClickAway">
                 <div class="user-nav-in">
+                  <a href="#/" @click="logDemo" v-if="!getLogInUser">Messages</a>
+                  <!-- v-if todo -->
+                  <a href="#/wishList" @click="showMenu = !showMenu" >Wish List</a> 
+                  <a href="#/dashboard" @click="showMenu = !showMenu" >Dashboard</a>
+                  <!-- <a href="#/wishList" @click="showMenu = !showMenu" class="a1" v-if="getLogInUser">Wish List</a>
+                  <a href="#/dashboard" @click="showMenu = !showMenu" v-if="getLogInUser">Dashboard</a> -->
                   <a href="#/login" @click="showMenu = !showMenu" v-if="!getLogInUser">Sign up</a>
                   <a href="#/login" @click="showMenu = !showMenu" v-if="!getLogInUser">Log in</a>
                   <a href="#/" @click="logDemo" v-if="!getLogInUser">Log Demo</a>
-                  <hr>
                   <a href="#/become-a-host" @click="showMenu = !showMenu" v-if="!getLogInUser">airshare your home</a>
-                  <a href="#/" @click="logDemo" v-if="!getLogInUser">Messages</a>
-                  <a href="#/wishList" @click="showMenu = !showMenu" class="a1" v-if="getLogInUser">Wish List</a>
-                  <a href="#/dashboard" @click="showMenu = !showMenu" v-if="getLogInUser">Dashboard</a>
                   <a @click="logout" v-if="getLogInUser">Logout</a>
                 </div>
               </div>

@@ -198,33 +198,7 @@ header {
       position: relative;
       align-self: baseline;
     }
-  
-    .user-menu-btn {
-        color: #484848;
-        padding: 5px 5px 5px 10px;
-        border-radius: 21px;
-        background-color: #fff;
-        font-size: 16px;
-        border: 1px solid #ddd;
-        line-height: 20px;
-    
-        &:hover {
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
-        }
-    
-        .menu-btn {
-          margin-right: 9px;
-          width: 17px;
-          height: 30px;
-        }
-    
-        .host-image {
-          height: 45px;
-          width: 35px;
-          border-radius: 50%;
-        }
-      }
-      
+        
     .right-header {
       font-family: Cereal-medium;
       font-size: 14px;
@@ -267,8 +241,34 @@ header {
 
 
   // usern´nav
+  .user-menu-btn {
+    color: #484848;
+    padding: 5px 5px 5px 10px;
+    border-radius: 21px;
+    background-color: #fff;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    line-height: 20px;
+
+    &:hover {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    }
+
+    .menu-btn {
+      margin-right: 9px;
+      width: 17px;
+      height: 30px;
+    }
+
+    .host-image {
+      height: 45px;
+      width: 35px;
+      border-radius: 50%;
+    }
+  }
 
 .user-nav {
+  cursor: pointer;
   color: #222222;
   z-index: 5;
   display: flex;
@@ -299,3 +299,41 @@ header {
     }
   }
 }
+
+  .user-nav-in {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 18%) 0px 0px 3px 0px;
+
+    .a1 {
+      font-family: Cereal;
+    }
+
+    a {
+      padding: 15px 20px;
+      text-decoration: none;
+
+      &:first-child {
+        margin-top: 5px;
+      }
+
+      // &:nth-last-child(2){
+      //   font-family: cereal;
+      // }
+      &:nth-child(3){
+        border-bottom: $clr6 1.5px solid;
+      }
+
+      &:last-child {
+        margin-bottom: 5px;
+        font-family: cereal;
+      }
+
+      &:hover {
+        background-color: #ececec7c;
+      }
+    }
+  }
+

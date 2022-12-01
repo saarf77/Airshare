@@ -141,30 +141,6 @@ form.el-form.el-form--default.el-form--label-right {
     border: 1px solid;
   }
 
-  .content {
-    --positionX: 0;
-    --positionY: 5;
-
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    border-radius: 8px;
-
-    background-image: radial-gradient(circle at calc((0 + var(--positionX, 0)) * 10%) calc((0 + var(--positionY, 0)) * 5%),
-        rgb(241, 37, 75) 0%,
-        rgb(230, 30, 77) 27.5%,
-        rgb(227, 28, 95) 40%,
-        rgb(215, 4, 102) 57.5%,
-        rgb(189, 30, 89) 75%,
-        rgb(189, 30, 89) 100%);
-  }
-
   .action-btn {
     padding: 0 0;
     margin: 0 0;

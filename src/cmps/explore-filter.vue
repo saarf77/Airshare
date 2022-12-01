@@ -75,13 +75,17 @@
 
           <div @click="formSubmit" class="order-container header-filter-search">
             <div class="btn-container on-filter">
-              <div v-for="i in 100" class="cell"></div>
-              <div class="content filter-content">
-                <button class="action-btn">
+              <gardient-btn >
+                
+              </gardient-btn>
+              <!-- <div v-for="i in 100" class="cell"></div> -->
+              <!-- <div class="content filter-content"> -->
+                <!-- <button class="action-btn">
                   <div class="material-icons search"> search </div>
                   <span>Search</span>
-                </button>
-              </div>
+                </button> -->
+              <!-- </div> -->
+  
             </div>
           </div>
         </div>
@@ -187,6 +191,7 @@
 
 <script>
 import { eventBus } from '../services/event-bus.service';
+import gardientBtn from "../cmps/gardient-btn.vue";
 
 export default {
   emits: ['expendForm'],
@@ -323,6 +328,7 @@ export default {
   },
 
   components: {
+    gardientBtn
   },
 };
 </script>
