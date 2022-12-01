@@ -28,8 +28,12 @@
               </div>
               <div class="user-nav" v-if="showMenu" v-click-away="onClickAway">
                 <div class="user-nav-in">
+                  <a href="#/login" @click="showMenu = !showMenu" v-if="!getLogInUser">Sign up</a>
                   <a href="#/login" @click="showMenu = !showMenu" v-if="!getLogInUser">Log in</a>
                   <a href="#/" @click="logDemo" v-if="!getLogInUser">Log Demo</a>
+                  <hr>
+                  <a href="#/become-a-host" @click="showMenu = !showMenu" v-if="!getLogInUser">airshare your home</a>
+                  <a href="#/" @click="logDemo" v-if="!getLogInUser">Messages</a>
                   <a href="#/wishList" @click="showMenu = !showMenu" class="a1" v-if="getLogInUser">Wish List</a>
                   <a href="#/dashboard" @click="showMenu = !showMenu" v-if="getLogInUser">Dashboard</a>
                   <a @click="logout" v-if="getLogInUser">Logout</a>
@@ -77,7 +81,6 @@
 <script>
 import exploreFilter from './explore-filter.vue';
 import exploreLabels from './explore-labels.vue';
-// import standAloneFilter from './standAlone-filter.vue';
 import { eventBus } from '../services/event-bus.service.js';
 
 export default {
@@ -227,7 +230,6 @@ export default {
   components: {
     exploreFilter,
     exploreLabels,
-    // standAloneFilter,
     eventBus,
   },
   setup() { },
