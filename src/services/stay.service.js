@@ -15,6 +15,7 @@ export const stayService = {
     remove,
     getEmptyCar,
     addCarMsg,
+    // getLabels
 }
 window.ss = stayService
 
@@ -68,8 +69,4 @@ function getEmptyCar() {
         price: utilService.getRandomIntInclusive(1000, 9000),
     }
 }
-
-
-
-
 

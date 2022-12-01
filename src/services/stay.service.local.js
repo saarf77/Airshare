@@ -11,7 +11,9 @@ export const stayService = {
     save,
     remove,
     getEmptyStay,
-    addStayMsg
+  addStayMsg,
+  getLabels,
+
 }
 window.stayService = stayService
 
@@ -187,3 +189,144 @@ function getEmptyStay() {
 //         },
 //       })
 // })()
+
+
+function getLabels() {
+  return [
+    {
+      propertyType: "OMG!",
+      src: "omg.jpg"
+    },
+    {
+      propertyType: "Amazing views",
+      src: "amazing-views.jpg"
+    },
+    {
+      propertyType: "Trending",
+      src: "trending.jpg"
+    },
+    {
+      propertyType: "Castels",
+      src: "castels.jpg"
+    },
+    {
+      propertyType: "Off-the-grid",
+      src: "Off-the-grid.jpg"
+    },
+    {
+      propertyType: "cabins",
+      src: "cabins.jpg"
+    },
+    {
+      propertyType: "Top of the world",
+      src: "TOTW.jpg"
+    },
+    {
+      propertyType: "Luxe",
+      src: "luxe.jpg"
+    },
+    {
+      propertyType: "play",
+      src: "play.jpg"
+    },
+    {
+      propertyType: "New",
+      src: "new.jpg"
+    },
+    {
+      propertyType: "Privte rooms",
+      src: "privte-rooms.jpg"
+    },
+
+
+
+    {
+      propertyType: "Beach",
+      src: "beach.jpg"
+    },
+    {
+      propertyType: "Apartment",
+      src: "Apartment.jpg"
+    },
+    {
+      propertyType: "House",
+      src: "house.jpg"
+    },
+    {
+      propertyType: "Townhouse",
+      src: "townhouse.jpg"
+    },
+    {
+      propertyType: "Amazing pools",
+      src: "amazing-pools.jpg"
+    },
+    {
+      propertyType: "Arctic",
+      src: "arctic.jpg"
+    },
+    {
+      propertyType: "Islands",
+      src: "islands.jpg"
+    },
+    {
+      propertyType: "Vineyards",
+      src: "Vineyards.jpg"
+    },
+    {
+      propertyType: "Lakefront",
+      src: "Lakefront.jpg"
+    },
+    {
+      propertyType: "Historical homes",
+      src: "Historical-homes.jpg"
+    },
+    {
+      propertyType: "Boats",
+      src: "Boats.jpg"
+    },
+    {
+      propertyType: "Ski-in/out",
+      src: "Ski-inout.jpg"
+    },
+    {
+      propertyType: "Treehouses",
+      src: "Treehouses.jpg"
+    },
+    {
+      propertyType: "Surfing",
+      src: "Surfing.jpg"
+    },
+    {
+      propertyType: "Creative spaces",
+      src: "Creative-spaces.jpg"
+    },
+    {
+      propertyType: "Golfing",
+      src: "Golfing.jpg"
+    },
+    {
+      propertyType: "Desert",
+      src: "desert.jpg"
+    },
+    {
+      propertyType: "Campers",
+      src: "Campers.jpg"
+    },
+    {
+      propertyType: "Iconic cities",
+      src: "Iconic-cities.jpg"
+    },
+    {
+      propertyType: "Windmills",
+      src: "Windmills.jpg"
+    },
+    {
+      propertyType: "Shepherd's huts",
+      src: "Shepherd's-huts.jpg"
+    },
+    {
+      propertyType: "Ryokans",
+      src: "Ryokans.jpg"
+    }
+  ]
+}
