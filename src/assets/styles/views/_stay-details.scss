@@ -35,10 +35,29 @@
              }
 
              .details-btn {
-                     position: relative;
-                     
-                     svg{
-                            position: absolute;
+                     display: flex;
+                     flex-direction: row;
+                     border-radius: 7px;
+                     background-color: transparent;
+
+                     color: $clr7;
+                     text-decoration: underline;
+                     transition: color 0.2s;
+
+                     > svg{
+                            margin-inline-end: 7px;
+                     }
+
+                     > span{
+                            align-self: end;
+                     }
+
+                     &:hover{
+                            background-color: $hoverGray;
+                     }
+
+                     &:active{
+                            font-size: calc(1em - 0.33em);
                      }
               }
               .share{
