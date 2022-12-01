@@ -9,11 +9,7 @@
       </div>
     </div>
     <div v-show="isExpend" class="filter-expend flex">
-      <div class="navigation">
-        <a href="http://">Stays</a>
-        <a href="http://">Experiences</a>
-        <a href="http://">Online Experiences</a>
-      </div>
+
       <el-form :model="filterBy">
         <div @click="activeTab('where')" class="filter-option where" data-field="where"
           :class="{ 'active-btn': isExpend ? isActive : !isActive }">
