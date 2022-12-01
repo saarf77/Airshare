@@ -107,6 +107,12 @@ async function query(filterBy) {
    }
 
    
+//TODO: separate the achievements to there own "table" (data collection)
+// so inside the stay achievements list there will be only a number array (of the index of the table/collection row);
+// demo data urls:
+// 1 =>       http://localhost:5173/#/details/H9Tsb7gCOl7zi
+// 2 =>       http://localhost:5173/#/details/lD6xkN4bdvNI9
+// 3 =>       http://localhost:5173/#/details/lD6xkN4bdvNI9
 
 
 const demoStays = [
@@ -226,19 +232,20 @@ const demoStays = [
               ],
               "achievements": [
                      {
-                            "iconName": "workDesk",
-                            "achievementName": "Dedicated workspace",
-                            "achievementDescription": "A private room with wifi that's well-suited for working."
+                            "iconName": "supremeHost",
+                            "achievementName": "is a supremehost",
+                            "achievementDescription": "supremehost are experienced, highly rated hosts who are committed to providing great stays for guests.",
+                            "hostName": "Master Black",
                      },
                      {
-                            "iconName": "swimmingPool",
-                            "achievementName": "Dive right in",
-                            "achievementDescription": "This is one of the few places in the area with a pool."
+                            "iconName": "furryFriends",
+                            "achievementName": "Furry friends welcome",
+                            "achievementDescription": "Bring your pets along for the stay."
                      },
                      {
-                            "iconName": "freeCancellation",
-                            "achievementName": "Free cancellation 3 days before.",
-                            "achievementDescription": ""
+                            "iconName": "selfCheckIn",
+                            "achievementName": "Self check-in",
+                            "achievementDescription": "You can check in with the doorman."
                      },
               ],
               "labels": [
@@ -314,19 +321,20 @@ const demoStays = [
               ],
               "achievements": [
                      {
-                            "iconName": "workDesk",
-                            "achievementName": "Dedicated workspace",
-                            "achievementDescription": "A private room with wifi that's well-suited for working."
+                            "iconName": "freeParking",
+                            "achievementName": "Park for free",
+                            "achievementDescription": "This is one of the few places in the area with free parking."
                      },
                      {
-                            "iconName": "swimmingPool",
-                            "achievementName": "Dive right in",
-                            "achievementDescription": "This is one of the few places in the area with a pool."
+                            "iconName": "greatLocation",
+                            "achievementName": "Great location",
+                            "achievementDescription": "100% of recent guests gave the location a 5-star rating."
                      },
                      {
-                            "iconName": "freeCancellation",
-                            "achievementName": "Free cancellation 3 days before.",
-                            "achievementDescription": ""
+                            "iconName": "experiencedHost",
+                            "achievementName": "Experienced host",
+                            "achievementDescription": "has more then 20 reviews for other places.",
+                            "hostName": "Star Dreamer",
                      },
               ],
               "labels": [
