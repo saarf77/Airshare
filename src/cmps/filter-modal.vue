@@ -2,7 +2,7 @@
     <form class="form-filter">
         <div class="filter-header">
             <div class="close-filter">
-                <span>Close</span>
+                    <span><img src="../assets/icons/close-icon.svg"></span>
             </div>
             <h2>Filters</h2>
         </div>
@@ -12,7 +12,7 @@
                 <h2>Price range</h2>
                 <p>The average nightly price is 220$</p>
 
-                <HistogramSlider :width="600" :hist-slider-gap="0" :bar-height="100" :bar-width="12" :bar-radius="0"
+                <HistogramSlider :width="650" :hist-slider-gap="0" :bar-height="100" :bar-width="12" :bar-radius="0"
                     :line-height="1" :bar-color="'#b0b0b0'" :primary-color="'#b0b0b0'" :label-color="'#bdd6f8'"
                     :holder-color="'#dddddd'" :handel-color="'#ffffff'" :data="data" :min="min" :max="max" />
                 <div class="form-inputs">
@@ -39,17 +39,8 @@
             <div class="rooms-beds-filter">
                 <h2>Rooms and beds</h2>
                 <h3>Bedrooms</h3>
-                <el-radio-group :fill="'#222222'">
-                    <el-radio-button style="width: 79px" class="any" label="Any" />
-                    <el-radio-button label="1" />
-                    <el-radio-button label="2" />
-                    <el-radio-button label="3" />
-                    <el-radio-button label="4" />
-                    <el-radio-button label="5" />
-                    <el-radio-button label="6" />
-                    <el-radio-button label="7" />
-                    <el-radio-button label="8+" />
-                    <!-- <label class="el-radio-button">
+                <el-radio-group >
+                    <label class="el-radio-button">
                         <input v-model="filterBy.rooms" type="radio" class="el-radio-button__original-radio"
                             value="any">
                         <span class="el-radio-button__inner any">Any</span>
@@ -85,7 +76,7 @@
                     <label class="el-radio-button">
                         <input v-model="filterBy.rooms" type="radio" class="el-radio-button__original-radio" value="8">
                         <span class="el-radio-button__inner">8+</span>
-                    </label> -->
+                    </label>
                     <!-- <label v-for="item in 8" class="el-radio-button">
                         <input v-model="filterBy.rooms" type="radio" class="el-radio-button__original-radio"
                             value="item">
@@ -93,7 +84,7 @@
                     </label> -->
                 </el-radio-group>
                 <h3>Beds</h3>
-                <el-radio-group>
+                <el-radio-group :fill="'#222222'">
                     <label class="el-radio-button">
                         <input v-model="filterBy.beds" type="radio" class="el-radio-button__original-radio" value="any">
                         <span class="el-radio-button__inner any">Any</span>
@@ -137,28 +128,28 @@
             <div class="property-type-filter">
                 <h2>Property type</h2>
                 <div class="flex">
-                    <div @click="setType" class="property-type" :class="isActive ? 'active' : ''">
+                    <div @click="setType" class="property-type" :class="setBorder('House')">
                         <div>
                             <img
                                 src="https://res.cloudinary.com/ddt1fjmim/image/upload/v1669845855/house_oz9fpr_eljbtg.png">
                             <span>House</span>
                         </div>
                     </div>
-                    <div @click="setType" class="property-type">
+                    <div @click="setType" class="property-type" :class="setBorder('Apartment')">
                         <div>
                             <img
                                 src="https://res.cloudinary.com/ddt1fjmim/image/upload/v1669845869/Apartment_s5whob_lmgvut.png">
                             <span>Apartment</span>
                         </div>
                     </div>
-                    <div @click="setType" class="property-type">
+                    <div @click="setType" class="property-type" :class="setBorder('Guesthouse')">
                         <div>
                             <img
                                 src="https://res.cloudinary.com/ddt1fjmim/image/upload/v1669845874/Guesthouse_rxvpqm_znyqbs.png">
                             <span>Guesthouse</span>
                         </div>
                     </div>
-                    <div @click="setType" class="property-type">
+                    <div @click="setType" class="property-type" :class="setBorder('Hotel')">
                         <div>
                             <img
                                 src="https://res.cloudinary.com/ddt1fjmim/image/upload/v1669845864/Hotel_lywp1t_y3foc7.png">
@@ -185,7 +176,10 @@
                 </div>
             </div>
         </div>
-        <button @click="setFilter">Save</button>
+        <div class="filter-footer">
+            <button>Clear all</button>
+            <button @click="setFilter">Show 29 stays</button>
+        </div>
     </form>
 </template>
 
@@ -212,6 +206,11 @@ export default {
         }
     },
     methods: {
+        setBorder(type){
+            if(this.filterBy.type.includes(type)){
+                return 'active'
+            }
+        },
         setType(target) {
             this.isActive = !this.isActive
             console.log(target.target.innerText)
@@ -220,12 +219,9 @@ export default {
             if (filter.includes(type)) {
                 let filteredType = filter.filter(item => item !== type)
                 this.filterBy.type = filteredType
-                console.log('IM FROM IF', filteredType)
-                console.log('IM THE FILTER', this.filterBy.type)
                 return filteredType
             }
             this.filterBy.type.push(type)
-            console.log(this.filterBy.type)
         },
         setFilter() {
             this.$emit('setFilter', { ...this.filterBy })

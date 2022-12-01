@@ -1,6 +1,6 @@
 <template>
   <section class="stay-app container">
-    <filter-modal @setFilter="setFilter"/>
+    <filter-modal v-if="isModal" @setFilter="setFilter"/>
     <!-- <stay-filter @setFilter="setFilter" /> -->
     <stay-list v-if="stays" :stays="stays" />
   </section>
@@ -21,6 +21,7 @@ export default {
   },
   data() {
     return {
+      isModal:false,
       stayToAdd: null
     }
   },
