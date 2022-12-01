@@ -71,6 +71,7 @@
             <img src="../assets/icons/filter-icon.svg" alt="" />
             <span class="filter-btn">Filters</span>
           </div>
+          <filter-modal v-if="isShow" @setFilter="setFilter"/>
           <Transition duration="200" name="nested">
             <standAlone-filter @closeFilersForm="closeModal" v-if="isShow" v-click-away="onClickAway" />
           </Transition>
@@ -81,6 +82,7 @@
   <div v-if="isShow" class="overlay"></div>
 </template>
 <script>
+import filterModal from '../cmps/filter-modal.vue'
 import exploreFilter from './explore-filter.vue';
 import exploreLabels from './search-labels.vue';
 import { eventBus } from '../services/event-bus.service.js';
@@ -143,6 +145,9 @@ export default {
   },
 
   methods: {
+    setFilter(filterBy){
+      this.$store.dispatch({ type: 'setFilter' ,filterBy})
+    },
     expendForm(value) {
       this.isExpend = value;
     },
@@ -233,6 +238,7 @@ export default {
     exploreFilter,
     exploreLabels,
     eventBus,
+    filterModal
   },
   setup() { },
 };

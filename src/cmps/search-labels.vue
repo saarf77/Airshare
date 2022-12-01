@@ -17,14 +17,14 @@ import { ref, onMounted } from 'vue';
 
 const el = ref();
 
-onMounted(() => {
-  const prev = document.querySelector('.carousel__prev');
-  prev.style.visibility = 'hidden';
-  const next = document.querySelector('.carousel__next');
-  next.addEventListener('click', e => {
-    prev.style.visibility = 'visible';
-  });
-});
+// onMounted(() => {
+//   const prev = document.querySelector('.carousel__prev');
+//   prev.style.visibility = 'hidden';
+//   const next = document.querySelector('.carousel__next');
+//   next.addEventListener('click', e => {
+//     prev.style.visibility = 'visible';
+//   });
+// });
 </script>
 
 <script>

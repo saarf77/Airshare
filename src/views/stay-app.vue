@@ -1,13 +1,13 @@
 <template>
   <section class="stay-app container">
-    <filter-modal v-if="isModal" @setFilter="setFilter"/>
+    <!-- <filter-modal @setFilter="setFilter"/> -->
     <!-- <stay-filter @setFilter="setFilter" /> -->
     <stay-list v-if="stays" :stays="stays" />
   </section>
 </template>
 
 <script>
-import filterModal from '../cmps/filter-modal.vue'
+// import filterModal from '../cmps/filter-modal.vue'
 // import stayFilter from '../cmps/stay-filter.vue'
 import stayList from '../cmps/stay-list.vue'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
@@ -17,11 +17,10 @@ export default {
   components: {
     // stayFilter,
     stayList,
-    filterModal
+    // filterModal
   },
   data() {
     return {
-      isModal:false,
       stayToAdd: null
     }
   },
