@@ -57,16 +57,11 @@ async function query(filterBy) {
                      return await storageService.get(STAYS_KEY, Id);
               case 'user':
                      const users = await storageService.query(USERS_KEY);
-                     if(users?.length > 0){
-                            var userIdx = -1;
-                            users.forEach((user, index)=>{
-                                   user.propertiesId.forEach((stayId)=>{
-                                          if(stayId === Id) userIdx = index;
-                                         
-                                   })
-                            })  
-                     }     
-                     return users[userIdx];
+                     const stay = await storageService.get(STAYS_KEY, Id);
+                     let currUser = users.filter((user)=>{
+                            return user._id === stay.ownerId;
+                     });
+                     return currUser[0];
               default:
                      return await storageService.get(STAYS_KEY, Id);
        }
@@ -117,6 +112,7 @@ async function query(filterBy) {
 const demoStays = [
        {
               "_id": "H9Tsb7gCOl7zi",
+              "ownerId": "WbYTQf8YP2ezO",
               "name": "Ribeira Charming Duplex",
               "rooms":1,
               "beds":3,
@@ -139,6 +135,23 @@ const demoStays = [
                      "Smoking allowed",
                      "Pets allowed",
                      "Cooking basics"
+              ],
+              "achievements": [
+                     {
+                            "iconName": "workDesk",
+                            "achievementName": "Dedicated workspace",
+                            "achievementDescription": "A private room with wifi that's well-suited for working."
+                     },
+                     {
+                            "iconName": "swimmingPool",
+                            "achievementName": "Dive right in",
+                            "achievementDescription": "This is one of the few places in the area with a pool."
+                     },
+                     {
+                            "iconName": "freeCancellation",
+                            "achievementName": "Free cancellation 3 days before.",
+                            "achievementDescription": ""
+                     },
               ],
               "labels": [
                      "Top of the world",
@@ -187,6 +200,7 @@ const demoStays = [
               ]
        }, {
               "_id": "wXAfnS2RxGqBb",
+              "ownerId": "A26HW2jg7Qo",
               "name": "Ribeira Charming Duplex",
               "rooms":2.5,
               "beds":5,
@@ -209,6 +223,23 @@ const demoStays = [
                      "Smoking allowed",
                      "Pets allowed",
                      "Cooking basics"
+              ],
+              "achievements": [
+                     {
+                            "iconName": "workDesk",
+                            "achievementName": "Dedicated workspace",
+                            "achievementDescription": "A private room with wifi that's well-suited for working."
+                     },
+                     {
+                            "iconName": "swimmingPool",
+                            "achievementName": "Dive right in",
+                            "achievementDescription": "This is one of the few places in the area with a pool."
+                     },
+                     {
+                            "iconName": "freeCancellation",
+                            "achievementName": "Free cancellation 3 days before.",
+                            "achievementDescription": ""
+                     },
               ],
               "labels": [
                      "Top of the world",
@@ -257,6 +288,7 @@ const demoStays = [
               ]
        }, {
               "_id": "lD6xkN4bdvNI9",
+              "ownerId": "dXhHaSyRjNz1p",
               "name": "Ribeira Charming Duplex",
               "rooms":7,
               "beds":16,
@@ -279,6 +311,23 @@ const demoStays = [
                      "Smoking allowed",
                      "Pets allowed",
                      "Cooking basics"
+              ],
+              "achievements": [
+                     {
+                            "iconName": "workDesk",
+                            "achievementName": "Dedicated workspace",
+                            "achievementDescription": "A private room with wifi that's well-suited for working."
+                     },
+                     {
+                            "iconName": "swimmingPool",
+                            "achievementName": "Dive right in",
+                            "achievementDescription": "This is one of the few places in the area with a pool."
+                     },
+                     {
+                            "iconName": "freeCancellation",
+                            "achievementName": "Free cancellation 3 days before.",
+                            "achievementDescription": ""
+                     },
               ],
               "labels": [
                      "Top of the world",

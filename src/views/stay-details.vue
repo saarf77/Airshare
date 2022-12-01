@@ -127,7 +127,7 @@ export default {
             return (this.currStay?.imgUrls?.length > 0)? this.currStay.imgUrls : [];
         },
         hostImg(){
-            return this.host.imgUrl;
+            return (this.host?.imgUrl)? this.host?.imgUrl : '#';
         },
         shareBtnTxt(){
             return svgService.getSvgIcon('shareIcon') + '<span> Share </span>';
