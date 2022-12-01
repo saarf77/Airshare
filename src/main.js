@@ -3,6 +3,7 @@ import { createApp } from 'vue'
 import { router } from './router.js'
 import { store } from './store/store.js'
 import VCalendar from 'v-calendar';
+import VueClickAway from 'vue3-click-away';
 
 
 import ElementPlus from 'element-plus'
@@ -16,4 +17,5 @@ app.use(router)
 app.use(store)
 app.use(ElementPlus)
 app.use(VCalendar, {});
+app.use(VueClickAway);
 app.mount('#app')

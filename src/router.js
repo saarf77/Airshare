@@ -9,7 +9,6 @@ import userDetails from './views/user-details.vue'
 
 
 
-
 const routes = [
   {
     path: '/',
