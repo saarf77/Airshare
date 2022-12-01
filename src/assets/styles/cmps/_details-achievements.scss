@@ -1,0 +1,12 @@
+.achievement-display{
+        display: flex;
+        flex-direction: column;
+        row-gap: 8px;
+
+        padding-block-end: 15px;
+        border-bottom: 1.5px solid $clr6;
+
+        .stay-achievement{
+               display: grid;
+        }
+}

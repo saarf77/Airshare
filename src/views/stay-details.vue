@@ -48,7 +48,6 @@ export default {
         ;(async () => {
             try{
                 this.host = await stayService.getById(this.$route.params.id, 'user');
-                console.log(this.host);
             }catch (err) {
                 console.log('details page: can\'t get user by using this id ', err);
                 throw err;
@@ -129,6 +128,9 @@ export default {
         hostImg(){
             return (this.host?.imgUrl)? this.host?.imgUrl : '#';
         },
+        stayAchievements(){
+            return (this.currStay?.achievements?.length > 0)? this.currStay.achievements : [];
+        },
         shareBtnTxt(){
             return svgService.getSvgIcon('shareIcon') + '<span> Share </span>';
         },
@@ -174,7 +176,7 @@ export default {
                 <img :src="hostImg" alt="">
             </div>
         </section>
-        <details-achievements/>
+        <details-achievements :achievelist="stayAchievements"/>
         <section class="description-display">
             <div class="description-txt"></div>
             <button> See More</button>
