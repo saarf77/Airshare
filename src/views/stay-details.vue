@@ -31,15 +31,26 @@ export default {
     data(){
         return{
             currStay: null,
+            host: null,
             
         }
     }, 
     created() {
         ;(async () => {
             try{
-                this.currStay = await stayService.getById(this.$route.params.id);
+                this.currStay = await stayService.getById(this.$route.params.id, 'stay');
             }catch (err) {
                 console.log('details page: can\'t get stay by using this id ', err);
+                throw err;
+            }
+        })();
+
+        ;(async () => {
+            try{
+                this.host = await stayService.getById(this.$route.params.id, 'user');
+                console.log(this.host);
+            }catch (err) {
+                console.log('details page: can\'t get user by using this id ', err);
                 throw err;
             }
         })();
@@ -47,10 +58,43 @@ export default {
     },
     computed: {
         stayName(){
-            return this.currStay? this.currStay.name : '';
+            return (this.currStay) ? this.currStay.name : this.stayName;
+        },
+        staySummary(){
+            if(this.currStay === null || this.currStay?.summary?.length < 1) return;
+            
+            let { summary } = this.currStay;
+            
+            if(summary.length > 60){
+                let idx = 100;
+                
+                while(summary.length > 60){
+                    idx = summary.lastIndexOf(',');
+                    if(idx === -1){
+                        idx = summary.lastIndexOf(' ');
+    
+                        if(idx === -1) summary = '';
+                        summary = summary.substring(0,idx)
+                    }
+                    summary = summary.substring(0,idx)
+                }
+            }
+            return summary;
         },
         starRate(){
             return svgService.getSvgIcon('blackStarIcon') + this.calcStarRate;
+        },
+        stayGuests(){
+            return (this.currStay?.capacity > 0) ? this.currStay.capacity : '0';
+        },
+        stayBedrooms(){
+            return (this.currStay?.rooms > 0) ? this.currStay.rooms : '0';
+        },
+        stayBeds(){
+            return (this.currStay?.beds > 0) ? this.currStay.beds : '0';
+        },
+        stayBaths(){
+            return (this.currStay?.beds > 0) ? this.currStay.beds : '0';
         },
         calcStarRate(){
             let rate = '?';
@@ -116,17 +160,12 @@ export default {
         </section>
         <details-photos-display :urls="imageUrls"/>
         <section class="details-display">
+            <div class="details-summary">{{ staySummary }}</div>
             <div class="details-container">
-                <div class="details-name">
-                </div>
-                <div class="guests-count">
-                </div>
-                <div class="bedrooms-count">
-                </div>
-                <div class="beds-count">
-                </div>
-                <div class="bath-count">
-                </div>
+                <div class="guests-count">{{ stayGuests }} guests · </div>
+                <div class="bedrooms-count">{{ stayBedrooms }} bedrooms · </div>
+                <div class="beds-count">{{ stayBeds }} beds · </div>
+                <div class="bath-count">{{ stayBaths }} baths</div>
             </div>
             <div class="user-icon"></div>
         </section>
