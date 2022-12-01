@@ -98,8 +98,9 @@ const demoStays = [
        {
               "_id": "10006546",
               "name": "Ribeira Charming Duplex",
-              "rooms":3,
+              "rooms":1,
               "beds":3,
+              "baths": 1,
               "type": "House",
               "imgUrls": [
                      "https://res.cloudinary.com/dj88xudav/image/upload/v1669833194/example-1_s5aggn.png",
@@ -167,8 +168,9 @@ const demoStays = [
        }, {
               "_id": "10006546",
               "name": "Ribeira Charming Duplex",
-              "rooms":3,
-              "beds":3,
+              "rooms":2.5,
+              "beds":5,
+              "baths": 2,
               "type": "House",
               "imgUrls": [
                      "https://res.cloudinary.com/dj88xudav/image/upload/v1669833194/example-1_s5aggn.png",
@@ -236,8 +238,9 @@ const demoStays = [
        }, {
               "_id": "10006546",
               "name": "Ribeira Charming Duplex",
-              "rooms":3,
-              "beds":3,
+              "rooms":7,
+              "beds":16,
+              "baths": 3,
               "type": "House",
               "imgUrls": [
                      "https://res.cloudinary.com/dj88xudav/image/upload/v1669833194/example-1_s5aggn.png",
