@@ -7,8 +7,6 @@ header {
     background-color: white;
     width: 100%;
     transition: all 500ms ease-out;
-
-
     a.logo {
       flex: 1 1 0%;
       margin-left: 55px;
@@ -216,15 +214,6 @@ header {
       img {
         height: 15px;
       }
-    }
-  }
-
-
-  .labels-wrap {
-    max-width: 260px;
-
-    div {
-      text-align: initial;
     }
   }
 
