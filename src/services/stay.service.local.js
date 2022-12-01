@@ -87,104 +87,107 @@ function getEmptyStay() {
 
 
 // TEST DATA
-;(async ()=>{
-    await storageService.post(STORAGE_KEY,  {
-      "_id": "10006546",
-        "name": "Ribeira Charming Duplex",
-        "rooms":3,
-        "beds":3,
-        "type": "House",
-        "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
-        "price": 80.00,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "capacity": 8,
-        "amenities": [
-          "TV",
-          "Wifi",
-          "Kitchen",
-          // "Smoking allowed",
-          // "Pets allowed",
-          // "Cooking basics"
-        ],
-        "labels": [
-          "Top of the world",
-          "Trending",
-          "Play",
-          "Tropical"
-        ],
-        "loc": {
-          "country": "United States",
-          "countryCode": "PT",
-          "city": "Maui",
-          "address": "17 Kombo st",
-          "lat": -8.61308,
-          "lng": 41.1413
-        },
-      })
-      await storageService.post(STORAGE_KEY,  {
-        "_id": "10006546",
-        "name": "Ribeira Charming Duplex",
-        "rooms":2,
-        "beds":2,
-        "type": "Hotel",
-        "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
-        "price": 150.00,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "capacity": 8,
-        "amenities": [
-          // "TV",
-          // "Wifi",
-          "Kitchen",
-          "Smoking allowed",
-          "Pets allowed",
-          "Cooking basics"
-        ],
-        "labels": [
-          "Top of the world",
-          "Trending",
-          "Play",
-          "Tropical"
-        ],
-        "loc": {
-          "country": "Spain",
-          "countryCode": "PT",
-          "city": "Madrid",
-          "address": "17 Kombo st",
-          "lat": -8.61308,
-          "lng": 41.1413
-        },
-      })
-      await storageService.post(STORAGE_KEY,  {
-        "_id": "10006546",
-        "name": "Ribeira Charming Duplex",
-        "rooms":1,
-        "beds":1,
-        "type": "Cabin",
-        "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
-        "price": 250.00,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "capacity": 8,
-        "amenities": [
-          "TV",
-          "Wifi",
-          "Kitchen",
-          "Smoking allowed",
-          "Pets allowed",
-          "Cooking basics"
-        ],
-        "labels": [
-          "Top of the world",
-          "Trending",
-          "Play",
-          "Tropical"
-        ],
-        "loc": {
-          "country": "Portugal",
-          "countryCode": "PT",
-          "city": "Porto",
-          "address": "17 Kombo st",
-          "lat": -8.61308,
-          "lng": 41.1413
-        },
-      })
-})()
+// ;(async ()=>{
+//     await storageService.post(STORAGE_KEY,  {
+//       "_id": "10006546",
+//         "name": "Ribeira Charming Duplex",
+//         "rate":3,
+//         "rooms":3,
+//         "beds":3,
+//         "type": "House",
+//         "imgUrls": ["https://res.cloudinary.com/ddt1fjmim/image/upload/v1669815061/002_qnuhwb.jpg", "https://res.cloudinary.com/ddt1fjmim/image/upload/v1669815073/003_jkoxt2.jpg"],
+//         "price": 80.00,
+//         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
+//         "capacity": 8,
+//         "amenities": [
+//           "TV",
+//           "Wifi",
+//           "Kitchen",
+//           // "Smoking allowed",
+//           // "Pets allowed",
+//           // "Cooking basics"
+//         ],
+//         "labels": [
+//           "Top of the world",
+//           "Trending",
+//           "Play",
+//           "Tropical"
+//         ],
+//         "loc": {
+//           "country": "United States",
+//           "countryCode": "PT",
+//           "city": "Maui",
+//           "address": "17 Kombo st",
+//           "lat": -8.61308,
+//           "lng": 41.1413
+//         },
+//       })
+//       await storageService.post(STORAGE_KEY,  {
+//         "_id": "10006546",
+//         "name": "Ribeira Charming Duplex",
+//         "rate":5,
+//         "rooms":2,
+//         "beds":2,
+//         "type": "Hotel",
+//         "imgUrls": ["https://res.cloudinary.com/ddt1fjmim/image/upload/v1669798080/001_pxpfis.jpg", "https://res.cloudinary.com/ddt1fjmim/image/upload/v1669815082/004_amgrdr.jpg"],
+//         "price": 150.00,
+//         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
+//         "capacity": 8,
+//         "amenities": [
+//           // "TV",
+//           // "Wifi",
+//           "Kitchen",
+//           "Smoking allowed",
+//           "Pets allowed",
+//           "Cooking basics"
+//         ],
+//         "labels": [
+//           "Top of the world",
+//           "Trending",
+//           "Play",
+//           "Tropical"
+//         ],
+//         "loc": {
+//           "country": "Spain",
+//           "countryCode": "PT",
+//           "city": "Madrid",
+//           "address": "17 Kombo st",
+//           "lat": -8.61308,
+//           "lng": 41.1413
+//         },
+//       })
+//       await storageService.post(STORAGE_KEY,  {
+//         "_id": "10006546",
+//         "name": "Ribeira Charming Duplex",
+//         "rate":4,
+//         "rooms":1,
+//         "beds":1,
+//         "type": "Cabin",
+//         "imgUrls": ["https://res.cloudinary.com/ddt1fjmim/image/upload/v1669798080/001_pxpfis.jpg", "https://res.cloudinary.com/ddt1fjmim/image/upload/v1669815061/002_qnuhwb.jpg"],
+//         "price": 250.00,
+//         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
+//         "capacity": 8,
+//         "amenities": [
+//           "TV",
+//           "Wifi",
+//           "Kitchen",
+//           "Smoking allowed",
+//           "Pets allowed",
+//           "Cooking basics"
+//         ],
+//         "labels": [
+//           "Top of the world",
+//           "Trending",
+//           "Play",
+//           "Tropical"
+//         ],
+//         "loc": {
+//           "country": "Portugal",
+//           "countryCode": "PT",
+//           "city": "Porto",
+//           "address": "17 Kombo st",
+//           "lat": -8.61308,
+//           "lng": 41.1413
+//         },
+//       })
+// })()

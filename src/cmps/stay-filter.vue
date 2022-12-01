@@ -28,7 +28,10 @@
         <h3>BedRooms</h3>
 
         <div class="el-radio-group" role="radiogroup" aria-label="radio-group">
-            <label class="el-radio-button">
+            <el-radio-button label="House" />
+            <el-radio-button label="Hotel" />
+            <el-radio-button label="Cabin" />
+            <!-- <label class="el-radio-button">
                 <input v-model="filterBy.rooms" type="radio" @change="show" class="el-radio-button__original-radio"
                     value="0">
                 <span class="el-radio-button__inner">Any</span>
@@ -47,7 +50,7 @@
                 <input v-model="filterBy.rooms" type="radio" @change="show" class="el-radio-button__original-radio"
                     value="3">
                 <span class="el-radio-button__inner">3</span>
-            </label>
+            </label> -->
         </div>
         <h3>Beds</h3>
         <div class="el-radio-group" role="radiogroup" aria-label="radio-group">

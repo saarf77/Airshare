@@ -20,6 +20,7 @@
 @import "cmps/user-msg";
 @import "cmps/stay-preview";
 @import "cmps/stay-list";
+@import "cmps/filter-modal";
 @import "cmps/review-list";
 // @import 'cmps/host-stays.scss';
 // @import 'cmps/date-picker';
@@ -33,7 +34,7 @@
 // @import 'v-calendar/dist/style.css';
 
 // Views
-// @import 'views/stay-app';
+@import 'views/stay-app';
 // @import 'views/home';
 @import "views/stay-details";
 // @import "views/login-signup";

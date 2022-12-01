@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-import home from './views/home.vue'
+// import home from './views/home.vue'
 import chat from './views/chat.vue'
 // import carApp from './views/car-app.vue'
 import stayApp from './views/stay-app.vue'
