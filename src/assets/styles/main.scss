@@ -24,6 +24,7 @@
 @import "cmps/user-msg";
 @import "cmps/stay-preview";
 @import "cmps/stay-list";
+@import "cmps/filter-modal";
 @import "cmps/review-list";
 @import "cmps/details-achievements";
 @import "cmps/details-photo-display";
@@ -40,10 +41,11 @@
 
 @import "cmps/user-login";
 @import 'cmps/gardient-btn';
+@import 'cmps/search-labels';
 
 
 // Views
-// @import 'views/stay-app';
+@import 'views/stay-app';
 // @import 'views/home';
 @import "views/stay-details";
 // @import "views/login-signup";

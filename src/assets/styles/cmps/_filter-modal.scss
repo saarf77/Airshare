@@ -1,0 +1,210 @@
+.form-filter {
+    background-color: #fff;
+    max-width: 780px;
+    height: 85vh;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    right: 50%;
+    transform: translate(50%, 10%);
+    width: 100%;
+    box-shadow: #00000047 0 8px 28px;
+    border-radius: 12px;
+    overflow: hidden;
+
+    .filter-header {
+        display: flex;
+        align-items: center;
+        height: 10%;
+        border-bottom: 1px solid #dddddd;
+
+        .close-filter {
+            flex: .8;
+            padding: 0 24px;
+        }
+
+        h2 {
+            flex: 1;
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+    }
+
+    .filter-content {
+        position: relative;
+        height: 80%;
+        padding: 0 24px;
+        overflow-y: auto;
+    }
+
+
+}
+
+.price-filter {
+    padding: 32px 0;
+    border-bottom: 1px solid #dddddd;
+
+    &h2 {
+        margin-bottom: 31px;
+        font-size: 1.5625em;
+    }
+
+    .form-inputs {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        margin: auto;
+        padding-top: 28px;
+    }
+
+    .inner-price {
+        display: flex;
+        flex-direction: column;
+        box-shadow: #b0b0b0 0 0 0 1px inset;
+        height: 56px;
+        border-radius: 8px;
+        overflow: hidden;
+        justify-content: end;
+        box-sizing: border-box;
+        padding: 10px;
+        width: 47%;
+    }
+    .inner-price:focus-within {
+        box-shadow: black 0 0 0 1px inset;
+    }
+    input{
+        border: none;
+    }
+    input:focus-within{
+        border: none;
+        outline: none;
+    }
+    .between-prices{
+        margin: auto;
+        font-size: 24px;
+    }
+}
+
+
+
+.vue-histogram-slider-wrapper {
+    margin: auto;
+    padding-top: 32px;
+    padding-bottom: 10px;
+}
+
+
+.rooms-beds-filter {
+    padding: 32px 0;
+    border-bottom: 1px solid #dddddd;
+
+    &h2 {
+        padding-bottom: 24px;
+        flex: 1;
+        font-size: 1.5625em;
+        font-family: Cereal-medium, Helvetica, sans-serif;
+        margin-bottom: 6px;
+    }
+    // .any:nth-child(2){
+    //     width: 79px;
+    // }
+    
+
+}
+
+span.el-radio-button__inner {
+    font-weight: 400 !important;
+    margin-right: 6px;
+    padding: 10px 20px !important;
+    border-radius: 30px !important;
+    min-width: 59px !important;
+    font-size: 14px !important;
+    line-height: 18px !important;
+    margin-block-start: 26px;
+    margin-block-end: 32px;
+    cursor: pointer !important;
+    text-align: center !important;
+    border: 1px solid rgb(221, 221, 221) !important;
+    background-color: #fff;
+}
+// .el-radio-button__inner.any:first-child {
+//    width: 79px;
+// }
+
+.property-type-filter {
+    padding-bottom: 45px;
+    padding: 32px 0;
+    border-bottom: 1px solid #dddddd;
+
+    &h2 {
+        padding-bottom: 24px;
+    }
+    .active{
+        border: 2.5px solid black !important;
+    }
+    .property-type:hover {
+        border: 1.5px solid black;
+    }
+    .property-type {
+        width: 165.75px;
+        height: 120px;
+        margin-right: 13px;
+        border-radius: 11px;
+        border: 1px solid rgba(176, 176, 176, .5);
+        position: relative;
+        cursor: pointer;
+
+        img {
+            position: absolute;
+            max-height: 30px;
+            width: 30px;
+            top: 15px;
+            left: 15px;
+        }
+
+        span {
+            position: absolute;
+            bottom: 20px;
+            left: 17px;
+            font-size: 16px;
+        }
+    }
+}
+
+.amenities-filter {
+    padding: 32px 0;
+    border-bottom: 1px solid #dddddd;
+
+    .amenities-title {
+        padding-bottom: 24px;
+    }
+
+    .essentials h3 {
+        margin-bottom: 16px;
+    }
+
+    .el-checkbox-group {
+        display: grid;
+        grid-template-columns: 2fr 2fr;
+        gap: 12px;
+    }
+
+}
+
+.el-checkbox__original {
+    opacity: 1;
+    outline: 0;
+    position: absolute;
+    margin: 0;
+    width: 24px;
+    height: 24px;
+    z-index: 5;
+}
+
+.el-checkbox__label {
+    display: inline-block;
+    padding-left: 8px;
+    line-height: 1;
+    margin: 10px 0 0 11px;
+    font-size: 16px;
+}

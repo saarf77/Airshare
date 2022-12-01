@@ -11,7 +11,9 @@ export const stayService = {
     save,
     remove,
     getEmptyStay,
-    addStayMsg
+  addStayMsg,
+  getLabels,
+
 }
 window.stayService = stayService
 
@@ -90,10 +92,11 @@ function getEmptyStay() {
 //     await storageService.post(STORAGE_KEY,  {
 //       "_id": "10006546",
 //         "name": "Ribeira Charming Duplex",
+//         "rate":3,
 //         "rooms":3,
 //         "beds":3,
 //         "type": "House",
-//         "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
+//         "imgUrls": ["https://res.cloudinary.com/ddt1fjmim/image/upload/v1669815061/002_qnuhwb.jpg", "https://res.cloudinary.com/ddt1fjmim/image/upload/v1669815073/003_jkoxt2.jpg"],
 //         "price": 80.00,
 //         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
 //         "capacity": 8,
@@ -123,10 +126,11 @@ function getEmptyStay() {
 //       await storageService.post(STORAGE_KEY,  {
 //         "_id": "10006546",
 //         "name": "Ribeira Charming Duplex",
+//         "rate":5,
 //         "rooms":2,
 //         "beds":2,
 //         "type": "Hotel",
-//         "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
+//         "imgUrls": ["https://res.cloudinary.com/ddt1fjmim/image/upload/v1669798080/001_pxpfis.jpg", "https://res.cloudinary.com/ddt1fjmim/image/upload/v1669815082/004_amgrdr.jpg"],
 //         "price": 150.00,
 //         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
 //         "capacity": 8,
@@ -156,10 +160,11 @@ function getEmptyStay() {
 //       await storageService.post(STORAGE_KEY,  {
 //         "_id": "10006546",
 //         "name": "Ribeira Charming Duplex",
+//         "rate":4,
 //         "rooms":1,
 //         "beds":1,
 //         "type": "Cabin",
-//         "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
+//         "imgUrls": ["https://res.cloudinary.com/ddt1fjmim/image/upload/v1669798080/001_pxpfis.jpg", "https://res.cloudinary.com/ddt1fjmim/image/upload/v1669815061/002_qnuhwb.jpg"],
 //         "price": 250.00,
 //         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
 //         "capacity": 8,
@@ -187,3 +192,144 @@ function getEmptyStay() {
 //         },
 //       })
 // })()
+
+
+function getLabels() {
+  return [
+    {
+      propertyType: "OMG!",
+      src: "omg.jpg"
+    },
+    {
+      propertyType: "Amazing views",
+      src: "amazing-views.jpg"
+    },
+    {
+      propertyType: "Trending",
+      src: "trending.jpg"
+    },
+    {
+      propertyType: "Castels",
+      src: "castels.jpg"
+    },
+    {
+      propertyType: "Off-the-grid",
+      src: "Off-the-grid.jpg"
+    },
+    {
+      propertyType: "cabins",
+      src: "cabins.jpg"
+    },
+    {
+      propertyType: "Top of the world",
+      src: "TOTW.jpg"
+    },
+    {
+      propertyType: "Luxe",
+      src: "luxe.jpg"
+    },
+    {
+      propertyType: "play",
+      src: "play.jpg"
+    },
+    {
+      propertyType: "New",
+      src: "new.jpg"
+    },
+    {
+      propertyType: "Privte rooms",
+      src: "privte-rooms.jpg"
+    },
+
+
+
+    {
+      propertyType: "Beach",
+      src: "beach.jpg"
+    },
+    {
+      propertyType: "Apartment",
+      src: "Apartment.jpg"
+    },
+    {
+      propertyType: "House",
+      src: "house.jpg"
+    },
+    {
+      propertyType: "Townhouse",
+      src: "townhouse.jpg"
+    },
+    {
+      propertyType: "Amazing pools",
+      src: "amazing-pools.jpg"
+    },
+    {
+      propertyType: "Arctic",
+      src: "arctic.jpg"
+    },
+    {
+      propertyType: "Islands",
+      src: "islands.jpg"
+    },
+    {
+      propertyType: "Vineyards",
+      src: "Vineyards.jpg"
+    },
+    {
+      propertyType: "Lakefront",
+      src: "Lakefront.jpg"
+    },
+    {
+      propertyType: "Historical homes",
+      src: "Historical-homes.jpg"
+    },
+    {
+      propertyType: "Boats",
+      src: "Boats.jpg"
+    },
+    {
+      propertyType: "Ski-in/out",
+      src: "Ski-inout.jpg"
+    },
+    {
+      propertyType: "Treehouses",
+      src: "Treehouses.jpg"
+    },
+    {
+      propertyType: "Surfing",
+      src: "Surfing.jpg"
+    },
+    {
+      propertyType: "Creative spaces",
+      src: "Creative-spaces.jpg"
+    },
+    {
+      propertyType: "Golfing",
+      src: "Golfing.jpg"
+    },
+    {
+      propertyType: "Desert",
+      src: "desert.jpg"
+    },
+    {
+      propertyType: "Campers",
+      src: "Campers.jpg"
+    },
+    {
+      propertyType: "Iconic cities",
+      src: "Iconic-cities.jpg"
+    },
+    {
+      propertyType: "Windmills",
+      src: "Windmills.jpg"
+    },
+    {
+      propertyType: "Shepherd's huts",
+      src: "Shepherd's-huts.jpg"
+    },
+    {
+      propertyType: "Ryokans",
+      src: "Ryokans.jpg"
+    }
+  ]
+}

@@ -31,11 +31,16 @@ export const stayStore = {
     state: {
         stays: [],
         filterBy: null,
+        labels: stayService.getLabels(),
+
     },
     getters: {
         stays({ stays }) {
             return stays
         },
+        getLabels({ labels }) {
+            return labels
+          },
     },
     mutations: {
         setStays(state, { stays }) {

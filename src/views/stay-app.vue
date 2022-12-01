@@ -1,20 +1,23 @@
 <template>
   <section class="stay-app container">
-    <stay-filter @setFilter="setFilter" />
+    <!-- <filter-modal @setFilter="setFilter"/> -->
+    <!-- <stay-filter @setFilter="setFilter" /> -->
     <stay-list v-if="stays" :stays="stays" />
   </section>
 </template>
 
 <script>
-import stayFilter from '../cmps/stay-filter.vue'
+// import filterModal from '../cmps/filter-modal.vue'
+// import stayFilter from '../cmps/stay-filter.vue'
 import stayList from '../cmps/stay-list.vue'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { stayService } from '../services/stay.service.local.js'
 import { getActionRemoveStay, getActionUpdateStay, getActionAddStayMsg } from '../store/stay.store'
 export default {
   components: {
-    stayFilter,
-    stayList
+    // stayFilter,
+    stayList,
+    // filterModal
   },
   data() {
     return {
