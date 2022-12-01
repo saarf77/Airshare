@@ -1,9 +1,10 @@
 
 // import { storageService } from './async-storage.service.js'
-import { httpService } from './http.service.js'
-import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
-
+import { httpService } from './http.service.js';
+import { utilService } from './util.service.js';
+import { userService } from './user.service.js';
+import { store } from '../store/store.js';
+import { createStore } from 'vuex';
 
 const STORAGE_KEY = 'car'
 
@@ -13,10 +14,9 @@ export const stayService = {
     save,
     remove,
     getEmptyCar,
-    addCarMsg
+    addCarMsg,
 }
 window.ss = stayService
-
 
 async function query(filterBy = { txt: '', price: 0 }) {
     return httpService.get(STORAGE_KEY, filterBy)
@@ -32,32 +32,32 @@ async function query(filterBy = { txt: '', price: 0 }) {
     // return cars
 
 }
-function getById(carId) {
+function getById(id) {
     // return storageService.get(STORAGE_KEY, carId)
-    return httpService.get(`car/${carId}`)
+    return httpService.get(`air-share/${id}`)
 }
 
-async function remove(carId) {
+async function remove(id) {
     // await storageService.remove(STORAGE_KEY, carId)
-    return httpService.delete(`car/${carId}`)
+    return httpService.delete(`air-share/${id}`)
 }
-async function save(car) {
-    var savedCar
-    if (car._id) {
+async function save(entity) {
+    var savedEntity
+    if (entity._id) {
         // savedCar = await storageService.put(STORAGE_KEY, car)
-        savedCar = await httpService.put(`car/${car._id}`, car)
+        savedEntity = await httpService.put(`air-share/${entity._id}`, entity)
 
     } else {
         // Later, owner is set by the backend
-        car.owner = userService.getLoggedinUser()
+        entity.owner = userService.getLoggedinUser();
         // savedCar = await storageService.post(STORAGE_KEY, car)
-        savedCar = await httpService.post('car', car)
+        savedEntity = await httpService.post('air-share', entity)
     }
-    return savedCar
+    return savedEntity
 }
 
-async function addCarMsg(carId, txt) {
-    const savedMsg = await httpService.post(`car/${carId}/msg`, {txt})
+async function addCarMsg(id, txt) {
+    const savedMsg = await httpService.post(`air-share/${id}/msg`, {txt})
     return savedMsg
 }
 

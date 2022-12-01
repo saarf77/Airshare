@@ -1,6 +1,3 @@
-
-
-
 <script>
 // page structure => 
 // stay name
@@ -16,74 +13,170 @@
 // stay reviews
 // map section
 // more details 
-
 // {{ stay-details model page for: reviews, description, extended options as icons }}
+
 
 
 import {svgService} from '../services/svg.service.js';
 import detailsAchievements from '../cmps/details-achievement.vue';
 import detailsOptionsList from '../cmps/details-options-list.vue';
 import detailsReviewsList from '../cmps/details-reviews-list.vue';
+import detailsPhotosDisplay from '../cmps/details-photos-display.vue';
+
+//TODO: get it from the store when we will got a BACKEND;
+//import {store} from '../store/store.js';
+import { stayService } from '../services/demo-data.service.js';
 
 export default {
-    
     data(){
         return{
+            currStay: null,
+            host: null,
             
         }
     }, 
+    created() {
+        ;(async () => {
+            try{
+                this.currStay = await stayService.getById(this.$route.params.id, 'stay');
+            }catch (err) {
+                console.log('details page: can\'t get stay by using this id ', err);
+                throw err;
+            }
+        })();
+
+        ;(async () => {
+            try{
+                this.host = await stayService.getById(this.$route.params.id, 'user');
+            }catch (err) {
+                console.log('details page: can\'t get user by using this id ', err);
+                throw err;
+            }
+        })();
+        
+    },
     computed: {
-        svgFlowerIcon(){
-            return svgService.getSvgIcon('flowerPot');
+        stayName(){
+            return (this.currStay) ? this.currStay.name : this.stayName;
         },
-        svgBlackStar(){
-            return svgService.getSvgIcon('blackStarIcon');
+        staySummary(){
+            if(this.currStay === null || this.currStay?.summary?.length < 1) return;
+            
+            let { summary } = this.currStay;
+            
+            if(summary.length > 60){
+                let idx = 100;
+                
+                while(summary.length > 60){
+                    idx = summary.lastIndexOf(',');
+                    if(idx === -1){
+                        idx = summary.lastIndexOf(' ');
+    
+                        if(idx === -1) summary = '';
+                        summary = summary.substring(0,idx)
+                    }
+                    summary = summary.substring(0,idx)
+                }
+            }
+            return summary;
+        },
+        starRate(){
+            return svgService.getSvgIcon('blackStarIcon') + this.calcStarRate;
+        },
+        stayGuests(){
+            return (this.currStay?.capacity > 0) ? this.currStay.capacity : '0';
+        },
+        stayBedrooms(){
+            return (this.currStay?.rooms > 0) ? this.currStay.rooms : '0';
+        },
+        stayBeds(){
+            return (this.currStay?.beds > 0) ? this.currStay.beds : '0';
+        },
+        stayBaths(){
+            return (this.currStay?.beds > 0) ? this.currStay.beds : '0';
+        },
+        calcStarRate(){
+            let rate = '?';
+            let counter = 0;
+            if(this.currStay?.reviews?.length > 0 ){
+                rate = this.currStay.reviews.map((review) => { 
+                    return !isNaN(review.starRate)?  review.starRate : 0;
+                });
+                counter = rate.length;
+                rate = rate.reduce((acc, num) => acc + num)
+                rate = rate/counter;
+                rate = rate - rate % 0.1;
+            }
+            return rate + '';
+        },
+        reviewsCount(){
+            return this.currStay?.reviews?.length || 0;
+        }, 
+        labelsTxt (){
+            let str = '';
+            if (this.currStay?.labels?.length > 0){
+                this.currStay.labels.forEach(label => {
+                    str +=  `<a class="label" href='#'> ${label}, </a>`;
+                });
+                str = str.substr(0, str.length - 1);
+            }
+            return str;
+        }, 
+        imagesUrls(){
+            return (this.currStay?.imgUrls?.length > 0)? this.currStay.imgUrls : [];
+        },
+        hostImg(){
+            return (this.host?.imgUrl)? this.host?.imgUrl : '#';
+        },
+        stayAchievements(){
+            return (this.currStay?.achievements?.length > 0)? this.currStay.achievements : [];
+        },
+        shareBtnTxt(){
+            return svgService.getSvgIcon('shareIcon') + '<span> Share </span>';
+        },
+        saveBtnTxt(){
+            return svgService.getSvgIcon('emptyHeart') + '<span> Save </span>';
         }
     }, 
     components: {
         svgService,
+        stayService,
         detailsAchievements,
         detailsOptionsList,
         detailsReviewsList,
-
+        detailsPhotosDisplay,
     }
-    
 }
+
 </script>
 
 <template>
     <section class="details-page">
         <section class="short-display">
-          <div class="name"></div>
-          <div class="star-score"></div>
-          <div class="reviews-count"></div>
-          <div class="label-list"></div>
-          <button class="details-btn share"></button>
-          <button class="details-btn save"></button>
-        </section>
-        <section class="photo-display">
-            <img class="main-photo" src="" alt="">
-            <img class="photo-item" src="" alt="">
-            <img class="photo-item" src="" alt="">
-            <img class="photo-item" src="" alt="">
-            <img class="photo-item" src="" alt="">
-        </section>
-        <section class="details-display">
-            <div class="details-container">
-                <div class="details-name">
-                </div>
-                <div class="guests-count">
-                </div>
-                <div class="bedrooms-count">
-                </div>
-                <div class="beds-count">
-                </div>
-                <div class="bath-count">
-                </div>
+            <div class="name">{{ stayName }}</div>
+            <div class="short-container">
+                <div class="star-score" v-html="starRate"></div> · 
+                <div class="reviews-count">reviews {{reviewsCount}}</div> · 
+                <div class="host-level">?</div> · 
+                <div class="area-scope-labels" v-html="labelsTxt"></div>
             </div>
-            <div class="user-icon"></div>
+          <button class="details-btn share" v-html="shareBtnTxt"></button>
+          <button class="details-btn save" v-html="saveBtnTxt"></button>
         </section>
-        <details-achievements/>
+        <details-photos-display :urls="imagesUrls"/>
+        <section class="details-display">
+            <div class="details-summary">{{ staySummary }}</div>
+            <div class="details-container">
+                <div class="guests-count">{{ stayGuests }} guests · </div>
+                <div class="bedrooms-count">{{ stayBedrooms }} bedrooms · </div>
+                <div class="beds-count">{{ stayBeds }} beds · </div>
+                <div class="bath-count">{{ stayBaths }} baths</div>
+            </div>
+            <div class="user-icon">
+                <img :src="hostImg" alt="">
+            </div>
+        </section>
+        <details-achievements :achievelist="stayAchievements"/>
         <section class="description-display">
             <div class="description-txt"></div>
             <button> See More</button>
@@ -102,7 +195,7 @@ export default {
         </section>
         <details-reviews-list/>
     </section>
-    <section class="details-page model">
-          
+    <section class="details-page model"> 
     </section>
 </template>
+

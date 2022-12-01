@@ -71,11 +71,11 @@ function getImgUrl(file) {
     return imgUrl;
   }
   function getImgUrlFilter(file) {
-    const imgUrl = new URL(`../assets/app-filter-img/${file}`, import.meta.url);
+    const imgUrl = new URL(`../assets/app-filter-img/${file}.jpg`, import.meta.url);
     return imgUrl;
   }
   function getImgUrlMap(file) {
     const imgUrl = new URL(`../assets/maps/${file}`, import.meta.url);
     return imgUrl;
   }
-  
+   

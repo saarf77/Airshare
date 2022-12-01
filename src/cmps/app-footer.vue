@@ -13,7 +13,7 @@
       </div>
 
       <div class="right-side flex gap bold fs14 align-center">
-        <img src="../assets/img/icons/global.png" style="height: 15px;">
+        <img class="explore-footer" src="../assets/img/icons/global.png" style="height: 15px;">
         <span>English (US)</span>
         <span>$ USD</span>
         <span>Support & resources</span>
