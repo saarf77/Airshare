@@ -83,10 +83,10 @@ export default {
             return (this.currStay?.imgUrls?.length > 0)? this.currStay.imgUrls : [];
         },
         shareBtnTxt(){
-            return svgService.getSvgIcon('shareIcon') + 'Share';
+            return svgService.getSvgIcon('shareIcon') + '<span> Share </span>';
         },
         saveBtnTxt(){
-            return svgService.getSvgIcon('emptyHeart') + 'Save';
+            return svgService.getSvgIcon('emptyHeart') + '<span> Save </span>';
         }
     }, 
     components: {
