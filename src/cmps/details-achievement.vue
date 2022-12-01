@@ -8,7 +8,18 @@ export default {
                     if(this.achievelist?.length > 0){
                         str = '';
                         this.achievelist.forEach(achievement => {
-                            str += `<div class="stay-achievement">${svgService.getSvgIcon(achievement.iconName)}</div>`;
+                           if(achievement.achievementDescription?.length < 1){
+                                str += `<div class="stay-achievement">${svgService.getSvgIcon(achievement.iconName)}
+                                    <span class="achievement-explanation">${achievement.achievementName}</span></div>`;
+                            } else if(achievement.iconName === 'supremeHost' || achievement.iconName === 'experiencedHost'){
+                                str += `<div class="stay-achievement">${svgService.getSvgIcon(achievement.iconName)}
+                                <span class="achievement-title">${achievement.hostName + ' ' + achievement.achievementName}</span>
+                                <span class="achievement-description">${achievement.achievementDescription}</span></div>`;
+                            } else {
+                                str += `<div class="stay-achievement">${svgService.getSvgIcon(achievement.iconName)}
+                                <span class="achievement-title">${achievement.achievementName}</span>
+                                <span class="achievement-description">${achievement.achievementDescription}</span></div>`;
+                            }
                         });
                     }
                     return str;

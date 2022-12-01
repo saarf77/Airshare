@@ -1,4 +1,6 @@
 .achievement-display{
+        width: 60%;
+
         display: flex;
         flex-direction: column;
         row-gap: 8px;
@@ -8,5 +10,31 @@
 
         .stay-achievement{
                display: grid;
+               grid-template-columns: 0.5fr 9.5fr;
+               grid-template-rows: 1fr 1fr;
+
+               > svg{
+                        grid-column: 1/1;
+                        grid-row: 1/span 2;        
+               }
+
+               .achievement-explanation{
+                        grid-column: 2/2;
+                        grid-row: 1/span 2;  
+               }
+
+               .achievement-title{
+                grid-column: 2/2;
+                grid-row: 1/1;  
+                }
+
+                .achievement-description{
+                        grid-column: 2/2;
+                        grid-row: 2/2;
+                        
+                        font-family: Cereal;
+                        color: $minorTxt;
+                        font-size: 0.8em;
+                }
         }
 }
