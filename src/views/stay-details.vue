@@ -31,15 +31,26 @@ export default {
     data(){
         return{
             currStay: null,
+            host: null,
             
         }
     }, 
     created() {
         ;(async () => {
             try{
-                this.currStay = await stayService.getById(this.$route.params.id);
+                this.currStay = await stayService.getById(this.$route.params.id, 'stay');
             }catch (err) {
                 console.log('details page: can\'t get stay by using this id ', err);
+                throw err;
+            }
+        })();
+
+        ;(async () => {
+            try{
+                this.host = await stayService.getById(this.$route.params.id, 'user');
+                console.log(this.host);
+            }catch (err) {
+                console.log('details page: can\'t get user by using this id ', err);
                 throw err;
             }
         })();
@@ -47,12 +58,12 @@ export default {
     },
     computed: {
         stayName(){
-            return (this.currStay) ? this.currStay.name : '';
+            return (this.currStay) ? this.currStay.name : this.stayName;
         },
         staySummary(){
-            if(this.currStay?.summary?.length < 1) return  '';
+            if(this.currStay === null || this.currStay?.summary?.length < 1) return;
             
-            let summary = this.currStay.summary;
+            let { summary } = this.currStay;
             
             if(summary.length > 60){
                 let idx = 100;

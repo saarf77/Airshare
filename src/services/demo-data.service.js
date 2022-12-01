@@ -19,7 +19,10 @@ export const stayService = {
    
 ;(async () =>{
        const stays = await storageService.query(STAYS_KEY);
-       if(!stays || stays.length === 0) storageService.save(STAYS_KEY, demoStays);
+       if(stays?.length === 0) storageService.save(STAYS_KEY, demoStays);
+
+       const users = await storageService.query(USERS_KEY);
+       if(users?.length === 0) storageService.save(USERS_KEY, demoUsers);
 })();
 
 
@@ -48,8 +51,25 @@ async function query(filterBy) {
        return stays
    }
    
-   function getById(stayId) {
-       return storageService.get(STAYS_KEY, stayId);
+   async function getById(Id, typeName) {
+       switch (typeName) {
+              case 'stay':
+                     return await storageService.get(STAYS_KEY, Id);
+              case 'user':
+                     const users = await storageService.query(USERS_KEY);
+                     if(users?.length > 0){
+                            var userIdx = -1;
+                            users.forEach((user, index)=>{
+                                   user.propertiesId.forEach((stayId)=>{
+                                          if(stayId === Id) userIdx = index;
+                                         
+                                   })
+                            })  
+                     }     
+                     return users[userIdx];
+              default:
+                     return await storageService.get(STAYS_KEY, Id);
+       }
    }
    
    async function remove(stayId) {
@@ -96,7 +116,7 @@ async function query(filterBy) {
 
 const demoStays = [
        {
-              "_id": "10006546",
+              "_id": "H9Tsb7gCOl7zi",
               "name": "Ribeira Charming Duplex",
               "rooms":1,
               "beds":3,
@@ -166,7 +186,7 @@ const demoStays = [
                      },
               ]
        }, {
-              "_id": "10006546",
+              "_id": "wXAfnS2RxGqBb",
               "name": "Ribeira Charming Duplex",
               "rooms":2.5,
               "beds":5,
@@ -236,7 +256,7 @@ const demoStays = [
                      },
               ]
        }, {
-              "_id": "10006546",
+              "_id": "lD6xkN4bdvNI9",
               "name": "Ribeira Charming Duplex",
               "rooms":7,
               "beds":16,
@@ -305,6 +325,27 @@ const demoStays = [
                             "content": "that was awesome!!! the best night i had ever had in a place"
                      },
               ]
+       }
+]
+
+const demoUsers = [
+       {
+              "_id": "WbYTQf8YP2ezO",
+              "name": "Mister red",
+              "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1669889536/user-3_gyhyze.png",
+              "propertiesId": ["H9Tsb7gCOl7zi"]
+       },
+       {
+              "_id": "A26HW2jg7Qo",
+              "name": "Master Black",
+              "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1669889536/user-2_zf16kb.png",
+              "propertiesId": ["wXAfnS2RxGqBb"]
+       },
+       {
+              "_id": "dXhHaSyRjNz1p",
+              "name": "star dreamer",
+              "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1669889536/user-1_pwe071.png",
+              "propertiesId": ["lD6xkN4bdvNI9"]
        }
 ]
 

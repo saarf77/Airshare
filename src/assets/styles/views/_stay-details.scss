@@ -78,12 +78,13 @@
        /* ----- ----- third section ----- -----*/
 
        .details-display{
-              width: 100%;
+              width: 70%;
 
               display: grid;
               grid-template-columns: repeat(11, 1fr);
-              grid-template-rows: 1fr / 1fr;
-              
+              grid-template-rows: 1fr 1fr;
+              row-gap: 4px;
+
               .details-summary{
                      grid-column: 1/9;
                      grid-row: 1/1;
@@ -97,8 +98,10 @@
                      flex-direction: row;
                      justify-content: left;
 
+                     font-family: Cereal;
                      color: $minorTxt;
-                     font-size: 0.8em;
+                     font-size: 0.9em;
+
             }
             
             .user-icon{
