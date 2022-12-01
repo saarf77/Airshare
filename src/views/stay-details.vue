@@ -81,6 +81,12 @@ export default {
         }, 
         imageUrls(){
             return (this.currStay?.imgUrls?.length > 0)? this.currStay.imgUrls : [];
+        },
+        shareBtnTxt(){
+            return svgService.getSvgIcon('shareIcon') + 'Share';
+        },
+        saveBtnTxt(){
+            return svgService.getSvgIcon('emptyHeart') + 'Save';
         }
     }, 
     components: {
@@ -105,8 +111,8 @@ export default {
                 <div class="host-level">?</div> · 
                 <div class="area-scope-labels" v-html="labelsTxt"></div>
             </div>
-          <button class="details-btn share"></button>
-          <button class="details-btn save"></button>
+          <button class="details-btn share" v-html="shareBtnTxt"></button>
+          <button class="details-btn save" v-html="saveBtnTxt"></button>
         </section>
         <details-photos-display :urls="imageUrls"/>
         <section class="details-display">
