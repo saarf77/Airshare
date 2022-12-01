@@ -48,7 +48,6 @@ export default {
         ;(async () => {
             try{
                 this.host = await stayService.getById(this.$route.params.id, 'user');
-                console.log(this.host);
             }catch (err) {
                 console.log('details page: can\'t get user by using this id ', err);
                 throw err;
@@ -123,8 +122,14 @@ export default {
             }
             return str;
         }, 
-        imageUrls(){
+        imagesUrls(){
             return (this.currStay?.imgUrls?.length > 0)? this.currStay.imgUrls : [];
+        },
+        hostImg(){
+            return (this.host?.imgUrl)? this.host?.imgUrl : '#';
+        },
+        stayAchievements(){
+            return (this.currStay?.achievements?.length > 0)? this.currStay.achievements : [];
         },
         shareBtnTxt(){
             return svgService.getSvgIcon('shareIcon') + '<span> Share </span>';
@@ -158,7 +163,7 @@ export default {
           <button class="details-btn share" v-html="shareBtnTxt"></button>
           <button class="details-btn save" v-html="saveBtnTxt"></button>
         </section>
-        <details-photos-display :urls="imageUrls"/>
+        <details-photos-display :urls="imagesUrls"/>
         <section class="details-display">
             <div class="details-summary">{{ staySummary }}</div>
             <div class="details-container">
@@ -167,9 +172,11 @@ export default {
                 <div class="beds-count">{{ stayBeds }} beds · </div>
                 <div class="bath-count">{{ stayBaths }} baths</div>
             </div>
-            <div class="user-icon"></div>
+            <div class="user-icon">
+                <img :src="hostImg" alt="">
+            </div>
         </section>
-        <details-achievements/>
+        <details-achievements :achievelist="stayAchievements"/>
         <section class="description-display">
             <div class="description-txt"></div>
             <button> See More</button>

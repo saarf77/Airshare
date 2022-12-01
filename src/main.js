@@ -5,7 +5,8 @@ import { store } from './store/store.js'
 import VCalendar from 'v-calendar';
 import VueClickAway from 'vue3-click-away';
 
-
+// import HistogramSlider from 'vue-histogram-slider';
+// import 'vue-histogram-slider/dist/histogram-slider.css';
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import './assets/styles/main.scss'
