@@ -46,6 +46,24 @@
                 </div>
               </template>
             </v-date-picker>
+            <!-- <label class="main-search-label" @click="openModal()">
+            <span>Check in</span>
+            <date-picker
+              :placeholder="getCheckinDate"
+              @input="renderDates($event)"
+              v-model="checkinDate"
+              range
+            ></date-picker>
+          </label>
+          <label class="main-search-label" @click="openModal()">
+            <span>Check out</span>
+            <input
+              :placeholder="getCheckoutDate"
+              v-model="checkoutDate"
+              ref="myDatePicker"
+              range
+            />
+          </label> -->
           </div>
         </div>
         <div @click.native="activeTab('guest')" class="filter-option guest-dropdown"
@@ -201,6 +219,28 @@ export default {
     };
   },
   methods: {
+    // renderDates(event) {
+    //   this.checkinDate = `${new Date(event[0]).getDate()}/${
+    //     new Date(event[0]).getMonth() + 1
+    //   }/${new Date(event[0]).getFullYear()}`;
+
+    //   this.checkoutDate = `${new Date(event[1]).getDate()}/${
+    //     new Date(event[1]).getMonth() + 1
+    //   }/${new Date(event[1]).getFullYear()}`;
+    // },
+    // openModal(of) {
+    //   this.clickedOn = of;
+    //   if (of === "submit") {
+    //     if (this.checkinDate && this.checkoutDate) {
+    //       const dates = [this.checkinDate, this.checkoutDate];
+    //       eventBus.$emit("setDates", dates);
+    //       this.checkinDate = "add Dates";
+    //       this.checkoutDate = "add Dates";
+    //       this.location = "Where are you going?";
+    //       this.guests = 0;
+    //     }
+    //   }
+    // },
     activeTab(value, ev) {
 
       if (value === 'where') {
