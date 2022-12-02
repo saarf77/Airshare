@@ -49,19 +49,23 @@ header {
     }
   
     .main-logo {
+
+      display: flex;
+      align-items: center;
+      margin-left: 8px;
+
+
       h2 {
         text-align: center;
         color: $clr2;
         font-size: 23px;
         font-family: Cereal-medium;
         margin-bottom: 0;
-        padding-top: 7px;
       }
 
       .logo-img {
         margin-top: 5px;
         margin-right: 5px;
-        margin-left: 8px;
       }
     }
   
@@ -267,16 +271,18 @@ header {
 .user-nav {
   cursor: pointer;
   color: #222222;
-  z-index: 5;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 70px;
-  right: 80px;
+  top: 80px;
+  right: 20px;
   background-color: #fff;
   border-radius: 12px 12px;
   width: 244px;
   box-shadow: rgb(0 0 0 / 18%) 0px 0px 3px 0px;
+  overflow: hidden;
+
 
   a {
     font-size: 14px;
