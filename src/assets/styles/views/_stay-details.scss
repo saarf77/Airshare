@@ -118,4 +118,46 @@
             }
             
        }
+
+       .share-cover{
+              display: flex;
+              flex-direction: column;
+
+              width: 70%;
+
+              border-bottom: 1.5px solid $clr6;
+
+              > *{
+                     margin-block-end: 15px;
+              }
+
+              .share-cover-img{
+                     height: 20px;
+                     width: 123px;
+
+                     
+              }
+
+              .share-cover-txt{
+                     font-family: Cereal;
+                     color: $minorTxt;
+                     font-size: 0.83em;
+              }
+
+              .share-cover-btn{
+                     width: fit-content;
+                     align-self: flex-start;
+                     margin-inline-start: 0px;
+                     padding-inline-start: 0px;
+
+                     background-color: transparent;
+                     color: $clr1;
+                     font-family: Circular-hm;
+                     font-size: 0.9em;
+                     letter-spacing: 0px;
+                     text-decoration: underline;
+                     cursor: pointer;
+              }
+              
+       }
 }

@@ -22,6 +22,8 @@ import detailsAchievements from '../cmps/details-achievement.vue';
 import detailsOptionsList from '../cmps/details-options-list.vue';
 import detailsReviewsList from '../cmps/details-reviews-list.vue';
 import detailsPhotosDisplay from '../cmps/details-photos-display.vue';
+import detailsDescription from '../cmps/details-description.vue';
+
 
 //TODO: get it from the store when we will got a BACKEND;
 //import {store} from '../store/store.js';
@@ -131,6 +133,9 @@ export default {
         stayAchievements(){
             return (this.currStay?.achievements?.length > 0)? this.currStay.achievements : [];
         },
+        stayDescription(){
+            return (this.currStay?.detailedDescription?.length > 0)? this.currStay.detailedDescription : '';
+        },
         shareBtnTxt(){
             return svgService.getSvgIcon('shareIcon') + '<span> Share </span>';
         },
@@ -145,6 +150,7 @@ export default {
         detailsOptionsList,
         detailsReviewsList,
         detailsPhotosDisplay,
+        detailsDescription
     }
 }
 
@@ -177,10 +183,12 @@ export default {
             </div>
         </section>
         <details-achievements :achievelist="stayAchievements"/>
-        <section class="description-display">
-            <div class="description-txt"></div>
-            <button> See More</button>
+        <section class="share-cover">
+            <img src="https://res.cloudinary.com/dj88xudav/image/upload/v1670001241/share-cover_drqj1d.png" alt="share-cover" class="share-cover-img"/>
+            <div class="share-cover-txt">Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</div>
+            <button class="share-cover-btn">learn more</button>
         </section>
+        <details-description :descriptionName="stayDescription"/>
         <section class="inside-photos-display">
             <div class="details-title">Where you'll sleep</div>
             <div class="inside-carousel-container"></div>

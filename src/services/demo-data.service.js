@@ -112,7 +112,7 @@ async function query(filterBy) {
 // demo data urls:
 // 1 =>       http://localhost:5173/#/details/H9Tsb7gCOl7zi
 // 2 =>       http://localhost:5173/#/details/lD6xkN4bdvNI9
-// 3 =>       http://localhost:5173/#/details/lD6xkN4bdvNI9
+// 3 =>       http://localhost:5173/#/details/wXAfnS2RxGqBb
 
 
 const demoStays = [
@@ -133,6 +133,7 @@ const demoStays = [
                      ],
               "price": 80.00,
               "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
+              "detailedDescription": "snowCabin",
               "capacity": 8,
               "amenities": [
                      "TV",
@@ -221,6 +222,7 @@ const demoStays = [
                      ],
               "price": 80.00,
               "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
+              "detailedDescription": "cottageByTheSea",
               "capacity": 8,
               "amenities": [
                      "TV",
@@ -310,6 +312,7 @@ const demoStays = [
                      ],
               "price": 80.00,
               "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
+              "detailedDescription": "rentACastle",
               "capacity": 8,
               "amenities": [
                      "TV",
