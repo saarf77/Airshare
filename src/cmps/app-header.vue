@@ -67,10 +67,11 @@
         <div v-if="path === '/explore' || path === '/'" class="header-bottom flex justify-space-between">
           <explore-labels v-if="!isExplore" />
           <h3 v-if="isExplore">Stays : {{ staysLength }}</h3>
-          <div v-if="desktop" @click="isShow = !isShow" class="stand-alone-filter">
+          <div v-if="desktop" @click="isModal = !isModal" class="stand-alone-filter">
             <img src="../assets/icons/filter-icon.svg" alt="" />
             <span class="filter-btn">Filters</span>
           </div>
+          <filter-modal @onClickAway="onClickAway" v-if="isModal" @setFilter="setFilter" v-click-away="onClickAway"/>
           <Transition duration="200" name="nested">
             <standAlone-filter @closeFilersForm="closeModal" v-if="isShow" v-click-away="onClickAway" />
           </Transition>
@@ -78,9 +79,10 @@
       </div>
     </div>
   </header>
-  <div v-if="isShow" class="overlay"></div>
+  <!-- <div v-if="isShow" class="overlay"></div> -->
 </template>
 <script>
+import filterModal from '../cmps/filter-modal.vue'
 import exploreFilter from './explore-filter.vue';
 import exploreLabels from './search-labels.vue';
 import { eventBus } from '../services/event-bus.service.js';
@@ -88,6 +90,7 @@ import { eventBus } from '../services/event-bus.service.js';
 export default {
   data() {
     return {
+      isModal:false,
       isShow: false,
       location: false,
       isSticky: false,
@@ -143,6 +146,9 @@ export default {
   },
 
   methods: {
+    setFilter(filterBy){
+      this.$store.dispatch({ type: 'setFilter' ,filterBy})
+    },
     expendForm(value) {
       this.isExpend = value;
     },
@@ -172,6 +178,7 @@ export default {
     onClickAway() {
       this.isShow = false;
       this.showMenu = false;
+      this.isModal = false;
     },
     handleScroll(ev) {
       let pos = window.scrollY;
@@ -233,6 +240,7 @@ export default {
     exploreFilter,
     exploreLabels,
     eventBus,
+    filterModal
   },
   setup() { },
 };
