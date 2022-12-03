@@ -26,6 +26,7 @@
         object-fit: cover;
         height: 100%;
         width: 100%;
+
         // aspect-ratio: 1;
         img {
             object-fit: cover;
@@ -43,56 +44,111 @@
         z-index: 1;
         right: 18px;
         top: 16px;
+
+        img {
+            height: 24px;
+            border: 1px solid white;
+
+            svg {
+                fill: rgba(0, 0, 0, 0.5);
+                height: 24px;
+                width: 24px;
+                stroke: white;
+                stroke-width: 2;
+            }
+        }
     }
-    .stared{
+
+    .stared {
         display: flex;
         align-items: center;
         gap: 2px;
     }
-    .stared::before{
-        content:none
+
+    .stared::before {
+        content: none
     }
+
     .content {
         display: grid;
         grid-template-columns: 1fr;
         grid-gap: 6px;
         padding-block-start: 12px;
-        line-height: 19px;
+        line-height: 18px;
         font-size: 0.95rem;
-    }
 
-    .el-carousel__arrow {
-        background-color: #fffc;
-        color: #222;
-        font-size: 1.25em;
-        border-style: solid;
-        border-width: 1px;
-        padding: 0;
-        margin: 0;
-        height: 32px;
-        width: 32px;
-        background-clip: padding-box;
-        background-color: rgba(255, 255, 255, 0.9);
-        border-color: rgba(0, 0, 0, 0.08);
-        box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, var(--e-swdx-p);
-    }
+        .location-info {
+            color: #222222;
+            text-overflow: ellipsis;
+            font-weight: $bold;
+            font-size: 15px;
+            line-height: 15px;
+        }
 
-    .el-icon svg {
-        display: block;
-        fill: none;
-        height: 12px;
-        width: 12px;
-        stroke: currentcolor;
-        stroke-width: 4;
-        overflow: visible;
+        .name-rooms {
+            color: #717171;
+            font-weight: $light;
+            font-size: 15px;
+            line-height: 19.5px;
+            font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+        }
+
+        // .price {
+        //     -webkit-box-pack:flex-start !important;
+        //     -webkit-box-align: baseline !important;
+        //     align-items: baseline !important;
+        //     color: rgb(34, 34, 34) !important;
+        //     display: flex !important;
+        //     font-weight: 400 !important;
+        //     justify-content: flex-start !important;
+        //     flex-wrap: wrap !important;
+        // }
+        .price {
+            display: flex;
+            gap: 2.5px;
+            font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            .currency{
+                font-weight: 600;
+            }
+        }
     }
-    .el-carousel__container{
-        position: relative;
-        max-width: 100%;
-        min-width: 85%;
-        width: 100%;
-        height: 100%;
-        aspect-ratio: 1.05/1;
-    
-    }
+}
+
+.el-carousel__arrow {
+    background-color: #fffc;
+    color: black;
+    font-size: 1.25em;
+    font-weight: $bold;
+    border-style: solid;
+    border-width: 1px;
+    padding: 0;
+    margin: 0;
+    height: 32px;
+    width: 32px;
+    background-clip: padding-box;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, var(--e-swdx-p);
+}
+
+.el-icon svg {
+    display: block;
+    fill: none;
+    height: 12px;
+    width: 12px;
+    stroke: currentcolor;
+    stroke-width: 80px;
+    overflow: visible;
+}
+
+.el-carousel__container {
+    position: relative;
+    max-width: 100%;
+    min-width: 85%;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1.05/1;
+
 }

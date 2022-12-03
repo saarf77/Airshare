@@ -1,20 +1,20 @@
 <template>
     <section class="stay-preview">
         <div class="like">
-            <span> <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
+            <span><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
                     focusable="false"
-                    style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 2; overflow: visible;">
+                    style="display: block; fill: rgba(0, 0, 0, 0.5); height: 24px; width: 24px; stroke: white; stroke-width: 2; overflow: visible;">
                     <path
                         d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
                     </path>
                 </svg>
             </span>
         </div>
+
         <el-carousel @click="showStayDetails" trigger="click" :autoplay="false">
-            <el-carousel-item v-for="item in 4" :key="item">
-                <!-- <h3 text="2xl" justify="center">{{ item }}</h3> -->
+            <el-carousel-item v-for="img in imgs" :key="img">
                 <div class="img-wrapper">
-                    <img src="https://res.cloudinary.com/ddt1fjmim/image/upload/v1669798080/001_pxpfis.jpg" />
+                    <img :src="img" />
                 </div>
             </el-carousel-item>
         </el-carousel>
@@ -29,19 +29,16 @@
                             d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
                             fill-rule="evenodd"></path>
                     </svg>
-
-
-
                     {{ stay.rate }}
                 </span>
             </div>
             <div class="name-rooms">
                 <div>{{ stay.name }}</div>
                 <div>{{ stay.rooms }} rooms, {{ stay.beds }} beds</div>
-                <!-- <div>{{stay.beds}} beds</div> -->
             </div>
-            <div>
-                <span>${{ stay.price }} night</span>
+            <div class="price">
+                <span class="currency">${{ stay.price }}</span>
+                <span>night</span>
             </div>
         </div>
         <!-- <div class="content" style="padding: 14px">
@@ -60,19 +57,31 @@
 <script>
 // import { ref } from 'vue'
 export default {
-    name: 'stay-preview2',
+    name: 'stay-preview3',
     props: {
         stay: Object,
 
     },
     data() {
         return {
+            imgs: [],
             url: '',
             item: 'https://res.cloudinary.com/ddt1fjmim/image/upload/v1669798080/001_pxpfis.jpg'
         }
     },
     components: {
         // customCard,
+    },
+    created() {
+        console.log(this.stay)
+        this.stay.imgUrls
+            .map(img => {
+                // this.imgs.push(new URL(`${img}`, import.meta.url))
+                this.imgs.push(img)
+                console.log(this.imgs)
+            })
+
+        // new URL(`${stay.imageUrl}`, import.meta.url)
     },
     methods: {
         showStayDetails() {

@@ -2,7 +2,7 @@
     <form class="form-filter">
         <div class="filter-header">
             <div class="close-filter">
-                    <span @click="closeModal"><img src="../assets/icons/close-icon.svg"></span>
+                <span @click="closeModal"><img src="../assets/icons/close-icon.svg"></span>
             </div>
             <h2>Filters</h2>
         </div>
@@ -12,15 +12,16 @@
                 <h2>Price range</h2>
                 <p>The average nightly price is 220$</p>
 
-                <HistogramSlider :width="650" :hist-slider-gap="0" :bar-height="100" :bar-width="12" :bar-radius="0"
-                    :line-height="1" :bar-color="'#b0b0b0'" :primary-color="'#b0b0b0'" :label-color="'#bdd6f8'"
-                    :holder-color="'#dddddd'" :handel-color="'#ffffff'" :data="data" :min="min" :max="max" />
+                <HistogramSlider @change="setRange" @start="startRange" :width="650" :hist-slider-gap="0" :bar-height="100" :bar-width="12"
+                    :bar-radius="0" :line-height="1" :bar-color="'#b0b0b0'" :primary-color="'#b0b0b0'"
+                    :label-color="'#bdd6f8'" :holder-color="'#dddddd'" :handel-color="'#ffffff'" :data="data" :min="min"
+                    :max="max" />
                 <div class="form-inputs">
                     <div class="inner-price">
                         <label for="min">min price</label>
                         <div class="flex form-input">
                             <span>$</span>
-                            <input type="number" name="min" min="0$">
+                            <input v-model="filterBy.range[0]" type="number" name="min" :min="min" >
                         </div>
                     </div>
                     <div class="between-prices">-</div>
@@ -28,8 +29,10 @@
                         <label for="max">max price</label>
                         <div class="flex form-input">
                             <span>$</span>
-                            <input type="number" name="max" max="300$">
+                            <input v-model="filterBy.range[1]" type="number" name="max" :max="max">
                         </div>
+                        <!-- <el-input-number v-model="filterBy.max" :min="min" :max="max" size="small" :controls="false"
+                            @change="handleChange" /> -->
                     </div>
                 </div>
             </div>
@@ -39,7 +42,7 @@
             <div class="rooms-beds-filter">
                 <h2>Rooms and beds</h2>
                 <h3>Bedrooms</h3>
-                <el-radio-group >
+                <el-radio-group>
                     <label class="el-radio-button">
                         <input v-model="filterBy.rooms" type="radio" class="el-radio-button__original-radio"
                             value="any">
@@ -178,7 +181,7 @@
         </div>
         <div class="filter-footer">
             <button>Clear all</button>
-            <button @click="setFilter">Show 29 stays</button>
+            <button @click.stop.prevent="setFilter">Show 29 stays</button>
         </div>
     </form>
 </template>
@@ -206,12 +209,19 @@ export default {
         }
     },
     methods: {
-        closeModal(){
-            console.log('HELLO')
+        startRange($event){
+            this.filterBy.range[0] = $event.from
+            this.filterBy.range[1] = $event.to
+        },
+        setRange($event) {
+            this.filterBy.range[0] = $event.from
+            this.filterBy.range[1] = $event.to
+        },
+        closeModal() {
             this.$emit('onClickAway')
         },
-        setBorder(type){
-            if(this.filterBy.type.includes(type)){
+        setBorder(type) {
+            if (this.filterBy.type.includes(type)) {
                 return 'active'
             }
         },
@@ -228,6 +238,7 @@ export default {
             this.filterBy.type.push(type)
         },
         setFilter() {
+            console.log('IM FROM SET FILTER',this.filterBy)
             this.$emit('setFilter', { ...this.filterBy })
         },
     },
