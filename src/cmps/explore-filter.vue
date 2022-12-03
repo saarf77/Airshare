@@ -4,7 +4,7 @@
       class="filter-preview flex align-center">
       <div class="filter btn header-location">Anywhere</div>
       <div class="filter btn header-time">Any week</div>
-      <div class="filter btn header-guests search" value="hellow">Add guests 
+      <div class="filter btn header-guests search guest-pad" value="hellow">Add guests
         <span class="search"><img src="../assets/icons/search-icon.svg" /></span>
       </div>
     </div>
@@ -19,25 +19,19 @@
         </div>
         <div class="filter-option check">
           <div class="labels-wrap">
-            <v-date-picker :columns="2" v-model="filterBy.date" is-range>
+            <v-date-picker  color="red" :attributes="attrs" trim-weeks is-expanded :locale="locale" mode="date" :columns="$screens({ default: 1, lg: 2 })" :rows="1" v-model="filterBy.date" is-range >
               <template v-slot="{ inputValue, inputEvents }">
                 <div class="flex justify-center items-center">
-                  <div @click.native="activeTab('checkin')" class="checkin" data-field="checkin"
-                    :class="{ 'hover-btn': isExpend ? isHover : !isHover, 'active-btn': startActive }">
-                    <label for="checkin">Check in</label>
-                    <date-picker
-              :placeholder="getCheckinDate"
-              @input="renderDates($event)"
-              v-model="checkinDate"
-              range
-            ></date-picker>
+                  <div  @click.native="activeTab('checkin')" class="checkin" data-field="checkin" :class="{ 'hover-btn': isExpend ? isHover : !isHover, 'active-btn': startActive }">
+                    <label  for="checkin">Check in</label>
+                    <!-- <date-picker :placeholder="getCheckinDate" @input="renderDates($event)" v-model="checkinDate" range></date-picker> -->
                     <input name="checkin" :value="inputValue.start" v-on="inputEvents.start" placeholder="Add dates"
                       class="border px-2 py-1 w-32 rounded focus:outline-none focus:border-indigo-300" />
                   </div>
-                  <div :class="{ 'active-btn': endActive }" class="checkout" @click.native="activeTab('checkout')">
+                  <div :class="{ 'active-btn': endActive }" class="checkout " @click.native="activeTab('checkout')">
                     <label for="checkout">Check out</label>
                     <input name="checkout" :value="inputValue.end" v-on="inputEvents.end" placeholder="Add dates"
-                      class="border px-2 py-1 w-32 rounded focus:outline-none focus:border-indigo-300" />
+                      class="" />
                   </div>
                 </div>
               </template>
@@ -71,17 +65,17 @@
 
           <div @click="formSubmit" class="order-container header-filter-search">
             <div class="btn-container on-filter">
-              <gardient-btn >
-                
+              <gardient-btn>
+
               </gardient-btn>
               <!-- <div v-for="i in 100" class="cell"></div> -->
               <!-- <div class="content filter-content"> -->
-                <!-- <button class="action-btn">
+              <!-- <button class="action-btn">
                   <div class="material-icons search"> search </div>
                   <span>Search</span>
                 </button> -->
               <!-- </div> -->
-  
+
             </div>
           </div>
         </div>
@@ -138,7 +132,7 @@
     <div class="row-card flex">
       <div class="lft-crd">
         <span class="title-sm"> Pets</span>
-        <span class="txt-sm">Serve animals</span>
+        <span class="txt-sm animal">Bringing a service animal?</span>
       </div>
       <div class="rit-crd guests-btns">
         <button @click.stop="updateGuests('pets', -1)">
@@ -164,7 +158,7 @@
       </div>
     </section> -->
 
-    <!-- <section class="mobile-nav">
+  <!-- <section class="mobile-nav">
       <div class="mobile-option">
         <img src= "" />
         <span  >Explore</span>
@@ -206,7 +200,19 @@ export default {
           infants: 0,
           pets: 0,
         },
+  //       colorDate: {
+  // color: 'orange',
+  // fillMode: 'light',
+  //       },
+  //       attrs: [
+  //       {
+  //         key: 'today',
+  //         highlight: 'red',
+  //         dates: new Date(),
+  //       },
+  //     ],
       },
+      
       showModal: false,
       isShow: false,
       isActive: true,

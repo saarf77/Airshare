@@ -32,8 +32,10 @@ async function query(filterBy) {
     if(beds){
       stays = stays.filter(stay => stay.beds >= +beds)
     }
-    if(type){
-      stays = stays.filter(stay => stay.type === type)
+    if(type) {
+      if(!type.includes('House') && !type.includes('Apartment') && !type.includes('Guesthouse') && !type.includes('Hotel'))return stays
+      stays = stays.filter(stay => {
+        return type.some(item => stay.type.includes(item))})
     }
     if(amenities){
       stays = stays.filter(stay => {
@@ -217,7 +219,7 @@ function getLabels() {
       src: "Off-the-grid.jpg"
     },
     {
-      propertyType: "cabins",
+      propertyType: "Cabins",
       src: "cabins.jpg"
     },
     {
@@ -229,7 +231,7 @@ function getLabels() {
       src: "luxe.jpg"
     },
     {
-      propertyType: "play",
+      propertyType: "Play",
       src: "play.jpg"
     },
     {
