@@ -97,6 +97,9 @@ export default {
         stayBaths(){
             return (this.currStay?.beds > 0) ? this.currStay.beds : '0';
         },
+        stayAmenities(){
+            return (this.currStay?.amenities.length > 0) ? this.currStay.amenities : [];
+        },
         calcStarRate(){
             let rate = '?';
             let counter = 0;
@@ -189,11 +192,11 @@ export default {
             <button class="share-cover-btn">learn more</button>
         </section>
         <details-description :descriptionName="stayDescription"/>
-        <section class="inside-photos-display">
+        <!-- <section class="inside-photos-display">
             <div class="details-title">Where you'll sleep</div>
             <div class="inside-carousel-container"></div>
-        </section>
-        <details-options-list/>
+        </section> -->
+        <details-options-list :amenitiesList="stayAmenities"/>
         <section class="Schedule-display">
             <div class="details-title"> 
                 <span class="night-number">7</span> nights in <span class="general-area-name">puk-landia city</span>

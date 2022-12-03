@@ -1,0 +1,36 @@
+.options-icons-display{
+        width: 70%;
+
+        border-bottom: 1.5px solid $clr6;
+
+        .options-title{
+                font-size: 1.2em;
+                margin-block-end: 30px;
+        }
+
+        .options-icon-container{
+
+                display: grid;
+                grid-template-columns: minmax(200px,300px) minmax(200px,300px);
+                grid-template-rows: repeat(5, 1fr);
+
+                gap: 15px;
+                margin-block-end: 20px;
+                
+                .amenitie-wrapper{
+                        display: flex;
+                        flex-direction: row;
+                        
+                        font-family: Cereal;
+                        color: $minorTxt;
+                        font-size: 0.9em;
+
+                        > svg{
+                                margin-inline-end: 15px;
+                        }
+
+                }
+                        
+        }
+        
+}

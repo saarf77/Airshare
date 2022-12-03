@@ -136,12 +136,33 @@ const demoStays = [
               "detailedDescription": "snowCabin",
               "capacity": 8,
               "amenities": [
-                     "TV",
-                     "Wifi",
-                     "Kitchen",
-                     "Smoking allowed",
-                     "Pets allowed",
-                     "Cooking basics"
+                     {"amenitieType": "bay-view", "svgName": "bayView", "txt": "Bay view"},
+                     {"amenitieType": "hair-dryer", "svgName": "hairDryer", "txt": "Hair dryer"},
+                     {"amenitieType": "garden", "svgName": "gardenIcon", "txt": "Private backyard – Fully fenced"},
+                     {"amenitieType": "balcony", "svgName": "balconyIcon", "txt": "Private patio or balcony"},
+                     {"amenitieType": "pool", "svgName": "swimmingPool", "txt": "Private pool"},
+                     
+                     {"amenitieType": "hot tub", "svgName": "hotTub", "txt": "Private hot tub"},
+                     {"amenitieType": "wifi", "svgName": "wifiIcon", "txt": "Wifi"},
+                     {"amenitieType": "essentials", "svgName": "essentialsIcon", "txt": "Essentials"},
+                     {"amenitieType": "heating", "svgName": "heatingIcon", "txt": "Heating"},
+                     {"amenitieType": "fire extinguisher", "svgName": "tvIcon", "txt": "Fire extinguisher"},
+                     
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+
+                     {"amenitieType": "Smoking allowed", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "Pets allowed", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "Cooking basics", "svgName": "tvIcon", "txt": "TV"},
               ],
               "achievements": [
                      {
@@ -225,12 +246,33 @@ const demoStays = [
               "detailedDescription": "cottageByTheSea",
               "capacity": 8,
               "amenities": [
-                     "TV",
-                     "Wifi",
-                     "Kitchen",
-                     "Smoking allowed",
-                     "Pets allowed",
-                     "Cooking basics"
+                     {"amenitieType": "Desert view", "svgName": "desertView", "txt": "Desert View"},
+                     {"amenitieType": "Mountain view", "svgName": "mountainsView", "txt": "Mountains view"},
+                     {"amenitieType": "Wifi", "svgName": "wifiIcon", "txt": "Fast wifi – 362 Mbps"},
+                     {"amenitieType": "Workspace", "svgName": "workDesk", "txt": "Dedicated workspace"},
+                     {"amenitieType": "Hot tub", "svgName": "hotTub", "txt": "Private hot tub"},
+                     
+                     {"amenitieType": "Garden", "svgName": "gardenIcon", "txt": "Garden view"},
+                     {"amenitieType": "Wifi", "svgName": "wifiIcon", "txt": "Wifi"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "Air conditioner", "svgName": "airConditioner", "txt": "Air conditioning"},
+                     {"amenitieType": "fireplace", "svgName": "fireplaceIcon", "txt": "Indoor fireplace"},
+                     
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+
+                     {"amenitieType": "Smoking allowed", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "Pets allowed", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "Cooking basics", "svgName": "tvIcon", "txt": "TV"},
               ],
               "achievements": [
                      {
@@ -315,12 +357,33 @@ const demoStays = [
               "detailedDescription": "rentACastle",
               "capacity": 8,
               "amenities": [
-                     "TV",
-                     "Wifi",
-                     "Kitchen",
-                     "Smoking allowed",
-                     "Pets allowed",
-                     "Cooking basics"
+                     {"amenitieType": "bay-view", "svgName": "bayView", "txt": "Bay view"},
+                     {"amenitieType": "Pool", "svgName": "waterFront", "txt": "easy access to the pool"},
+                     {"amenitieType": "Kitchen", "svgName": "kitchenIcon", "txt": "Kitchen"},
+                     {"amenitieType": "Elevator", "svgName": "elevatorIcon", "txt": "Elevator"},
+                     {"amenitieType": "Hot tub", "svgName": "hotTub", "txt": "Hot tub"},
+                     
+                     {"amenitieType": "parking", "svgName": "freeParkingPremies", "txt": "Free parking on premises"},
+                     {"amenitieType": "Wifi", "svgName": "wifiIcon", "txt": "Wifi"},
+                     {"amenitieType": "Free washer", "svgName": "washerUnit", "txt": "Free washer - In unit"},
+                     {"amenitieType": "Free dryer", "svgName": "dryerUnit", "txt": "Free dryer - In unit"},
+                     {"amenitieType": "Carbon monoxide alarm", "svgName": "carbonMonoxideAlarm", "txt": "carbon-monoxide alert system"},
+                     
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+
+                     {"amenitieType": "Smoking allowed", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "Pets allowed", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "Cooking basics", "svgName": "tvIcon", "txt": "TV"},
               ],
               "achievements": [
                      {
