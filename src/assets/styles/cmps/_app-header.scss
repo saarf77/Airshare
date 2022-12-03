@@ -1,3 +1,9 @@
+
+.main-header{
+  margin-bottom: 10;
+}
+
+
 header {
     position: sticky;
     height: fit-content;
@@ -39,7 +45,7 @@ header {
   
    
     img {
-      max-height: 30px;
+      max-height: 32px;
     }
   
     a {
@@ -49,19 +55,24 @@ header {
     }
   
     .main-logo {
+
+      display: flex;
+      align-items: center;
+      margin-left: 8px;
+
+
       h2 {
         text-align: center;
         color: $clr2;
         font-size: 23px;
         font-family: Cereal-medium;
         margin-bottom: 0;
-        padding-top: 7px;
+        margin-left: 1px;
       }
 
       .logo-img {
         margin-top: 5px;
         margin-right: 5px;
-        margin-left: 8px;
       }
     }
   
@@ -74,35 +85,20 @@ header {
       align-items: center;
     }
   
-  
-  
-  
-    .checkin,
-    .checkout,
-    .add-guest-wrapper,
-    .filter-option.where {
-      padding: 14px 24px;
-    }
-  
-    .add-guest-wrapper {
-      max-width: 139px;
-    }
-  
-
     .stand-alone-filter {
       display: flex;
       justify-content: center;
-      padding: 7px 0px;
+      padding: 7px 7px;
       border: 1px solid #dddddd;
       max-width: 90px;
       border-radius: 12px;
       text-align: -webkit-left;
       align-items: center;
       gap: 6px;
-      box-sizing: border-box;
-      height: 48px;
       cursor: pointer;
       width: 100%;
+      margin-bottom: 19px;
+      line-height: 35px;
   
       img {
         width: 15px;
@@ -110,7 +106,7 @@ header {
     }
   
     .stand-alone-filter .filter-btn {
-      font-size: 14px;
+      font-size: 12px;
       font-family: 'Cereal-medium';
     }
   
@@ -120,7 +116,7 @@ header {
     }
   
     img.property-type-img {
-      filter: opacity(0.9);
+      filter: opacity(0.8);
     }
   
     .order-container.header-filter-search {
@@ -146,26 +142,12 @@ header {
       border-radius: 64px;
     }
   
-    .filter-option label {
-      display: block;
-      font-family: 'Cereal-medium', Arial, sans-serif;
-    }
+
   
-    .filter-option input {
-      outline: none;
-      border: none;
-      background: none;
-    }
-  
-    .filter-option.guest-dropdown {
-      display: flex;
-    }
-  
-    .filter-option.guest-dropdown {
-      display: flex;
+    .header-bottom.flex.justify-space-between {
       align-items: center;
     }
-  
+
     form.el-form.el-form--default.el-form--label-right {
       border: 1px solid #dddddd;
       background-color: #ebebeb;
@@ -217,17 +199,6 @@ header {
     }
   }
 
-  .filter-option.guest-dropdown {
-    display: flex;
-  }
-
-  .filter-option.guest-dropdown {
-    display: flex;
-    align-items: center;
-  }
-
-
-
 
 
   // usern´nav
@@ -267,16 +238,18 @@ header {
 .user-nav {
   cursor: pointer;
   color: #222222;
-  z-index: 5;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 70px;
-  right: 80px;
+  top: 80px;
+  right: 20px;
   background-color: #fff;
   border-radius: 12px 12px;
   width: 244px;
   box-shadow: rgb(0 0 0 / 18%) 0px 0px 3px 0px;
+  overflow: hidden;
+
 
   a {
     font-size: 14px;

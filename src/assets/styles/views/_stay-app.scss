@@ -1,27 +1,10 @@
 
-.container{
-    margin: auto;
-    max-width: 100%;
-    padding: 16px;
-}
-.main-layout{
-        display: grid;
-        grid-template-columns: 80px 1fr 80px;
-    
-        >* {
-            grid-column: 2;
-        }
-    
-        >*.full {
-            grid-column: 1 / -1;
-        }
-    
-        >*:not(.full) {
-            display: grid;
-            grid-auto-flow: dense;
-            grid-template-columns: repeat(6, 1fr);
-        }
-}
+// .container{
+//     margin: auto;
+//     max-width: 100%;
+//     // padding: 20px;
+// }
+
 // .stay-app {
 //     display: grid;
 //     grid-template-columns: 100px 1fr 100px;

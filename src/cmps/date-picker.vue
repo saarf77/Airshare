@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <form class="bg-white shadow-md rounded px-8 pt-6 pb-8" @submit.prevent>
     <div class="mb-4">
       <v-date-picker v-model="range" mode="date" :columns="2" :masks="masks" is-expanded color="gray" is-range>
@@ -106,4 +106,4 @@ export default {
 
 <style>
 
-</style>
+</style> -->

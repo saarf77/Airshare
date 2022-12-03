@@ -1,9 +1,9 @@
 .search-wrapper {
   cursor: pointer;
   width: fit-content;
-
   align-items: center;
   margin: auto;
+  translate: -5% -6%;
 
   .filter-preview {
     width: 354px;
@@ -13,11 +13,14 @@
     box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
     border-radius: 40px;
 
+
     .filter.btn.header-guests {
       display: flex;
       justify-content: space-between;
-      flex: 1.3;
+      
+      flex: 1.17;
       align-items: center;
+      margin-right: 2px;
 
       span {
         background: $clr2;
@@ -29,13 +32,15 @@
         img {
           width: 12px;
           height: 12px;
-          color: $clr3;
-          
+          color: $clr3;          
         }
       }
     }
   }
 
+
+
+  
   .filter-expend {
     display: flex;
     flex-direction: column;
@@ -46,7 +51,7 @@
 .filter {
   font-size: 14px;
   position: relative;
-  flex: 1;
+  flex: .96;
 }
 
 .material-icons.search {
@@ -57,9 +62,15 @@
   font-weight: $medium;
 }
 
-.filter.header-guests {
-  font-weight: $light;
+.search-wrapper .filter-preview .filter.btn.header-guests {
   color: $clr7;
+
+}
+
+.filter.header-guests {
+  color: $clr7;
+  font-family: "Cereal";
+
 }
 
 
@@ -67,9 +78,9 @@
   content: '';
   position: absolute;
   width: 1px;
-  height: 24px;
+  height: 22px;
   background: $clr6;
-  right: 22px;
+  right: 16px;
 }
 
 form.el-form.el-form--default.el-form--label-right {

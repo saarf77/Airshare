@@ -219,7 +219,7 @@ function getLabels() {
       src: "Off-the-grid.jpg"
     },
     {
-      propertyType: "cabins",
+      propertyType: "Cabins",
       src: "cabins.jpg"
     },
     {
@@ -231,7 +231,7 @@ function getLabels() {
       src: "luxe.jpg"
     },
     {
-      propertyType: "play",
+      propertyType: "Play",
       src: "play.jpg"
     },
     {
