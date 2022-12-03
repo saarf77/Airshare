@@ -90,21 +90,7 @@
       transform: translate(0, -50%);
     }
   }
-  
-  // .labels {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  //   font-size: 12px;
     
-  
-  //   cursor: pointer;
-  
-  //   img {
-  //     width: 24px;
-  //   }
-  // }
-  
   .carousel__prev,
   .carousel__next {
     background-color: rgb(255, 255, 255) !important;
@@ -118,4 +104,58 @@
   
   .filter.btn.header-guests.search {
     color: $clr7;
+  }
+
+  section.carousel button::after {
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    position: absolute;
+    border: 1px solid #dddddd;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+
+.carousel {
+    .carousel__prev::before {
+      content: '';
+      width: 65px;
+      height: 92px;
+      background: linear-gradient(89deg, white, white, #ffffff, rgba(255, 255, 255, 0.8784313725));
+      position: absolute;
+      z-index: -1;
+      filter: blur(3px);
+      left: -25px;
+    }
+
+    .carousel__next:before {
+      content: '';
+      width: 45px;
+      height: 92px;
+      background: linear-gradient(267deg, white, white, #ffffff, rgba(255, 255, 255, 0.8784313725));
+      position: absolute;
+      z-index: -1;
+      filter: blur(3px);
+      right: -5px;
+    }
+  }
+  
+  // .carousel {
+  //   position: relative;
+  //   text-align: center;
+  //   box-sizing: border-box;
+  //   display: flex;
+  //   align-items: center;
+  //   flex: 10;
+  //   overflow: hidden;
+  // }
+
+  .carousel__track {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    gap: 0px;
   }
