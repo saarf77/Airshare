@@ -1,7 +1,7 @@
 .header-labels{
   margin-inline-start: 30px;
-
-  }
+  translate: .5% -10%;
+}
 
   .labels-container{
     margin-right: 15px;
@@ -17,7 +17,7 @@
   }
 
   .labels {
-    gap: 13px;
+    gap: 6px;
     height: 70px;
     // color: $clr7;
     filter: opacity(0.8);
@@ -26,7 +26,7 @@
     flex-direction: column;
     align-items: center;
     font-size: 12px;
-    
+    padding: 0;
   
     cursor: pointer;
   
@@ -73,7 +73,7 @@
   
   .carousel__slide {
     flex: 1 0 7.7%;
-    margin: 0;
+    margin-left: -5px !important;
     position: relative;
     display: flex;
     justify-content: center;
