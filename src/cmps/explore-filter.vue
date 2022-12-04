@@ -62,7 +62,7 @@
           :class="{ 'active-btn': guestActive }">
           <div @click="dropDownMenu($event)" class="add-guest-wrapper">
             <label for="add-guest">Who</label>
-            <input disabled type="text" data-field="guest" placeholder="Add guests" />
+            <input  disabled type="text" data-field="guest" placeholder="Add guests" :value = "`guests ${guestsNum}`"  />
           </div>
 
           <div @click="formSubmit" class="order-container header-filter-search">
@@ -193,6 +193,7 @@ export default {
   },
   data() {
     return {
+      guestsNum:0,
       filterBy: {
         where: '',
         date: [],
@@ -294,13 +295,25 @@ export default {
     },
     showInitModal(ev) {
       this.toggleShowModal();
-
     },
     dropDownMenu() {
       this.showModal = true;
     },
+    // setNumberGuests(){
+    //    let guestNum = this.filterBy.guests.reduce((acc,num) => acc + num)
+    //    return guestNum 
+    // },
     updateGuests(type, number) {
+      // let update = this.filterBy.guests
+      // console.log(update);
+      // let guestsNum = []
+      if(this.filterBy.guests[type]===0 && number === -1)return 
       this.filterBy.guests[type] += number;
+      // let guest = update.map(guest=> guestNum.push(guest))
+     let guestsNum = this.filterBy.guests.adults + this.filterBy.guests.children + this.filterBy.guests.infants + this.filterBy.guests.pets
+     this.guestsNum = guestsNum
+      // this.guestsNum = guestNum 
+      // console.log(this.guestsNum)
     },
     toggleShowModal(ev) {
       this.showModal = !this.showModal;

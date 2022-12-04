@@ -11,7 +11,7 @@
             </span>
         </div>
 
-        <el-carousel @click="showStayDetails" trigger="click" :autoplay="false">
+        <el-carousel  @click="showStayDetails" trigger="click" :autoplay="false">
             <el-carousel-item v-for="img in imgs" :key="img">
                 <div class="img-wrapper">
                     <img :src="img" />
