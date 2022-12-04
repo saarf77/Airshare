@@ -3,7 +3,15 @@ import {svgService} from '../services/svg.service.js';
 export default {
     data(){
         return {
-
+            currStayStarRating: 0,
+            currStayAttributes: {
+                cleanlinessRating: 0,
+                communicationRating: 0,
+                checkInRating: 0,
+                accuracyRating: 0,
+                locationRating: 0,
+                valueRating: 0,
+            },
         }
     }, 
     computed: {
