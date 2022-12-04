@@ -1,3 +1,11 @@
+
+.stay-list-container{
+    padding-top: 28.5px;
+}
+
+
+
+
 .stay-list{
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(265px,1fr));
@@ -8,5 +16,5 @@
     min-height: 100vh;
     // padding-block-start: 20px;
     padding-block-end: 20px;
-    padding-inline: 55px;
+    // padding-inline: 55px;
 }

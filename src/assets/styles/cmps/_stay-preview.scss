@@ -44,7 +44,9 @@
         z-index: 1;
         right: 18px;
         top: 16px;
-
+        .liked{
+            fill: #FF385C !important;
+        }
         img {
             height: 24px;
             border: 1px solid white;
@@ -131,6 +133,9 @@
     background-color: rgba(255, 255, 255, 0.9);
     border-color: rgba(0, 0, 0, 0.08);
     box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, var(--e-swdx-p);
+}
+.el-carousel__arrow:hover {
+    background-color: #fff !important;
 }
 
 .el-icon svg {

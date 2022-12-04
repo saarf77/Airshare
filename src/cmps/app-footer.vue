@@ -1,6 +1,6 @@
 <template>
   <section class="app-footer ">
-    <div class="container flex justify-space-between align-center">
+    <div class="container footer flex justify-space-between align-center">
 
       <div class="left-side flex gap align-center">
         <span>© 2022 Airshare, Inc</span>

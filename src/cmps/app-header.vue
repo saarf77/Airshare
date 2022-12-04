@@ -1,19 +1,21 @@
 <template>
   <div v-if="isExpend" class="overlay"></div>
+  <div v-if="isModal" class="overlay-modal"></div>
 
   <!-- <Transition name="bounce"> </Transition> -->
   <header class="main-header flex column" :class="{ sticky: isSticky }">
-    <div class="nav-wrapper" :class="{ expend: isExpend }">
-      <div :class="{ container: headerLocation, 'inner-container': !headerLocation }">
+    <div class="nav-wrapper main-layout" :class="{ expend: isExpend }">
+      <div class="full" :class="{ container: headerLocation, 'inner-container': !headerLocation }">
         <nav class="top-nav flex justify-space-between align-center">
           <div v-if="desktop" class="desktop-view">
             <router-link class="logo" to="/">
               <div class="main-logo flex">
                 <div><img class="logo-img" src="../assets/icons/airbnb-logo.svg" /></div>
                 <h2 @click="showList">airshare</h2>
+                <!-- <div v-if="isExpend" class="overlay-explore"></div> -->
               </div>
             </router-link>
-            <div class="explore-filter">
+            <div class="explore-filter" :class="{ absnav: isExpend }" v-click-away="onClickAway">
               <explore-filter :isExpend="isExpend" @expend-form="expendForm" />
             </div>
             <div class="last-section-nav flex align-center">
@@ -30,8 +32,8 @@
                 <div class="user-nav-in">
                   <a href="#/" @click="logDemo" v-if="!getLogInUser">Messages</a>
                   <!-- v-if todo -->
-                  <a href="#/wishList" @click="showMenu = !showMenu" >Wish List</a> 
-                  <a href="#/dashboard" @click="showMenu = !showMenu" >Dashboard</a>
+                  <a href="#/wishList" @click="showMenu = !showMenu">Wish List</a>
+                  <a href="#/dashboard" @click="showMenu = !showMenu">Dashboard</a>
                   <!-- <a href="#/wishList" @click="showMenu = !showMenu" class="a1" v-if="getLogInUser">Wish List</a>
                   <a href="#/dashboard" @click="showMenu = !showMenu" v-if="getLogInUser">Dashboard</a> -->
                   <a href="#/login" @click="showMenu = !showMenu" v-if="!getLogInUser">Sign up</a>
@@ -62,24 +64,26 @@
       </div>
     </div>
     <div v-if="headerLocation" :class="{ 'hide-expend': isExpend }"
-      class="header-labels flex justify-space-between align-center">
+      class="header-labels main-layout flex justify-space-between align-center">
       <div class="container">
         <div v-if="path === '/explore' || path === '/'" class="header-bottom flex justify-space-between">
           <explore-labels v-if="!isExplore" />
           <h3 v-if="isExplore">Stays : {{ staysLength }}</h3>
-          <div v-if="desktop" @click="isModal = !isModal" class="stand-alone-filter">
-            <img src="../assets/icons/filter-icon.svg" alt="" />
-            <span class="filter-btn">Filters</span>
+          <div class="filter-wrapper">
+            <div v-if="desktop" @click="isModal=true" class="stand-alone-filter">
+              <img src="../assets/icons/filter-icon.svg" alt="" />
+              <span class="filter-btn">Filters</span>
+              <!-- <div v-if="isModal" class="overlay"></div> -->
+            </div>
           </div>
-          <filter-modal @onClickAway="onClickAway" v-if="isModal" @setFilter="setFilter" v-click-away="onClickAway"/>
           <Transition duration="200" name="nested">
-            <standAlone-filter @closeFilersForm="closeModal" v-if="isShow" v-click-away="onClickAway" />
+            <filter-modal @onClickAway="closeModal" v-if="isModal" @setFilter="setFilter" v-click-away="closeModal"  />
+            <!-- <standAlone-filter @closeFilersForm="closeModal" v-if="isShow" v-click-away="onClickAway" /> -->
           </Transition>
         </div>
       </div>
     </div>
   </header>
-  <!-- <div v-if="isShow" class="overlay"></div> -->
 </template>
 <script>
 import filterModal from '../cmps/filter-modal.vue'
@@ -90,7 +94,7 @@ import { eventBus } from '../services/event-bus.service.js';
 export default {
   data() {
     return {
-      isModal:false,
+      isModal: false,
       isShow: false,
       location: false,
       isSticky: false,
@@ -146,14 +150,15 @@ export default {
   },
 
   methods: {
-    setFilter(filterBy){
-      this.$store.dispatch({ type: 'setFilter' ,filterBy})
+    setFilter(filterBy) {
+      this.$store.dispatch({ type: 'setFilter', filterBy })
     },
     expendForm(value) {
       this.isExpend = value;
     },
     closeModal() {
-      this.isShow = false;
+      // this.isShow = false;
+      this.isModal = false;
     },
     logout() {
       this.$store.dispatch({ type: 'logout' });
@@ -178,7 +183,7 @@ export default {
     onClickAway() {
       this.isShow = false;
       this.showMenu = false;
-      this.isModal = false;
+      this.isExpend = false
     },
     handleScroll(ev) {
       let pos = window.scrollY;
