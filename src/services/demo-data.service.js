@@ -2,8 +2,8 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-const STAYS_KEY = 'stays';
-const USERS_KEY = 'users';
+const STAYS_KEY = 'stays-db';
+const USERS_KEY = 'users-db';
 
 
 
@@ -53,15 +53,20 @@ async function query(filterBy) {
    
    async function getById(Id, typeName) {
        switch (typeName) {
-              case 'stay':
+              case 'stays-db':
                      return await storageService.get(STAYS_KEY, Id);
-              case 'user':
+              case 'stays-owner':
                      const users = await storageService.query(USERS_KEY);
                      const stay = await storageService.get(STAYS_KEY, Id);
                      let currUser = users.filter((user)=>{
                             return user._id === stay.ownerId;
                      });
                      return currUser[0];
+              case 'users-db':
+                     const usersList = await storageService.query(USERS_KEY);
+                     return usersList.filter((user)=>{
+                                   return user._id ===Id;
+                            }); 
               default:
                      return await storageService.get(STAYS_KEY, Id);
        }

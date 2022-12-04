@@ -15,8 +15,9 @@
 // more details 
 // {{ stay-details model page for: reviews, description, extended options as icons }}
 
-
-
+//TODO: get it from the store when we will got a BACKEND;
+//import {store} from '../store/store.js';
+import {stayService } from '../services/demo-data.service.js';
 import {svgService} from '../services/svg.service.js';
 import detailsAchievements from '../cmps/details-achievement.vue';
 import detailsOptionsList from '../cmps/details-options-list.vue';
@@ -24,11 +25,6 @@ import detailsReviewsList from '../cmps/details-reviews-list.vue';
 import detailsPhotosDisplay from '../cmps/details-photos-display.vue';
 import detailsDescription from '../cmps/details-description.vue';
 import detailsSchedule from '../cmps/details-schedule.vue';
-
-
-//TODO: get it from the store when we will got a BACKEND;
-//import {store} from '../store/store.js';
-import { stayService } from '../services/demo-data.service.js';
 
 export default {
     data(){
@@ -41,7 +37,7 @@ export default {
     created() {
         ;(async () => {
             try{
-                this.currStay = await stayService.getById(this.$route.params.id, 'stay');
+                this.currStay = await stayService.getById(this.$route.params.id, 'stays-db');
             }catch (err) {
                 console.log('details page: can\'t get stay by using this id ', err);
                 throw err;
@@ -50,7 +46,7 @@ export default {
 
         ;(async () => {
             try{
-                this.host = await stayService.getById(this.$route.params.id, 'user');
+                this.host = await stayService.getById(this.$route.params.id, 'stays-owner');
             }catch (err) {
                 console.log('details page: can\'t get user by using this id ', err);
                 throw err;

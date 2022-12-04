@@ -1,6 +1,6 @@
 .reviews-display{
         width: 100%;
-
+        padding-block-end: 50px;
         .details-title{
                 color: $clr1;
                 font-family: Cereal;
@@ -8,6 +8,7 @@
                 letter-spacing: 1px;
 
                 margin-block: 37px 24px;
+                
 
                 .average-reviews{
                         margin-inline-start: 10px;
@@ -76,6 +77,36 @@
                 }
 
                 
+        }
+
+        .user-card{
+                display: grid;
+                grid-template-columns: 40px 1fr;
+                grid-template-rows: 20px 20px;
+
+                .user-image{
+                        height: 40px;
+                        width: 40px;
+                        border-radius: 50%;
+
+                        grid-column: 1/1;
+                        grid-row: 1/2;
+                }
+
+                .user-name{
+                        grid-column: 2/2;
+                        grid-row: 1/1;
+                }
+
+                .post-date{
+                        grid-column: 2/2;
+                        grid-row: 2/2;
+
+                        color: lighten($color: $clr7, $amount: 20) ;
+                        font-family: Cereal;
+                        font-size: 0.83em;
+                }
+               
         }
         
 }
