@@ -102,7 +102,7 @@ export default {
             return (this.currStay?.amenities.length > 0) ? this.currStay.amenities : [];
         },
         calcStarRate(){
-            let rate = '';
+            let rate = '0';
             let counter = 0;
             if(this.currStay?.reviews?.length > 0 ){
                 rate = this.currStay.reviews.map((review) => { 
@@ -147,11 +147,11 @@ export default {
             return svgService.getSvgIcon('emptyHeart') + '<span> Save </span>';
         },
         reviewsObject(){
-            const reviews = {};
-            if(this.currStay?.reviews[0]?._id?.length > 0 && this.calcStarRate?.length > 1){
-                reviews = this.currStay?.reviews;
+            let reviews = null;
+            if(this.reviewsCount){
+                reviews =  {list: this.currStay.reviews, starRate: this.calcStarRate};
             };
-            return {list: reviews, starRate: this.calcStarRate};
+            return reviews; 
         },
     }, 
     components: {
