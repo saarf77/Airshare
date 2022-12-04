@@ -136,12 +136,33 @@ const demoStays = [
               "detailedDescription": "snowCabin",
               "capacity": 8,
               "amenities": [
-                     "TV",
-                     "Wifi",
-                     "Kitchen",
-                     "Smoking allowed",
-                     "Pets allowed",
-                     "Cooking basics"
+                     {"amenitieType": "bay-view", "svgName": "bayView", "txt": "Bay view"},
+                     {"amenitieType": "hair-dryer", "svgName": "hairDryer", "txt": "Hair dryer"},
+                     {"amenitieType": "garden", "svgName": "gardenIcon", "txt": "Private backyard – Fully fenced"},
+                     {"amenitieType": "balcony", "svgName": "balconyIcon", "txt": "Private patio or balcony"},
+                     {"amenitieType": "pool", "svgName": "swimmingPool", "txt": "Private pool"},
+                     
+                     {"amenitieType": "hot tub", "svgName": "hotTub", "txt": "Private hot tub"},
+                     {"amenitieType": "wifi", "svgName": "wifiIcon", "txt": "Wifi"},
+                     {"amenitieType": "essentials", "svgName": "essentialsIcon", "txt": "Essentials"},
+                     {"amenitieType": "heating", "svgName": "heatingIcon", "txt": "Heating"},
+                     {"amenitieType": "fire extinguisher", "svgName": "tvIcon", "txt": "Fire extinguisher"},
+                     
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+
+                     {"amenitieType": "Smoking allowed", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "Pets allowed", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "Cooking basics", "svgName": "tvIcon", "txt": "TV"},
               ],
               "achievements": [
                      {
@@ -176,33 +197,96 @@ const demoStays = [
               },
               "reviews": [
                      {
-                            "user_id": "7162cXTf68l",
+                            "user_id": "7162cX5cTf68l",
                             "starRate": 4.3,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 3.9,
+                                   "communication": 4.5,
+                                   "checkIn": 5.0,
+
+                                   "accuracy": 3.2,
+                                   "location": 4.7,
+                                   "value": 2.9,
+                            }
                      },{
-                            "user_id": "7N4OEdLC2B",
+                            "user_id": "7N4OEdLC2BfjT",
                             "starRate": 4.1,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 3.7,
+                                   "communication": 4.2,
+                                   "checkIn": 4.7,
+
+                                   "accuracy": 3.7,
+                                   "location": 5,
+                                   "value": 3.5,
+                            }
                      },{
-                            "user_id": "7hlo5eR0XL",
-                            "starRate": 5.3,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
-                     },{
-                            "user_id": "a4D677Jv8jI",
-                            "starRate": 4.1,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
-                     },{
-                            "user_id": "0ftUf74t6Zu",
+                            "user_id": "7hlo5eR0X666L",
                             "starRate": 5.0,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 5.0,
+                                   "communication": 5.0,
+                                   "checkIn": 5.0,
+
+                                   "accuracy": 5.0,
+                                   "location": 5.0,
+                                   "value": 5.0,
+                            }
                      },{
-                            "user_id": "mxhMA764AU2",
+                            "user_id": "a4D67ti7Jv8jI",
+                            "starRate": 4.1,
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 3.8,
+                                   "communication": 4.5,
+                                   "checkIn": 3.5,
+
+                                   "accuracy": 3.6,
+                                   "location": 4.4,
+                                   "value": 4.0,
+                            }
+                     },{
+                            "user_id": "0ftUf74t6ZUzu",
+                            "starRate": 4.3,
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 2.9,
+                                   "communication": 4.1,
+                                   "checkIn": 2.0,
+
+                                   "accuracy": 4.2,
+                                   "location": 4.5,
+                                   "value": 4.7,
+                            }
+                     },{
+                            "user_id": "6fun6fun6fun6",
                             "starRate": 2.1,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 1.1,
+                                   "communication": 2.7,
+                                   "checkIn": 0.7,
+
+                                   "accuracy": 2.2,
+                                   "location": 3.0,
+                                   "value": 2.0,
+                            }
                      },{
-                            "user_id": "Hl6Kk4Ce9yrM",
-                            "starRate": 4.9,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
+                            "user_id": "Hl6Kk4Ce9yrMr",
+                            "starRate": 4.7,
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 4.7,
+                                   "communication": 4.8,
+                                   "checkIn": 5.0,
+
+                                   "accuracy": 4.2,
+                                   "location": 5.0,
+                                   "value": 5.0,
+                            }
                      },
               ]
        }, {
@@ -225,12 +309,33 @@ const demoStays = [
               "detailedDescription": "cottageByTheSea",
               "capacity": 8,
               "amenities": [
-                     "TV",
-                     "Wifi",
-                     "Kitchen",
-                     "Smoking allowed",
-                     "Pets allowed",
-                     "Cooking basics"
+                     {"amenitieType": "Desert view", "svgName": "desertView", "txt": "Desert View"},
+                     {"amenitieType": "Mountain view", "svgName": "mountainsView", "txt": "Mountains view"},
+                     {"amenitieType": "Wifi", "svgName": "wifiIcon", "txt": "Fast wifi – 362 Mbps"},
+                     {"amenitieType": "Workspace", "svgName": "workDesk", "txt": "Dedicated workspace"},
+                     {"amenitieType": "Hot tub", "svgName": "hotTub", "txt": "Private hot tub"},
+                     
+                     {"amenitieType": "Garden", "svgName": "gardenIcon", "txt": "Garden view"},
+                     {"amenitieType": "Wifi", "svgName": "wifiIcon", "txt": "Wifi"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "Air conditioner", "svgName": "airConditioner", "txt": "Air conditioning"},
+                     {"amenitieType": "fireplace", "svgName": "fireplaceIcon", "txt": "Indoor fireplace"},
+                     
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+
+                     {"amenitieType": "Smoking allowed", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "Pets allowed", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "Cooking basics", "svgName": "tvIcon", "txt": "TV"},
               ],
               "achievements": [
                      {
@@ -266,33 +371,96 @@ const demoStays = [
               },
               "reviews": [
                      {
-                            "user_id": "7162cXTf68l",
-                            "starRate": 2.3,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
+                            "user_id": "7162cX5cTf68l",
+                            "starRate": 4.3,
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 3.9,
+                                   "communication": 4.5,
+                                   "checkIn": 5.0,
+
+                                   "accuracy": 3.2,
+                                   "location": 4.7,
+                                   "value": 2.9,
+                            }
                      },{
-                            "user_id": "7N4OEdLC2B",
-                            "starRate": 2.4,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
+                            "user_id": "7N4OEdLC2BfjT",
+                            "starRate": 4.1,
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 3.7,
+                                   "communication": 4.2,
+                                   "checkIn": 4.7,
+
+                                   "accuracy": 3.7,
+                                   "location": 5,
+                                   "value": 3.5,
+                            }
                      },{
-                            "user_id": "7hlo5eR0XL",
-                            "starRate": 1.7,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
+                            "user_id": "7hlo5eR0X666L",
+                            "starRate": 5.0,
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 5.0,
+                                   "communication": 5.0,
+                                   "checkIn": 5.0,
+
+                                   "accuracy": 5.0,
+                                   "location": 5.0,
+                                   "value": 5.0,
+                            }
                      },{
-                            "user_id": "a4D677Jv8jI",
-                            "starRate": 4.2,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
+                            "user_id": "a4D67ti7Jv8jI",
+                            "starRate": 4.1,
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 3.8,
+                                   "communication": 4.5,
+                                   "checkIn": 3.5,
+
+                                   "accuracy": 3.6,
+                                   "location": 4.4,
+                                   "value": 4.0,
+                            }
                      },{
-                            "user_id": "0ftUf74t6Zu",
-                            "starRate": 1.5,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
+                            "user_id": "0ftUf74t6ZUzu",
+                            "starRate": 4.3,
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 2.9,
+                                   "communication": 4.1,
+                                   "checkIn": 2.0,
+
+                                   "accuracy": 4.2,
+                                   "location": 4.5,
+                                   "value": 4.7,
+                            }
                      },{
-                            "user_id": "mxhMA764AU2",
-                            "starRate": 0.0,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
+                            "user_id": "6fun6fun6fun6",
+                            "starRate": 2.1,
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 1.1,
+                                   "communication": 2.7,
+                                   "checkIn": 0.7,
+
+                                   "accuracy": 2.2,
+                                   "location": 3.0,
+                                   "value": 2.0,
+                            }
                      },{
-                            "user_id": "Hl6Kk4Ce9yrM",
-                            "starRate": 2.7,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
+                            "user_id": "Hl6Kk4Ce9yrMr",
+                            "starRate": 4.7,
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 4.7,
+                                   "communication": 4.8,
+                                   "checkIn": 5.0,
+
+                                   "accuracy": 4.2,
+                                   "location": 5.0,
+                                   "value": 5.0,
+                            }
                      },
               ]
        }, {
@@ -315,12 +483,33 @@ const demoStays = [
               "detailedDescription": "rentACastle",
               "capacity": 8,
               "amenities": [
-                     "TV",
-                     "Wifi",
-                     "Kitchen",
-                     "Smoking allowed",
-                     "Pets allowed",
-                     "Cooking basics"
+                     {"amenitieType": "bay-view", "svgName": "bayView", "txt": "Bay view"},
+                     {"amenitieType": "Pool", "svgName": "waterFront", "txt": "easy access to the pool"},
+                     {"amenitieType": "Kitchen", "svgName": "kitchenIcon", "txt": "Kitchen"},
+                     {"amenitieType": "Elevator", "svgName": "elevatorIcon", "txt": "Elevator"},
+                     {"amenitieType": "Hot tub", "svgName": "hotTub", "txt": "Hot tub"},
+                     
+                     {"amenitieType": "parking", "svgName": "freeParkingPremies", "txt": "Free parking on premises"},
+                     {"amenitieType": "Wifi", "svgName": "wifiIcon", "txt": "Wifi"},
+                     {"amenitieType": "Free washer", "svgName": "washerUnit", "txt": "Free washer - In unit"},
+                     {"amenitieType": "Free dryer", "svgName": "dryerUnit", "txt": "Free dryer - In unit"},
+                     {"amenitieType": "Carbon monoxide alarm", "svgName": "carbonMonoxideAlarm", "txt": "carbon-monoxide alert system"},
+                     
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "TV", "svgName": "tvIcon", "txt": "TV"},
+
+                     {"amenitieType": "Smoking allowed", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "Pets allowed", "svgName": "tvIcon", "txt": "TV"},
+                     {"amenitieType": "Cooking basics", "svgName": "tvIcon", "txt": "TV"},
               ],
               "achievements": [
                      {
@@ -356,33 +545,96 @@ const demoStays = [
               },
               "reviews": [
                      {
-                            "user_id": "7162cXTf68l",
-                            "starRate": 3.7,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
+                            "user_id": "7162cX5cTf68l",
+                            "starRate": 4.3,
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 3.9,
+                                   "communication": 4.5,
+                                   "checkIn": 5.0,
+
+                                   "accuracy": 3.2,
+                                   "location": 4.7,
+                                   "value": 2.9,
+                            }
                      },{
-                            "user_id": "7N4OEdLC2B",
-                            "starRate": 3.6,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
-                     },{
-                            "user_id": "7hlo5eR0XL",
-                            "starRate": 4.4,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
-                     },{
-                            "user_id": "a4D677Jv8jI",
+                            "user_id": "7N4OEdLC2BfjT",
                             "starRate": 4.1,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 3.7,
+                                   "communication": 4.2,
+                                   "checkIn": 4.7,
+
+                                   "accuracy": 3.7,
+                                   "location": 5,
+                                   "value": 3.5,
+                            }
                      },{
-                            "user_id": "0ftUf74t6Zu",
+                            "user_id": "7hlo5eR0X666L",
                             "starRate": 5.0,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 5.0,
+                                   "communication": 5.0,
+                                   "checkIn": 5.0,
+
+                                   "accuracy": 5.0,
+                                   "location": 5.0,
+                                   "value": 5.0,
+                            }
                      },{
-                            "user_id": "mxhMA764AU2",
+                            "user_id": "a4D67ti7Jv8jI",
+                            "starRate": 4.1,
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 3.8,
+                                   "communication": 4.5,
+                                   "checkIn": 3.5,
+
+                                   "accuracy": 3.6,
+                                   "location": 4.4,
+                                   "value": 4.0,
+                            }
+                     },{
+                            "user_id": "0ftUf74t6ZUzu",
+                            "starRate": 4.3,
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 2.9,
+                                   "communication": 4.1,
+                                   "checkIn": 2.0,
+
+                                   "accuracy": 4.2,
+                                   "location": 4.5,
+                                   "value": 4.7,
+                            }
+                     },{
+                            "user_id": "6fun6fun6fun6",
                             "starRate": 2.1,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 1.1,
+                                   "communication": 2.7,
+                                   "checkIn": 0.7,
+
+                                   "accuracy": 2.2,
+                                   "location": 3.0,
+                                   "value": 2.0,
+                            }
                      },{
-                            "user_id": "Hl6Kk4Ce9yrM",
-                            "starRate": 2.7,
-                            "content": "that was awesome!!! the best night i had ever had in a place"
+                            "user_id": "Hl6Kk4Ce9yrMr",
+                            "starRate": 4.7,
+                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "attributes": {
+                                   "cleanliness": 4.7,
+                                   "communication": 4.8,
+                                   "checkIn": 5.0,
+
+                                   "accuracy": 4.2,
+                                   "location": 5.0,
+                                   "value": 5.0,
+                            }
                      },
               ]
        }
@@ -391,7 +643,7 @@ const demoStays = [
 const demoUsers = [
        {
               "_id": "WbYTQf8YP2ezO",
-              "name": "Mister red",
+              "name": "Mister Red",
               "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1669889536/user-3_gyhyze.png",
               "propertiesId": ["H9Tsb7gCOl7zi"]
        },
@@ -403,9 +655,55 @@ const demoUsers = [
        },
        {
               "_id": "dXhHaSyRjNz1p",
-              "name": "star dreamer",
+              "name": "Star Dreamer",
               "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1669889536/user-1_pwe071.png",
               "propertiesId": ["lD6xkN4bdvNI9"]
-       }
+       },
+
+       {
+              
+              "_id": "7162cX5cTf68l",
+              "name": "Eyes Matter",
+              "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670099517/user-10_wam74m.png",
+              "propertiesId": []
+       },
+       {
+              
+              "_id": "7N4OEdLC2BfjT",
+              "name": "Heavy Metal",
+              "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670099516/user-11_zytml0.png",
+              "propertiesId": []
+       },
+       {
+              
+              "_id": "7hlo5eR0X666L",
+              "name": "Game of Chairs",
+              "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670099516/user-12_wslgxy.png",
+              "propertiesId": []
+       },
+       {
+              "_id": "a4D67ti7Jv8jI",
+              "name": "Mind Mistress",
+              "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670099517/user-13_zeuri6.png",
+              "propertiesId": []
+       },
+       {
+              "_id": "0ftUf74t6ZUzu",
+              "name": "White Wires 49",
+              "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670099517/user-14_ow2as4.png",
+              "propertiesId": []
+       },
+       {
+              "_id": "6fun6fun6fun6",
+              "name": "ForTheFun",
+              "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670099517/user-15_intfaj.png",
+              "propertiesId": []
+       },
+       {
+              "_id": "Hl6Kk4Ce9yrMr",
+              "name": "rouge474",
+              "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670100293/user-16_twzwub.png",
+              "propertiesId": []
+       }   
 ]
 

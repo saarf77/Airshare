@@ -23,6 +23,7 @@ import detailsOptionsList from '../cmps/details-options-list.vue';
 import detailsReviewsList from '../cmps/details-reviews-list.vue';
 import detailsPhotosDisplay from '../cmps/details-photos-display.vue';
 import detailsDescription from '../cmps/details-description.vue';
+import detailsSchedule from '../cmps/details-schedule.vue';
 
 
 //TODO: get it from the store when we will got a BACKEND;
@@ -97,8 +98,11 @@ export default {
         stayBaths(){
             return (this.currStay?.beds > 0) ? this.currStay.beds : '0';
         },
+        stayAmenities(){
+            return (this.currStay?.amenities.length > 0) ? this.currStay.amenities : [];
+        },
         calcStarRate(){
-            let rate = '?';
+            let rate = '';
             let counter = 0;
             if(this.currStay?.reviews?.length > 0 ){
                 rate = this.currStay.reviews.map((review) => { 
@@ -141,7 +145,14 @@ export default {
         },
         saveBtnTxt(){
             return svgService.getSvgIcon('emptyHeart') + '<span> Save </span>';
-        }
+        },
+        reviewsObject(){
+            const reviews = {};
+            if(this.currStay?.reviews[0]?._id?.length > 0 && this.calcStarRate?.length > 1){
+                reviews = this.currStay?.reviews;
+            };
+            return {list: reviews, starRate: this.calcStarRate};
+        },
     }, 
     components: {
         svgService,
@@ -150,7 +161,8 @@ export default {
         detailsOptionsList,
         detailsReviewsList,
         detailsPhotosDisplay,
-        detailsDescription
+        detailsDescription,
+        detailsSchedule
     }
 }
 
@@ -189,19 +201,14 @@ export default {
             <button class="share-cover-btn">learn more</button>
         </section>
         <details-description :descriptionName="stayDescription"/>
-        <section class="inside-photos-display">
+        <!-- <section class="inside-photos-display">
             <div class="details-title">Where you'll sleep</div>
             <div class="inside-carousel-container"></div>
-        </section>
-        <details-options-list/>
-        <section class="Schedule-display">
-            <div class="details-title"> 
-                <span class="night-number">7</span> nights in <span class="general-area-name">puk-landia city</span>
-                <span class="first-night-date"> Dec 4, 2022</span> - <span class="last-night-date">Dec 9, 2022</span>
-            </div>
-            <div class="dates-picker"></div>
-        </section>
-        <details-reviews-list/>
+        </section> -->
+        <details-options-list :amenitiesList="stayAmenities"/>
+        <details-schedule/>
+        <div class="sticky-scroll-end"></div>
+        <details-reviews-list :reviewsList="reviewsObject"/>
     </section>
     <section class="details-page model"> 
     </section>

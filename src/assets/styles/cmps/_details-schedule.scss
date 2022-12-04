@@ -1,0 +1,64 @@
+.schedule-display{
+        //TODO: 
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+
+        .details-title{
+                display: flex;
+                flex-direction: column;
+
+                .schedule-transcription{
+                        > span{
+                                font-family: Cereal;
+                                color: $clr1;
+                                font-size: 1.2em;
+                                font-weight: 700;
+                        }
+                }
+                .schedule-dates {
+                        > span{
+                                font-family: Cereal;
+                                color: $minorTxt;
+                                font-size: 0.8em;
+                        }
+                }
+        }
+
+
+        .dates-picker{
+                height: 300px;
+        }
+
+        .ctrl-panel{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .use-keyboard-btn{
+                        background-color: transparent;
+                        border-radius: 50%;
+                        padding: 15px;
+                        transition: color 0.2s;
+
+                        &:hover{
+                                background-color: $hoverGray;
+                        }
+
+                }
+
+                .clear-btn{
+                        height: 34px;
+                       
+                        background-color: transparent;
+                        border-radius: 10px;
+
+                        color: $clr1;
+                        font-size: 0.75em;
+                        text-decoration: underline;
+                        &:hover{
+                                background-color: $hoverGray;
+                        }
+                }
+        }
+}
