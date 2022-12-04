@@ -9,6 +9,7 @@
       </div>
     </div>
     <div v-show="isExpend" class="filter-expend flex">
+      <div class="filter-background"></div>
 
       <el-form :model="filterBy">
         <div @click="activeTab('where')" class="filter-option where" data-field="where"
@@ -21,8 +22,8 @@
         </div>
         <div class="filter-option check">
           <div class="labels-wrap">
-            <v-date-picker color="red" :attributes="attrs" trim-weeks is-expanded :locale="locale" mode="date"
-              :columns="$screens({ default: 1, lg: 2 })" :rows="1" v-model="filterBy.date" is-range>
+            <v-date-picker color="gray" :attributes="attrs" trim-weeks is-expanded :locale="locale" mode="date"
+              :columns="$screens({ default:1, lg: 2 })"  v-model="filterBy.date" is-range>
               <template v-slot="{ inputValue, inputEvents }">
                 <div class="flex justify-center items-center">
                   <div @click.native="activeTab('checkin')" class="checkin" data-field="checkin"
@@ -35,7 +36,7 @@
                   <div :class="{ 'active-btn': endActive }" class="checkout " @click.native="activeTab('checkout')">
                     <label for="checkout">Check out</label>
                     <input name="checkout" :value="inputValue.end" v-on="inputEvents.end" placeholder="Add dates"
-                      class="" />
+                    class="border px-2 py-1 w-32 rounded focus:outline-none focus:border-indigo-300" />
                   </div>
                 </div>
               </template>
