@@ -1,6 +1,23 @@
 .reviews-display{
         width: 100%;
 
+        .details-title{
+                color: $clr1;
+                font-family: Cereal;
+                font-size: 1.2em;
+                letter-spacing: 1px;
+
+                margin-block: 37px 24px;
+
+                .average-reviews{
+                        margin-inline-start: 10px;
+                        margin-inline-end: 9px;
+                }
+                .reviewers-count{
+                        font-family: inherit;
+                        margin-inline: 5px;
+                }
+        }
         .stay-attributes{
                 display: flex;
                 flex-direction: row;
@@ -16,6 +33,11 @@
                 flex-direction: row;
                 justify-content: space-between;
 
+                color: $clr1;
+                font-family: Cereal;
+                font-size: 0.97em;
+
+                margin-block-end: 16px;
                 .attr-bar{
                         display: grid;
                         grid-template-columns: 1fr 2rem;

@@ -15,10 +15,53 @@ export default {
                 valueRating: 0,
             },
         }
-    }, 
+    },
+    methods:{
+        getReviewTxt(id){
+                        let currTxt = '';
+                        
+
+                        if(this.currStayReviews[id]?.content?.length > 0){
+                            const currLines = [];
+                            const bios = 2.2;
+
+                            currTxt = this.currStayReviews[id].content;
+                            const elBoard = this.$refs.reviewsBoardContainer;
+                            const reviewWidth = Math.floor(elBoard.offsetWidth/2)
+                            let fontSize = parseFloat(window.getComputedStyle(elBoard, null).getPropertyValue('font-size'));
+                            let maxLettersPerLine = Math.floor(reviewWidth / fontSize*bios)
+                            let quitWhile = false;
+                            let idx;
+
+                            while(!quitWhile){
+                                if(currTxt.length <= maxLettersPerLine -3){
+                                    currLines.push(currTxt + '...');
+                                        quitWhile = true;
+                                        break;
+                                }
+
+                                idx = 0;
+                                idx = currTxt.lastIndexOf('.', maxLettersPerLine);
+
+                                if(currTxt.lastIndexOf(',', maxLettersPerLine) > idx){
+                                    idx = currTxt.lastIndexOf(',', maxLettersPerLine);
+                                }
+
+                                if(currTxt.lastIndexOf(' ', maxLettersPerLine) > idx){
+                                    idx = currTxt.lastIndexOf(' ', maxLettersPerLine);
+                                }
+
+                                currLines.push(currTxt.substring(0,idx));
+                                currTxt = currTxt.substring(idx, currTxt.length);
+                            }
+                        }
+                    return currTxt;
+                }
+    },
     computed: {
     svgBlackStar(){
-            const svgHtml = svgService.getSvgIcon('blackStarIcon') + `<span class="average-reviews">5</span>·<span class="reviewers-count">5</span>reviews`
+            const svgHtml = svgService.getSvgIcon('blackStarIcon') + `<span class="average-reviews">${this.currStayStarRating}</span>·
+            <span class="reviewers-count">${this.currStayReviews.length}</span>reviews`
             return svgHtml;
         },
         stayAttributesHtml(){
@@ -42,6 +85,19 @@ export default {
             }
             return strHtml;
         },
+        reviewsBoardHtml(){
+            let strHtml = '';
+            if(this.currStayReviews?.length > 0 ){
+                for (let i = 0; i < 6; i++) {
+                    if(this.currStayReviews[i]){
+                        strHtml += `<div class="review-item-${i}"><div class="review-content">${this.getReviewTxt(i)}</div></div>`;
+                    }
+                    
+                }
+            }
+            return strHtml;
+        },
+        
     }, 
     watch:{
         reviewsList:{
@@ -73,8 +129,9 @@ export default {
        <section class="reviews-display">
             <div class="details-title" v-html="svgBlackStar">
             </div>
-           
             <div class="stay-attributes" v-html="stayAttributesHtml">
+            </div>
+            <div class="stay-reviews-board" ref="reviewsBoardContainer" v-html="reviewsBoardHtml">
             </div>
         </section>
 </template>
