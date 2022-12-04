@@ -16,6 +16,8 @@
           <label for="where">Where</label>
 
           <input id="where" list="where" name="where" v-model="filterBy.where" placeholder="Search destinations" />
+          <explore-maps v-if="isActive" v-click-away="onClickAway" @filterByMap="setFilter" />
+
         </div>
         <div class="filter-option check">
           <div class="labels-wrap">
@@ -184,6 +186,8 @@
 <script>
 import { eventBus } from '../services/event-bus.service';
 import gardientBtn from "../cmps/gardient-btn.vue";
+import exploreMaps from './filter-map.vue';
+
 
 export default {
   emits: ['expendForm'],
@@ -332,7 +336,8 @@ export default {
   },
 
   components: {
-    gardientBtn
+    gardientBtn,
+    exploreMaps
   },
 };
 </script>

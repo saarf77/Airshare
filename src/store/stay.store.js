@@ -32,6 +32,7 @@ export const stayStore = {
         stays: [],
         filterBy: null,
         labels: stayService.getLabels(),
+        maps: stayService.getMaps(),
 
     },
     getters: {
@@ -40,6 +41,9 @@ export const stayStore = {
         },
         getLabels({ labels }) {
             return labels
+        },
+        getMaps({ maps }) {
+            return maps;
           },
     },
     mutations: {

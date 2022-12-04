@@ -28,7 +28,7 @@
                   <img class="host-image" :src="userImg" />
                 </button>
               </div>
-              <div class="user-nav" v-if="showMenu" v-click-away="onClickAway">
+              <div class="user-nav" v-if="showMenu" v-click-away="closeModal">
                 <div class="user-nav-in">
                   <a href="#/" @click="logDemo" v-if="!getLogInUser">Messages</a>
                   <!-- v-if todo -->
@@ -157,6 +157,7 @@ export default {
       this.isExpend = value;
     },
     closeModal() {
+      this.showMenu = false;
       // this.isShow = false;
       this.isModal = false;
     },
@@ -182,7 +183,7 @@ export default {
     },
     onClickAway() {
       this.isShow = false;
-      this.showMenu = false;
+      // this.showMenu = false;
       this.isExpend = false
     },
     handleScroll(ev) {
