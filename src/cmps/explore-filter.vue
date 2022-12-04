@@ -9,7 +9,7 @@
       </div>
     </div>
     <div v-show="isExpend" class="filter-expend flex">
-
+      <div class="filter-background"></div>
       <el-form :model="filterBy">
         <div @click="activeTab('where')" class="filter-option where" data-field="where"
           :class="{ 'active-btn': isExpend ? isActive : !isActive }">
@@ -19,11 +19,13 @@
         </div>
         <div class="filter-option check">
           <div class="labels-wrap">
-            <v-date-picker  color="red" :attributes="attrs" trim-weeks is-expanded :locale="locale" mode="date" :columns="$screens({ default: 1, lg: 2 })" :rows="1" v-model="filterBy.date" is-range >
+            <v-date-picker color="red" :attributes="attrs" trim-weeks is-expanded :locale="locale" mode="date"
+              :columns="$screens({ default: 1, lg: 2 })" :rows="1" v-model="filterBy.date" is-range>
               <template v-slot="{ inputValue, inputEvents }">
                 <div class="flex justify-center items-center">
-                  <div  @click.native="activeTab('checkin')" class="checkin" data-field="checkin" :class="{ 'hover-btn': isExpend ? isHover : !isHover, 'active-btn': startActive }">
-                    <label  for="checkin">Check in</label>
+                  <div @click.native="activeTab('checkin')" class="checkin" data-field="checkin"
+                    :class="{ 'hover-btn': isExpend ? isHover : !isHover, 'active-btn': startActive }">
+                    <label for="checkin">Check in</label>
                     <!-- <date-picker :placeholder="getCheckinDate" @input="renderDates($event)" v-model="checkinDate" range></date-picker> -->
                     <input name="checkin" :value="inputValue.start" v-on="inputEvents.start" placeholder="Add dates"
                       class="border px-2 py-1 w-32 rounded focus:outline-none focus:border-indigo-300" />
@@ -200,19 +202,19 @@ export default {
           infants: 0,
           pets: 0,
         },
-  //       colorDate: {
-  // color: 'orange',
-  // fillMode: 'light',
-  //       },
-  //       attrs: [
-  //       {
-  //         key: 'today',
-  //         highlight: 'red',
-  //         dates: new Date(),
-  //       },
-  //     ],
+        //       colorDate: {
+        // color: 'orange',
+        // fillMode: 'light',
+        //       },
+        //       attrs: [
+        //       {
+        //         key: 'today',
+        //         highlight: 'red',
+        //         dates: new Date(),
+        //       },
+        //     ],
       },
-      
+
       showModal: false,
       isShow: false,
       isActive: true,

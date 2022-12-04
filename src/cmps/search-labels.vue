@@ -1,7 +1,7 @@
 <template>
   <div class="labels-container"> 
 
-    <carousel :transition="330" :items-to-show="10" snapAlign="start">
+    <carousel :adjustable-height="true"  :transition="300" :items-to-show="10" snapAlign="start">
       <slide v-for="(label, idx) in labelsList" ref="labels" :key="label" @click="filter(label.propertyType)">
         <div class="labels">
           <img class="property-type-img" :src="utilService.getImgUrlFilter(label.src)" />

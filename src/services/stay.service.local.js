@@ -11,8 +11,8 @@ export const stayService = {
     save,
     remove,
     getEmptyStay,
-  addStayMsg,
-  getLabels,
+    addStayMsg,
+    getLabels,
 
 }
 window.stayService = stayService
