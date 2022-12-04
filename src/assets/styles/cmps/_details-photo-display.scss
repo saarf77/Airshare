@@ -1,5 +1,5 @@
 .photo-display{
-        height: 45vh;
+        height: 560px;
         width: 100%;
 
         display: flex;
@@ -32,23 +32,22 @@
 
                 .photo-num-1{
                         padding-inline-end: 4px;
-                        padding-block-end: 4px;
                 }
 
                 .photo-num-2{
                         padding-inline-start: 4px;
-                        padding-block-end: 4px;
+
                         border-top-right-radius: 15px;
                 }
 
                 .photo-num-3{
                         padding-inline-end: 4px;
-                        padding-block-start: 4px;
+                        padding-block-start: 8px;
                 }
 
                 .photo-num-4{
                         padding-inline-start: 4px;
-                        padding-block-start: 4px;
+                        padding-block-start: 8px;
                         border-bottom-right-radius: 15px;
                 }
         }
