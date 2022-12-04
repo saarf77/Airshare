@@ -157,6 +157,7 @@ export default {
       this.isExpend = value;
     },
     closeModal() {
+      this.showMenu = false;
       // this.isShow = false;
       this.showMenu = false;
       this.isModal = false;

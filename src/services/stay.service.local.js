@@ -3,6 +3,7 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
+
 const STORAGE_KEY = 'stay'
 
 export const stayService = {
@@ -11,8 +12,9 @@ export const stayService = {
     save,
     remove,
     getEmptyStay,
-    addStayMsg,
-    getLabels,
+  addStayMsg,
+  getLabels,
+  getMaps,
 
 }
 window.stayService = stayService
@@ -194,7 +196,35 @@ function getEmptyStay() {
 //         },
 //       })
 // })()
+function getMaps() {
+  return [
+    {
+      "loc": "I'm flexible",
+      src: "src/assets/maps/flexible.jpeg"
+    },
+    {
+      "loc": "Europe",
+      src: "src/assets/maps/europe.webp"
+    },
+    {
+      "loc": "France",
+      src: "src/assets/maps/france.webp"
+    },
+    {
+      "loc": "United States",
+      src: "src/assets/maps/united-state.webp"
+    },
+    {
+      "loc": "United Kingdom",
+      src: "src/assets/maps/uk.webp"
+    },
+    {
+      "loc": "South America",
+      src: "src/assets/maps/south-america.webp"
+    },
 
+  ]
+}
 
 function getLabels() {
   return [

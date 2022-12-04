@@ -4,6 +4,28 @@
   min-width: 328px;
 }
 
+    
+    .checkin,
+    .checkout,
+    .add-guest-wrapper,
+    .filter-option.where {
+      padding: 14px 24px;
+    }
+
+
+    // .filter:nth-child(-n + 2)::after {
+    //   content: '';
+    //   position: absolute;
+    //   width: 1px;
+    //   height: 22px;
+    //   background: $clr6;
+    //   right: 16px;
+    // }
+  
+    .add-guest-wrapper {
+      max-width: 139px;
+    }
+  
 .filter-option.guest-dropdown {
   display: flex;
   align-items: center;
@@ -134,16 +156,6 @@ guest-dropdown {
   align-self: baseline;
 }
 
-.last-section-nav {
-  flex: 1 1 0%;
-  align-items: center;
-  justify-content: end;
-  gap: 10px;
-
-  a.right-header.become-host {
-    min-width: 123px;
-  }
-}
 
 nav.top-nav.flex.justify-space-between.align-center {
   height: 80px;

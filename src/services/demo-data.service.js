@@ -2,8 +2,8 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-const STAYS_KEY = 'stays';
-const USERS_KEY = 'users';
+const STAYS_KEY = 'stays-db';
+const USERS_KEY = 'users-db';
 
 
 
@@ -53,15 +53,20 @@ async function query(filterBy) {
    
    async function getById(Id, typeName) {
        switch (typeName) {
-              case 'stay':
+              case 'stays-db':
                      return await storageService.get(STAYS_KEY, Id);
-              case 'user':
+              case 'stays-owner':
                      const users = await storageService.query(USERS_KEY);
                      const stay = await storageService.get(STAYS_KEY, Id);
                      let currUser = users.filter((user)=>{
                             return user._id === stay.ownerId;
                      });
                      return currUser[0];
+              case 'users-db':
+                     const usersList = await storageService.query(USERS_KEY);
+                     return usersList.filter((user)=>{
+                                   return user._id ===Id;
+                            }); 
               default:
                      return await storageService.get(STAYS_KEY, Id);
        }
@@ -200,6 +205,7 @@ const demoStays = [
                             "user_id": "7162cX5cTf68l",
                             "starRate": 4.3,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1600000638437,
                             "attributes": {
                                    "cleanliness": 3.9,
                                    "communication": 4.5,
@@ -213,6 +219,7 @@ const demoStays = [
                             "user_id": "7N4OEdLC2BfjT",
                             "starRate": 4.1,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1625500638437,
                             "attributes": {
                                    "cleanliness": 3.7,
                                    "communication": 4.2,
@@ -226,6 +233,7 @@ const demoStays = [
                             "user_id": "7hlo5eR0X666L",
                             "starRate": 5.0,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1627500638437,
                             "attributes": {
                                    "cleanliness": 5.0,
                                    "communication": 5.0,
@@ -239,6 +247,7 @@ const demoStays = [
                             "user_id": "a4D67ti7Jv8jI",
                             "starRate": 4.1,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1631500638437,
                             "attributes": {
                                    "cleanliness": 3.8,
                                    "communication": 4.5,
@@ -252,6 +261,7 @@ const demoStays = [
                             "user_id": "0ftUf74t6ZUzu",
                             "starRate": 4.3,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1647700638437,
                             "attributes": {
                                    "cleanliness": 2.9,
                                    "communication": 4.1,
@@ -265,6 +275,7 @@ const demoStays = [
                             "user_id": "6fun6fun6fun6",
                             "starRate": 2.1,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1632700638437,
                             "attributes": {
                                    "cleanliness": 1.1,
                                    "communication": 2.7,
@@ -278,6 +289,7 @@ const demoStays = [
                             "user_id": "Hl6Kk4Ce9yrMr",
                             "starRate": 4.7,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1661100638437,
                             "attributes": {
                                    "cleanliness": 4.7,
                                    "communication": 4.8,
@@ -374,6 +386,7 @@ const demoStays = [
                             "user_id": "7162cX5cTf68l",
                             "starRate": 4.3,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1600000695921,
                             "attributes": {
                                    "cleanliness": 3.9,
                                    "communication": 4.5,
@@ -387,6 +400,7 @@ const demoStays = [
                             "user_id": "7N4OEdLC2BfjT",
                             "starRate": 4.1,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1625557649546,
                             "attributes": {
                                    "cleanliness": 3.7,
                                    "communication": 4.2,
@@ -400,6 +414,7 @@ const demoStays = [
                             "user_id": "7hlo5eR0X666L",
                             "starRate": 5.0,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1627444638711,
                             "attributes": {
                                    "cleanliness": 5.0,
                                    "communication": 5.0,
@@ -413,6 +428,7 @@ const demoStays = [
                             "user_id": "a4D67ti7Jv8jI",
                             "starRate": 4.1,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1631343619432,
                             "attributes": {
                                    "cleanliness": 3.8,
                                    "communication": 4.5,
@@ -426,6 +442,7 @@ const demoStays = [
                             "user_id": "0ftUf74t6ZUzu",
                             "starRate": 4.3,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1647645671722,
                             "attributes": {
                                    "cleanliness": 2.9,
                                    "communication": 4.1,
@@ -439,6 +456,7 @@ const demoStays = [
                             "user_id": "6fun6fun6fun6",
                             "starRate": 2.1,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1632750664649,
                             "attributes": {
                                    "cleanliness": 1.1,
                                    "communication": 2.7,
@@ -452,6 +470,7 @@ const demoStays = [
                             "user_id": "Hl6Kk4Ce9yrMr",
                             "starRate": 4.7,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1661101679553,
                             "attributes": {
                                    "cleanliness": 4.7,
                                    "communication": 4.8,
@@ -548,6 +567,7 @@ const demoStays = [
                             "user_id": "7162cX5cTf68l",
                             "starRate": 4.3,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1661101679553,
                             "attributes": {
                                    "cleanliness": 3.9,
                                    "communication": 4.5,
@@ -561,6 +581,7 @@ const demoStays = [
                             "user_id": "7N4OEdLC2BfjT",
                             "starRate": 4.1,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1632750664649,
                             "attributes": {
                                    "cleanliness": 3.7,
                                    "communication": 4.2,
@@ -574,6 +595,7 @@ const demoStays = [
                             "user_id": "7hlo5eR0X666L",
                             "starRate": 5.0,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1600000695921,
                             "attributes": {
                                    "cleanliness": 5.0,
                                    "communication": 5.0,
@@ -587,6 +609,7 @@ const demoStays = [
                             "user_id": "a4D67ti7Jv8jI",
                             "starRate": 4.1,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1647645671722,
                             "attributes": {
                                    "cleanliness": 3.8,
                                    "communication": 4.5,
@@ -600,6 +623,7 @@ const demoStays = [
                             "user_id": "0ftUf74t6ZUzu",
                             "starRate": 4.3,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1631343619432,
                             "attributes": {
                                    "cleanliness": 2.9,
                                    "communication": 4.1,
@@ -613,6 +637,7 @@ const demoStays = [
                             "user_id": "6fun6fun6fun6",
                             "starRate": 2.1,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1627444638711,
                             "attributes": {
                                    "cleanliness": 1.1,
                                    "communication": 2.7,
@@ -626,6 +651,7 @@ const demoStays = [
                             "user_id": "Hl6Kk4Ce9yrMr",
                             "starRate": 4.7,
                             "content": "that was awesome!!! the best night i had ever had in a place",
+                            "reviewPostDate": 1625557649546,
                             "attributes": {
                                    "cleanliness": 4.7,
                                    "communication": 4.8,
