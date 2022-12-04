@@ -18,6 +18,16 @@
     .filter-option.where {
       padding: 14px 24px;
     }
+
+
+    // .filter:nth-child(-n + 2)::after {
+    //   content: '';
+    //   position: absolute;
+    //   width: 1px;
+    //   height: 22px;
+    //   background: $clr6;
+    //   right: 16px;
+    // }
   
     .add-guest-wrapper {
       max-width: 139px;
@@ -164,9 +174,9 @@
       display: none;
     }
   
-    .nav-wrapper {
-    //   border-bottom: 1px solid $clr4;
-    }
+    // .nav-wrapper {
+    // //   border-bottom: 1px solid $clr4;
+    // }
   
     .sticky {
       .header-bottom {
