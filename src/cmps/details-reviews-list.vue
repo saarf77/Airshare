@@ -1,5 +1,7 @@
 <script>
 import {svgService} from '../services/svg.service.js';
+import {stayService} from '../services/demo-data.service.js';
+
 export default {
     props: ['reviewsList'],
     data(){
@@ -14,50 +16,54 @@ export default {
                 locationRating: 0,
                 valueRating: 0,
             },
+            reviewsUsers: [],
         }
     },
     methods:{
         getReviewTxt(id){
-                        let currTxt = '';
-                        
+            let currTxt = '';
+            if(this.currStayReviews[id]?.content?.length > 0){
+                const currLines = [];
+                const bios = 2.2;
 
-                        if(this.currStayReviews[id]?.content?.length > 0){
-                            const currLines = [];
-                            const bios = 2.2;
+                currTxt = this.currStayReviews[id].content;
+                const elBoard = this.$refs.reviewsBoardContainer;
+                const reviewWidth = Math.floor(elBoard.offsetWidth/2)
+                let fontSize = parseFloat(window.getComputedStyle(elBoard, null).getPropertyValue('font-size'));
+                let maxLettersPerLine = Math.floor(reviewWidth / fontSize*bios)
+                let quitWhile = false;
+                let idx;
 
-                            currTxt = this.currStayReviews[id].content;
-                            const elBoard = this.$refs.reviewsBoardContainer;
-                            const reviewWidth = Math.floor(elBoard.offsetWidth/2)
-                            let fontSize = parseFloat(window.getComputedStyle(elBoard, null).getPropertyValue('font-size'));
-                            let maxLettersPerLine = Math.floor(reviewWidth / fontSize*bios)
-                            let quitWhile = false;
-                            let idx;
+                while(!quitWhile){
+                    
+                    if(currTxt.length <= maxLettersPerLine -3){
+                    currLines.push(currTxt + '...');
+                    quitWhile = true;
+                    break;
+                    }
 
-                            while(!quitWhile){
-                                if(currTxt.length <= maxLettersPerLine -3){
-                                    currLines.push(currTxt + '...');
-                                        quitWhile = true;
-                                        break;
-                                }
+                    idx = 0;
+                    idx = currTxt.lastIndexOf('.', maxLettersPerLine);
 
-                                idx = 0;
-                                idx = currTxt.lastIndexOf('.', maxLettersPerLine);
+                    if(currTxt.lastIndexOf(',', maxLettersPerLine) > idx){
+                        idx = currTxt.lastIndexOf(',', maxLettersPerLine);
+                    }
 
-                                if(currTxt.lastIndexOf(',', maxLettersPerLine) > idx){
-                                    idx = currTxt.lastIndexOf(',', maxLettersPerLine);
-                                }
+                    if(currTxt.lastIndexOf(' ', maxLettersPerLine) > idx){
+                        idx = currTxt.lastIndexOf(' ', maxLettersPerLine);
+                    }
 
-                                if(currTxt.lastIndexOf(' ', maxLettersPerLine) > idx){
-                                    idx = currTxt.lastIndexOf(' ', maxLettersPerLine);
-                                }
-
-                                currLines.push(currTxt.substring(0,idx));
-                                currTxt = currTxt.substring(idx, currTxt.length);
-                            }
-                        }
-                    return currTxt;
+                    currLines.push(currTxt.substring(0,idx));
+                    currTxt = currTxt.substring(idx, currTxt.length);
                 }
-    },
+            }
+            return currTxt;
+            },
+            getDateMonthNYear(currDate){
+                return new Date(currDate).toLocaleString('default', { month: 'long' }) + ' ' + new Date(currDate).getFullYear();
+            },
+        },
+        
     computed: {
     svgBlackStar(){
             const svgHtml = svgService.getSvgIcon('blackStarIcon') + `<span class="average-reviews">${this.currStayStarRating}</span>·
@@ -87,17 +93,19 @@ export default {
         },
         reviewsBoardHtml(){
             let strHtml = '';
-            if(this.currStayReviews?.length > 0 ){
+            if(this.currStayReviews?.length > 0 && this.reviewsUsers?.length > 0 ){
                 for (let i = 0; i < 6; i++) {
-                    if(this.currStayReviews[i]){
-                        strHtml += `<div class="review-item-${i}"><div class="review-content">${this.getReviewTxt(i)}</div></div>`;
+                    if(this.currStayReviews[i] && this.reviewsUsers[i]){
+                        strHtml += `<div class="review-item-${i}"><div class="user-card"><img class="user-image" src="${this.reviewsUsers[i].imgUrl}">
+                            <span class="user-name">${this.reviewsUsers[i].name}</span>
+                            <span class="post-date">${this.getDateMonthNYear(this.currStayReviews[i].reviewPostDate)}</span></div>
+                            <div class="review-content">${this.getReviewTxt(i)}</div></div>`;
                     }
-                    
                 }
             }
             return strHtml;
         },
-        
+
     }, 
     watch:{
         reviewsList:{
@@ -110,8 +118,16 @@ export default {
                     this.currStayAttributes.accuracyRating = (newVal.list.reduce((acc, review) => acc += review.attributes.accuracy, 0)/newVal.list.length).toFixed(1);
                     this.currStayAttributes.locationRating = (newVal.list.reduce((acc, review) => acc += review.attributes.location, 0)/newVal.list.length).toFixed(1);
                     this.currStayAttributes.valueRating = (newVal.list.reduce((acc, review) => acc += review.attributes.value, 0)/newVal.list.length).toFixed(1);
-
                     this.currStayReviews = newVal.list;
+                    this.usersImgUrls = [];
+                    let hostPromise;
+                    newVal.list.forEach(review => {
+                        hostPromise = stayService.getById(review.user_id, 'users-db')
+                        hostPromise.then((res)=>{
+                            this.reviewsUsers.push(res[0]);
+                        });
+                    });
+
                 }
 
                
@@ -121,6 +137,7 @@ export default {
     },
     components:{
         svgService,
+        stayService,
     }
 }
 </script>
