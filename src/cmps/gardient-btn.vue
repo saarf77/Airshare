@@ -1,8 +1,8 @@
-<template>
+<!-- <template>
   <section>
     <button ref="button" class=" check-available" :class="{disabled: isClicked, 'mouse-tracking':!isClicked}" @click="reserveClicked()" @mousemove="set($event)">
       <span v-if="!isClicked" class="material-icons search">Search</span>
-      <!-- <div class="material-icons search"> search </div> -->
+      
       <span v-else>Search</span>
     </button>
   </section>
@@ -33,4 +33,4 @@ export default {
 </script>
 
 <style>
-</style>
+</style> -->

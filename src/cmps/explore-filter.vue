@@ -9,7 +9,7 @@
       </div>
     </div>
     <div v-show="isExpend" class="filter-expend flex">
-      <div class="filter-background"></div>
+
       <el-form :model="filterBy">
         <div @click="activeTab('where')" class="filter-option where" data-field="where"
           :class="{ 'active-btn': isExpend ? isActive : !isActive }">
@@ -69,17 +69,18 @@
 
           <div @click="formSubmit" class="order-container header-filter-search">
             <div class="btn-container on-filter">
-              <gardient-btn>
+              <!-- <gardient-btn>
 
-              </gardient-btn>
-              <!-- <div v-for="i in 100" class="cell"></div> -->
-              <!-- <div class="content filter-content"> -->
-              <!-- <button class="action-btn">
-                  <div class="material-icons search"> search </div>
-                  <span>Search</span>
-                </button> -->
-              <!-- </div> -->
+              </gardient-btn> -->
 
+                <div v-for="i in 100" class="cell"></div>
+  
+                <div class="content">
+                  <button class="action-btn">
+                    <span>Search</span>
+                  </button>
+                
+              </div>
             </div>
           </div>
         </div>
@@ -185,7 +186,7 @@
 
 <script>
 import { eventBus } from '../services/event-bus.service';
-import gardientBtn from "../cmps/gardient-btn.vue";
+// import gardientBtn from "../cmps/gardient-btn.vue";
 import exploreMaps from './filter-map.vue';
 
 
@@ -336,7 +337,7 @@ export default {
   },
 
   components: {
-    gardientBtn,
+    // gardientBtn,
     exploreMaps
   },
 };
