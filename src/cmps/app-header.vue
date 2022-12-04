@@ -23,7 +23,7 @@
 
               <a class="right-header" href="/#/explore"><img class="explore-btn" src="../assets/icons/en.svg" /></a>
               <div class="user-menu-btn">
-                <button @click="showMenu = !showMenu" class="nav-btn expend flex">
+                <button @click="showMenu = true" class="nav-btn expend flex">
                   <img class="menu-btn" src="../assets/icons/menu.svg" />
                   <img class="host-image" :src="userImg" />
                 </button>
@@ -159,6 +159,7 @@ export default {
     closeModal() {
       this.showMenu = false;
       // this.isShow = false;
+      this.showMenu = false;
       this.isModal = false;
     },
     logout() {

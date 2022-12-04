@@ -157,3 +157,7 @@
     aspect-ratio: 1.05/1;
 
 }
+div.el-carousel.el-carousel--horizontal:has(ul):has(li:first-child.is-active) div button:first-of-type{
+display: none;
+}
+// div.el-carousel.el-carousel--horizontal:has(ul):has(li:last-child.is-active) div button:last-of-type,

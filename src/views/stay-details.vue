@@ -80,7 +80,10 @@ export default {
             return summary;
         },
         starRate(){
-            return svgService.getSvgIcon('blackStarIcon') + this.calcStarRate;
+            return svgService.getSvgIcon('blackStarIcon') + `<span>${this.calcStarRate}</span>`;
+        },
+        superHostMedal(){
+            return svgService.getSvgIcon('medalIcon');
         },
         stayGuests(){
             return (this.currStay?.capacity > 0) ? this.currStay.capacity : '0';
@@ -107,7 +110,7 @@ export default {
                 counter = rate.length;
                 rate = rate.reduce((acc, num) => acc + num)
                 rate = rate/counter;
-                rate = rate - rate % 0.1;
+                rate = rate.toFixed(2);
             }
             return rate + '';
         },
@@ -171,7 +174,8 @@ export default {
             <div class="short-container">
                 <div class="star-score" v-html="starRate"></div> · 
                 <div class="reviews-count">reviews {{reviewsCount}}</div> · 
-                <div class="host-level">?</div> · 
+                <div class="host-medal"></div>
+                <div class="host-level">Superhost</div> · 
                 <div class="area-scope-labels" v-html="labelsTxt"></div>
             </div>
           <button class="details-btn share" v-html="shareBtnTxt"></button>
