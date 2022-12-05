@@ -99,7 +99,7 @@ export default {
             return (this.currStay?.bathrooms > 0) ? this.currStay.bathrooms : '0';
         },
         stayAmenities(){
-            (this.currStay?.amenities.length > 0) ? console.log(this.currStay.amenities) : console.log(this.currStay.amenities);
+            //(this.currStay?.amenities.length > 0) ? console.log(this.currStay.amenities) : console.log(this.currStay.amenities);
             return (this.currStay?.amenities.length > 0) ? this.currStay.amenities : [];
         },
         calcStarRate(){

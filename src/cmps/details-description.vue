@@ -18,7 +18,6 @@ export default {
               },
               computed: {
                 descriptionHtml(){
-                        console.log(this.descriptionTxt);
                         let currText = '';
                         let maxLettersPerLine  = 0;
                         const currLines = [];
