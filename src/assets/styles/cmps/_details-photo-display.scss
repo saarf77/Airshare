@@ -1,5 +1,5 @@
 .photo-display{
-        height: 560px;
+        height: 562px;
         width: 100%;
 
         display: flex;
@@ -22,7 +22,6 @@
         }
 
         .photos-group-container{
-                width: calc(50% - 8px);
                 padding-inline-start: 8px;
                 
                 > img{
