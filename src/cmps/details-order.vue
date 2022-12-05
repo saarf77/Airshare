@@ -339,11 +339,11 @@ import { svgService } from '../services/svg.service.js';
       ElMessage.success('Order send!')
       setTimeout(() => this.$router.push('/'), 1000);
     },watch:{
-      hasDates(){
+      
         handler(newVal) {
           console.log('newVal', newVal);
         }
-      }
+      
     }
   
     },
