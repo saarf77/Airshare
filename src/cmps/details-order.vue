@@ -55,7 +55,8 @@
 
 <div class="flex column guest-add" v-if="isShow" v-click-away="onClickAway">
     
-    <div class="guests-container flex justify-space-between align-center">
+    <!-- <div class="guests-container flex justify-space-between align-center"> -->
+        <div class="row-card flex">
         <div class="lft-crd">
         <span class="title-sm"> Adults</span>
         <span class="txt-sm">Ages 13+</span>
@@ -69,9 +70,10 @@
                 <span> + </span>
             </button>
         </div>
+        </div>
         
         
-    </div>
+    <!-- </div> -->
     <div class="row-card flex">
         <div class="lft-crd">
             <span class="title-sm"> Children</span>
@@ -208,9 +210,9 @@ import { svgService } from '../services/svg.service.js';
       },
   
       guestsCount() {
-        const { children, adults, Infants } = this.trip.guests
+        const { children, adults, Infants , pets } = this.trip.guests
   
-        const guestsCount = children + adults + Infants;
+        const guestsCount = children + adults + Infants + pets;
         if (guestsCount >= 1) return guestsCount + ' guests';
         else return 'Add guests';
       },
@@ -247,7 +249,37 @@ import { svgService } from '../services/svg.service.js';
 
       onClickAway(event) {
         this.isShow = false
+        },
+        sendOrder() {
+      const time = JSON.parse(JSON.stringify(this.trip.dates));
+      const { start, end } = time;
+      const loggedinUser = this.$store.getters.loggedinUser;
+      const { adults, children, Infants,pets } = this.trip.guests
+
+      let order = {
+        "hostId": this.stay.host._id,
+        "createdAt": Date.now(),
+        "buyer": {
+
+        },
+        "totalPrice": this.totalPriceWithFee,
+        "startDate": start,
+        "endDate": end,
+        "guests": {
+ 
+        },
+        "stay": {
+        
+        },
+        "status": "pending"
       }
+
+      this.$store.dispatch({ type: "saveOrder", order, status: 'pending' });
+      ElMessage.success('Order send!')
+
+      setTimeout(() => this.$router.push('/'), 1000);
+
+    },
   
     },
   };
