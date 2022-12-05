@@ -96,17 +96,17 @@ a {
   color: rgb(34, 34, 34);
 }
 
-.content.filter-content button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  color: white;
+// .content.filter-content button {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   gap: 4px;
+//   // color: white;
 
-  span {
-    font-family: 'Cereal', sans-serif;
-  }
-}
+//   span {
+//     font-family: 'Cereal', sans-serif;
+//   }
+// }
 
 
 .filter-option label {
@@ -213,6 +213,12 @@ nav.top-nav.flex.justify-space-between.align-center {
 .row-card {
   padding: 24px 0;
   justify-content: space-between;
+  border-bottom: 1px solid rgb(235, 235, 235) !important;
+
+  &:nth-last-child(1){
+    border-bottom: none !important;
+
+  }
 }
 
 .title-sm {
