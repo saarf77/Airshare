@@ -40,7 +40,26 @@
         text-align: start;
         transition: .35s;
         z-index: 888;
-
+        .modal-btns-container {
+                display: flex;
+                flex-direction: row-reverse;
+                gap: 45px;
+                height: 55px;
+                padding: 50px 0;
+                margin: auto;
+                width: 380px;
+            
+                .go-back {
+                  .el-button--large {
+                    height: 48px;
+                  }
+            
+                  &:hover {
+                    background-color: #48484899 !important;
+            
+                  }
+                }
+              }
 }
 
 // Order
@@ -63,3 +82,87 @@
         margin: 50px auto 10px;
         box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
 }
+
+
+.order-form-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          margin-bottom: 22px;
+          margin-top: 7px;
+      
+      
+          p {
+            &:nth-child(1) {
+              span {
+                font-size: 22px;
+              }
+            }
+          }
+        }
+      
+        input {
+          border: none;
+          padding: 0 0;
+          width: 100%;
+          outline: none;
+          background: transparent;
+          cursor: pointer;
+        }
+      
+        .expand-order {
+          position: absolute;
+          right: 10px;
+          top: 13px;
+          cursor: pointer;
+        }
+
+
+        .order-data {
+                border: 1px solid rgb(0 0 0 / 32%);
+                border-radius: 8px;
+                margin-bottom: 15px;
+            
+                label {
+                  font-family: Cereal-bold;
+                  color: black;
+                  font-size: 10px;
+                }
+            
+                .date-picker {
+                  display: flex;
+                  justify-content: space-between;
+            
+                  .date-input {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    padding: 11px 16px;
+            
+                    &:last-of-type {
+                      border-left: 1px solid #00000050;
+                    }
+                  }
+                }
+            
+                .guest-input {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 5px;
+                  border-top: 1px solid #00000050;
+                  padding: 11px 16px;
+                  position: relative;
+                }
+              }
+            
+              span.cost {
+                color: black;
+                font-size: 1.3em;
+              }
+            
+              span.reviews {
+                color: #00000070;
+                font-size: 0.85em;
+                text-decoration: underline;
+              }
