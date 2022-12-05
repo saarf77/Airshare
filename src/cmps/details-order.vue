@@ -258,7 +258,7 @@ import { svgService } from '../services/svg.service.js';
       const time = JSON.parse(JSON.stringify(this.trip.dates));
       const { start, end } = time;
       const loggedinUser = this.$store.getters.loggedinUser;
-      const { adults, children, Infants } = this.trip.guests
+      const { adults, children, Infants,pets } = this.trip.guests
 
       let order = {
         "hostId": this.stay.host._id,
