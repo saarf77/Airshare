@@ -36,7 +36,7 @@
                   <div :class="{ 'active-btn': endActive }" class="checkout " @click.native="activeTab('checkout')">
                     <label for="checkout">Check out</label>
                     <input name="checkout" :value="inputValue.end" v-on="inputEvents.end" placeholder="Add dates"
-                      class="" />
+                    class="border px-2 py-1 w-32 rounded focus:outline-none focus:border-indigo-300" />
                   </div>
                 </div>
               </template>
@@ -76,8 +76,9 @@
 
                 <div v-for="i in 100" class="cell"></div>
   
-                <div class="content">
+                <div class="content filter-content">
                   <button class="action-btn">
+                    <div class="material-icons search"> search </div>
                     <span>Search</span>
                   </button>
                 
@@ -99,7 +100,7 @@
         <button @click.stop="updateGuests('adults', -1)">
           <span> - </span>
         </button>
-        <span>{{ filterBy.guests.adults }}</span>
+        <span class="guests-count">{{ filterBy.guests.adults }}</span>
         <button @click.stop="updateGuests('adults', 1)">
           <span> + </span>
         </button>
@@ -114,7 +115,7 @@
         <button @click.stop="updateGuests('children', -1)">
           <span> - </span>
         </button>
-        <span>{{ filterBy.guests.children }}</span>
+        <span class="guests-count">{{ filterBy.guests.children }}</span>
         <button @click.stop="updateGuests('children', 1)">
           <span> + </span>
         </button>
@@ -129,7 +130,7 @@
         <button @click.stop="updateGuests('infants', -1)">
           <span> - </span>
         </button>
-        <span>{{ filterBy.guests.infants }}</span>
+        <span class="guests-count">{{ filterBy.guests.infants }}</span>
         <button @click.stop="updateGuests('infants', 1)">
           <span> + </span>
         </button>
@@ -144,7 +145,7 @@
         <button @click.stop="updateGuests('pets', -1)">
           <span> - </span>
         </button>
-        <span>{{ filterBy.guests.pets }}</span>
+        <span class="guests-count">{{ filterBy.guests.pets }}</span>
         <button @click.stop="updateGuests('pets', 1)">
           <span>+</span>
         </button>

@@ -17,29 +17,35 @@ export default {
                 valueRating: 0,
             },
             reviewsUsers: [],
+            reviewWidth: 0,
         }
     },
     methods:{
         getReviewTxt(id){
-            let currTxt = '';
+            var currTxt = '';
             if(this.currStayReviews[id]?.content?.length > 0){
-                const currLines = [];
-                const bios = 2.2;
+                var currLines = [];
 
                 currTxt = this.currStayReviews[id].content;
                 const elBoard = this.$refs.reviewsBoardContainer;
-                const reviewWidth = Math.floor(elBoard.offsetWidth/2)
+                this.reviewWidth = elBoard.offsetWidth/2
                 let fontSize = parseFloat(window.getComputedStyle(elBoard, null).getPropertyValue('font-size'));
-                let maxLettersPerLine = Math.floor(reviewWidth / fontSize*bios)
+                let maxLettersPerLine = Math.floor((this.reviewWidth / fontSize * 2))
                 let quitWhile = false;
                 let idx;
 
+               
+                if(currTxt.length > (maxLettersPerLine * 3)){
+                    idx = currTxt.indexOf('.', (maxLettersPerLine * 3));
+                    currTxt = currTxt.substring(0,idx) + '...';
+                }
+
                 while(!quitWhile){
                     
-                    if(currTxt.length <= maxLettersPerLine -3){
-                    currLines.push(currTxt + '...');
-                    quitWhile = true;
-                    break;
+                    if(currTxt.length < maxLettersPerLine){
+                        currLines.push(currTxt + '...');
+                        quitWhile = true;
+                        break;
                     }
 
                     idx = 0;
@@ -57,7 +63,7 @@ export default {
                     currTxt = currTxt.substring(idx, currTxt.length);
                 }
             }
-            return currTxt;
+            return currLines.join();
             },
             getDateMonthNYear(currDate){
                 return new Date(currDate).toLocaleString('default', { month: 'long' }) + ' ' + new Date(currDate).getFullYear();
@@ -96,10 +102,10 @@ export default {
             if(this.currStayReviews?.length > 0 && this.reviewsUsers?.length > 0 ){
                 for (let i = 0; i < 6; i++) {
                     if(this.currStayReviews[i] && this.reviewsUsers[i]){
-                        strHtml += `<div class="review-item-${i}"><div class="user-card"><img class="user-image" src="${this.reviewsUsers[i].imgUrl}">
+                        strHtml += `<div class="review-item"><div class="user-card"><img class="user-image" src="${this.reviewsUsers[i].imgUrl}">
                             <span class="user-name">${this.reviewsUsers[i].name}</span>
                             <span class="post-date">${this.getDateMonthNYear(this.currStayReviews[i].reviewPostDate)}</span></div>
-                            <div class="review-content">${this.getReviewTxt(i)}</div></div>`;
+                            <div class="review-content" style="width: ${this.reviewWidth}px">${this.getReviewTxt(i)}</div></div>`;
                     }
                 }
             }

@@ -1,5 +1,5 @@
 .photo-display{
-        height: 45vh;
+        height: 562px;
         width: 100%;
 
         display: flex;
@@ -22,7 +22,6 @@
         }
 
         .photos-group-container{
-                width: calc(50% - 8px);
                 padding-inline-start: 8px;
                 
                 > img{
@@ -32,23 +31,22 @@
 
                 .photo-num-1{
                         padding-inline-end: 4px;
-                        padding-block-end: 4px;
                 }
 
                 .photo-num-2{
                         padding-inline-start: 4px;
-                        padding-block-end: 4px;
+
                         border-top-right-radius: 15px;
                 }
 
                 .photo-num-3{
                         padding-inline-end: 4px;
-                        padding-block-start: 4px;
+                        padding-block-start: 8px;
                 }
 
                 .photo-num-4{
                         padding-inline-start: 4px;
-                        padding-block-start: 4px;
+                        padding-block-start: 8px;
                         border-bottom-right-radius: 15px;
                 }
         }

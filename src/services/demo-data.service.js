@@ -204,10 +204,10 @@ const demoStays = [
                      {
                             "user_id": "7162cX5cTf68l",
                             "starRate": 4.3,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "content": "Super nice family. Very pleasant stay. Nice peaceful location. Couldn’t ask for more.",
                             "reviewPostDate": 1600000638437,
                             "attributes": {
-                                   "cleanliness": 3.9,
+                                  "cleanliness": 3.9,
                                    "communication": 4.5,
                                    "checkIn": 5.0,
 
@@ -218,7 +218,8 @@ const demoStays = [
                      },{
                             "user_id": "7N4OEdLC2BfjT",
                             "starRate": 4.1,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "content": `I have been here for 3 months, and I can say that is an incredible good family.They care about everything, if you need something you can trust that they are going to help you.
+                            GREEN, quiet and beautiful place. You can fell the good vibes of the house immediately. 100% recommended.`,
                             "reviewPostDate": 1625500638437,
                             "attributes": {
                                    "cleanliness": 3.7,
@@ -232,7 +233,11 @@ const demoStays = [
                      },{
                             "user_id": "7hlo5eR0X666L",
                             "starRate": 5.0,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "content": `Booked it spontaneusly out of the blue, because of the positive reviews over here and I just can assure, they were all true!! Yaron is such a nice and decent host, who gives you all the opportunities to enjoy your holidays in a great and original israelian way.
+                            His house is a great place to stay, always clean and very organized. You just need to follow the few easy rules and enjoy the beautifully renovated flat.
+                            The 2 rooms he is renting have a lot of space, a big TV with access to Netflix, a very good queensize bed with really cosy sheets, a good climate machine and a roof ventilation too.
+                            Walking to the beach (20 minutes if you are a quick walker) is always a nice experience, cause the appartement is right next to the amazing Levinsky Market and Florentine.
+                            All in all the level of cost and quality and Yarons way of hosting guests is definitely worth 5*****!!!! Thanks for the amazing stay!!! With love from Vienna, Barbara`,
                             "reviewPostDate": 1627500638437,
                             "attributes": {
                                    "cleanliness": 5.0,
@@ -246,7 +251,8 @@ const demoStays = [
                      },{
                             "user_id": "a4D67ti7Jv8jI",
                             "starRate": 4.1,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "content": `Yaron has been an exceptional host for my month long stay at his Airbnb... It felt like home the moment I walked through the door.
+                            The bed is very comfortable and the room is a great size and easy location to get around the city. I'd recommend Yaron's place for any length of stay.`,
                             "reviewPostDate": 1631500638437,
                             "attributes": {
                                    "cleanliness": 3.8,
@@ -260,7 +266,9 @@ const demoStays = [
                      },{
                             "user_id": "0ftUf74t6ZUzu",
                             "starRate": 4.3,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "content": `Beautifully set cabin just north of Oslo. We used it as a first stop of our small Norway tour. 
+                            Starting points of various hikes are nearby. The lakes is beautiful and we stook a swim after a warm day. 
+                            Shops are not nearby so bring your groceries for a few days. We love the place!`,
                             "reviewPostDate": 1647700638437,
                             "attributes": {
                                    "cleanliness": 2.9,
@@ -274,7 +282,13 @@ const demoStays = [
                      },{
                             "user_id": "6fun6fun6fun6",
                             "starRate": 2.1,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "content": `Great cabin in a quiet, beautiful place!
+
+                            We had lots of snow during our stay, and the road was cleared well, parking was close (5 min walk) from the cabin. Would recommend a 4x4 in winter.
+                            
+                            The cabin is cozy, has a nice kitchen, very effective heating and good lighting throughout. We had a great stay, spent the days outside playing in the snow, seeing and reading books in front of the fireplace. Water is easily available outside the cabin, and can be poured into a water system inside (we didn't bother using it).
+                            
+                            All in all a great weekend, and we will definitely come back sometime!`,
                             "reviewPostDate": 1632700638437,
                             "attributes": {
                                    "cleanliness": 1.1,
@@ -288,7 +302,8 @@ const demoStays = [
                      },{
                             "user_id": "Hl6Kk4Ce9yrMr",
                             "starRate": 4.7,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
+                            "content": `This cabin is beautifully situated in the woods. You can find a couple of great hikes in the neighborhood.
+                            The cabin, however, is outdated and wasn't very clean when we arrived.`,
                             "reviewPostDate": 1661100638437,
                             "attributes": {
                                    "cleanliness": 4.7,
@@ -385,10 +400,10 @@ const demoStays = [
                      {
                             "user_id": "7162cX5cTf68l",
                             "starRate": 4.3,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
-                            "reviewPostDate": 1600000695921,
+                            "content": "Super nice family. Very pleasant stay. Nice peaceful location. Couldn’t ask for more.",
+                            "reviewPostDate": 1600000638437,
                             "attributes": {
-                                   "cleanliness": 3.9,
+                                  "cleanliness": 3.9,
                                    "communication": 4.5,
                                    "checkIn": 5.0,
 
@@ -399,8 +414,9 @@ const demoStays = [
                      },{
                             "user_id": "7N4OEdLC2BfjT",
                             "starRate": 4.1,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
-                            "reviewPostDate": 1625557649546,
+                            "content": `I have been here for 3 months, and I can say that is an incredible good family.They care about everything, if you need something you can trust that they are going to help you.
+                            GREEN, quiet and beautiful place. You can fell the good vibes of the house immediately. 100% recommended.`,
+                            "reviewPostDate": 1625500638437,
                             "attributes": {
                                    "cleanliness": 3.7,
                                    "communication": 4.2,
@@ -413,8 +429,12 @@ const demoStays = [
                      },{
                             "user_id": "7hlo5eR0X666L",
                             "starRate": 5.0,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
-                            "reviewPostDate": 1627444638711,
+                            "content": `Booked it spontaneusly out of the blue, because of the positive reviews over here and I just can assure, they were all true!! Yaron is such a nice and decent host, who gives you all the opportunities to enjoy your holidays in a great and original israelian way.
+                            His house is a great place to stay, always clean and very organized. You just need to follow the few easy rules and enjoy the beautifully renovated flat.
+                            The 2 rooms he is renting have a lot of space, a big TV with access to Netflix, a very good queensize bed with really cosy sheets, a good climate machine and a roof ventilation too.
+                            Walking to the beach (20 minutes if you are a quick walker) is always a nice experience, cause the appartement is right next to the amazing Levinsky Market and Florentine.
+                            All in all the level of cost and quality and Yarons way of hosting guests is definitely worth 5*****!!!! Thanks for the amazing stay!!! With love from Vienna, Barbara`,
+                            "reviewPostDate": 1627500638437,
                             "attributes": {
                                    "cleanliness": 5.0,
                                    "communication": 5.0,
@@ -427,8 +447,9 @@ const demoStays = [
                      },{
                             "user_id": "a4D67ti7Jv8jI",
                             "starRate": 4.1,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
-                            "reviewPostDate": 1631343619432,
+                            "content": `Yaron has been an exceptional host for my month long stay at his Airbnb... It felt like home the moment I walked through the door.
+                            The bed is very comfortable and the room is a great size and easy location to get around the city. I'd recommend Yaron's place for any length of stay.`,
+                            "reviewPostDate": 1631500638437,
                             "attributes": {
                                    "cleanliness": 3.8,
                                    "communication": 4.5,
@@ -441,8 +462,10 @@ const demoStays = [
                      },{
                             "user_id": "0ftUf74t6ZUzu",
                             "starRate": 4.3,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
-                            "reviewPostDate": 1647645671722,
+                            "content": `Beautifully set cabin just north of Oslo. We used it as a first stop of our small Norway tour. 
+                            Starting points of various hikes are nearby. The lakes is beautiful and we stook a swim after a warm day. 
+                            Shops are not nearby so bring your groceries for a few days. We love the place!`,
+                            "reviewPostDate": 1647700638437,
                             "attributes": {
                                    "cleanliness": 2.9,
                                    "communication": 4.1,
@@ -455,8 +478,14 @@ const demoStays = [
                      },{
                             "user_id": "6fun6fun6fun6",
                             "starRate": 2.1,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
-                            "reviewPostDate": 1632750664649,
+                            "content": `Great cabin in a quiet, beautiful place!
+
+                            We had lots of snow during our stay, and the road was cleared well, parking was close (5 min walk) from the cabin. Would recommend a 4x4 in winter.
+                            
+                            The cabin is cozy, has a nice kitchen, very effective heating and good lighting throughout. We had a great stay, spent the days outside playing in the snow, seeing and reading books in front of the fireplace. Water is easily available outside the cabin, and can be poured into a water system inside (we didn't bother using it).
+                            
+                            All in all a great weekend, and we will definitely come back sometime!`,
+                            "reviewPostDate": 1632700638437,
                             "attributes": {
                                    "cleanliness": 1.1,
                                    "communication": 2.7,
@@ -469,8 +498,9 @@ const demoStays = [
                      },{
                             "user_id": "Hl6Kk4Ce9yrMr",
                             "starRate": 4.7,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
-                            "reviewPostDate": 1661101679553,
+                            "content": `This cabin is beautifully situated in the woods. You can find a couple of great hikes in the neighborhood.
+                            The cabin, however, is outdated and wasn't very clean when we arrived.`,
+                            "reviewPostDate": 1661100638437,
                             "attributes": {
                                    "cleanliness": 4.7,
                                    "communication": 4.8,
@@ -566,10 +596,10 @@ const demoStays = [
                      {
                             "user_id": "7162cX5cTf68l",
                             "starRate": 4.3,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
-                            "reviewPostDate": 1661101679553,
+                            "content": "Super nice family. Very pleasant stay. Nice peaceful location. Couldn’t ask for more.",
+                            "reviewPostDate": 1600000638437,
                             "attributes": {
-                                   "cleanliness": 3.9,
+                                  "cleanliness": 3.9,
                                    "communication": 4.5,
                                    "checkIn": 5.0,
 
@@ -580,8 +610,9 @@ const demoStays = [
                      },{
                             "user_id": "7N4OEdLC2BfjT",
                             "starRate": 4.1,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
-                            "reviewPostDate": 1632750664649,
+                            "content": `I have been here for 3 months, and I can say that is an incredible good family.They care about everything, if you need something you can trust that they are going to help you.
+                            GREEN, quiet and beautiful place. You can fell the good vibes of the house immediately. 100% recommended.`,
+                            "reviewPostDate": 1625500638437,
                             "attributes": {
                                    "cleanliness": 3.7,
                                    "communication": 4.2,
@@ -594,8 +625,12 @@ const demoStays = [
                      },{
                             "user_id": "7hlo5eR0X666L",
                             "starRate": 5.0,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
-                            "reviewPostDate": 1600000695921,
+                            "content": `Booked it spontaneusly out of the blue, because of the positive reviews over here and I just can assure, they were all true!! Yaron is such a nice and decent host, who gives you all the opportunities to enjoy your holidays in a great and original israelian way.
+                            His house is a great place to stay, always clean and very organized. You just need to follow the few easy rules and enjoy the beautifully renovated flat.
+                            The 2 rooms he is renting have a lot of space, a big TV with access to Netflix, a very good queensize bed with really cosy sheets, a good climate machine and a roof ventilation too.
+                            Walking to the beach (20 minutes if you are a quick walker) is always a nice experience, cause the appartement is right next to the amazing Levinsky Market and Florentine.
+                            All in all the level of cost and quality and Yarons way of hosting guests is definitely worth 5*****!!!! Thanks for the amazing stay!!! With love from Vienna, Barbara`,
+                            "reviewPostDate": 1627500638437,
                             "attributes": {
                                    "cleanliness": 5.0,
                                    "communication": 5.0,
@@ -608,8 +643,9 @@ const demoStays = [
                      },{
                             "user_id": "a4D67ti7Jv8jI",
                             "starRate": 4.1,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
-                            "reviewPostDate": 1647645671722,
+                            "content": `Yaron has been an exceptional host for my month long stay at his Airbnb... It felt like home the moment I walked through the door.
+                            The bed is very comfortable and the room is a great size and easy location to get around the city. I'd recommend Yaron's place for any length of stay.`,
+                            "reviewPostDate": 1631500638437,
                             "attributes": {
                                    "cleanliness": 3.8,
                                    "communication": 4.5,
@@ -622,8 +658,10 @@ const demoStays = [
                      },{
                             "user_id": "0ftUf74t6ZUzu",
                             "starRate": 4.3,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
-                            "reviewPostDate": 1631343619432,
+                            "content": `Beautifully set cabin just north of Oslo. We used it as a first stop of our small Norway tour. 
+                            Starting points of various hikes are nearby. The lakes is beautiful and we stook a swim after a warm day. 
+                            Shops are not nearby so bring your groceries for a few days. We love the place!`,
+                            "reviewPostDate": 1647700638437,
                             "attributes": {
                                    "cleanliness": 2.9,
                                    "communication": 4.1,
@@ -636,8 +674,14 @@ const demoStays = [
                      },{
                             "user_id": "6fun6fun6fun6",
                             "starRate": 2.1,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
-                            "reviewPostDate": 1627444638711,
+                            "content": `Great cabin in a quiet, beautiful place!
+
+                            We had lots of snow during our stay, and the road was cleared well, parking was close (5 min walk) from the cabin. Would recommend a 4x4 in winter.
+                            
+                            The cabin is cozy, has a nice kitchen, very effective heating and good lighting throughout. We had a great stay, spent the days outside playing in the snow, seeing and reading books in front of the fireplace. Water is easily available outside the cabin, and can be poured into a water system inside (we didn't bother using it).
+                            
+                            All in all a great weekend, and we will definitely come back sometime!`,
+                            "reviewPostDate": 1632700638437,
                             "attributes": {
                                    "cleanliness": 1.1,
                                    "communication": 2.7,
@@ -650,8 +694,9 @@ const demoStays = [
                      },{
                             "user_id": "Hl6Kk4Ce9yrMr",
                             "starRate": 4.7,
-                            "content": "that was awesome!!! the best night i had ever had in a place",
-                            "reviewPostDate": 1625557649546,
+                            "content": `This cabin is beautifully situated in the woods. You can find a couple of great hikes in the neighborhood.
+                            The cabin, however, is outdated and wasn't very clean when we arrived.`,
+                            "reviewPostDate": 1661100638437,
                             "attributes": {
                                    "cleanliness": 4.7,
                                    "communication": 4.8,

@@ -1,5 +1,8 @@
 import { createApp } from 'vue'
 
+import { SetupCalendar, Calendar, DatePicker } from 'v-calendar'
+
+
 import { router } from './router.js'
 import { store } from './store/store.js'
 import VCalendar from 'v-calendar';
@@ -18,5 +21,11 @@ app.use(router)
 app.use(store)
 app.use(ElementPlus)
 app.use(VCalendar, {});
-app.use(VueClickAway);
+// app.use(SetupCalendar, {});
+
+app.use(VueClickAway)
+
+// app.component('Calendar', Calendar)
+// app.component('DatePicker', DatePicker)
+
 app.mount('#app')

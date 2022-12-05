@@ -19,7 +19,7 @@
                 <explore-filter :isExpend="isExpend" @expend-form="expendForm" />
             </div>
             <div class="last-section-nav flex align-center">
-              <a class="right-header become-host" href="/#/login">Airbnb your home</a>
+              <a class="right-header become-host" href="/#/login">Airshare your home</a>
 
               <a class="right-header" href="/#/explore"><img class="explore-btn" src="../assets/icons/en.svg" /></a>
               <div class="user-menu-btn">
@@ -158,8 +158,6 @@ export default {
     },
     closeModal() {
       this.showMenu = false;
-      // this.isShow = false;
-      // this.showMenu = false;
       this.isModal = false;
     },
     logout() {
@@ -185,7 +183,7 @@ export default {
     onClickAway() {
       this.isShow = false;
       // this.showMenu = false;
-      // this.isExpend = false
+      this.isExpend = false
     },
     handleScroll(ev) {
       let pos = window.scrollY;

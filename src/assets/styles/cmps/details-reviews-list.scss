@@ -79,34 +79,55 @@
                 
         }
 
-        .user-card{
+        .stay-reviews-board{
+
                 display: grid;
-                grid-template-columns: 40px 1fr;
-                grid-template-rows: 20px 20px;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
+                .review-item{
+                        margin-block-end: 15px;
+                        .user-card{
+                                display: grid;
+                                grid-template-columns: 50px 1fr;
+                                grid-template-rows: 20px 20px;
+                
+                                margin-block-end: 15px;
+                                .user-image{
+                                        height: 40px;
+                                        width: 40px;
+                                        border-radius: 50%;
+                
+                                        grid-column: 1/1;
+                                        grid-row: 1/2;
+                                }
+                
+                                .user-name{
+                                        grid-column: 2/2;
+                                        grid-row: 1/1;
+                
+                                        color: $clr1;
+                                        font-family: Cereal-bold;
+                                        font-size: 0.95em;
+                                }
+                
+                                .post-date{
+                                        grid-column: 2/2;
+                                        grid-row: 2/2;
+                
+                                        color: lighten($color: $clr7, $amount: 20) ;
+                                        font-family: Cereal;
+                                        font-size: 0.83em;
+                                }
+                        
+                        }
 
-                .user-image{
-                        height: 40px;
-                        width: 40px;
-                        border-radius: 50%;
-
-                        grid-column: 1/1;
-                        grid-row: 1/2;
+                        .review-content{
+                                font-family: Cereal;
+                                color: $minorTxt;
+                                font-size: 0.9em;
+                        }
                 }
-
-                .user-name{
-                        grid-column: 2/2;
-                        grid-row: 1/1;
-                }
-
-                .post-date{
-                        grid-column: 2/2;
-                        grid-row: 2/2;
-
-                        color: lighten($color: $clr7, $amount: 20) ;
-                        font-family: Cereal;
-                        font-size: 0.83em;
-                }
-               
         }
+        
         
 }
