@@ -1,5 +1,22 @@
 <template>
-<!-- <div v-if="isConfirm" class="order-alert-overlay"></div> -->
+<div v-if="isConfirm" class="order-alert-overlay"></div>
+
+<section class="order-confirmation-modal" :class="{ showConfirm: isConfirm }">
+    <div class="confirmation-details">
+      <div class="confirm-title-container">
+        <p class="confirm-title">Last step</p>
+        <h1 class="confirm-text">Dear Guest,</h1>
+        <h1 class="confirm-text">please confirm your trip details. </h1>
+      </div>
+      </div>
+
+
+  </section>
+
+
+
+
+
 
   <section class="order-container sticky">
       <div class="order-form-header">
