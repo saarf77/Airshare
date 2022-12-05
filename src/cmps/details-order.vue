@@ -1,7 +1,70 @@
 <template>
 <div v-if="isConfirm" class="order-alert-overlay"></div>
-  
-  
+
+<section class="order-confirmation-modal" :class="{ showConfirm: isConfirm }">
+    <div class="confirmation-details">
+      <div class="confirm-title-container">
+        <p class="confirm-title">Last step</p>
+        <h1 class="confirm-text">Dear Guest,</h1>
+        <h1 class="confirm-text">please confirm your trip details. </h1>
+      </div>
+      <div class="reservation-details-container">
+        <div class="trip-details-container flex column">
+          <h1 class="reservation-details-title">Reservation details</h1>
+          <span class="mini-trip-title">Trip dates:</span>
+          <!-- <h1 class="mini-trip-detail">{{ formatCheck }} - {{ formatCheckOut }}</h1> -->
+          <span class="mini-trip-title">Guests:</span>
+          <!-- <h1 class="mini-trip-detail">{{ guestCount }} guests</h1> -->
+
+          <div class="price-details-container flex column">
+            <h1 class="mini-trip-title">Price Details</h1>
+            <div class="price-per-night flex justify-space-between">
+              <!-- <h1 class="mini-trip-detail">${{ stay.price }} X {{ daysTotal }} nights</h1> -->
+              <!-- <h1 class="mini-trip-detail">${{ totalPriceSum }}</h1> -->
+            </div>
+
+            <div class="service flex justify-space-between">
+              <h1 class="mini-trip-detail">Service fee</h1>
+              <!-- <h1 class="mini-trip-detail">${{ serviceFee }}</h1> -->
+            </div>
+            <div class="total-price flex justify-space-between">
+              <h1 class="mini-trip-detail">Total</h1>
+              <!-- <h1 class="mini-trip-detail">${{ totalPrice }}</h1> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="order-stay-details flex column">
+          <img class="order-stay-image" :src="imgOrder">
+          <!-- <h1 class="stay-detail">{{ stay.name }}</h1> -->
+          <!-- <h1 class="stay-detail">{{ stay.address.city }},{{ stay.address.country }}</h1> -->
+        </div>
+
+      </div>
+      <div class="modal-btns-container">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div @click.prevent="sendOrder" class="btn-container">
+          <div v-for="i in 100" class="cell"></div>
+          <div class="content">
+            <button class="action-btn">
+              <span>Confirm</span>
+            </button>
+          </div>
+        </div>
+
+        <div @click="isConfirm = false" class="sign-up-continue go-back">
+          <el-button size="large">Back</el-button>
+        </div>
+      </div>
+      </div>
+  </section>
+
+
+
+
+
+
   <section class="order-container sticky">
       <div class="order-form-header">
         <!-- <p><span class="cost bold">${{ stay.price }}</span> night</p> -->
@@ -40,12 +103,12 @@
     <input disabled :placeholder="guestsCount" />
 </div>
 </div>
-
 <div class="cell"></div>
-        <div class="cell"></div>
-        <div @click="openConfirm" class="btn-container">
-                <div v-for="i in 100" class="cell"></div>
-        <div class="content">
+<div class="cell"></div>
+
+<div @click="openConfirm" class="btn-container">
+    <div v-for="i in 100" class="cell"></div>
+    <div class="content">
         <button class="action-btn">
             <span>Reserve</span>
         </button>
@@ -113,11 +176,11 @@
                 <span class="txt-sm animal">Bringing a service animal?</span>
             </div>
             <div class="rit-crd guests-btns">
-                <button @click.stop="updateGuests('Infants', -1)">
+                <button @click.stop="updateGuests('pets', -1)">
                     <span> - </span>
                 </button>
                 <span class="guests-count">{{ trip.guests.Infants }}</span>
-                <button @click.stop="updateGuests('Infants', 1)">
+                <button @click.stop="updateGuests('pets', 1)">
                     <span> + </span>
                 </button>
             </div>
@@ -133,7 +196,7 @@
 <div class="pricing" v-if="dateCheck">
     <h4>You won't be charged yet</h4>
     <h5 class="flex justify-space-between">
-        <span class="under-line ">${{ stay.price }} X {{ daysTotal }}</span><span> ${{ totalPriceSum }}</span>
+        <span class="under-line ">${{ this.orderStay.price }} X {{ daysTotal }}</span><span> ${{ totalPriceSum }}</span>
     </h5>
     <h5 class="flex justify-space-between">
         <span class="under-line ">Service fee</span><span> ${{ serviceFee }}</span>
@@ -156,10 +219,11 @@ import { svgService } from '../services/svg.service.js';
   
   export default {
     name: ' order-details',
-    props: { stay: { type: Object } },
+    props: ['orderStay'],
     data() {
       return {
-        // imgOrder: utilService.getImgUrl(this.stay.imgUrls[0]),
+        // imgOrder: utilService.getImgUrl(this.orderStay.imgUrls[0]),
+        hasDates: false,
         isConfirm: false,
         totalPriceSum: 0,
         isShow: false,
@@ -191,7 +255,7 @@ import { svgService } from '../services/svg.service.js';
         return svgService.getSvgIcon('flagIcon') +' Report this listing'
        },
       reviewsCount() {
-        return this.stay.reviews.length;
+        return this.orderStay.reviews.length;
       },
       dateCheck() {
         return Object.keys(this.trip.dates).length;
@@ -223,7 +287,11 @@ import { svgService } from '../services/svg.service.js';
       checkOut() {
         if (!this.trip.dates[1]) return "Add date"
         else return this.trip.dates[1]
-      },
+        },
+        totalPrice() {
+
+            //TODO
+    },
   
 
     },
@@ -232,9 +300,10 @@ import { svgService } from '../services/svg.service.js';
         const { children, adults, Infants } = this.trip.guests
         const guestsCount = children + adults + Infants;
         if (this.trip.guests[type] === 0 && number === -1) return;
-        if (this.stay.capacity === guestsCount && number == 1) return ElMessage.error('You over the guests capacity');
+        if (this.orderStay.capacity === guestsCount && number == 1) return ElMessage.error('You over the guests capacity');
   
         this.trip.guests[type] += number;
+        console.log(this.trip.guests[type]);
       },
   
       openConfirm() {
@@ -251,35 +320,31 @@ import { svgService } from '../services/svg.service.js';
         this.isShow = false
         },
         sendOrder() {
-      const time = JSON.parse(JSON.stringify(this.trip.dates));
-      const { start, end } = time;
-      const loggedinUser = this.$store.getters.loggedinUser;
-      const { adults, children, Infants,pets } = this.trip.guests
+        const time = JSON.parse(JSON.stringify(this.trip.dates));
+        const { start, end } = time;
+        const loggedinUser = this.$store.getters.loggedinUser;
+        const { adults, children, Infants,pets } = this.trip.guests
 
       let order = {
-        "hostId": this.stay.host._id,
-        "createdAt": Date.now(),
-        "buyer": {
-
-        },
-        "totalPrice": this.totalPriceWithFee,
-        "startDate": start,
-        "endDate": end,
-        "guests": {
- 
-        },
-        "stay": {
-        
-        },
-        "status": "pending"
+        hostId: this.orderStay.host._id,
+        stay_Id: this.orderStay._id,
+        createdAt: Date.now(),
+        totalPrice: this.totalPriceWithFee,
+        startDate: start,
+        endDate: end,
+        status: 'pending'
       }
 
       this.$store.dispatch({ type: "saveOrder", order, status: 'pending' });
       ElMessage.success('Order send!')
-
       setTimeout(() => this.$router.push('/'), 1000);
-
-    },
+    },watch:{
+      hasDates(){
+        handler(newVal) {
+          console.log('newVal', newVal);
+        }
+      }
+    }
   
     },
   };
