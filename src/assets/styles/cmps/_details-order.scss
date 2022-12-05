@@ -72,12 +72,16 @@
         flex-direction: column;
         width: 600px;
 }
+
 .order-container[class*="extended"]{
         height: 532px;
-        background-color: red;
 }
 
-.order-container {
+// .order-container:not(:has([class*="extended"])){
+
+// }
+
+.details-page .order-container {
         border: 1px solid #00000030;
         border-radius: 13px;
         padding: 20px;

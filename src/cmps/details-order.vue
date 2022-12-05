@@ -60,12 +60,7 @@
       </div>
   </section>
 
-
-
-
-
-
-  <section class="order-container sticky">
+  <section class="order-container sticky" :class="{extended: this.hasCalcPrice}">
       <div class="order-form-header">
         <!-- <p><span class="cost bold">${{ stay.price }}</span> night</p> -->
         <!-- <p class="stared">{{ $filters.reviewsRateAvg(stay) }} <span class="reviews"> ({{ reviewsCount }})</span></p> -->
@@ -73,7 +68,7 @@
   
       <!-- Date !! -->
       <div class="order-data">
-        <v-date-picker color="gray" :model-config="modelConfig" v-model="range" is-range :columns="2">
+        <v-date-picker color="gray" is-range :columns="2" @dayclick="onDatePicked">
           <template v-slot="{ inputValue, inputEvents }">
             <div class="flex justify-center items-center">
               <div class="date-picker">
@@ -206,6 +201,10 @@
     </p>
 </div>
 <div class="report" v-html="reportListing"></div>
+<div>Base price: {{this.priceObj.basePrice}}$</div>
+<div>Service fee: {{this.priceObj.serviceFee}}$</div>
+<div>Taxes: {{this.priceObj.taxes}}$</div>
+<div>Total price: {{this.priceSum}}$</div>
 </section>
 <section >
 </section>
@@ -223,16 +222,24 @@ import { svgService } from '../services/svg.service.js';
     data() {
       return {
         // imgOrder: utilService.getImgUrl(this.orderStay.imgUrls[0]),
-        totalPrice:0,
-        range: {
-          start: new Date(2020, 9, 12),
-          end: new Date(2020, 9, 16),
+        currDates: {
+          startDay: 0,
+          endDay: 0,
+          daysNum: 0,
+          isFirst: true,
+        },
+        hasCalcPrice: false,
+        priceObj: {
+          basePrice: 0,
+          CleaningFee: 572 + utilService.getRandomIntInclusive(-70,70),
+          serviceFee: 0,
+          taxes: 0,
+          priceSum: 0
         },
         isConfirm: false,
-        totalPriceSum: 0,
         isShow: false,
         trip: {
-          guests: {
+            guests: {
             adults: 1,
             children: 0,
             Infants: 0
@@ -248,8 +255,19 @@ import { svgService } from '../services/svg.service.js';
     },
     components:{
         svgService,
+        utilService,
     },
     computed: {
+        calcStayPrice(){
+          if(this.hasCalcPrice){
+            this.priceObj.basePrice = this.currDates.daysNum * 150;
+            this.priceObj.serviceFee = (this.priceObj.basePrice + this.priceObj.CleaningFee) * 1/7.05;
+            this.priceObj.taxes =(this.priceObj.basePrice + this.priceObj.CleaningFee + this.priceObj.serviceFee)* 0.07;
+            this.priceSum = this.priceObj.basePrice + this.priceObj.serviceFee + this.priceObj.taxes;
+          }
+
+          return '';
+        },
         reportListing(){
         return svgService.getSvgIcon('flagIcon') +' Report this listing'
        },
@@ -287,7 +305,7 @@ import { svgService } from '../services/svg.service.js';
         if (!this.trip.dates[1]) return "Add date"
         else return this.trip.dates[1]
         },
-        totalPrice() {
+      totalPrice() {
             //TODO-------------------------------------------------------------------------------------------------------------------
       },
     },
@@ -339,18 +357,18 @@ import { svgService } from '../services/svg.service.js';
       ElMessage.success('Order send!')
       setTimeout(() => this.$router.push('/'), 1000);
     },
-    
+    onDatePicked(day){
+      if(this.currDates.isFirst){
+        this.currDates.startDay =  day.id;
+        this.currDates.isFirst = false;
+      } else{
+        this.currDates.endDay = day.id
+        this.currDates.isFirst = true;
+        this.hasCalcPrice = true;
+        this.currDates.daysNum = Math.ceil((this.currDates.endDay - this.currDates.startDay)/86400000);
+      }
+    }
   },
-  // watch:{
-  //       range:{
-  //         handler(newValue ,oldValue){
-  //         let days = newValue.start.getTime() - newValue.end.getTime()
-  //         let total = Math.ceil((days * -1) / (1000*60*60*24)) 
-  //         console.log('hey',total)
-  //         },
-  //         deep: true
-  //       }
-  // },
 };
   </script>
   
