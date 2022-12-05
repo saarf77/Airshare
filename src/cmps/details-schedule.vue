@@ -1,7 +1,6 @@
 <script>
 import {svgService} from '../services/svg.service.js';
 export default {
-              props: ['achievelist'], 
               computed: {
                 keyboardSvg(){
                      return svgService.getSvgIcon('keyboardIcon');
@@ -28,6 +27,8 @@ export default {
                      </div>
               </div>
               <section class="dates-picker"></section>
+              <v-date-picker color="gray" :border="none" :attributes="attrs" trim-weeks is-expanded :locale="locale" mode="date"
+              :columns="$screens({ default: 1, lg: 2 })" :rows="1" is-range></v-date-picker>
               <div class="ctrl-panel">
                      <button class="use-keyboard-btn" v-html="keyboardSvg"></button>
                      <button class="clear-btn">Clear dates</button>
