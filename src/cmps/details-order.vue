@@ -73,20 +73,20 @@
   
       <!-- Date !! -->
       <div class="order-data">
-        <v-date-picker color="gray" :="trip.dates" is-range :columns="2">
+        <v-date-picker color="gray" :model-config="modelConfig" v-model="range" is-range :columns="2">
           <template v-slot="{ inputValue, inputEvents }">
             <div class="flex justify-center items-center">
               <div class="date-picker">
                 <div class="date-input">
                   <label>CHECK-IN</label>
                   <input :placeholder="checkIn" :value="inputValue.start" v-on="inputEvents.start"
-                    class="border px-2 py-1 w-32 rounded focus:outline-none focus:border-indigo-300" />
+                    class="border px-2 py-1 w-32 rounded focus:outline-none focus:border-indigo-300"/>
                 </div>
   
-                <div class="date-input">
+                <div class="date-input" >
                   <label>CHECK-OUT</label>
                   <input :placeholder="checkOut" :value="inputValue.end" v-on="inputEvents.end"
-                    class="border px-2 py-1 w-32 rounded focus:outline-none focus:border-indigo-300" />
+                    class="border px-2 py-1 w-32 rounded focus:outline-none focus:border-indigo-300"/>
                 </div>
             </div>
         </div>
@@ -223,7 +223,10 @@ import { svgService } from '../services/svg.service.js';
     data() {
       return {
         // imgOrder: utilService.getImgUrl(this.orderStay.imgUrls[0]),
-        hasDates: false,
+        range: {
+          start: new Date(2020, 9, 12),
+          end: new Date(2020, 9, 16),
+        },
         isConfirm: false,
         totalPriceSum: 0,
         isShow: false,
@@ -241,11 +244,6 @@ import { svgService } from '../services/svg.service.js';
         daysTotal: null,
         totalPriceWithFee: null
       };
-    },
-    created() {
-      // this.loggedinUser = this.$store.getters.loggedinUser;
-      // console.log('this.loggedinUser:', this.loggedinUser)
-        
     },
     components:{
         svgService,
@@ -289,23 +287,22 @@ import { svgService } from '../services/svg.service.js';
         else return this.trip.dates[1]
         },
         totalPrice() {
-
-            //TODO
-    },
-  
-
+            //TODO-------------------------------------------------------------------------------------------------------------------
+      },
     },
     methods: {
+      onDatePicked(element){
+        console.log('yes!!!', element)
+      },
       updateGuests(type, number) {
         const { children, adults, Infants } = this.trip.guests
         const guestsCount = children + adults + Infants;
         if (this.trip.guests[type] === 0 && number === -1) return;
         if (this.orderStay.capacity === guestsCount && number == 1) return ElMessage.error('You over the guests capacity');
-  
+      
         this.trip.guests[type] += number;
         console.log(this.trip.guests[type]);
       },
-  
       openConfirm() {
         const loggedinUser = this.$store.getters.loggedinUser;
         if (!loggedinUser) return ElMessage.error("log in first");
@@ -315,7 +312,6 @@ import { svgService } from '../services/svg.service.js';
         if (children === 0 && adults === 0) return ElMessage.error('Add guests! ')
         this.isConfirm = true
       },
-
       onClickAway(event) {
         this.isShow = false
         },
@@ -338,15 +334,17 @@ import { svgService } from '../services/svg.service.js';
       this.$store.dispatch({ type: "saveOrder", order, status: 'pending' });
       ElMessage.success('Order send!')
       setTimeout(() => this.$router.push('/'), 1000);
-    },watch:{
-      hasDates(){
-        handler(newVal) {
-          console.log('newVal', newVal);
-        }
-      }
-    }
-  
     },
-  };
+    onDatePicked(){
+    }
+  },watcher:{
+        range:{
+          handler(newValue){
+            console.log('sadasdasdfGFDFGDGFDHFGNVBngfvngfhjgfhjfghfghnfghfghfghfghfghfghfghfgh')
+          },
+          deep: true
+        }
+  },
+};
   </script>
   

@@ -11,7 +11,6 @@ export default {
     computed: {
         amenitiesListHtml(){
             let html = '';
-            console.log(this.currAmenities)
             if(this.currAmenities?.length > 0){
                 let amenitiesLength = (this.currAmenities.length < 10)? this.currAmenities.length : 10;
                 
