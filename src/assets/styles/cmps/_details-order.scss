@@ -1,0 +1,26 @@
+.order-display{
+        grid-column: 2/2;
+        grid-row: 1/1;
+        height: fit-content;
+        justify-self: end;
+
+        position:sticky;
+        top: 150px;
+
+        margin-block: 50px;
+        .order-container{
+                height: 532px;
+                width: 372px;
+
+                border: 1px solid rgb(221, 221, 221);
+                border-radius: 12px;
+                padding: 24px;
+                box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+        }
+        
+        .report{
+                text-align: center;
+                padding: 15px;
+        }
+
+}

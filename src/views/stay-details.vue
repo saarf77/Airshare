@@ -25,6 +25,7 @@ import detailsReviewsList from '../cmps/details-reviews-list.vue';
 import detailsPhotosDisplay from '../cmps/details-photos-display.vue';
 import detailsDescription from '../cmps/details-description.vue';
 import detailsSchedule from '../cmps/details-schedule.vue';
+import detailsOrder from '../cmps/details-order.vue';
 
 export default {
     data(){
@@ -161,7 +162,8 @@ export default {
         detailsReviewsList,
         detailsPhotosDisplay,
         detailsDescription,
-        detailsSchedule
+        detailsSchedule,
+        detailsOrder
     }
 }
 
@@ -182,31 +184,34 @@ export default {
           <button class="details-btn save" v-html="saveBtnTxt"></button>
         </section>
         <details-photos-display :urls="imagesUrls"/>
-        <section class="details-display">
-            <div class="details-summary">{{ staySummary }}</div>
-            <div class="details-container">
-                <div class="guests-count">{{ stayGuests }} guests · </div>
-                <div class="bedrooms-count">{{ stayBedrooms }} bedrooms · </div>
-                <div class="beds-count">{{ stayBeds }} beds · </div>
-                <div class="bath-count">{{ stayBaths }} baths</div>
-            </div>
-            <div class="user-icon">
-                <img :src="hostImg" alt="">
-            </div>
-        </section>
-        <details-achievements :achievelist="stayAchievements"/>
-        <section class="share-cover">
-            <img src="https://res.cloudinary.com/dj88xudav/image/upload/v1670001241/share-cover_drqj1d.png" alt="share-cover" class="share-cover-img"/>
-            <div class="share-cover-txt">Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</div>
-            <button class="share-cover-btn">learn more</button>
-        </section>
-        <details-description :descriptionName="stayDescription"/>
-        <!-- <section class="inside-photos-display">
-            <div class="details-title">Where you'll sleep</div>
-            <div class="inside-carousel-container"></div>
-        </section> -->
-        <details-options-list :amenitiesList="stayAmenities"/>
-        <details-schedule/>
+        <main class="sticky-and-more-details">
+            <details-order/>
+            <section class="details-display">
+                <div class="details-summary">{{ staySummary }}</div>
+                <div class="details-container">
+                    <div class="guests-count">{{ stayGuests }} guests · </div>
+                    <div class="bedrooms-count">{{ stayBedrooms }} bedrooms · </div>
+                    <div class="beds-count">{{ stayBeds }} beds · </div>
+                    <div class="bath-count">{{ stayBaths }} baths</div>
+                </div>
+                <div class="user-icon">
+                    <img :src="hostImg" alt="">
+                </div>
+            </section>
+            <details-achievements :achievelist="stayAchievements"/>
+            <section class="share-cover">
+                <img src="https://res.cloudinary.com/dj88xudav/image/upload/v1670001241/share-cover_drqj1d.png" alt="share-cover" class="share-cover-img"/>
+                <div class="share-cover-txt">Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</div>
+                <button class="share-cover-btn">learn more</button>
+            </section>
+            <details-description :descriptionName="stayDescription"/>
+            <!-- <section class="inside-photos-display">
+                <div class="details-title">Where you'll sleep</div>
+                <div class="inside-carousel-container"></div>
+            </section> -->
+            <details-options-list :amenitiesList="stayAmenities"/>
+            <details-schedule/>
+        </main>
         <div class="sticky-scroll-end"></div>
         <details-reviews-list :reviewsList="reviewsObject"/>
     </section>
