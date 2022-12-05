@@ -8,7 +8,7 @@
     z-index: 0 !important;
     bottom: 0 !important;
     top: 100% !important;
-    border-radius: 32px;
+    border-radius: 48px !important;
     
   }
   
@@ -38,5 +38,18 @@
     left: 50%;
     transform: translateX(-50%);
     padding: 20px;
-    border-radius: 32px;
+    border-radius: 48px;
+}
+.vc-arrows-container{
+  width: 90%;
+  top: 55px;
+}
+.vc-weekday{
+  color: #222222;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+  font-weight: 100;
+  font-size: 12px;
+  padding-bottom: 14px;
+  text-align: center;
+  padding-left: 20px;
 }
