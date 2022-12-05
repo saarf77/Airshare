@@ -29,9 +29,9 @@
         }
 
 
-        .dates-picker{
-                height: 300px;
-        }
+        // .dates-picker{
+        //         height: 300px;
+        // }
 
         .ctrl-panel{
                 display: flex;
@@ -63,5 +63,11 @@
                                 background-color: $hoverGray;
                         }
                 }
+        }
+        .vc-pane-container{
+                padding: 60px 60px 60px 0px;
+        }
+        .vc-container.vc-is-expanded{
+                border: none;
         }
 }

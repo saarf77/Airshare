@@ -90,13 +90,13 @@ export default {
             return (this.currStay?.capacity > 0) ? this.currStay.capacity : '0';
         },
         stayBedrooms(){
-            return (this.currStay?.rooms > 0) ? this.currStay.rooms : '0';
+            return (this.currStay?.bedrooms > 0) ? this.currStay.bedrooms : '0';
         },
         stayBeds(){
             return (this.currStay?.beds > 0) ? this.currStay.beds : '0';
         },
         stayBaths(){
-            return (this.currStay?.beds > 0) ? this.currStay.beds : '0';
+            return (this.currStay?.bathrooms > 0) ? this.currStay.bathrooms : '0';
         },
         stayAmenities(){
             return (this.currStay?.amenities.length > 0) ? this.currStay.amenities : [];
@@ -178,7 +178,8 @@ export default {
                 <div class="reviews-count">reviews {{reviewsCount}}</div> · 
                 <div class="host-medal"></div>
                 <div class="host-level">Superhost</div> · 
-                <div class="area-scope-labels" v-html="labelsTxt"></div>
+                <div class="area-scope-labels" >{{currStay.loc.address}}</div>
+                <!-- <div class="area-scope-labels" v-html="labelsTxt"></div> -->
             </div>
           <button class="details-btn share" v-html="shareBtnTxt"></button>
           <button class="details-btn save" v-html="saveBtnTxt"></button>
