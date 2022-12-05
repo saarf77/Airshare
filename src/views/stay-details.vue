@@ -193,7 +193,7 @@ export default {
         </section>
         <details-photos-display :urls="imagesUrls"/>
         <main class="sticky-and-more-details">
-            <details-order/>
+            <details-order :orderStay="this.currStay"/>
             <section class="details-display">
                 <div class="details-summary">{{ staySummary }}</div>
                 <div class="details-container">

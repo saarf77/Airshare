@@ -43,7 +43,7 @@
 
 <div class="cell"></div>
         <div class="cell"></div>
-        <div @click="openConfirm" class="btn-container">
+        <div v-if="!isShow" @click="openConfirm" class="btn-container">
                 <div v-for="i in 100" class="cell"></div>
         <div class="content">
         <button class="action-btn">
@@ -133,7 +133,7 @@
 <div class="pricing" v-if="dateCheck">
     <h4>You won't be charged yet</h4>
     <h5 class="flex justify-space-between">
-        <span class="under-line ">${{ stay.price }} X {{ daysTotal }}</span><span> ${{ totalPriceSum }}</span>
+        <span class="under-line ">${{ this.orderStay.price }} X {{ daysTotal }}</span><span> ${{ totalPriceSum }}</span>
     </h5>
     <h5 class="flex justify-space-between">
         <span class="under-line ">Service fee</span><span> ${{ serviceFee }}</span>
@@ -156,10 +156,11 @@ import { svgService } from '../services/svg.service.js';
   
   export default {
     name: ' order-details',
-    props: { stay: { type: Object } },
+    props: ['orderStay'],
     data() {
       return {
-        // imgOrder: utilService.getImgUrl(this.stay.imgUrls[0]),
+        // imgOrder: utilService.getImgUrl(this.orderStay.imgUrls[0]),
+        hasDates: false,
         isConfirm: false,
         totalPriceSum: 0,
         isShow: false,
@@ -191,7 +192,7 @@ import { svgService } from '../services/svg.service.js';
         return svgService.getSvgIcon('flagIcon') +' Report this listing'
        },
       reviewsCount() {
-        return this.stay.reviews.length;
+        return this.orderStay.reviews.length;
       },
       dateCheck() {
         return Object.keys(this.trip.dates).length;
@@ -232,9 +233,10 @@ import { svgService } from '../services/svg.service.js';
         const { children, adults, Infants } = this.trip.guests
         const guestsCount = children + adults + Infants;
         if (this.trip.guests[type] === 0 && number === -1) return;
-        if (this.stay.capacity === guestsCount && number == 1) return ElMessage.error('You over the guests capacity');
+        if (this.orderStay.capacity === guestsCount && number == 1) return ElMessage.error('You over the guests capacity');
   
         this.trip.guests[type] += number;
+        console.log(this.trip.guests[type]);
       },
   
       openConfirm() {
@@ -251,35 +253,31 @@ import { svgService } from '../services/svg.service.js';
         this.isShow = false
         },
         sendOrder() {
-      const time = JSON.parse(JSON.stringify(this.trip.dates));
-      const { start, end } = time;
-      const loggedinUser = this.$store.getters.loggedinUser;
-      const { adults, children, Infants,pets } = this.trip.guests
+        const time = JSON.parse(JSON.stringify(this.trip.dates));
+        const { start, end } = time;
+        const loggedinUser = this.$store.getters.loggedinUser;
+        const { adults, children, Infants,pets } = this.trip.guests
 
       let order = {
-        "hostId": this.stay.host._id,
-        "createdAt": Date.now(),
-        "buyer": {
-
-        },
-        "totalPrice": this.totalPriceWithFee,
-        "startDate": start,
-        "endDate": end,
-        "guests": {
- 
-        },
-        "stay": {
-        
-        },
-        "status": "pending"
+        hostId: this.orderStay.host._id,
+        stay_Id: this.orderStay._id,
+        createdAt: Date.now(),
+        totalPrice: this.totalPriceWithFee,
+        startDate: start,
+        endDate: end,
+        status: 'pending'
       }
 
       this.$store.dispatch({ type: "saveOrder", order, status: 'pending' });
       ElMessage.success('Order send!')
-
       setTimeout(() => this.$router.push('/'), 1000);
-
-    },
+    },watch:{
+      hasDates(){
+        handler(newVal) {
+          console.log('newVal', newVal);
+        }
+      }
+    }
   
     },
   };
