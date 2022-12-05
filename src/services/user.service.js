@@ -16,7 +16,7 @@ export const userService = {
     getById,
     remove,
     update,
-    changeScore
+    changeScore,
 }
 
 window.userService = userService
@@ -106,3 +106,72 @@ function getLoggedinUser() {
 
 
 
+function getDemoUsers(){
+    return [
+        {
+               "_id": "WbYTQf8YP2ezO",
+               "name": "Mister Red",
+               "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1669889536/user-3_gyhyze.png",
+               "propertiesId": ["H9Tsb7gCOl7zi"]
+        },
+        {
+               "_id": "A26HW2jg7Qo",
+               "name": "Master Black",
+               "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1669889536/user-2_zf16kb.png",
+               "propertiesId": ["wXAfnS2RxGqBb"]
+        },
+        {
+               "_id": "dXhHaSyRjNz1p",
+               "name": "Star Dreamer",
+               "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1669889536/user-1_pwe071.png",
+               "propertiesId": ["lD6xkN4bdvNI9"]
+        },
+      
+        {
+               
+               "_id": "7162cX5cTf68l",
+               "name": "Eyes Matter",
+               "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670099517/user-10_wam74m.png",
+               "propertiesId": []
+        },
+        {
+               
+               "_id": "7N4OEdLC2BfjT",
+               "name": "Heavy Metal",
+               "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670099516/user-11_zytml0.png",
+               "propertiesId": []
+        },
+        {
+               
+               "_id": "7hlo5eR0X666L",
+               "name": "Game of Chairs",
+               "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670099516/user-12_wslgxy.png",
+               "propertiesId": []
+        },
+        {
+               "_id": "a4D67ti7Jv8jI",
+               "name": "Mind Mistress",
+               "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670099517/user-13_zeuri6.png",
+               "propertiesId": []
+        },
+        {
+               "_id": "0ftUf74t6ZUzu",
+               "name": "White Wires 49",
+               "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670099517/user-14_ow2as4.png",
+               "propertiesId": []
+        },
+        {
+               "_id": "6fun6fun6fun6",
+               "name": "ForTheFun",
+               "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670099517/user-15_intfaj.png",
+               "propertiesId": []
+        },
+        {
+               "_id": "Hl6Kk4Ce9yrMr",
+               "name": "rouge474",
+               "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670100293/user-16_twzwub.png",
+               "propertiesId": []
+        }   
+      ]
+    
+}
