@@ -1,5 +1,6 @@
 <template>
   <main class="login-container">
+    <div class="overlay-login"></div>
     <section v-if="!this.newUser" class="flex column align-center">
       <form class="login-form" @submit.prevent="doLogin">
         <div class="login-form-body flex column">
@@ -11,18 +12,17 @@
           <p>{{ msg }}</p>
 
           
-          <button type="submit" class="login-btn">Submit</button>
-          <div class="btn-container">
+          <!-- <button type="submit" class="login-btn">Submit</button> -->
+          <div @click="doLogin" class="btn-container">
                 <div v-for="i in 100" class="cell"></div>
                 <div class="content">
                   <button type="submit" class="action-btn">
-                    <span>Submit</span>
+                   <span>Submit</span> 
                   </button>
-                
               </div>
             </div>
           <div class="login-actions-btns flex ">
-            <button type="button" class="actions-btn" @click="toggleForm()">New user</button>
+            <button type="button" class="actions-btn" @click="toggleForm()">New user?</button>
           </div>
         </div>
       </form>

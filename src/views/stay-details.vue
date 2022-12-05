@@ -201,7 +201,7 @@ export default {
             <section class="details-display">
                 <div class="details-summary">The house is hosted by {{ hostedBy }}</div>
                 <div class="details-container">
-                    <div class="guests-count">{{ stayGuests }} guests · </div>
+                    <div class="guests-count"> {{ stayGuests }} guests · </div>
                     <div class="bedrooms-count">{{ stayBedrooms }} bedrooms · </div>
                     <div class="beds-count">{{ stayBeds }} beds · </div>
                     <div class="bath-count">{{ stayBaths }} baths</div>
