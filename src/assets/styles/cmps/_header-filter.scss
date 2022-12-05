@@ -63,9 +63,9 @@
   color: white;
 }
 
-.search-wrapper :nth-child(-n + 2) {
-  font-weight: $medium;
-}
+// .search-wrapper :nth-child(-n + 2) {
+//   font-weight: $medium;
+// }
 
 .search-wrapper .filter-preview .filter.btn.header-guests {
   color: $clr7;
@@ -180,8 +180,8 @@ form.el-form.el-form--default.el-form--label-right {
 .guests-btns {
   justify-content: space-between;
   width: 104px;
-  color: $clr1;
-  font-weight: 400;
+  font-family: Cereal-bold;
+  font-weight: 700 !important;
   font-size: 16px;
 
 
@@ -192,11 +192,43 @@ form.el-form.el-form--default.el-form--label-right {
     flex-grow: 0;
     flex-shrink: 0;
     cursor: pointer;
-    color: #717171;
-    border: 1px solid #b0b0b0;
-    background-color: #fff;
+    border: 1px solid  rgb(176, 176, 176) ;
     text-align: center;
-    font-size: 16px;
+    font-size: 22px;
+    padding: 0px 2px 2px 3px;
     margin: 7px;
+    color: rgb(113, 113, 113);
+    touch-action: manipulation !important;
+    background: rgb(255, 255, 255) !important;
+    font-weight: 700;
+    font-family: 'Cereal-bold';
+
+
+
+    &:hover{
+      border-color: $clr1;
+      transition: .2s;
+      color: $clr1;
+      // :hover{
+      //   color:  black !important;
+      // }
+    }
+
+
+
+  }
+}
+
+.row-card .rit-crd span.guests-count{
+  font-weight: 400 !important;
+
+}
+.row-card .rit-crd span{
+  color: rgb(113, 113, 113);
+  font-family: Cereal;
+  justify-content: center;
+  &:hover{
+    color: $clr1;
+
   }
 }
