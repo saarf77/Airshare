@@ -223,6 +223,7 @@ import { svgService } from '../services/svg.service.js';
     data() {
       return {
         // imgOrder: utilService.getImgUrl(this.orderStay.imgUrls[0]),
+        totalPrice:0,
         range: {
           start: new Date(2020, 9, 12),
           end: new Date(2020, 9, 16),
@@ -291,6 +292,9 @@ import { svgService } from '../services/svg.service.js';
       },
     },
     methods: {
+      // sayHello(){
+      //   console.log(this.range)
+      // },
       onDatePicked(element){
         console.log('yes!!!', element)
       },
@@ -336,14 +340,17 @@ import { svgService } from '../services/svg.service.js';
       setTimeout(() => this.$router.push('/'), 1000);
     },
     
-  },watcher:{
-        range:{
-          handler(newValue){
-            console.log('sadasdasdfGFDFGDGFDHFGNVBngfvngfhjgfhjfghfghnfghfghfghfghfghfghfghfgh')
-          },
-          deep: true
-        }
   },
+  // watch:{
+  //       range:{
+  //         handler(newValue ,oldValue){
+  //         let days = newValue.start.getTime() - newValue.end.getTime()
+  //         let total = Math.ceil((days * -1) / (1000*60*60*24)) 
+  //         console.log('hey',total)
+  //         },
+  //         deep: true
+  //       }
+  // },
 };
   </script>
   

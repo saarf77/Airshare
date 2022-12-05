@@ -40,7 +40,15 @@
           <input autocomplete="username" type="text" class="login-input" name="username" placeholder="Username"
             v-model="signupCred.username" />
           <p>{{ msg }}</p>
-          <button class="login-btn" type="submit">Sign up</button>
+          <div @click="doSignup" class="btn-container">
+                <div v-for="i in 100" class="cell"></div>
+                <div class="content">
+                  <button type="submit" class="action-btn">
+                   <span>Sign up</span> 
+                  </button>
+              </div>
+            </div>
+          <!-- <button class="login-btn" type="submit">Sign up</button> -->
           <div class="login-actions-btns flex">
             <button type="button" class=" actions-btn" @click="toggleForm()">I already have an account</button>
           </div>
