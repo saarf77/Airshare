@@ -1,7 +1,70 @@
 <template>
 <div v-if="isConfirm" class="order-alert-overlay"></div>
-  
-  
+
+<section class="order-confirmation-modal" :class="{ showConfirm: isConfirm }">
+    <div class="confirmation-details">
+      <div class="confirm-title-container">
+        <p class="confirm-title">Last step</p>
+        <h1 class="confirm-text">Dear Guest,</h1>
+        <h1 class="confirm-text">please confirm your trip details. </h1>
+      </div>
+      <div class="reservation-details-container">
+        <div class="trip-details-container flex column">
+          <h1 class="reservation-details-title">Reservation details</h1>
+          <span class="mini-trip-title">Trip dates:</span>
+          <!-- <h1 class="mini-trip-detail">{{ formatCheck }} - {{ formatCheckOut }}</h1> -->
+          <span class="mini-trip-title">Guests:</span>
+          <!-- <h1 class="mini-trip-detail">{{ guestCount }} guests</h1> -->
+
+          <div class="price-details-container flex column">
+            <h1 class="mini-trip-title">Price Details</h1>
+            <div class="price-per-night flex justify-space-between">
+              <!-- <h1 class="mini-trip-detail">${{ stay.price }} X {{ daysTotal }} nights</h1> -->
+              <!-- <h1 class="mini-trip-detail">${{ totalPriceSum }}</h1> -->
+            </div>
+
+            <div class="service flex justify-space-between">
+              <h1 class="mini-trip-detail">Service fee</h1>
+              <!-- <h1 class="mini-trip-detail">${{ serviceFee }}</h1> -->
+            </div>
+            <div class="total-price flex justify-space-between">
+              <h1 class="mini-trip-detail">Total</h1>
+              <!-- <h1 class="mini-trip-detail">${{ totalPrice }}</h1> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="order-stay-details flex column">
+          <img class="order-stay-image" :src="imgOrder">
+          <!-- <h1 class="stay-detail">{{ stay.name }}</h1> -->
+          <!-- <h1 class="stay-detail">{{ stay.address.city }},{{ stay.address.country }}</h1> -->
+        </div>
+
+      </div>
+      <div class="modal-btns-container">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div @click.prevent="sendOrder" class="btn-container">
+          <div v-for="i in 100" class="cell"></div>
+          <div class="content">
+            <button class="action-btn">
+              <span>Confirm</span>
+            </button>
+          </div>
+        </div>
+
+        <div @click="isConfirm = false" class="sign-up-continue go-back">
+          <el-button size="large">Back</el-button>
+        </div>
+      </div>
+      </div>
+  </section>
+
+
+
+
+
+
   <section class="order-container sticky">
       <div class="order-form-header">
         <!-- <p><span class="cost bold">${{ stay.price }}</span> night</p> -->
@@ -40,12 +103,12 @@
     <input disabled :placeholder="guestsCount" />
 </div>
 </div>
-
 <div class="cell"></div>
-        <div class="cell"></div>
-        <div v-if="!isShow" @click="openConfirm" class="btn-container">
-                <div v-for="i in 100" class="cell"></div>
-        <div class="content">
+<div class="cell"></div>
+
+<div @click="openConfirm" class="btn-container">
+    <div v-for="i in 100" class="cell"></div>
+    <div class="content">
         <button class="action-btn">
             <span>Reserve</span>
         </button>
@@ -113,11 +176,11 @@
                 <span class="txt-sm animal">Bringing a service animal?</span>
             </div>
             <div class="rit-crd guests-btns">
-                <button @click.stop="updateGuests('Infants', -1)">
+                <button @click.stop="updateGuests('pets', -1)">
                     <span> - </span>
                 </button>
                 <span class="guests-count">{{ trip.guests.Infants }}</span>
-                <button @click.stop="updateGuests('Infants', 1)">
+                <button @click.stop="updateGuests('pets', 1)">
                     <span> + </span>
                 </button>
             </div>
@@ -224,7 +287,11 @@ import { svgService } from '../services/svg.service.js';
       checkOut() {
         if (!this.trip.dates[1]) return "Add date"
         else return this.trip.dates[1]
-      },
+        },
+        totalPrice() {
+
+            //TODO
+    },
   
 
     },

@@ -99,6 +99,7 @@ export default {
             return (this.currStay?.bathrooms > 0) ? this.currStay.bathrooms : '0';
         },
         stayAmenities(){
+            (this.currStay?.amenities.length > 0) ? console.log(this.currStay.amenities) : console.log(this.currStay.amenities);
             return (this.currStay?.amenities.length > 0) ? this.currStay.amenities : [];
         },
         calcStarRate(){
@@ -133,6 +134,9 @@ export default {
         },
         hostImg(){
             return (this.host?.imgUrl)? this.host?.imgUrl : '#';
+        },
+        hostedBy(){
+            return (this.currStay?.host?.fullname)? this.currStay?.host?.fullname : '';
         },
         stayAchievements(){
             return (this.currStay?.achievements?.length > 0)? this.currStay.achievements : [];
@@ -195,7 +199,7 @@ export default {
         <main class="sticky-and-more-details">
             <details-order :orderStay="this.currStay"/>
             <section class="details-display">
-                <div class="details-summary">{{ staySummary }}</div>
+                <div class="details-summary">The house is hosted by {{ hostedBy }}</div>
                 <div class="details-container">
                     <div class="guests-count">{{ stayGuests }} guests · </div>
                     <div class="bedrooms-count">{{ stayBedrooms }} bedrooms · </div>
