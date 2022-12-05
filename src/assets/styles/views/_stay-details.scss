@@ -4,11 +4,14 @@
        display: flex;
        flex-direction: column;
        align-items: center;
+       padding-inline-end: 5px;
 }
 
 
 *:has(.details-page) .main-header{
        height: 90px;
+       padding-inline-start: 9px;
+       padding-inline-end: 9px;
 }
 
 .details-page{
@@ -81,6 +84,9 @@
 
                      .area-scope-labels{
                             margin-inline: 5px;
+                            text-decoration: underline;
+                            font-weight: 400;
+                            font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
 
                             > .label{
                                    text-decoration: underline;
@@ -145,11 +151,11 @@
 
                      display: grid;
                      grid-template-columns: repeat(11, 1fr);
-                     grid-template-rows: 1fr 1fr;
+                     grid-template-rows: 1fr 46px;
                      row-gap: 4px;
        
-                     margin-block-start: 44px;
-                     padding-block-end: 14px;
+                     margin-block-start: 28px;
+                     // padding-block-end: 14px;
                      border-bottom: 1.5px solid $clr6;
        
                      .details-summary{

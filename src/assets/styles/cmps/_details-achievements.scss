@@ -8,18 +8,19 @@
         flex-direction: column;
         row-gap: 8px;
 
-        margin-block-start: 184px;
+        margin-block-start: 145px;
         padding-block-end: 24px;    
         border-bottom: 1.5px solid $clr6;
 
         .stay-achievement{
                display: grid;
                grid-template-columns: 37px 9.5fr;
-               grid-template-rows: 1fr 1fr;
+               grid-template-rows: 20px 1fr;
 
                width: 90%;
                font-family: Cereal-medium;
                font-size: 16px;
+               padding-inline-start: 4px;
                > svg{
                         grid-column: 1/1;
                         grid-row: 1/span 2;
@@ -50,10 +51,10 @@
         }
 
         .stay-achievement:nth-child(2) {
-                margin-block-start: 17px;
+                margin-block-start: 20px;
         }
 
         .stay-achievement:nth-child(3) {
-                margin-block-start: 36px;
+                margin-block-start: 20px;
         }
 }

@@ -11,7 +11,7 @@ export default {
     computed: {
         amenitiesListHtml(){
             let html = '';
-           
+            console.log(this.currAmenities)
             if(this.currAmenities?.length > 0){
                 let amenitiesLength = (this.currAmenities.length < 10)? this.currAmenities.length : 10;
                 
@@ -27,18 +27,22 @@ export default {
             return  svgHtml ;
         }
     },
-    watch:{
-        amenitiesList:{
-            handler(newVal) {
-                if(newVal?.length > 0 ){
-                    this.currAmenities = [...newVal];
-                }
-                // .then();
-               
-            },
-            deep: true
-        }
+    created(){
+        this.currAmenities = this.amenitiesList
     },
+    // watch:{
+    //     amenitiesList:{
+    //         handler(newVal) {
+    //             console.log(newVal)
+    //             if(newVal?.length > 0 ){
+    //                 this.currAmenities = [...newVal];
+    //             }
+    //             // .then();
+               
+    //         },
+    //         deep: true
+    //     }
+    // },
     components:{
         svgService,
     }
