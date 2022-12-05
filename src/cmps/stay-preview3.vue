@@ -21,7 +21,7 @@
         <!-- <img src='https://res.cloudinary.com/ddt1fjmim/image/upload/v1669798080/001_pxpfis.jpg' -->
         <div class="content">
             <div class="location-info flex justify-space-between">
-                <span>{{ stay.loc.city }},{{ stay.loc.country }}</span>
+                <span>{{ stay.loc.city }}, {{ stay.loc.country }}</span>
                 <span class="stared">
                     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
                         focusable="false" style="display: block; height: 14px; width: 14px; fill: currentcolor;">
@@ -33,7 +33,7 @@
                 </span>
             </div>
             <div class="name-rooms">
-                <div>{{ stay.name }}</div>
+                <div>{{summarySize}}</div>
                 <div>{{ stay.rooms }} rooms, {{ stay.beds }} beds</div>
             </div>
             <div class="price">
@@ -66,23 +66,30 @@ export default {
         return {
             isLiked: false,
             imgs: [],
-            url: '',
-            item: 'https://res.cloudinary.com/ddt1fjmim/image/upload/v1669798080/001_pxpfis.jpg'
+            summary:''
         }
     },
     components: {
         // customCard,
     },
     created() {
-        console.log(this.stay)
         this.stay.imgUrls
             .map(img => {
-                // this.imgs.push(new URL(`${img}`, import.meta.url))
                 this.imgs.push(img)
-                console.log(this.imgs)
             })
-
-        // new URL(`${stay.imageUrl}`, import.meta.url)
+            
+    },
+    computed:{
+        summarySize() {
+            // console.log(this.stay.summary)
+            if (this.stay.summary.length > 32) {
+            let desc = this.stay.summary.slice(0, 32) + '...'
+            // console.log(desc)
+           return this.summary = desc
+        }
+           this.summary = this.stay.summary
+            return this.summary
+        },
     },
     methods: {
         setLiked(){

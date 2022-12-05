@@ -38,7 +38,10 @@
 .checkout,
 .add-guest-wrapper,
 .filter-option.where {
-  padding: 14px 24px;
+  padding: 14px 16px;
+}
+.filter-option.where {
+  padding: 14px 28px;
 }
 
 .add-guest-wrapper {
@@ -165,7 +168,7 @@ nav.top-nav.flex.justify-space-between.align-center {
 
 .header-bottom.flex.justify-space-between {
   align-items: center;
-  padding-block-start: 20px;
+  padding-block-start: 1.8px;
 }
 
 .filter-expend.flex {

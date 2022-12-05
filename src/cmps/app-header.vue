@@ -16,7 +16,7 @@
               </div>
             </router-link>
             <div class="explore-filter" :class="{ absnav: isExpend }" v-click-away="onClickAway">
-              <explore-filter :isExpend="isExpend" @expend-form="expendForm" />
+                <explore-filter :isExpend="isExpend" @expend-form="expendForm" />
             </div>
             <div class="last-section-nav flex align-center">
               <a class="right-header become-host" href="/#/login">Airshare your home</a>
@@ -157,8 +157,6 @@ export default {
       this.isExpend = value;
     },
     closeModal() {
-      this.showMenu = false;
-      // this.isShow = false;
       this.showMenu = false;
       this.isModal = false;
     },
