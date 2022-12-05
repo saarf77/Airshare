@@ -41,8 +41,6 @@
 </div>
 </div>
 
-<div class="cell"></div>
-<div class="cell"></div>
 <div @click="openConfirm" class="btn-container">
     <div v-for="i in 100" class="cell"></div>
     <div class="content">
@@ -117,11 +115,11 @@
                 <span class="txt-sm animal">Bringing a service animal?</span>
             </div>
             <div class="rit-crd guests-btns">
-                <button @click.stop="updateGuests('Infants', -1)">
+                <button @click.stop="updateGuests('pets', -1)">
                     <span> - </span>
                 </button>
                 <span class="guests-count">{{ trip.guests.Infants }}</span>
-                <button @click.stop="updateGuests('Infants', 1)">
+                <button @click.stop="updateGuests('pets', 1)">
                     <span> + </span>
                 </button>
             </div>
@@ -227,7 +225,11 @@ import { svgService } from '../services/svg.service.js';
       checkOut() {
         if (!this.trip.dates[1]) return "Add date"
         else return this.trip.dates[1]
-      },
+        },
+        totalPrice() {
+
+            //TODO
+    },
   
 
     },
