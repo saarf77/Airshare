@@ -36,7 +36,7 @@ const routes = [
     component: userDetails
   }, 
   {
-    path: '/details/:id',
+    path: '/stay/:id',
     name: 'stay-details',
     component: stayDetails
   },

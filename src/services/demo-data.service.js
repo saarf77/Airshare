@@ -17,13 +17,13 @@ export const stayService = {
        addStayMsg
 }
    
-;(async () =>{
-       const stays = await storageService.query(STAYS_KEY);
-       if(stays?.length === 0) storageService.save(STAYS_KEY, demoStays);
+// ;(async () =>{
+//        const stays = await storageService.query(STAYS_KEY);
+//        if(stays?.length === 0) storageService.save(STAYS_KEY, demoStays);
 
-       const users = await storageService.query(USERS_KEY);
-       if(users?.length === 0) storageService.save(USERS_KEY, demoUsers);
-})();
+//        const users = await storageService.query(USERS_KEY);
+//        if(users?.length === 0) storageService.save(USERS_KEY, demoUsers);
+// })();
 
 
 async function query(filterBy) {
@@ -49,10 +49,10 @@ async function query(filterBy) {
          })
        }
        return stays
-   }
+}
    
-   async function getById(Id, typeName) {
-       switch (typeName) {
+async function getById(Id, collectionName) {
+       switch (collectionName) {
               case 'stays-db':
                      return await storageService.get(STAYS_KEY, Id);
               case 'stays-owner':
@@ -65,12 +65,17 @@ async function query(filterBy) {
               case 'users-db':
                      const usersList = await storageService.query(USERS_KEY);
                      return usersList.filter((user)=>{
-                                   return user._id ===Id;
+                                   return user._id === Id;
                             }); 
+               case 'order-db':
+                     const orderList = await storageService.query(ORDERS_KEY);
+                     return orderList.filter((order)=>{
+                     return order._id === Id;
+              }); 
               default:
                      return await storageService.get(STAYS_KEY, Id);
        }
-   }
+}
    
    async function remove(stayId) {
        await storageService.remove(STAYS_KEY, stayId)

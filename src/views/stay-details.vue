@@ -17,7 +17,7 @@
 
 //TODO: get it from the store when we will got a BACKEND;
 //import {store} from '../store/store.js';
-import {stayService } from '../services/demo-data.service.js';
+import {stayService } from '../services/stay.service.local.js';
 import {svgService} from '../services/svg.service.js';
 import detailsAchievements from '../cmps/details-achievement.vue';
 import detailsOptionsList from '../cmps/details-options-list.vue';
