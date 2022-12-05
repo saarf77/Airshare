@@ -141,8 +141,8 @@
               .details-display{
                      grid-column: 1/1;
                      grid-row: 1/1;
-
                      height: fit-content;
+                     
                      display: grid;
                      grid-template-columns: repeat(11, 1fr);
                      grid-template-rows: 1fr 1fr;
