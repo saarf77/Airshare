@@ -14,7 +14,7 @@
 .details-page{
        height: auto;
        width: 1300px;
-       padding-inline: 94px 65px;
+       padding-inline: 90px;
 
        color: black;
        
@@ -50,7 +50,7 @@
                      align-items: center;
 
                      font-family: Cereal;
-                     margin-block-start: -5px;
+                     margin-block-start: -4px;
                      
                      *{
                             font-size: 0.90rem;
@@ -59,8 +59,8 @@
 
                      .star-score{
                             > svg{
-                                  transform: scale(0.9);
-                                  transform: translate(3px, 2px);
+                                  transform: scale(0.9) !important;
+                                  transform: translate(3px, 2px) !important;
                             }
 
                             > span{
@@ -99,12 +99,14 @@
                      text-decoration: underline;
                      transition: color 0.2s;
 
+                     padding-inline-end: 0px;
                      > svg{
                             margin-inline-end: 7px;
                      }
 
                      > span{
                             align-self: end;
+                            justify-self: end;
                      }
 
                      &:hover{
