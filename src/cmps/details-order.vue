@@ -214,9 +214,9 @@ import { svgService } from '../services/svg.service.js';
       },
   
       guestsCount() {
-        const { children, adults, Infants } = this.trip.guests
+        const { children, adults, Infants , pets } = this.trip.guests
   
-        const guestsCount = children + adults + Infants;
+        const guestsCount = children + adults + Infants + pets;
         if (guestsCount >= 1) return guestsCount + ' guests';
         else return 'Add guests';
       },
