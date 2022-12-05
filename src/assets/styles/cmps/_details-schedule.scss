@@ -1,11 +1,12 @@
 .schedule-display{
         grid-column: 1/1;
-        grid-row: 6/6;
+        grid-row: 4/4;
         height: fit-content;
 
         display: flex;
         flex-direction: column;
-
+        padding-block-end: 17px;
+        
         .details-title{
                 display: flex;
                 flex-direction: column;

@@ -1,8 +1,10 @@
 .description-display{
         grid-column: 1/1;
-        grid-row: 3/3;
+        grid-row: 1/1;
         height: fit-content;
 
+        margin-block-start: 410px;
+        padding-block-end: 20px;
         border-bottom: 1.5px solid $clr6;
 
         .short-description{

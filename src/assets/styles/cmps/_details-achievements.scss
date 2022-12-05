@@ -1,14 +1,15 @@
 .achievement-display{
         grid-column: 1/1;
-        grid-row: 2/2;
+        grid-row: 1/1;
         height: fit-content;
+        
 
         display: flex;
         flex-direction: column;
         row-gap: 8px;
 
-        margin-block-start: 30px;
-        padding-block-end: 15px;
+        margin-block-start: 184px;
+        padding-block-end: 24px;    
         border-bottom: 1.5px solid $clr6;
 
         .stay-achievement{

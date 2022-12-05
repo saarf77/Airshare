@@ -1,9 +1,12 @@
 .options-icons-display{
         grid-column: 1/1;
-        grid-row: 5/5;
+        grid-row: 3/3;
         height: fit-content;
 
         border-bottom: 1.5px solid $clr6;
+        margin-block-start: 32px;
+        margin-block-end: 35px;
+        padding-block-end: 18px;
 
         .options-title{
                 font-size: 1.2em;
