@@ -3,7 +3,7 @@ import {detailsTextService} from '../services/stay-details-text.service.js';
 import { svgService } from '../services/svg.service.js';
 
 export default {
-              props: ['descriptionName'],
+              props: ['descriptionTxt'],
               data(){
                 return{
                         containerWidth: 0,
@@ -18,13 +18,14 @@ export default {
               },
               computed: {
                 descriptionHtml(){
+                        console.log(this.descriptionTxt);
                         let currText = '';
                         let maxLettersPerLine  = 0;
                         const currLines = [];
                         const bios = 2.2;
 
-                        if(this.descriptionName?.length > 5 && this.containerWidth !== 0 && this.currFontSize !== 0){
-                                currText += detailsTextService.getStayDescription(this.descriptionName);
+                        if(this.descriptionTxt?.length > 5 && this.containerWidth !== 0 && this.currFontSize !== 0){
+                                currText += this.descriptionTxt;
                                 maxLettersPerLine = Math.floor(this.containerWidth / this.currFontSize*bios);
                                 
                                 let idx = 0;

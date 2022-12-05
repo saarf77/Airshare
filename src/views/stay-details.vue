@@ -99,6 +99,7 @@ export default {
             return (this.currStay?.bathrooms > 0) ? this.currStay.bathrooms : '0';
         },
         stayAmenities(){
+            (this.currStay?.amenities.length > 0) ? console.log(this.currStay.amenities) : console.log(this.currStay.amenities);
             return (this.currStay?.amenities.length > 0) ? this.currStay.amenities : [];
         },
         calcStarRate(){
@@ -118,27 +119,34 @@ export default {
         reviewsCount(){
             return this.currStay?.reviews?.length || 0;
         }, 
-        labelsTxt (){
-            let str = '';
-            if (this.currStay?.labels?.length > 0){
-                this.currStay.labels.forEach(label => {
-                    str +=  `<a class="label" href='#'> ${label}, </a>`;
-                });
-                str = str.substr(0, str.length - 1);
-            }
-            return str;
-        }, 
+        // labelsTxt (){
+        //     let str = '';
+        //     if (this.currStay?.labels?.length > 0){
+        //         this.currStay.labels.forEach(label => {
+        //             str +=  `<a class="label" href='#'> ${label}, </a>`;
+        //         });
+        //         str = str.substring(0, str.length - 1);
+        //     }
+        //     return str;
+        // }, 
         imagesUrls(){
             return (this.currStay?.imgUrls?.length > 0)? this.currStay.imgUrls : [];
         },
         hostImg(){
             return (this.host?.imgUrl)? this.host?.imgUrl : '#';
         },
+        hostedBy(){
+            return (this.currStay?.host?.fullname)? this.currStay?.host?.fullname : '';
+        },
         stayAchievements(){
             return (this.currStay?.achievements?.length > 0)? this.currStay.achievements : [];
         },
         stayDescription(){
-            return (this.currStay?.detailedDescription?.length > 0)? this.currStay.detailedDescription : '';
+            if(this.currStay?.summary?.length > 0){
+                let { summary } = this.currStay;
+                return summary;
+            }
+            return '';
         },
         shareBtnTxt(){
             return svgService.getSvgIcon('shareIcon') + '<span> Share </span>';
@@ -153,6 +161,9 @@ export default {
             };
             return reviews; 
         },
+        locAddress(){
+            return (this.currStay?.loc?.address?.length > 0)? this.currStay?.loc?.address : ' ';
+        }
     }, 
     components: {
         svgService,
@@ -178,7 +189,7 @@ export default {
                 <div class="reviews-count">reviews {{reviewsCount}}</div> · 
                 <div class="host-medal"></div>
                 <div class="host-level">Superhost</div> · 
-                <div class="area-scope-labels" >{{currStay.loc.address}}</div>
+                <div class="area-scope-labels" >{{locAddress}}</div>
                 <!-- <div class="area-scope-labels" v-html="labelsTxt"></div> -->
             </div>
           <button class="details-btn share" v-html="shareBtnTxt"></button>
@@ -188,7 +199,7 @@ export default {
         <main class="sticky-and-more-details">
             <details-order/>
             <section class="details-display">
-                <div class="details-summary">{{ staySummary }}</div>
+                <div class="details-summary">The house is hosted by {{ hostedBy }}</div>
                 <div class="details-container">
                     <div class="guests-count">{{ stayGuests }} guests · </div>
                     <div class="bedrooms-count">{{ stayBedrooms }} bedrooms · </div>
@@ -205,7 +216,7 @@ export default {
                 <div class="share-cover-txt">Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</div>
                 <button class="share-cover-btn">learn more</button>
             </section>
-            <details-description :descriptionName="stayDescription"/>
+            <details-description :descriptionTxt="stayDescription"/>
             <!-- <section class="inside-photos-display">
                 <div class="details-title">Where you'll sleep</div>
                 <div class="inside-carousel-container"></div>

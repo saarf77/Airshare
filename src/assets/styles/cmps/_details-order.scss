@@ -80,7 +80,42 @@
         width: 372px;
         min-height: 275px;
         margin: 50px auto 10px;
+        margin-left: 76px;
         box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+
+        .guest-add{
+          position: absolute;
+          top: 162px;
+          left: 50%;
+          transform: translate(-50%);
+
+          width: 328px;
+          background-color: $clr3;
+          border-radius: 4px;
+          box-shadow: rgb(0 0 0 / 15%) 0px 2px 6px, rgb(0 0 0 / 7%) 0px 0px 0px 1px;
+
+          > *{
+
+            width: calc(100% - 40px);
+            align-self: center;
+          
+          }  
+          .lft-crd {
+            margin-right: 20px;
+          }
+
+          .close-btn{
+            justify-content: end;
+              > button{
+                background-color: transparent;
+                color: $clr1;
+                font-size: 0.97rem;
+              }
+          }
+          .guests-container{
+            padding-block-start: 15px;
+          }
+        }
 }
 
 

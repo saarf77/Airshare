@@ -1,7 +1,7 @@
 .photo-display{
-        height: 562px;
+        height: 500px;
         width: 100%;
-
+padding-top: 5px;
         display: flex;
         flex-direction: row;
 
@@ -10,7 +10,7 @@
                 vertical-align: bottom;
                 aspect-ratio: 1/1;
                 height: 100%;
-                        width: auto;
+                        width: 563px;
         }
 
         .main-img-container{

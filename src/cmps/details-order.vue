@@ -1,7 +1,6 @@
 <template>
-    <div v-if="isConfirm" class="order-alert-overlay"></div>
-  
-  
+<!-- <div v-if="isConfirm" class="order-alert-overlay"></div> -->
+
   <section class="order-container sticky">
       <div class="order-form-header">
         <!-- <p><span class="cost bold">${{ stay.price }}</span> night</p> -->
@@ -40,6 +39,8 @@
     <input disabled :placeholder="guestsCount" />
 </div>
 </div>
+<div class="cell"></div>
+<div class="cell"></div>
 
 <div @click="openConfirm" class="btn-container">
     <div v-for="i in 100" class="cell"></div>
@@ -50,10 +51,6 @@
         
     </div>
 </div>
-
-
-
-
 
 <div class="flex column guest-add" v-if="isShow" v-click-away="onClickAway">
     
@@ -183,7 +180,7 @@ import { svgService } from '../services/svg.service.js';
     created() {
       // this.loggedinUser = this.$store.getters.loggedinUser;
       // console.log('this.loggedinUser:', this.loggedinUser)
-  
+        
     },
     components:{
         svgService,
