@@ -1,6 +1,7 @@
 <template>
   <div class="search-wrapper flex">
     <div v-show="!isExpend" data-expend="expend" @click.prevent="expendForm(true)"
+    
       class="filter-preview flex align-center">
       <div class="filter btn header-location">Anywhere</div>
       <div class="filter btn header-time">Any week</div>
@@ -9,7 +10,7 @@
       </div>
     </div>
     <div v-show="isExpend" class="filter-expend flex">
-
+      <div class="filter-background"></div>
       <el-form :model="filterBy">
         <div @click="activeTab('where')" class="filter-option where" data-field="where"
           :class="{ 'active-btn': isExpend ? isActive : !isActive }">
@@ -21,7 +22,7 @@
         </div>
         <div class="filter-option check">
           <div class="labels-wrap">
-            <v-date-picker color="red" :attributes="attrs" trim-weeks is-expanded :locale="locale" mode="date"
+            <v-date-picker color="gray" :attributes="attrs" trim-weeks is-expanded :locale="locale" mode="date"
               :columns="$screens({ default: 1, lg: 2 })" :rows="1" v-model="filterBy.date" is-range>
               <template v-slot="{ inputValue, inputEvents }">
                 <div class="flex justify-center items-center">

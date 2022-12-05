@@ -121,7 +121,9 @@ header {
     img.property-type-img {
       filter: opacity(0.8);
     }
-  
+    .header-time{
+      padding-inline-start: 1.5px;
+    }
 
   
     .content.filter-content {
@@ -152,7 +154,7 @@ header {
       flex: 1 1 0%;
       align-items: center;
       justify-content: end;
-      gap: 10px;
+      gap: 7px;
       padding-inline-end: 80px;
   
       a.right-header.become-host {
@@ -261,14 +263,14 @@ header {
 
   .absnav{
     position: absolute;
-    top: 65px;
+    top: 50px;
     left: 50%;
     transform: translate(-50%);
     z-index: 1;
     .filter-background{
-      position: absolute;
       width: 100vw;
-      height: 90px;
+      position: absolute;
+      height: 100px;
       background-color: #fff;
       z-index: -1;
     }
