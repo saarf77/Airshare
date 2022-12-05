@@ -77,8 +77,7 @@
         </div>
         
         
-    <!-- </di
-        v> -->
+    <!-- </div> -->
     <div class="row-card flex">
         <div class="lft-crd">
             <span class="title-sm"> Children</span>
@@ -254,7 +253,37 @@ import { svgService } from '../services/svg.service.js';
 
       onClickAway(event) {
         this.isShow = false
+        },
+        sendOrder() {
+      const time = JSON.parse(JSON.stringify(this.trip.dates));
+      const { start, end } = time;
+      const loggedinUser = this.$store.getters.loggedinUser;
+      const { adults, children, Infants } = this.trip.guests
+
+      let order = {
+        "hostId": this.stay.host._id,
+        "createdAt": Date.now(),
+        "buyer": {
+
+        },
+        "totalPrice": this.totalPriceWithFee,
+        "startDate": start,
+        "endDate": end,
+        "guests": {
+ 
+        },
+        "stay": {
+        
+        },
+        "status": "pending"
       }
+
+      this.$store.dispatch({ type: "saveOrder", order, status: 'pending' });
+      ElMessage.success('Order send!')
+
+      setTimeout(() => this.$router.push('/'), 1000);
+
+    },
   
     },
   };
