@@ -59,7 +59,8 @@
 
 <div class="flex column guest-add" v-if="isShow" v-click-away="onClickAway">
     
-    <div class="guests-container flex justify-space-between align-center">
+    <!-- <div class="guests-container flex justify-space-between align-center"> -->
+        <div class="row-card flex">
         <div class="lft-crd">
         <span class="title-sm"> Adults</span>
         <span class="txt-sm">Ages 13+</span>
@@ -73,9 +74,11 @@
                 <span> + </span>
             </button>
         </div>
+        </div>
         
         
-    </div>
+    <!-- </di
+        v> -->
     <div class="row-card flex">
         <div class="lft-crd">
             <span class="title-sm"> Children</span>
