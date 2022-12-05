@@ -116,25 +116,26 @@ export default {
     watch:{
         reviewsList:{
             handler(newVal) {
-                if(newVal?.list.length > 0){
-                    this.currStayStarRating = (newVal.list.reduce((acc, review) => acc + parseFloat(review.starRate), 0)/newVal.list.length).toFixed(1) ;
-                    this.currStayAttributes.cleanlinessRating = (newVal.list.reduce((acc, review) => acc + review.attributes.cleanliness, 0)/newVal.list.length).toFixed(1);
-                    this.currStayAttributes.communicationRating = (newVal.list.reduce((acc, review) => acc + review.attributes.communication, 0)/newVal.list.length).toFixed(1);
-                    this.currStayAttributes.checkInRating = (newVal.list.reduce((acc, review) => acc += review.attributes.checkIn, 0)/newVal.list.length).toFixed(1);
-                    this.currStayAttributes.accuracyRating = (newVal.list.reduce((acc, review) => acc += review.attributes.accuracy, 0)/newVal.list.length).toFixed(1);
-                    this.currStayAttributes.locationRating = (newVal.list.reduce((acc, review) => acc += review.attributes.location, 0)/newVal.list.length).toFixed(1);
-                    this.currStayAttributes.valueRating = (newVal.list.reduce((acc, review) => acc += review.attributes.value, 0)/newVal.list.length).toFixed(1);
-                    this.currStayReviews = newVal.list;
-                    this.usersImgUrls = [];
-                    let hostPromise;
-                    newVal.list.forEach(review => {
-                        hostPromise = stayService.getById(review.user_id, 'users-db')
-                        hostPromise.then((res)=>{
-                            this.reviewsUsers.push(res[0]);
-                        });
-                    });
+                // TODO: add the reviews back by updating the storage
+                // if(newVal?.list.length > 0){
+                //     this.currStayStarRating = (newVal.list.reduce((acc, review) => acc + parseFloat(review.starRate), 0)/newVal.list.length).toFixed(1) ;
+                //     this.currStayAttributes.cleanlinessRating = (newVal.list.reduce((acc, review) => acc + review.attributes.cleanliness, 0)/newVal.list.length).toFixed(1);
+                //     this.currStayAttributes.communicationRating = (newVal.list.reduce((acc, review) => acc + review.attributes.communication, 0)/newVal.list.length).toFixed(1);
+                //     this.currStayAttributes.checkInRating = (newVal.list.reduce((acc, review) => acc += review.attributes.checkIn, 0)/newVal.list.length).toFixed(1);
+                //     this.currStayAttributes.accuracyRating = (newVal.list.reduce((acc, review) => acc += review.attributes.accuracy, 0)/newVal.list.length).toFixed(1);
+                //     this.currStayAttributes.locationRating = (newVal.list.reduce((acc, review) => acc += review.attributes.location, 0)/newVal.list.length).toFixed(1);
+                //     this.currStayAttributes.valueRating = (newVal.list.reduce((acc, review) => acc += review.attributes.value, 0)/newVal.list.length).toFixed(1);
+                //     this.currStayReviews = newVal.list;
+                //     this.usersImgUrls = [];
+                //     let hostPromise;
+                //     newVal.list.forEach(review => {
+                //         hostPromise = stayService.getById(review.user_id, 'users-db')
+                //         hostPromise.then((res)=>{
+                //             this.reviewsUsers.push(res[0]);
+                //         });
+                //     });
 
-                }
+                // }
 
                
             },
