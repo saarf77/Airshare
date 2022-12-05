@@ -73,7 +73,7 @@
 
 <script>
 import { GoogleLogin } from 'vue3-google-login'
-const GOOGLE_CLIENT_ID = '948145792727-lgq9urg3gkog8gvam9n19ol444jcdp6l.apps.googleusercontent.com'
+const GOOGLE_CLIENT_ID = ''
 import  google  from '../cmps/google-login.vue'
 
 
