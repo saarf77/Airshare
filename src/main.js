@@ -16,7 +16,13 @@ import './assets/styles/main.scss'
 import './assets/styles/setup/_typography.scss'
 import rootCmp from './root-cmp.vue'
 
+import vue3GoogleLogin from 'vue3-google-login'
+
+
 const app = createApp(rootCmp)
+app.use(vue3GoogleLogin, {
+    clientId: 'YOUR_GOOGLE_CLIENT_ID'
+})
 app.use(router)
 app.use(store)
 app.use(ElementPlus)
