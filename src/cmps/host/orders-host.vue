@@ -5,7 +5,14 @@
 <script>
 
 export default {
-  
+    data() {
+    return {
+
+    };
+  },
+  created() {
+
+  },
     methods: {
         approve() {
             const order = JSON.parse(JSON.stringify(this.hostOrder))
