@@ -2,7 +2,7 @@ import { orderService } from '../../services/order.service.js'
 import { stayService } from '../../services/stay-service.js'
 
 
-export default {
+export const orderStore = {
     state: {
       orders: null,
       filterBy: null,
@@ -37,9 +37,9 @@ export default {
       },
     },
     actions: {
-      async loadOrders(context) {
+      async loadOrders(context , hostId) {
         try {
-          const orders = await orderService.getOrders(filterBy)
+          const orders = await orderService.query(hostId)
           context.commit({ type: 'setOrders', orders: orders })
           return orders
         } catch (err) {
