@@ -244,6 +244,9 @@ import { utilService } from '../services/util.service.js';
         },
     },
     methods: {
+      orderConfirm() {
+            this.$router.push('/payment/' + this.order._id);
+        },
       calcPayments(){
           if(this.hasCalcPrice){
             let pricePerDay = (this.guestsObj.adults + this.guestsObj.children) * 150;

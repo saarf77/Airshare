@@ -37,6 +37,7 @@
               <th class="title-thead text-center">Action </th>
             </tr>
           </thead>
+
           <tbody>
             <orders-host v-for="hostOrder in getHostOrders" :key="hostOrder._id" :hostOrder="hostOrder" />
           </tbody>

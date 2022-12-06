@@ -7,6 +7,7 @@ import loginSignup from './views/login-signup.vue'
 import stayDetails from './views/stay-details.vue'
 import userDetails from './views/user-details.vue'
 import dashboard from './views/host-dashboard.vue'
+import stayPayment from './views/stay-payment.vue'
 
 
 
@@ -40,6 +41,11 @@ const routes = [
     path: '/stay/:id',
     name: 'stay-details',
     component: stayDetails
+  },
+  {
+    path: '/payment/:id',
+    name: 'stay-payment',
+    component: stayPayment
   },
   {
     path: '/dashboard',
