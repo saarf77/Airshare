@@ -21,11 +21,11 @@
               </button>
             </div>
           </div>
-          <GoogleLogin
+          <!-- <GoogleLogin
           :client-id="googleClientId"
           :callback="handleGoogleLogin"
           :error="handleGoogleError"
-          /> 
+          />  -->
           <div class="login-actions-btns flex ">
             <button type="button" class="actions-btn" @click="toggleForm()">New user?</button>
           </div>
