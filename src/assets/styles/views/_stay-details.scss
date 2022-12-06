@@ -164,7 +164,9 @@ translate: -14%;
                      border-radius: 7px;
                      background-color: transparent;
 
-                     color: $clr7;
+                     color: #222222;
+                     font-weight: 500;
+                     font-size: 14px;
                      text-decoration: underline;
                      transition: color 0.2s;
 
@@ -263,13 +265,13 @@ translate: -14%;
 
               .share-cover {
                      grid-column: 1/1;
-                     grid-row: 2/2;
+                     grid-row: 1/1;
                      height: fit-content;
 
                      display: flex;
                      flex-direction: column;
 
-                     margin-block-start: 35px;
+                     margin-block-start: 410px;
                      padding-block-end: 17px;
                      border-bottom: 1.5px solid $clr6;
 
