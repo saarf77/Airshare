@@ -56,7 +56,8 @@ export default {
                                         currText = currText.substring(idx, currText.length);
                                 }
                         }
-                    return `<div class="short-description">' ${currLines.join('\n')}</div><button class="show-more-btn"> Show more ${svgService.getSvgIcon('rightArrow')}</button>`
+        
+                    return `<div class="short-description"> ${currLines.join('\n')}</div><button class="show-more-btn"> Show more ${svgService.getSvgIcon('rightArrow')}</button>`
                 }
               },
               components:{
@@ -67,6 +68,6 @@ export default {
 </script>
 
 <template>
-       <section class="description-display" ref="descriptionNode" v-html="descriptionHtml">
+        <section class="description-display" ref="descriptionNode" v-html="descriptionHtml">
         </section>
 </template>

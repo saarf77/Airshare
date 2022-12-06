@@ -3,10 +3,19 @@
     height: 70vh;
 
     .login-form {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         width: 30vw;
         border: 1px solid #dbdbdb;
         border-radius: 13px;
         box-shadow: 0 0 0 #000;
+        z-index: 3;
+        background-color: #fff;
+        box-shadow: -3px -4px 14px 10px rgba(0,0,0,0.38);
+        -webkit-box-shadow: -3px -4px 14px 10px rgba(0,0,0,0.38);
+        -moz-box-shadow: -3px -4px 14px 10px rgba(0,0,0,0.38);
     }
 
 
@@ -50,6 +59,44 @@
 
 .login-actions-btns {
     justify-content: center;
+    margin-top: 15px;
+}
+
+.login-form .btn-container .content {
+    left: 0;
+    right: 0;
+}
+
+*:has(.login-container) .header-labels {
+    display: none;
+}
+
+*:has(.login-container) header {
+    height: auto;
+    // visibility: hidden;
+    display: none;
+}
+
+*:has(.login-container) nav.top-nav.flex.justify-space-between.align-center {
+    height: 100%;
+}
+
+.overlay-login {
+    background: rgba(0, 0, 0, 0.3803921569);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 3;
+    transition: all 200ms ease-out;
+    overflow: auto;
+}
+
+.login-input:focus {
+    border: 1.5px solid black;
+}
+
+.login-input:hover {
+    cursor: text;
 }
 
 .actions-btn {

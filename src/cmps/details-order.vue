@@ -314,6 +314,9 @@ import { svgService } from '../services/svg.service.js';
       },
     },
     methods: {
+      // sayHello(){
+      //   console.log(this.range)
+      // },
       onDatePicked(element){
         console.log('yes!!!', element)
       },

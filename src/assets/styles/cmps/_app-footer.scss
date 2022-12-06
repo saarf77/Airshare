@@ -3,7 +3,7 @@
     // padding-bottom: 14px;
     justify-content: center;
     position: fixed;
-    width: 100%;
+    width: 100vw;
     bottom: 0;
     z-index: 2;
     background-color: $clr8;
@@ -17,7 +17,7 @@
      
     .footer{
          padding-block: 16px;
-         padding-inline: 24px;
+         padding-inline: 40px;
     }
     .gap {
         gap: 8px;

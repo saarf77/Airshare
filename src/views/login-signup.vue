@@ -1,28 +1,33 @@
 <template>
   <main class="login-container">
+    <div class="overlay-login"></div>
     <section v-if="!this.newUser" class="flex column align-center">
       <form class="login-form" @submit.prevent="doLogin">
         <div class="login-form-body flex column">
           <h1>Welcome back</h1>
           <input autocomplete="username" type="text" class="login-input" name="username" placeholder="Username"
-            v-model="loginCred.username" />
+          v-model="loginCred.username" />
           <input autocomplete="password" type="password" class="login-input" name="password" placeholder="Password"
-            v-model="loginCred.password" />
+          v-model="loginCred.password" />
           <p>{{ msg }}</p>
-
           
-          <button type="submit" class="login-btn">Submit</button>
-          <div class="btn-container">
-                <div v-for="i in 100" class="cell"></div>
-                <div class="content">
-                  <button type="submit" class="action-btn">
-                    <span>Submit</span>
-                  </button>
-                
-              </div>
+          
+          <!-- <button type="submit" class="login-btn">Submit</button> -->
+          <div @click="doLogin" class="btn-container">
+            <div v-for="i in 100" class="cell"></div>
+            <div class="content">
+              <button type="submit" class="action-btn">
+                <span>Submit</span> 
+              </button>
             </div>
+          </div>
+          <GoogleLogin
+          :client-id="googleClientId"
+          :callback="handleGoogleLogin"
+          :error="handleGoogleError"
+          /> 
           <div class="login-actions-btns flex ">
-            <button type="button" class="actions-btn" @click="toggleForm()">New user</button>
+            <button type="button" class="actions-btn" @click="toggleForm()">New user?</button>
           </div>
         </div>
       </form>
@@ -40,19 +45,46 @@
           <input autocomplete="username" type="text" class="login-input" name="username" placeholder="Username"
             v-model="signupCred.username" />
           <p>{{ msg }}</p>
-          <button class="login-btn" type="submit">Sign up</button>
-          <div class="login-actions-btns flex">
-            <button type="button" class=" actions-btn" @click="toggleForm()">I already have an account</button>
-          </div>
-        </div>
+          <div @click="doSignup" class="btn-container">
+                <div v-for="i in 100" class="cell"></div>
+                <div class="content">
+                  <button type="submit" class="action-btn">
+                   <span>Sign up</span> 
+
+                   
+                   
+                  </button>
+                </div>
+              </div>
+              <!-- <button class="login-btn" type="submit">Sign up</button> -->
+              <div class="login-actions-btns flex">
+                <button type="button" class=" actions-btn" @click="toggleForm()">I already have an account</button>
+              </div>
+            </div>
+        
+
+        
       </form>
     </section>
   </main>
 </template>
 
+
+
 <script>
+import { GoogleLogin } from 'vue3-google-login'
+const GOOGLE_CLIENT_ID = ''
+import  google  from '../cmps/google-login.vue'
+
+
+import imgUploader from '../cmps/img-uploader.vue'
 export default {
   name: 'login-signup',
+  components: {
+    imgUploader,
+    GoogleLogin,
+    google
+  },
   data() {
     return {
       newUser: false,
@@ -62,7 +94,7 @@ export default {
         username: '',
         password: '',
         fullname: '',
-        imgUrl: 'https://res.cloudinary.com/nisan/image/upload/v1658872030/air2b/unprofile_ji7zus.png',
+        imgUrl: 'https://res.cloudinary.com/sprint4-triman/image/upload/v1669793675/elon_mask_ltbtp6.jpg',
         wishList: []
       },
     }
@@ -74,6 +106,9 @@ export default {
     loggedinUser() {
       return this.$store.getters.loggedinUser
     },
+    googleClientId() {
+      return GOOGLE_CLIENT_ID
+    }
   },
   created() {
     this.loadUsers()
