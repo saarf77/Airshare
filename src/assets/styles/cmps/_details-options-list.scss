@@ -9,8 +9,13 @@
         padding-block-end: 18px;
 
         .options-title{
-                font-size: 1.2em;
+                font-size: 1.23em;
                 margin-block-end: 30px;
+                font-family: 'Circular',-apple-system,'BlinkMacSystemFont','Roboto','Helvetica Neue',sans-serif;
+                font-weight: 500;
+                text-size-adjust: 100%;
+                // color:lighten($color: #222222, $amount: 5%) ;
+                color: #222222 ;
         }
 
         .options-icon-container{

@@ -1,74 +1,101 @@
-.back-office-main h1 {
-    margin-top: 24px;
-    margin-bottom: 0.6rem;
-    font-family: cereal-medium;
-    margin: 0 auto;
-  }
-  
-  .title-backoffice {
-    width: 994px;
-    margin: 0 auto;
-  
-    @media (max-width: 1120px) {
-      width: 615px;
-      
-      margin: 0 auto;
+.dashboard-container {
+    background-color: $clr8;
+    // min-height: 75vh;
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
+    >* {
+        grid-column: 2/3;
     }
-  }
-  
-  .back-office {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-  
-    @media (max-width: 1120px) {
-      display: grid;
-      grid-template-areas: 'charts''orders';
+
+    >*.full {
+        grid-column: 1 / -1;
     }
-  
-    .back-office-charts {
-      @media (max-width: 1120px) {
-        grid-area: charts;
+
+    .top-dashboard-title {
+        gap: 20px;
+
+        //buttons top
+        .top-btn {
+            cursor: pointer;
+            font-family: Cereal-medium;
+            font-size: 1rem;
+            background-color: $clr7;
+            border-radius: 5px;
+            width: 120px;
+            height: 40px;
+            margin: 10px 0px;
+
+            &:hover {
+                background-color: $clr2;
+                transition: .2s;
+            }
+
+            &:focus {
+                background-color: $clr2;
+            }
+        }
+
+        .content-table {
+            margin-top: 20px;
+        }
+    }
+
+    //table
+    .title-thead {
+        font-size: 1rem;
+        font-family: Cereal;
       }
-  
-      // font-family: airbnb-medium;
-      .chart-area-title {
-        margin: 0 0 0.6rem;
-        font-size: 22px;
-        font-family: cereal-medium;
+
+    table {
+        margin: 5;
+        border: 1px solid $clr2;
+        background-color: white;
+        // text-align: left;
+        border-collapse: separate;
+        border-spacing: 0px 30px;
+        display: table;
+        margin: 10px 0px;
+
+    }
+
+    tbody {
+        row-gap: 30px;
+        display: table-row-group;
+    }
+
+    tr.border_bottom {
+        box-shadow: 0px 1px 0px 0px $clr6;
       }
-  
-      .bold {
-        font-size: 18px;
-        font-family: cereal-medium;
-        margin-bottom: 5px;
-      }
-  
-      .subtitle-area {
-        font-size: 15px;
-        font-family: cereal-book;
+
+
+
+      //titles
+    .login-msg {
+        font-family: cereal-bold;
+        font-size: 1em;
+    }
+
+    .under-line {
         color: $clr2;
-        padding-bottom: 13px;
-  
-      }
-  
-      .chart-area-subtitle {
-        font-size: 18px;
-        font-family: cereal-medium;
-      }
-  
-      .total-income {
-        font-family: cereal-medium;
-      }
+        &:hover{
+            color: black;
+            transition: .2s;
+            text-decoration: underline;
+        }
     }
-  
-    .orders-list-main {
-      flex-grow: 1;
-      margin-right: 50px;
-      
-      @media (max-width: 1120px) {
-        grid-area: orders;
-        margin-right: 0px;
-      }
+
+    .logIn {
+        h1 {
+            padding-top: 10px;
+            text-align: center;
+        }
+
+        span {
+            color: $clr2;
+        }
     }
-  }
+
+    .chart-title {
+        color: $clr2;
+    }
+}
