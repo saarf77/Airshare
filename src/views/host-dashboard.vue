@@ -1,37 +1,44 @@
 <template>
   <div class="dashboard-container">
     <div class="logIn">
-      <h1 class="login-msg">In order to see your hosting summary,
+      <h1 class="login-msg">In order to see your hosting summary, 
         you must log in first
         <router-link to="/login">
           <span class="under-line">login here</span>
         </router-link>
       </h1>
     </div>
-    <div>
-      <div class="flex column">
 
+    <div >
+      <div class="flex column">
+        
         <h1 class="chart-title">Hosting Summary</h1>
-        <div class="top-dashboard-label flex">
-          <button> Your Orders</button>
-          <button> Your Stays</button>
+        <div class="top-dashboard-title flex">
+          <button @click="showOrder" class="top-btn"> My Orders</button>
+          <button @click="showStay" class="top-btn"> My Stays</button>
         </div>
+
         <table v-if="showOrders" class="content-table">
+
+
           <thead>
             <tr class="border_bottom">
               <th class="title-thead">Time </th>
-              <th class="title-thead">Guest Name </th>
+              <th class="title-thead">Guest </th>
               <th class="title-thead">Stay name </th>
-              <th class="title-thead">Check In/Out </th>
+              <th class="title-thead">Check In </th>
+              <th class="title-thead">Check Out </th>
               <th class="title-thead text-center">Status </th>
+              <th class="title-thead text-center">Revenue </th>
               <th class="title-thead text-center">Guests </th>
               <th class="title-thead text-center">Action </th>
             </tr>
           </thead>
           <tbody>
-            <orders-host />
+            <orders-dashboard />
           </tbody>
         </table>
+
         <table v-if="showStays" class="content-table">
           <thead>
             <tr>
@@ -43,13 +50,14 @@
             </tr>
           </thead>
           <tbody>
-            <stays-host />
+            <stays-dashboard v-for="hostStay in getHostStays" :key="hostStay._id" :hostStay="hostStay" />
           </tbody>
         </table>
       </div>
     </div>
   </div>
 </template>
+
 <script>
 import ordersHost from '../cmps/host/orders-host.vue';
 import staysHost from '../cmps/host/stays-host.vue';
@@ -69,16 +77,18 @@ export default {
     };
   },
   created() {
-    // this.$store.dispatch({ type: 'loadOrders'});
+    this.$store.dispatch({ type: 'loadOrders'});
+    // this.$store.dispatch({ type: 'setFilterBy', filterBy: { hostID: this.getLogInUser._id } });
+
   },
 
   computed: {
     getSumReviews() {
-      return this.$store.getters.getTotalReviews
-    },
-    getAvgRate() {
-      return this.$store.getters.getAvgRate
-    },
+            return this.$store.getters.getTotalReviews
+        },
+        getAvgRate() {
+            return this.$store.getters.getAvgRate
+        }, 
     getLogInUser() {
       return this.$store.getters.loggedinUser;
     },
@@ -98,7 +108,18 @@ export default {
 
   },
   methods: {
-
+    showStay() {
+      this.showOrders = false;
+      this.showStays = true;
+    },
+    showOrder() {
+      this.showStays = false;
+      this.showOrders = true;
+    },
+    showStay() {
+      this.showOrders = false;
+      this.showStays = true;
+    },
   },
 };
 </script>
