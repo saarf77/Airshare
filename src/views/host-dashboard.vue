@@ -126,20 +126,47 @@ export default {
     },
     pendingOrders() {
       var ordersCount = 0;
-
+      if (this.hostOrders.length > 0) {
+        this.hostOrders.forEach(order => {
+          if (order.status === 'pending') {
+            ordersCount++;
+          }
+        });
+        return ordersCount;
+      }
     },
     approvedOrders() {
       var ordersCount = 0;
-  
+      if (this.hostOrders.length > 0) {
+        this.hostOrders.forEach(order => {
+          if (order.status === 'approved') {
+            ordersCount++;
+          }
+        });
+        return ordersCount;
+      }
     },
     declinedOrders() {
       var ordersCount = 0;
-
+      if (this.hostOrders.length > 0) {
+        this.hostOrders.forEach(order => {
+          if (order.status === 'declined') {
+            ordersCount++;
+          }
+        });
+        return ordersCount;
+      }
     },
 
     totalRevenues() {
       var prices = [];
-    
+      if (this.hostOrders.length > 0) {
+        this.hostOrders.forEach(order => {
+          prices.push(order.totalPrice);
+        });
+        var sum = prices.reduce((sum, price) => +sum + +price, 0);
+        return sum.toLocaleString();
+      }
     },
   },
   methods: {

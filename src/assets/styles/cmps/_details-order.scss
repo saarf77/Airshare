@@ -138,6 +138,17 @@
         .btn-container.hidden{
                 display: none;
         }
+
+        .btn-container:not(.hidden){
+                .cell{
+                        pointer-events: none;
+                }
+
+                .content{
+                        cursor: pointer;
+                }
+                
+        }
 }
 
 .details-page .order-container {
