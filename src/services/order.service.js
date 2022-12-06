@@ -66,6 +66,7 @@ async function getEmptyOrder() {
 //       "buyer": {
 //         "_id": "u101",
 //         "fullname": "User 1"
+//          "imgUrl":"some img"
 //       },
 //       "totalPrice": 160,
 //       "startDate": "2025/10/15",

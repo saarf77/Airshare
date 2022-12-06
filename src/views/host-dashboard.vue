@@ -57,7 +57,7 @@
           </tbody>
         </table>
       </div>
-      
+
     </div>
   </div>
 </template>
@@ -82,7 +82,8 @@ export default {
     };
   },
   created() {
-    this.$store.dispatch({ type: 'loadOrders' , hostId: this.getLogInUser._id});
+    this.$store.dispatch({ type: 'loadOrders' });
+    // hostId: this.getLogInUser._id
     // this.$store.dispatch({ type: 'setFilterBy', filterBy: { hostID: this.getLogInUser._id } });
 
   },
