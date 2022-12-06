@@ -6,6 +6,7 @@ import reviewApp from './views/review-app.vue'
 import loginSignup from './views/login-signup.vue'
 import stayDetails from './views/stay-details.vue'
 import userDetails from './views/user-details.vue'
+import dashboard from './views/host-dashboard.vue'
 
 
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/stay/:id',
     name: 'stay-details',
     component: stayDetails
+  },
+  {
+    path: '/dashboard',
+    name: 'host-dashboard',
+    component: dashboard
   },
 
 ]
