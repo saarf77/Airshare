@@ -16,6 +16,8 @@
         <div class="top-dashboard-title flex">
           <button @click="showOrder" class="top-btn"> Orders</button>
           <button @click="showStay" class="top-btn"> My Stays</button>
+          <button @click="showGraph" class="top-btn"> Graphs</button>
+          <button @click="showWishList" class="top-btn"> Wishlist</button>
         </div>
 
         <table v-if="showOrders" class="content-table">
@@ -124,17 +126,33 @@ export default {
     },
   },
   methods: {
-    showStay() {
-      this.showOrders = false;
-      this.showStays = true;
-    },
     showOrder() {
       this.showStays = false;
       this.showOrders = true;
+      this.showGraph = flase;
+      this.showWishList = flase;
+
     },
     showStay() {
       this.showOrders = false;
       this.showStays = true;
+      this.showGraph = false;
+      this.showWishList = flase;
+
+    },
+    showGraph() {
+      this.showOrders = false;
+      this.showStays = false;
+      this.showGraph = true;
+      this.showWishList = flase;
+
+    },
+    showWishList() {
+      this.showOrders = false;
+      this.showStays = false;
+      this.showGraph = false;
+      this.showWishList = true;
+
     },
   },
 };
