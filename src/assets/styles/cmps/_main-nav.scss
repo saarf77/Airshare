@@ -150,6 +150,9 @@ guest-dropdown {
   .#{$name}:not(.active-btn):hover {
     background: #dddddd;
     border-radius: 32px;
+    // width: 50%;
+    position: relative;
+    right: 4px;
   }
 }
 

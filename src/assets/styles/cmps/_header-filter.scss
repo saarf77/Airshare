@@ -88,6 +88,31 @@
   background: $clr6;
   right: 16px;
 }
+.filter-option.where::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 30px;
+  background: $clr6;
+  right: 16px;
+  top: 16px;
+}
+.filter-option .checkout::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 30px;
+  background: $clr6;
+  right: 16px;
+  top: 16px;
+}
+.sep{
+  position: absolute;
+  width: 1px;
+  height: 30px;
+  background: $clr6;
+  top: 16px; 
+}
 
 form.el-form.el-form--default.el-form--label-right {
   width: 100%;

@@ -1,7 +1,6 @@
 <template>
   <div class="search-wrapper flex">
     <div v-show="!isExpend" data-expend="expend" @click.prevent="expendForm(true)"
-    
       class="filter-preview flex align-center">
       <div class="filter btn header-location">Anywhere</div>
       <div class="filter btn header-time">Any week</div>
@@ -10,8 +9,8 @@
       </div>
     </div>
     <div v-show="isExpend" class="filter-expend flex">
-      <div class="filter-background"></div>
-      <el-form :model="filterBy">
+      <div class="filter-background" @click="exitAll"></div>
+      <el-form @click="(isClicked = true)" :class="{ 'bgc': isExpend ? isClicked : !isClicked }" :model="filterBy">
         <div @click="activeTab('where')" class="filter-option where" data-field="where"
           :class="{ 'active-btn': isExpend ? isActive : !isActive }">
           <label for="where">Where</label>
@@ -22,8 +21,8 @@
         </div>
         <div class="filter-option check">
           <div class="labels-wrap">
-            <v-date-picker color="gray" :attributes="attrs" trim-weeks is-expanded :locale="locale" mode="date"
-              :columns="$screens({ default: 1, lg: 2 })" :rows="1" v-model="filterBy.date" is-range>
+            <v-date-picker color="gray" trim-weeks is-expanded mode="date" :columns="$screens({ default: 1, lg: 2 })"
+              :rows="1" v-model="filterBy.date" is-range>
               <template v-slot="{ inputValue, inputEvents }">
                 <div class="flex justify-center items-center">
                   <div @click.native="activeTab('checkin')" class="checkin" data-field="checkin"
@@ -33,12 +32,15 @@
                     <input name="checkin" :value="inputValue.start" v-on="inputEvents.start" placeholder="Add dates"
                       class="border px-2 py-1 w-32 rounded focus:outline-none focus:border-indigo-300" />
                   </div>
+                  <span class="sep"></span>
+
                   <div :class="{ 'active-btn': endActive }" class="checkout " @click.native="activeTab('checkout')">
                     <label for="checkout">Check out</label>
                     <input name="checkout" :value="inputValue.end" v-on="inputEvents.end" placeholder="Add dates"
-                    class="border px-2 py-1 w-32 rounded focus:outline-none focus:border-indigo-300" />
+                      class="border px-2 py-1 w-32 rounded focus:outline-none focus:border-indigo-300" />
                   </div>
                 </div>
+                <!-- <span class="sep"></span> -->
               </template>
             </v-date-picker>
             <!-- <label class="main-search-label" @click="openModal()">
@@ -65,7 +67,7 @@
           :class="{ 'active-btn': guestActive }">
           <div @click="dropDownMenu($event)" class="add-guest-wrapper">
             <label for="add-guest">Who</label>
-            <input  disabled type="text" data-field="guest" placeholder="Add guests" :value = "`guests ${guestsNum}`"  />
+            <input disabled type="text" data-field="guest" placeholder="Add guests" :value="`guests ${guestsNum}`" />
           </div>
 
           <div @click="formSubmit" class="order-container header-filter-search">
@@ -74,14 +76,14 @@
 
               </gardient-btn> -->
 
-                <div v-for="i in 100" class="cell"></div>
-  
-                <div class="content filter-content">
-                  <button class="action-btn">
-                    <div class="material-icons search"> search </div>
-                    <span>Search</span>
-                  </button>
-                
+              <div v-for="i in 100" class="cell"></div>
+
+              <div class="content filter-content">
+                <button class="action-btn">
+                  <div class="material-icons search"> search </div>
+                  <span>Search</span>
+                </button>
+
               </div>
             </div>
           </div>
@@ -122,7 +124,7 @@
         </button>
       </div>
     </div>
-    
+
     <div class="row-card flex">
       <div class="lft-crd">
         <span class="title-sm"> Infants</span>
@@ -202,7 +204,8 @@ export default {
   },
   data() {
     return {
-      guestsNum:0,
+      isClicked: false,
+      guestsNum: 0,
       filterBy: {
         where: '',
         date: [],
@@ -260,6 +263,13 @@ export default {
     //     }
     //   }
     // },
+    exitAll() {
+      this.isClicked = false
+      this.isActive = false;
+      this.startActive = false;
+      this.endActive = false;
+      this.guestActive = false;
+    },
     activeTab(value, ev) {
 
       if (value === 'where') {
@@ -316,11 +326,11 @@ export default {
       // let update = this.filterBy.guests
       // console.log(update);
       // let guestsNum = []
-      if(this.filterBy.guests[type]===0 && number === -1)return 
+      if (this.filterBy.guests[type] === 0 && number === -1) return
       this.filterBy.guests[type] += number;
       // let guest = update.map(guest=> guestNum.push(guest))
-     let guestsNum = this.filterBy.guests.adults + this.filterBy.guests.children + this.filterBy.guests.infants + this.filterBy.guests.pets
-     this.guestsNum = guestsNum
+      let guestsNum = this.filterBy.guests.adults + this.filterBy.guests.children + this.filterBy.guests.infants + this.filterBy.guests.pets
+      this.guestsNum = guestsNum
       // this.guestsNum = guestNum 
       // console.log(this.guestsNum)
     },
