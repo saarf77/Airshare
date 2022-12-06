@@ -86,7 +86,7 @@
 <div class="cell"></div>
 <div class="cell"></div>
 
-<div @click="openConfirm" class="btn-container" ref="elOrderBtn">
+<div @click="orderConfirm" class="btn-container" ref="elOrderBtn">
     <div v-for="i in 100" class="cell"></div>
     <div class="content">
         <button class="action-btn" v-html="btnStatus">
