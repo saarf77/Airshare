@@ -129,22 +129,22 @@ export default {
     showOrder() {
       this.showStays = false;
       this.showOrders = true;
-      this.showGraph = flase;
-      this.showWishList = flase;
+      this.showGraph = false;
+      this.showWishList = false;
 
     },
     showStay() {
       this.showOrders = false;
       this.showStays = true;
       this.showGraph = false;
-      this.showWishList = flase;
+      this.showWishList = false;
 
     },
     showGraph() {
       this.showOrders = false;
       this.showStays = false;
       this.showGraph = true;
-      this.showWishList = flase;
+      this.showWishList = false;
 
     },
     showWishList() {
