@@ -14,7 +14,7 @@
         
         <h1 class="chart-title">Hosting Summary</h1>
         <div class="top-dashboard-title flex">
-          <button @click="showOrder" class="top-btn"> My Orders</button>
+          <button @click="showOrder" class="top-btn"> Orders</button>
           <button @click="showStay" class="top-btn"> My Stays</button>
         </div>
 
@@ -105,7 +105,23 @@ export default {
     totalOrders() {
       return this.hostOrders.length;
     },
+    pendingOrders() {
+      var ordersCount = 0;
 
+    },
+    approvedOrders() {
+      var ordersCount = 0;
+  
+    },
+    declinedOrders() {
+      var ordersCount = 0;
+
+    },
+
+    totalRevenues() {
+      var prices = [];
+    
+    },
   },
   methods: {
     showStay() {
