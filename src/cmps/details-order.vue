@@ -12,32 +12,24 @@
         <div class="trip-details-container flex column">
           <h1 class="reservation-details-title">Reservation details</h1>
           <span class="mini-trip-title">Trip dates:</span>
-          <!-- <h1 class="mini-trip-detail">{{ formatCheck }} - {{ formatCheckOut }}</h1> -->
           <span class="mini-trip-title">Guests:</span>
-          <!-- <h1 class="mini-trip-detail">{{ guestCount }} guests</h1> -->
 
           <div class="price-details-container flex column">
             <h1 class="mini-trip-title">Price Details</h1>
             <div class="price-per-night flex justify-space-between">
-              <!-- <h1 class="mini-trip-detail">${{ stay.price }} X {{ daysTotal }} nights</h1> -->
-              <!-- <h1 class="mini-trip-detail">${{ totalPriceSum }}</h1> -->
             </div>
 
             <div class="service flex justify-space-between">
               <h1 class="mini-trip-detail">Service fee</h1>
-              <!-- <h1 class="mini-trip-detail">${{ serviceFee }}</h1> -->
             </div>
             <div class="total-price flex justify-space-between">
               <h1 class="mini-trip-detail">Total</h1>
-              <!-- <h1 class="mini-trip-detail">${{ totalPrice }}</h1> -->
             </div>
           </div>
         </div>
 
         <div class="order-stay-details flex column">
           <img class="order-stay-image" :src="imgOrder">
-          <!-- <h1 class="stay-detail">{{ stay.name }}</h1> -->
-          <!-- <h1 class="stay-detail">{{ stay.address.city }},{{ stay.address.country }}</h1> -->
         </div>
 
       </div>
@@ -62,12 +54,8 @@
 
   <section class="order-container sticky" :class="{extended: this.hasCalcPrice}">
       <div class="order-form-header">
-        <!-- <p><span class="cost bold">${{ stay.price }}</span> night</p> -->
-        <!-- <p class="stared">{{ $filters.reviewsRateAvg(stay) }} <span class="reviews"> ({{ reviewsCount }})</span></p> -->
       </div>
-  
-      <!-- Date !! -->
-      <div class="order-data">
+        <div class="order-data">
         <v-date-picker color="gray" is-range :columns="2" @dayclick="onDatePicked">
           <template v-slot="{ inputValue, inputEvents }">
             <div class="flex justify-center items-center">
@@ -87,8 +75,6 @@
         </div>
     </template>
 </v-date-picker>
-<!--  -->
-
 <div @click="isShow = !isShow" class="guest-input">
     <label>GUESTS
         <div class="expand-order">
@@ -112,9 +98,7 @@
 </div>
 
 <div class="flex column guest-add" v-if="isShow" v-click-away="onClickAway">
-    
-    <!-- <div class="guests-container flex justify-space-between align-center"> -->
-        <div class="row-card flex">
+            <div class="row-card flex">
         <div class="lft-crd">
         <span class="title-sm"> Adults</span>
         <span class="txt-sm">Ages 13+</span>
@@ -129,9 +113,6 @@
             </button>
         </div>
         </div>
-        
-        
-    <!-- </div> -->
     <div class="row-card flex">
         <div class="lft-crd">
             <span class="title-sm"> Children</span>
@@ -147,8 +128,6 @@
             </button>
         </div>
         </div>
-        
-        
         <div class="row-card flex">
             <div class="lft-crd">
                 <span class="title-sm"> Infants</span>
@@ -164,7 +143,6 @@
                 </button>
             </div>
         </div>
-        
         <div class="row-card flex">
             <div class="lft-crd">
                 <span class="title-sm"> Pets</span>
@@ -187,19 +165,6 @@
   
     </div>
 </div>
-
-<div class="pricing" v-if="dateCheck">
-    <h4>You won't be charged yet</h4>
-    <h5 class="flex justify-space-between">
-        <span class="under-line ">${{ this.orderStay.price }} X {{ daysTotal }}</span><span> ${{ totalPriceSum }}</span>
-    </h5>
-    <h5 class="flex justify-space-between">
-        <span class="under-line ">Service fee</span><span> ${{ serviceFee }}</span>
-    </h5>
-    <p class="flex justify-space-between">
-        <span>Total</span><span> ${{ totalPrice }}</span>
-    </p>
-</div>
 <div class="report" v-html="reportListing"></div>
             <div class="price-section">
               <div class="calming-alert">You won't be charged yet</div>
@@ -207,7 +172,7 @@
               <div><span>Cleaning fee:</span><span> {{this.priceObj.CleaningFee}}$</span></div>
               <div><span>Service fee:</span><span> {{this.priceObj.serviceFee}}$</span></div>
               <div><span>Taxes: </span><span> {{this.priceObj.taxes}}$</span></div>
-              <div><span>Total price:</span><span> {{this.priceObj.priceSum}}$</span></div>
+              <div><span>Total price:</span><span>{{totalPrice}}$</span></div>
             </div>
 </section>
 <section >
@@ -225,7 +190,6 @@ import { svgService } from '../services/svg.service.js';
     props: ['orderStay'],
     data() {
       return {
-        // imgOrder: utilService.getImgUrl(this.orderStay.imgUrls[0]),
         currDates: {
           startDay: 0,
           endDay: 0,
@@ -250,11 +214,6 @@ import { svgService } from '../services/svg.service.js';
           },
           dates: {},
         },
-        // loggedinUser: null,
-        fee: 1.10,
-        serviceFee: null,
-        daysTotal: null,
-        totalPriceWithFee: null
       };
     },
     components:{
@@ -262,16 +221,10 @@ import { svgService } from '../services/svg.service.js';
         utilService,
     },
     computed: {
-        calcStayPrice(){
-          if(this.hasCalcPrice){
-            this.priceObj.basePrice = this.currDates.daysNum * 150;
-            this.priceObj.serviceFee = (this.priceObj.basePrice + this.priceObj.CleaningFee) * 1/7.05;
-            this.priceObj.taxes =(this.priceObj.basePrice + this.priceObj.CleaningFee + this.priceObj.serviceFee)* 0.07;
-            this.priceSum = this.priceObj.basePrice + this.priceObj.serviceFee + this.priceObj.taxes;
-          }
-
-          return '';
-        },
+      totalPrice(){
+        let sum = this.priceObj.basePrice + this.priceObj.CleaningFee + this.priceObj.taxes
+        return sum;
+      },
         reportListing(){
         return svgService.getSvgIcon('flagIcon') +' Report this listing'
        },
@@ -309,17 +262,15 @@ import { svgService } from '../services/svg.service.js';
         if (!this.trip.dates[1]) return "Add date"
         else return this.trip.dates[1]
         },
-      totalPrice() {
-            //TODO-------------------------------------------------------------------------------------------------------------------
-      },
     },
     methods: {
-      // sayHello(){
-      //   console.log(this.range)
-      // },
-      onDatePicked(element){
-        console.log('yes!!!', element)
-      },
+      calcPayments(){
+          if(this.hasCalcPrice){
+            this.priceObj.basePrice = this.currDates.daysNum * 150;
+            this.priceObj.serviceFee = parseFloat(((this.priceObj.basePrice + this.priceObj.CleaningFee) * 1/7.05).toFixed(2));
+            this.priceObj.taxes = parseFloat(((this.priceObj.basePrice + this.priceObj.CleaningFee + this.priceObj.serviceFee) * 0.07).toFixed(2));
+          }
+        },
       updateGuests(type, number) {
         const { children, adults, Infants } = this.trip.guests
         const guestsCount = children + adults + Infants;
@@ -351,7 +302,7 @@ import { svgService } from '../services/svg.service.js';
         hostId: this.orderStay.host._id,
         stay_Id: this.orderStay._id,
         createdAt: Date.now(),
-        totalPrice: this.totalPriceWithFee,
+        price: totalPrice,
         startDate: start,
         endDate: end,
         status: 'pending'
@@ -363,13 +314,14 @@ import { svgService } from '../services/svg.service.js';
     },
     onDatePicked(day){
       if(this.currDates.isFirst){
-        this.currDates.startDay =  day.id;
+        this.currDates.startDay =  new Date(day.id).getTime();
         this.currDates.isFirst = false;
       } else{
-        this.currDates.endDay = day.id
+        this.currDates.endDay = new Date(day.id).getTime();
         this.currDates.isFirst = true;
         this.hasCalcPrice = true;
         this.currDates.daysNum = Math.ceil((this.currDates.endDay - this.currDates.startDay)/86400000);
+        this.calcPayments();
       }
     }
   },
