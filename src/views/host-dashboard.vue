@@ -57,23 +57,32 @@
           </tbody>
         </table>
       </div>
-
+      <div class="graphs">  
+        <chart-host v-if="showGraphs"/>
+      </div>
     </div>
+    <!-- <wishlist-host/> -->
   </div>
 </template>
 
 <script>
 import ordersHost from '../cmps/host/orders-host.vue';
 import staysHost from '../cmps/host/stays-host.vue';
+import chartHost from '../cmps/host/chart-host.vue';
+// import wishlistHost from '../cmps/host/wishlist-host.vue';
+
 export default {
   name: 'host-dashboard',
   components: {
     ordersHost,
     staysHost,
+    chartHost,
+    // wishlistHost
   },
   data() {
     return {
-
+      showWishLists:false,
+      showGraphs:false,
       orders: null,
       stays: null,
       hostStays: null,
@@ -136,29 +145,29 @@ export default {
     showOrder() {
       this.showStays = false;
       this.showOrders = true;
-      this.showGraph = false;
-      this.showWishList = false;
+      this.showGraphs = false;
+      this.showWishLists = false;
 
     },
     showStay() {
       this.showOrders = false;
       this.showStays = true;
-      this.showGraph = false;
-      this.showWishList = false;
+      this.showGraphs = false;
+      this.showWishLists = false;
 
     },
     showGraph() {
       this.showOrders = false;
       this.showStays = false;
-      this.showGraph = true;
-      this.showWishList = false;
+      this.showGraphs = true;
+      this.showWishLists = false;
 
     },
     showWishList() {
       this.showOrders = false;
       this.showStays = false;
-      this.showGraph = false;
-      this.showWishList = true;
+      this.showGraphs = false;
+      this.showWishLists = true;
 
     },
   },

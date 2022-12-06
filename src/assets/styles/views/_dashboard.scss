@@ -1,4 +1,5 @@
 .dashboard-container {
+    
     background-color: $clr8;
     // min-height: 75vh;
     display: grid;
@@ -10,6 +11,8 @@
     >*.full {
         grid-column: 1 / -1;
     }
+
+    
 
     .top-dashboard-title {
         gap: 20px;
@@ -75,6 +78,7 @@
     .login-msg {
         font-family: cereal-bold;
         font-size: 1em;
+        margin-block-start: 20px;
     }
 
     .under-line {
@@ -100,4 +104,10 @@
     .chart-title {
         color: $clr2;
     }
+}
+*:has(.dashboard-container) .header-labels{
+    display: none;
+}
+*:has(.dashboard-container) .main-header{
+    height: 80px;
 }
