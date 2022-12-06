@@ -67,7 +67,7 @@ export const orderStore = {
       },
       async saveOrder(context, { order }) {
         try {
-          const isEdit = !!order._id
+          const isEdit = (!order._id)
           const savedOrder = await orderService.saveOrder(order)
           console.log(savedOrder)
           context.commit({ type: isEdit ? 'updateOrder' : 'addOrder', order: savedOrder })

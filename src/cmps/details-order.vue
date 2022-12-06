@@ -33,10 +33,10 @@
         </div>
 
       </div>
-      <div class="modal-btns-container" >
+      <div class="modal-btns-container"  @click="openConfirm">
         <div class="cell"></div>
         <div class="cell"></div>
-        <div @click.prevent="sendOrder" class="btn-container">
+        <div class="btn-container" @click="openConfirm">
           <div v-for="i in 100" class="cell"></div>
           <div class="content">
             <button class="action-btn">
@@ -296,7 +296,35 @@ import { utilService } from '../services/util.service.js';
         this.isShow = false;
       },
       sendOrder() {
-        this.$store.dispatch({ type: "saveOrder", order, status: 'pending' });
+        let currOrder =  {
+          createdAt: new Date.now(),
+          totalPrice: this.totalPrice,
+          startDate: this.currDates.startDay,
+          endDate: this.currDates.endDay,
+          status:'pending', // empty, pending, approved
+          guests: {
+              adults: this.guestsObj.adults,
+              children: this.guestsObj.children,
+              infants: this.guestsObj.infants,
+              pests: this.guestsObj.infants
+          },
+          stay:{
+              _id: this.this.orderStay._id,
+              name: this.this.orderStay.name,
+        },
+          host:{
+              id: this.orderStay.host._id,
+              imgUrl: this.orderStay.host.pictureUrl,
+              fullname: this.orderStay.host.name,
+          },
+          buyer: {
+              _id: '',
+              fullname:'',
+              imgUrl:'',
+        },
+          msgs: [],
+        }
+        this.$store.dispatch({ type: "saveOrder", currOrder});
         ElMessage.success('Order send!')
         setTimeout(() => this.$router.push('/'), 1000);
       },

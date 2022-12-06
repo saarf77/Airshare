@@ -42,18 +42,35 @@ async function save(order) {
     }
     return savedOrder
 }
-async function getEmptyOrder() {
-    return order = {
-        host: {
-            // id: 
-        },
-        stay_Id: '',
-        createdAt: Date.now(),
-        price: '',
-        startDate: 0,
+function getEmptyOrder() {
+    return {
+        createdAt: 0,
+        totalPrice: 0,
+        startDate:0,
         endDate: 0,
-        status: 'empty'
-    }
+        status:'empty', // empty, pending, approved
+        guests: {
+            adults: 0,
+            children: 0,
+            infants: 0,
+            pests: 0
+        },
+        stay:{
+            _id: '0',
+            name: '',
+       },
+        host:{
+            id: '',
+            imgUrl:'',
+            fullname: '',
+        },
+        buyer: {
+            _id: '',
+            fullname:'',
+            imgUrl:'',
+       },
+        msgs: [],
+      }
 }
 
 const orders = [
