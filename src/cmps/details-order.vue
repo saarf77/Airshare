@@ -89,8 +89,7 @@
 <div @click="openConfirm" class="btn-container" ref="elOrderBtn">
     <div v-for="i in 100" class="cell"></div>
     <div class="content">
-        <button class="action-btn" >
-            <span>Reserve</span>
+        <button class="action-btn" v-html="btnStatus">
         </button>
         
     </div>
@@ -163,18 +162,16 @@
         </button>
   
     </div>
-</div>
-<!-- <div class="report" v-html="reportListing"></div> -->
-            <div class="price-section">
-              <div class="calming-alert">You won't be charged yet</div>
-              <div><span>Base price:</span><span>{{this.priceObj.basePrice}}$</span></div>
-              <div><span>Cleaning fee:</span><span> {{this.priceObj.CleaningFee}}$</span></div>
-              <div><span>Service fee:</span><span> {{this.priceObj.serviceFee}}$</span></div>
-              <div><span>Taxes: </span><span> {{this.priceObj.taxes}}$</span></div>
-              <div><span>Total price:</span><span>{{totalPrice}}$</span></div>
-            </div>
-</section>
-<section >
+  </div>
+  <div class="error-report" v-html="errorReport"></div>
+  <div class="price-section">
+    <div class="calming-alert">You won't be charged yet</div>
+    <div><span>Base price:</span><span>{{this.priceObj.basePrice}}$</span></div>
+    <div><span>Cleaning fee:</span><span> {{this.priceObj.CleaningFee}}$</span></div>
+    <div><span>Service fee:</span><span> {{this.priceObj.serviceFee}}$</span></div>
+    <div><span>Taxes: </span><span> {{this.priceObj.taxes}}$</span></div>
+    <div><span>Total price:</span><span>{{totalPrice}}$</span></div>
+  </div>
 </section>
 </template>
   
@@ -212,7 +209,8 @@ import { utilService } from '../services/util.service.js';
             infants: 0,
             pets: 0,
         },
-        guestTxt: '1 guest'
+        guestTxt: '1 guest',
+        error: ''
       };
     },
     components:{
@@ -220,6 +218,9 @@ import { utilService } from '../services/util.service.js';
         utilService,
     },
     computed: {
+      btnStatus(){
+        return (this.currDates.startDay + this.currDates.endDay !== 0 )? '<span>Reserve</span>' : '<span>Check availability</span>';
+            },
       orderArrow(){
         return (this.isShow)? svgService.getSvgIcon('upArrow') : svgService.getSvgIcon('downArrow');
       },
@@ -227,19 +228,19 @@ import { utilService } from '../services/util.service.js';
         let sum = this.priceObj.basePrice + this.priceObj.CleaningFee + this.priceObj.taxes
         return sum;
       },
-        reportListing(){
-        return svgService.getSvgIcon('flagIcon') +' Report this listing'
+        errorReport(){
+        return `<span class="current-errors">${this.error} </span>`
        },
       guestsCount() {
         return 'Add guests';
       },
       checkIn() {
         if (this.currDates.startDay === 0) return "Add date";
-        return this.currDates.startDay
+        return new Date(this.currDates.startDay).toLocaleDateString()
       },
       checkOut() {
         if (this.currDates.endDay === 0) return "Add date";
-        return this.currDates.endDay
+        return new Date(this.currDates.endDay).toLocaleDateString()
         },
     },
     methods: {
@@ -310,9 +311,12 @@ import { utilService } from '../services/util.service.js';
           this.currDates.daysNum = Math.ceil((this.currDates.endDay - this.currDates.startDay)/86400000);
           this.calcPayments();
         }
+
+        if(this.currDates.endDay + this.currDates.startDay !== 0) this.error = '';
       },
       openConfirm(){
-        console.log('fdgdfgdfgdfgdf');
+        if(this.currDates.endDay + this.currDates.startDay === 0) this.error = 'please select dates';
+        console.log(this.error);
       }
   },
   watch: {
