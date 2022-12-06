@@ -1,6 +1,7 @@
 <template>
   <div class="dashboard-container">
-    <div class="logIn">
+    <!-- <div class="logIn"> -->
+    <div class="logIn" v-if="!getLogInUser">
       <h1 class="login-msg">In order to see your hosting summary, 
         you must log in first
         <router-link to="/login">
@@ -37,7 +38,7 @@
             </tr>
           </thead>
           <tbody>
-            <orders-host />
+            <orders-host v-for="hostOrder in getHostOrders" :key="hostOrder._id" :hostOrder="hostOrder" />
           </tbody>
         </table>
 
@@ -56,6 +57,7 @@
           </tbody>
         </table>
       </div>
+      
     </div>
   </div>
 </template>
@@ -71,6 +73,7 @@ export default {
   },
   data() {
     return {
+
       orders: null,
       stays: null,
       hostStays: null,
@@ -79,12 +82,15 @@ export default {
     };
   },
   created() {
-    this.$store.dispatch({ type: 'loadOrders'});
+    this.$store.dispatch({ type: 'loadOrders' , hostId: this.getLogInUser._id});
     // this.$store.dispatch({ type: 'setFilterBy', filterBy: { hostID: this.getLogInUser._id } });
 
   },
 
   computed: {
+    // getOrders(){
+    //   return this.$store.getters.getOrders
+    // },
     getSumReviews() {
             return this.$store.getters.getTotalReviews
         },
