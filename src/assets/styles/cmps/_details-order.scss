@@ -200,6 +200,18 @@
             padding-block-start: 15px;
           }
         }
+
+        .error-report{
+                padding-block-start: 8px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .current-errors{
+                        font-family: Cereal;
+                        font-size: 0.9em;
+                        color: $errorClr;
+                }
+        }
 }
 .details-page .content{
         border-radius: 10px !important;
