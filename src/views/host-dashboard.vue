@@ -35,7 +35,7 @@
             </tr>
           </thead>
           <tbody>
-            <orders-dashboard />
+            <orders-host />
           </tbody>
         </table>
 
@@ -50,7 +50,7 @@
             </tr>
           </thead>
           <tbody>
-            <stays-dashboard v-for="hostStay in getHostStays" :key="hostStay._id" :hostStay="hostStay" />
+            <stays-host v-for="hostStay in getHostStays" :key="hostStay._id" :hostStay="hostStay" />
           </tbody>
         </table>
       </div>
