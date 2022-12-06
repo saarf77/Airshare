@@ -125,6 +125,14 @@ a {
   outline: none;
   border: none;
   background: none;
+  font-weight: 400;
+  font-size: 14px;
+  font-family:  Circular, -apple-system, BlinkMacSystemFont, Helvetica Neue, sans-serif;
+  color: #717171;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+
 }
 
 .filter-option.guest-dropdown {

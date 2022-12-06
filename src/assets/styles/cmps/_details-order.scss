@@ -74,7 +74,7 @@
 }
 
 .details-page .order-container[class*="extended"]{
-        height: 532px;
+        height: 496px;
 
         .price-section{
                 display: flex;
@@ -138,7 +138,7 @@
         padding: 20px;
         width: 372px;
         height: 275px;
-        margin: 50px auto 10px;
+        margin: 32px auto 10px;
         margin-left: 76px;
         box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
 
@@ -176,7 +176,10 @@
           }
         }
 }
-
+.details-page .content{
+        border-radius: 10px !important;
+        translate: 1.5%;
+}
 
 .order-form-header {
         display: flex;

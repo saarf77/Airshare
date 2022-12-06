@@ -67,7 +67,7 @@
           :class="{ 'active-btn': guestActive }">
           <div @click="dropDownMenu($event)" class="add-guest-wrapper">
             <label for="add-guest">Who</label>
-            <input disabled type="text" data-field="guest" placeholder="Add guests" :value="`guests ${guestsNum}`" />
+            <input disabled type="text" data-field="guest" placeholder="Add guests" :value="guestsNum" />
           </div>
 
           <div @click="formSubmit" class="order-container header-filter-search">
@@ -205,7 +205,7 @@ export default {
   data() {
     return {
       isClicked: false,
-      guestsNum: 0,
+      guestsNum: '',
       filterBy: {
         where: '',
         date: [],
@@ -322,17 +322,23 @@ export default {
     //    let guestNum = this.filterBy.guests.reduce((acc,num) => acc + num)
     //    return guestNum 
     // },
+    // guestsCount() {
+    //     const { children, adults, Infants , pets } = this.filterBy.guests
+
+    //     const guestsCount = children + adults + Infants + pets;
+    //     if (guestsCount >= 1) return guestsCount + ' guests';
+    //     else return 'Add guests';
+    //   },
     updateGuests(type, number) {
-      // let update = this.filterBy.guests
-      // console.log(update);
-      // let guestsNum = []
       if (this.filterBy.guests[type] === 0 && number === -1) return
       this.filterBy.guests[type] += number;
-      // let guest = update.map(guest=> guestNum.push(guest))
+
       let guestsNum = this.filterBy.guests.adults + this.filterBy.guests.children + this.filterBy.guests.infants + this.filterBy.guests.pets
-      this.guestsNum = guestsNum
-      // this.guestsNum = guestNum 
-      // console.log(this.guestsNum)
+      this.guestsNum = guestsNum + ' guests'
+
+      if (guestsNum >= 1) this.guestsNum = guestsNum + ' guests';
+      if (guestsNum === 0) this.guestsNum = 'Add guests'
+
     },
     toggleShowModal(ev) {
       this.showModal = !this.showModal;

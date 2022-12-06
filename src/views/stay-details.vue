@@ -214,7 +214,7 @@ export default {
             <section class="share-cover">
                 <img src="https://res.cloudinary.com/dj88xudav/image/upload/v1670001241/share-cover_drqj1d.png" alt="share-cover" class="share-cover-img"/>
                 <div class="share-cover-txt">Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</div>
-                <button class="share-cover-btn">learn more</button>
+                <button class="share-cover-btn">Learn more</button>
             </section>
             <details-description :descriptionTxt="stayDescription"/>
             <!-- <section class="inside-photos-display">

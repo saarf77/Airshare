@@ -78,10 +78,11 @@
 <div @click="isShow = !isShow" class="guest-input">
     <label>GUESTS
         <div class="expand-order">
-            <span class="material-icons-outlined" :class="{ flip: !isShow }"> expand_less </span>
+          <span v-if="isShow" class="material-icons-outlined" :class="{ flip: !isShow }"> expand_less </span>
+          <span v-if="!isShow" class="material-icons-outlined" :class="{ flip: !isShow }"> expand_more </span>
         </div>
     </label>
-    <input disabled :placeholder="guestsCount" />
+    <input disabled :placeholder="gu" />
 </div>
 </div>
 <div class="cell"></div>
@@ -165,7 +166,7 @@
   
     </div>
 </div>
-<div class="report" v-html="reportListing"></div>
+<!-- <div class="report" v-html="reportListing"></div> -->
             <div class="price-section">
               <div class="calming-alert">You won't be charged yet</div>
               <div><span>Base price:</span><span>{{this.priceObj.basePrice}}$</span></div>
@@ -190,6 +191,7 @@ import { svgService } from '../services/svg.service.js';
     props: ['orderStay'],
     data() {
       return {
+        
         currDates: {
           startDay: 0,
           endDay: 0,
@@ -210,7 +212,8 @@ import { svgService } from '../services/svg.service.js';
             guests: {
             adults: 1,
             children: 0,
-            Infants: 0
+            Infants: 0,
+           
           },
           dates: {},
         },
@@ -251,7 +254,7 @@ import { svgService } from '../services/svg.service.js';
         const { children, adults, Infants , pets } = this.trip.guests
   
         const guestsCount = children + adults + Infants + pets;
-        if (guestsCount >= 1) return guestsCount + ' guests';
+        if (guestsCount >= 1) this.guestNum =  guestsCount + ' guests';
         else return 'Add guests';
       },
       checkIn() {
@@ -273,12 +276,14 @@ import { svgService } from '../services/svg.service.js';
         },
       updateGuests(type, number) {
         const { children, adults, Infants } = this.trip.guests
+     
         const guestsCount = children + adults + Infants;
         if (this.trip.guests[type] === 0 && number === -1) return;
         if (this.orderStay.capacity === guestsCount && number == 1) return ElMessage.error('You over the guests capacity');
       
         this.trip.guests[type] += number;
         console.log(this.trip.guests[type]);
+
       },
       openConfirm() {
         const loggedinUser = this.$store.getters.loggedinUser;
