@@ -11,7 +11,7 @@
                   </li>
               </ul>
           </div>
-          <div class="back-office-charts" v-if="orders">
+          <div class="back-office-charts" >
               <div class="">
                   <h1 class="chart-area-title">Hosting Summary</h1>
                   <h2 class="bold">Great Work:)</h2>
@@ -39,16 +39,21 @@ export default {
       }
   },
   created() {
+      // this.$store.dispatch({ type: 'loadOrders' })
+      // this.$store.dispatch({type: 'loadHostStays'})
   },
+
   methods: {},
   computed: {
       orders() {
+          return this.$store.getters.getOrders
       },
       getSumReviews() {
+          return this.$store.getters.getTotalReviews
       },
       getAvgRate() {
-      },
-      
+          return this.$store.getters.getAvgRate
+      }, 
   },
   unmounted() { },
 }
