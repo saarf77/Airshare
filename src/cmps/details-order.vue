@@ -33,7 +33,7 @@
         </div>
 
       </div>
-      <div class="modal-btns-container">
+      <div class="modal-btns-container" >
         <div class="cell"></div>
         <div class="cell"></div>
         <div @click.prevent="sendOrder" class="btn-container">
@@ -77,21 +77,19 @@
 </v-date-picker>
 <div @click="isShow = !isShow" class="guest-input">
     <label>GUESTS
-        <div class="expand-order">
-          <span v-if="isShow" class="material-icons-outlined" :class="{ flip: !isShow }"> expand_less </span>
-          <span v-if="!isShow" class="material-icons-outlined" :class="{ flip: !isShow }"> expand_more </span>
+        <div class="expand-order" @click="disableOrderBtn" v-html="orderArrow" >
         </div>
     </label>
-    <input disabled :placeholder="gu" />
+    <input disabled :value="guestTxt"/>
 </div>
 </div>
 <div class="cell"></div>
 <div class="cell"></div>
 
-<div @click="openConfirm" class="btn-container">
+<div @click="openConfirm" class="btn-container" ref="elOrderBtn">
     <div v-for="i in 100" class="cell"></div>
     <div class="content">
-        <button class="action-btn">
+        <button class="action-btn" >
             <span>Reserve</span>
         </button>
         
@@ -104,11 +102,11 @@
         <span class="title-sm"> Adults</span>
         <span class="txt-sm">Ages 13+</span>
       </div>
-      <div class="rit-crd guests-btns">
+      <div class="rit-crd adults-btns">
         <button @click.stop="updateGuests('adults', -1)">
                 <span> - </span>
             </button>
-            <span  class="guests-count">{{ trip.guests.adults }}</span>
+            <span  class="guests-count">{{ this.guestsObj.adults }}</span>
             <button @click.stop="updateGuests('adults', 1)">
                 <span> + </span>
             </button>
@@ -119,11 +117,11 @@
             <span class="title-sm"> Children</span>
             <span class="txt-sm">Ages 2–12</span>
         </div>
-        <div class="rit-crd guests-btns">
+        <div class="rit-crd children-btns">
               <button @click.stop="updateGuests('children', -1)">
                 <span> - </span>
             </button>
-            <span  class="guests-count">{{ trip.guests.children }}</span>
+            <span  class="guests-count">{{guestsObj.children }}</span>
             <button @click.stop="updateGuests('children', 1)">
               <span> + </span>
             </button>
@@ -134,12 +132,12 @@
                 <span class="title-sm"> Infants</span>
                 <span class="txt-sm">Under 2</span>
             </div>
-            <div class="rit-crd guests-btns">
-                <button @click.stop="updateGuests('Infants', -1)">
+            <div class="rit-crd infants-btns">
+                <button @click.stop="updateGuests('infants', -1)">
                     <span> - </span>
                 </button>
-                <span class="guests-count">{{ trip.guests.Infants }}</span>
-                <button @click.stop="updateGuests('Infants', 1)">
+                <span class="guests-count">{{ this.guestsObj.infants }}</span>
+                <button @click.stop="updateGuests('infants', 1)">
                     <span> + </span>
                 </button>
             </div>
@@ -149,11 +147,11 @@
                 <span class="title-sm"> Pets</span>
                 <span class="txt-sm animal">Bringing a service animal?</span>
             </div>
-            <div class="rit-crd guests-btns">
+            <div class="rit-crd pets-btns">
                 <button @click.stop="updateGuests('pets', -1)">
                     <span> - </span>
                 </button>
-                <span class="guests-count">{{ trip.guests.Infants }}</span>
+                <span class="guests-count">{{ this.guestsObj.pets }}</span>
                 <button @click.stop="updateGuests('pets', 1)">
                     <span> + </span>
                 </button>
@@ -183,8 +181,8 @@
   <script>
 
 import { svgService } from '../services/svg.service.js';
-  import { ElMessage } from 'element-plus';
-  import { utilService } from '../services/util.service.js';
+import { ElMessage } from 'element-plus';
+import { utilService } from '../services/util.service.js';
   
   export default {
     name: ' order-details',
@@ -208,15 +206,13 @@ import { svgService } from '../services/svg.service.js';
         },
         isConfirm: false,
         isShow: false,
-        trip: {
-            guests: {
+        guestsObj: {
             adults: 1,
             children: 0,
-            Infants: 0,
-           
-          },
-          dates: {},
+            infants: 0,
+            pets: 0,
         },
+        guestTxt: '1 guest'
       };
     },
     components:{
@@ -224,6 +220,9 @@ import { svgService } from '../services/svg.service.js';
         utilService,
     },
     computed: {
+      orderArrow(){
+        return (this.isShow)? svgService.getSvgIcon('upArrow') : svgService.getSvgIcon('downArrow');
+      },
       totalPrice(){
         let sum = this.priceObj.basePrice + this.priceObj.CleaningFee + this.priceObj.taxes
         return sum;
@@ -231,105 +230,100 @@ import { svgService } from '../services/svg.service.js';
         reportListing(){
         return svgService.getSvgIcon('flagIcon') +' Report this listing'
        },
-      reviewsCount() {
-        return this.orderStay.reviews.length;
-      },
-      dateCheck() {
-        return Object.keys(this.trip.dates).length;
-      },
-      formatCheck() {
-        return new Date(this.trip.dates.start).toLocaleDateString()
-      },
-  
-      guestCount() {
-        const { children, adults, Infants } = this.trip.guests
-        return children + adults + Infants;
-      },
-  
-      formatCheckOut() {
-        return new Date(this.trip.dates.end).toLocaleDateString()
-      },
-  
       guestsCount() {
-        const { children, adults, Infants , pets } = this.trip.guests
-  
-        const guestsCount = children + adults + Infants + pets;
-        if (guestsCount >= 1) this.guestNum =  guestsCount + ' guests';
-        else return 'Add guests';
+        return 'Add guests';
       },
       checkIn() {
-        if (!this.trip.dates[0]) return "Add date"
-        else return this.trip.dates[0]
+        if (this.currDates.startDay === 0) return "Add date";
+        return this.currDates.startDay
       },
       checkOut() {
-        if (!this.trip.dates[1]) return "Add date"
-        else return this.trip.dates[1]
+        if (this.currDates.endDay === 0) return "Add date";
+        return this.currDates.endDay
         },
     },
     methods: {
       calcPayments(){
           if(this.hasCalcPrice){
-            this.priceObj.basePrice = this.currDates.daysNum * 150;
+            let pricePerDay = (this.guestsObj.adults + this.guestsObj.children) * 150;
+            this.priceObj.basePrice = this.currDates.daysNum * pricePerDay;
             this.priceObj.serviceFee = parseFloat(((this.priceObj.basePrice + this.priceObj.CleaningFee) * 1/7.05).toFixed(2));
             this.priceObj.taxes = parseFloat(((this.priceObj.basePrice + this.priceObj.CleaningFee + this.priceObj.serviceFee) * 0.07).toFixed(2));
           }
         },
       updateGuests(type, number) {
-        const { children, adults, Infants } = this.trip.guests
-     
-        const guestsCount = children + adults + Infants;
-        if (this.trip.guests[type] === 0 && number === -1) return;
-        if (this.orderStay.capacity === guestsCount && number == 1) return ElMessage.error('You over the guests capacity');
-      
-        this.trip.guests[type] += number;
-        console.log(this.trip.guests[type]);
-
-      },
-      openConfirm() {
-        const loggedinUser = this.$store.getters.loggedinUser;
-        if (!loggedinUser) return ElMessage.error("log in first");
-  
-        if (this.dateCheck === 0) return ElMessage.error('Fill check in and check out date ')
-        const { adults, children, Infants } = this.trip.guests
-        if (children === 0 && adults === 0) return ElMessage.error('Add guests! ')
-        this.isConfirm = true
+          switch (type) {
+            case 'adults':
+            if(number > 0 && this.guestsObj.adults < 8){
+              this.guestsObj.adults += number;
+            } else if(number < 0 && this.guestsObj.adults > 1){
+              this.guestsObj.adults += number;
+            }
+              break;
+            case 'children':
+              if(number > 0 && this.guestsObj.children < 8){
+                this.guestsObj.children += number;
+              } else if(number < 0 && this.guestsObj.children > 0){
+                this.guestsObj.children += number;
+              }
+              break;
+            case 'infants':
+              if(number > 0 && this.guestsObj.infants < 5){
+                this.guestsObj.infants += number;
+              } else if(number < 0 && this.guestsObj.infants > 0){
+                this.guestsObj.infants += number;
+              }
+              break;
+            case 'pets':
+                if(number > 0 && this.guestsObj.pets < 5){
+                  this.guestsObj.pets += number;
+                } else if(number < 0 && this.guestsObj.pets > 0){
+                  this.guestsObj.pets += number;
+                }
+              break;
+            default:
+              break;
+          }
+          (this.guestsObj.adults + this.guestsObj.children === 1)? this.guestTxt = `1 guest `: this.guestTxt = `${this.guestsObj.adults + this.guestsObj.children} guests `;
+          if(this.guestsObj.infants > 0) this.guestTxt +=`, ${this.guestsObj.infants} infants `;
+          if(this.guestsObj.pets > 0) this.guestTxt +=`, ${this.guestsObj.pets} pets `;
+          this.calcPayments();
+          console.log('this.priceObj.basePrice', this.priceObj.basePrice);
+          
       },
       onClickAway(event) {
-        this.isShow = false
-        },
-        sendOrder() {
-        const time = JSON.parse(JSON.stringify(this.trip.dates));
-        const { start, end } = time;
-        const loggedinUser = this.$store.getters.loggedinUser;
-        const { adults, children, Infants,pets } = this.trip.guests
-
-      let order = {
-        hostId: this.orderStay.host._id,
-        stay_Id: this.orderStay._id,
-        createdAt: Date.now(),
-        price: totalPrice,
-        startDate: start,
-        endDate: end,
-        status: 'pending'
+        this.isShow = false;
+      },
+      sendOrder() {
+        this.$store.dispatch({ type: "saveOrder", order, status: 'pending' });
+        ElMessage.success('Order send!')
+        setTimeout(() => this.$router.push('/'), 1000);
+      },
+      onDatePicked(day){
+        if(this.currDates.isFirst){
+          this.currDates.startDay =  new Date(day.id).getTime();
+          this.currDates.isFirst = false;
+        } else{
+          this.currDates.endDay = new Date(day.id).getTime();
+          this.currDates.isFirst = true;
+          this.hasCalcPrice = true;
+          this.currDates.daysNum = Math.ceil((this.currDates.endDay - this.currDates.startDay)/86400000);
+          this.calcPayments();
+        }
+      },
+      openConfirm(){
+        console.log('fdgdfgdfgdfgdf');
       }
-
-      this.$store.dispatch({ type: "saveOrder", order, status: 'pending' });
-      ElMessage.success('Order send!')
-      setTimeout(() => this.$router.push('/'), 1000);
-    },
-    onDatePicked(day){
-      if(this.currDates.isFirst){
-        this.currDates.startDay =  new Date(day.id).getTime();
-        this.currDates.isFirst = false;
-      } else{
-        this.currDates.endDay = new Date(day.id).getTime();
-        this.currDates.isFirst = true;
-        this.hasCalcPrice = true;
-        this.currDates.daysNum = Math.ceil((this.currDates.endDay - this.currDates.startDay)/86400000);
-        this.calcPayments();
-      }
-    }
   },
+  watch: {
+      isShow(newValue, oldValue){
+            if(!newValue){
+              this.$refs.elOrderBtn.classList.value = 'btn-container'
+            } else {
+              this.$refs.elOrderBtn.classList += ' hidden'
+            }
+        }
+    }
 };
   </script>
   

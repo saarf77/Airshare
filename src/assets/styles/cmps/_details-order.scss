@@ -124,10 +124,18 @@
                 }
 
         }
+
+        .btn-container.hidden{
+                display: none;
+        }
 }
 
 .details-page .order-container:not([class*="extended"]){
         .price-section{
+                display: none;
+        }
+
+        .btn-container.hidden{
                 display: none;
         }
 }
@@ -163,6 +171,23 @@
             margin-right: 20px;
           }
 
+          .rit-crd{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 90px;
+          }
+
+          .rit-crd > button{
+                width: 30px;
+                background-color: $clr3;
+                border: 2px solid lighten($color: $clr1, $amount: 50);
+                border-radius: 50%;
+                transition: 0.1s;
+                &:hover{
+                        border: 2px solid lighten($color: $clr1, $amount: 10);
+                }
+          }
           .close-btn{
             justify-content: end;
               > button{
@@ -213,6 +238,10 @@ input {
         right: 10px;
         top: 13px;
         cursor: pointer;
+
+        > svg{
+                margin-block-start: 8px;
+        }
 }
 
 
