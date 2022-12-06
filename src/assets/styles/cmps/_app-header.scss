@@ -138,7 +138,7 @@ header {
 
     form.el-form.el-form--default.el-form--label-right {
       border: 1px solid #dddddd;
-      background-color: #ebebeb;
+      // background-color: #ebebeb;
       border-radius: 32px;
       height: 66px;
       display: flex;
@@ -148,6 +148,9 @@ header {
       flex: 1 1 0%;
       justify-content: space-between;
       box-sizing: border-box;
+    }
+    form.el-form.el-form--default.el-form--label-right.bgc {
+      background-color: #ebebeb;
     }
   
     .last-section-nav {
