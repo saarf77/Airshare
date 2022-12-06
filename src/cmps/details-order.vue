@@ -201,10 +201,14 @@
     </p>
 </div>
 <div class="report" v-html="reportListing"></div>
-<div>Base price: {{this.priceObj.basePrice}}$</div>
-<div>Service fee: {{this.priceObj.serviceFee}}$</div>
-<div>Taxes: {{this.priceObj.taxes}}$</div>
-<div>Total price: {{this.priceSum}}$</div>
+            <div class="price-section">
+              <div class="calming-alert">You won't be charged yet</div>
+              <div><span>Base price:</span><span>{{this.priceObj.basePrice}}$</span></div>
+              <div><span>Cleaning fee:</span><span> {{this.priceObj.CleaningFee}}$</span></div>
+              <div><span>Service fee:</span><span> {{this.priceObj.serviceFee}}$</span></div>
+              <div><span>Taxes: </span><span> {{this.priceObj.taxes}}$</span></div>
+              <div><span>Total price:</span><span> {{this.priceObj.priceSum}}$</span></div>
+            </div>
 </section>
 <section >
 </section>
