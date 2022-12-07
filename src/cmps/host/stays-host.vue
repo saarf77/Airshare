@@ -1,7 +1,16 @@
 <template>
-    <section class="stay-host-page">
-        <div>stays host</div>
-    </section>
+    <tr class="row-table border_bottom">
+        <!-- <td><img class="stay-image" :src=imageUrl></td> -->
+        <!-- <td>{{ hostStay.name }}</td> -->
+        <!-- <td>${{ hostStay.price }}</td> -->
+        <!-- <td>{{ hostStay.address.street }}</td> -->
+        <td>
+            <el-button><span class="material-icons-outlined">
+                    edit
+                </span></el-button>
+        </td>
+
+    </tr>
 
 </template>
 
@@ -11,7 +20,7 @@ export default {
 
     data() {
         return {
-
+            imageUrl: utilService.getImgUrl(this.hostStay.imgUrls[0]),
         }
     },
     created() {

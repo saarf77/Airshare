@@ -44,7 +44,7 @@
                 datasets: [
                     {
                         data: [2000,2450,3100,1700],
-                        backgroundColor: ['lightgray','lightgray','lightgray','lightgray'],
+                        backgroundColor: ['rgb(255,56,92)','rgb(255,56,92)','rgb(255,56,92)','rgb(255,56,92)'],
                     },
                 ],
             },
@@ -61,7 +61,44 @@
         // labels() {
         //     return this.$store.getters.labels
         // }
-        
+           pendingOrders() {
+            var ordersCount = 0;
+            if (this.hostOrders.length > 0) {
+                this.hostOrders.forEach((order) => {
+                    if (order.status === "pending") {
+                        ordersCount++;
+                    }
+                });
+                return ordersCount;
+            }
+        },
+        approvedOrders() {
+            var ordersCount = 0;
+            if (this.hostOrders.length > 0) {
+                this.hostOrders.forEach((order) => {
+                    if (order.status === "approved") {
+                        ordersCount++;
+                    }
+                });
+                return ordersCount;
+            }
+        },
+        declinedOrders() {
+            var ordersCount = 0;
+            if (this.hostOrders.length > 0) {
+                this.hostOrders.forEach((order) => {
+                    if (order.status === "declined") {
+                        ordersCount++;
+                    }
+                });
+                return ordersCount;
+            }
+        },
+
+        chartStatus() {
+            var label = [this.pendingOrders, this.approvedOrders, this.declinedOrders]
+            return [1, 2, 3]
+        }
     },
     methods: {
    
