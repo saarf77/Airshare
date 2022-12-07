@@ -344,7 +344,6 @@ import { eventBus } from '../services/event-bus.service.js';
           this.currDates.daysNum = Math.ceil((this.currDates.endDay - this.currDates.startDay)/86400000);
           this.calcPayments();
         }
-
         if(this.currDates.endDay + this.currDates.startDay !== 0) this.error = '';
       },
       openConfirm(){

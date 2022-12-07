@@ -26,6 +26,21 @@
                                 color: $minorTxt;
                                 font-size: 0.8em;
                         }
+
+                        .bar-br:not(.hide){
+                                display: inline-block;
+                        }
+                        .bar-br:has(.hide){
+                                display: none;
+                        }
+
+                        .first-night-date{
+                                margin-inline-end: 7px;
+                        }
+
+                        .last-night-date{
+                                margin-inline-start: 7px;
+                        }
                 }
         }
 

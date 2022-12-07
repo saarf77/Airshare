@@ -222,7 +222,7 @@ export default {
                 <div class="inside-carousel-container"></div>
             </section> -->
             <details-options-list :amenitiesList="stayAmenities"/>
-            <details-schedule/>
+            <details-schedule :currStay="currStay" />
         </main>
         <div class="sticky-scroll-end"></div>
         <details-reviews-list :reviewsList="reviewsObject"/>
