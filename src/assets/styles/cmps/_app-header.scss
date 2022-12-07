@@ -57,10 +57,9 @@ header {
     }
   
     .main-logo {
-
       display: flex;
       align-items: center;
-      padding-inline-start: 80px;
+      // padding-inline-start: 80px;
       // margin-left: 8px;
 
 
@@ -158,7 +157,7 @@ header {
       align-items: center;
       justify-content: end;
       gap: 7px;
-      padding-inline-end: 94px;
+      // padding-inline-end: 94px;
   
       a.right-header.become-host {
         min-width: 123px;
@@ -263,7 +262,8 @@ header {
   }
 }
 .nav-wrapper{
-  height: 90px;
+  height: 80px;
+  border-bottom: 1px solid $clr6;
 
   .absnav{
     position: absolute;

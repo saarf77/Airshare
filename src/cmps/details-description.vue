@@ -8,7 +8,7 @@ export default {
                 return{
                         containerWidth: 0,
                         currFontSize: 0,
-                        linesNum: 1,
+                        linesNum: 5,
                 }
               },
               mounted(){
@@ -23,7 +23,7 @@ export default {
                         const currLines = [];
                         const bios = 2.2;
 
-                        if(this.descriptionTxt?.length > 1 && this.containerWidth !== 0 && this.currFontSize !== 0){
+                        if(this.descriptionTxt?.length > 5 && this.containerWidth !== 0 && this.currFontSize !== 0){
                                 currText += this.descriptionTxt;
                                 maxLettersPerLine = Math.floor(this.containerWidth / this.currFontSize*bios);
                                 

@@ -4,7 +4,7 @@ import { orderService } from '../services/order.service.js'
 
 export const orderStore = {
     state: {
-      orders: null,
+      orders: [],
       filterBy: null,
     },
     getters: {
@@ -40,6 +40,7 @@ export const orderStore = {
       async loadOrders(context , hostId) {
         try {
           const orders = await orderService.query(hostId)
+          console.log(orders)
           context.commit({ type: 'setOrders', orders: orders })
           return orders
         } catch (err) {
@@ -67,10 +68,11 @@ export const orderStore = {
       },
       async saveOrder(context, { order }) {
         try {
-          const isEdit = (!order._id)
-          const savedOrder = await orderService.saveOrder(order)
-          console.log(savedOrder)
+            console.log(order)
+          const isEdit = (order.id?.length > 0)
+          const savedOrder = await orderService.save(order)
           context.commit({ type: isEdit ? 'updateOrder' : 'addOrder', order: savedOrder })
+          return savedOrder
         } catch (err) {
           console.log(err)
         }

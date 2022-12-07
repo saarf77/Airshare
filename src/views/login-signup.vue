@@ -50,9 +50,6 @@
                 <div class="content">
                   <button type="submit" class="action-btn">
                    <span>Sign up</span> 
-
-                   
-                   
                   </button>
                 </div>
               </div>
