@@ -180,6 +180,7 @@
 import { svgService } from '../services/svg.service.js';
 import { ElMessage } from 'element-plus';
 import { utilService } from '../services/util.service.js';
+import { eventBus } from '../services/event-bus.service.js';
   
   export default {
     name: ' order-details',
@@ -216,6 +217,9 @@ import { utilService } from '../services/util.service.js';
     components:{
         svgService,
         utilService,
+    },
+    created(){
+      eventBus.on('getDateFromSchedule', this.onDatePicked);
     },
     computed: {
       btnStatus(){
