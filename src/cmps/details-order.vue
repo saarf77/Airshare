@@ -33,13 +33,13 @@
         </div>
 
       </div>
-      <div class="modal-btns-container"  @click="openConfirm">
+      <div class="modal-btns-container">
         <div class="cell"></div>
         <div class="cell"></div>
-        <div class="btn-container" @click="openConfirm">
+        <div  @click="openConfirm" class="btn-container">
           <div v-for="i in 100" class="cell"></div>
           <div class="content">
-            <button class="action-btn">
+            <button type="submit" class="action-btn">
               <span>Confirm</span>
             </button>
           </div>
