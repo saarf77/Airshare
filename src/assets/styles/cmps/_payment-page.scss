@@ -5,6 +5,7 @@
     width: 450px;
     height: 500px;
     // margin: 32px auto 10px;
+    
     margin-left: 76px;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
 
@@ -51,10 +52,15 @@
         }
     }
 }
+*:has(.payment-page)header{
+    height: auto;
+}
 
 .payment-page {
     display: flex;
     justify-content: space-evenly;
+    translate: 0% 8%;
+   
 .payment-title{
     margin-bottom: 20px;
 }

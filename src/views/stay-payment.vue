@@ -54,8 +54,7 @@
                         <img :src="setHostImg">
                     </div>
 
-                    <div class="stay-name">
-                        {{ order.stay.name }}
+                    <div class="stay-name">{{ order.stay.name }}
                     </div>
                 </div>
             </div>
