@@ -5,7 +5,7 @@
   <!-- <Transition name="bounce"> </Transition> -->
   <header class="main-header flex column" :class="{ sticky: isSticky }">
     <div class="nav-wrapper main-layout" :class="{ expend: isExpend }">
-      <div class="full" :class="{ container: headerLocation, 'inner-container': !headerLocation }">
+      <div  :class="{ container: headerLocation, 'inner-container': !headerLocation }">
         <nav class="top-nav flex justify-space-between align-center">
           <div v-if="desktop" class="desktop-view">
             <router-link class="logo" to="/">
@@ -65,7 +65,7 @@
     </div>
     <div v-if="headerLocation" :class="{ 'hide-expend': isExpend }"
       class="header-labels main-layout flex justify-space-between align-center">
-      <div class="container">
+      <!-- <div class="container"> -->
         <div v-if="path === '/explore' || path === '/'" class="header-bottom flex justify-space-between">
           <explore-labels v-if="!isExplore" />
           <h3 v-if="isExplore">Stays : {{ staysLength }}</h3>
@@ -75,7 +75,7 @@
               <span class="filter-btn">Filters</span>
               <!-- <div v-if="isModal" class="overlay"></div> -->
             </div>
-          </div>
+          <!-- </div> -->
           <Transition duration="200" name="nested">
             <filter-modal @onClickAway="closeModal" v-if="isModal" @setFilter="setFilter" v-click-away="closeModal"  />
             <!-- <standAlone-filter @closeFilersForm="closeModal" v-if="isShow" v-click-away="onClickAway" /> -->

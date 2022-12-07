@@ -37,7 +37,7 @@
               <th class="title-thead text-center">Action </th>
             </tr>
           </thead>
-
+          <div></div>
           <tbody>
             <orders-host v-for="hostOrder in getHostOrders" :key="hostOrder._id" :hostOrder="hostOrder" />
           </tbody>
@@ -89,10 +89,11 @@ export default {
       hostStays: null,
       showStays: false,
       showOrders: true,
+      // hostOrders:[]
     };
   },
   created() {
-    this.$store.dispatch({ type: 'loadOrders' });
+    this.$store.dispatch({ type: 'loadOrders' , hostId: '622f3404e36c59e6164fb63a'});
     // hostId: this.getLogInUser._id
     // this.$store.dispatch({ type: 'setFilterBy', filterBy: { hostID: this.getLogInUser._id } });
 
@@ -112,7 +113,10 @@ export default {
       return this.$store.getters.loggedinUser;
     },
     getHostOrders() {
+      // this.hostOrders = this.$store.getters.getOrders
+      console.log(this.$store.getters.getOrders)
       return this.$store.getters.getOrders
+      
     },
     getHostStays() {
       return this.$store.getters.getStays

@@ -16,9 +16,11 @@ export const orderService = {
 
 window.orderService = orderService
 
-async function query(hostId) {
+async function query({hostId}) {
     var orders = await storageService.query(ORDERS_KEY)
-    let filteredOrders = orders.filter(order => order.hostId === hostId)
+    console.log('from service',orders)
+    let filteredOrders = orders.filter(order => order.host.id === hostId)
+    console.log('from service',filteredOrders)
     return filteredOrders
 }
 
@@ -39,6 +41,8 @@ async function save(order) {
         // Later, owner is set by the backend
         order.owner = userService.getLoggedinUser()
         savedOrder = await storageService.post(ORDERS_KEY, order)
+        // console.log(savedOrder._id)
+        // this.$router.push('/payment/' + savedOrder._id)
     }
     return savedOrder
 }
