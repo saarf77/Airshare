@@ -1,5 +1,8 @@
 <script>
+import { eventBus } from '../services/event-bus.service.js';
 import {svgService} from '../services/svg.service.js';
+
+
 export default {
               computed: {
                 keyboardSvg(){
@@ -8,6 +11,11 @@ export default {
               },
               components:{
                      svgService,
+              },
+              methods:{
+                     sendDayToOrder(day){
+                            eventBus.emit('getDateFromSchedule', day);
+                     },
               }
        }
 </script>
@@ -28,7 +36,7 @@ export default {
               </div>
               <section class="dates-picker"></section>
               <v-date-picker color="gray" :border="none" :attributes="attrs" trim-weeks is-expanded :locale="locale" mode="date"
-              :columns="$screens({ default: 1, lg: 2 })" :rows="1" is-range></v-date-picker>
+              :columns="$screens({ default: 1, lg: 2 })" :rows="1" is-range @dayclick="sendDayToOrder"></v-date-picker>
               <div class="ctrl-panel">
                      <button class="use-keyboard-btn" v-html="keyboardSvg"></button>
                      <button class="clear-btn">Clear dates</button>
