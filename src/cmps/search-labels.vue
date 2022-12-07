@@ -44,9 +44,11 @@ import 'vue3-carousel/dist/carousel.css';
         filterBy: {
           propertyType: [],
         },
-        index: null,
-        itemsToShow: 1,
-      snapAlign: 'center',
+       // carousel settings
+			settings: {
+				itemsToShow: 1,
+				snapAlign: "center"
+			},
       breakpoints: {
       // 700px and up
       700: {
