@@ -11,7 +11,7 @@
 // import stayFilter from '../cmps/stay-filter.vue'
 import stayList from '../cmps/stay-list.vue'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { stayService } from '../services/stay.service.local.js'
+import { stayService } from '../services/stay.service.js'
 import { getActionRemoveStay, getActionUpdateStay, getActionAddStayMsg } from '../store/stay.store'
 export default {
   components: {
