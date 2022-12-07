@@ -25,21 +25,21 @@
 
 
           <thead>
-            <tr class="border_bottom">
-              <th class="title-thead">Time </th>
+            <tr class="border-bottom">
               <th class="title-thead">Guest </th>
-              <th class="title-thead">Stay name </th>
-              <th class="title-thead">Check In </th>
-              <th class="title-thead">Check Out </th>
               <th class="title-thead text-center">Status </th>
-              <th class="title-thead text-center">Revenue </th>
               <th class="title-thead text-center">Guests </th>
+              <!-- <th class="title-thead">Check Out </th> -->
+              <th class="title-thead">Booking</th>
+              <th class="title-thead">Stay name </th>
+              <th class="title-thead text-center">Revenue </th>
               <th class="title-thead text-center">Action </th>
+              <th class="title-thead">Check In/ Out </th>
             </tr>
           </thead>
           <div></div>
           <tbody>
-            <orders-host v-for="hostOrder in getHostOrders" :key="hostOrder._id" :hostOrder="hostOrder" />
+            <orders-host />
           </tbody>
         </table>
 

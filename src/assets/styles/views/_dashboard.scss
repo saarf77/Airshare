@@ -1,9 +1,10 @@
 .dashboard-container {
-    
+
     background-color: $clr8;
     // min-height: 75vh;
     display: grid;
     grid-template-columns: 80px 1fr 80px;
+
     >* {
         grid-column: 2/3;
     }
@@ -12,15 +13,15 @@
         grid-column: 1 / -1;
     }
 
-    
+
 
     .top-dashboard-title {
         gap: 20px;
 
         //buttons top
         .top-btn {
-  
-            text-transform:uppercase;
+
+            text-transform: uppercase;
             cursor: pointer;
             font-family: Cereal-medium;
             font-size: 1rem;
@@ -49,7 +50,7 @@
     .title-thead {
         font-size: 1rem;
         font-family: Cereal;
-      }
+    }
 
     table {
         margin: 5;
@@ -70,11 +71,11 @@
 
     tr.border_bottom {
         box-shadow: 0px 1px 0px 0px $clr6;
-      }
+    }
 
 
 
-      //titles
+    //titles
     .login-msg {
         font-family: cereal-bold;
         font-size: 1em;
@@ -83,7 +84,8 @@
 
     .under-line {
         color: $clr2;
-        &:hover{
+
+        &:hover {
             color: black;
             transition: .2s;
             text-decoration: underline;
@@ -105,17 +107,40 @@
         color: $clr2;
     }
 }
-*:has(.dashboard-container) .header-labels{
+
+*:has(.dashboard-container) .header-labels {
     display: none;
 }
-*:has(.dashboard-container) .main-header{
+
+*:has(.dashboard-container) .main-header {
     height: 80px;
 }
 
 
+.border-bottom {
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0px 1px 0px 0px #cecbcb6e;
+    font-size: 16px;
+    font-family: Cereal;
+    font-weight: 600;
+    
+}
 
+.buyer{
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    img{
+        height: 32px;
+        width: 32px;
+    }
+}
 
-
-
-
-
+// .order-dash {
+//     display: flex;
+//     justify-content: space-between;
+//     font-size: 16px;
+//     font-family: 'Cereal';
+//     font-weight: 700;
+// }
