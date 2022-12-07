@@ -10,7 +10,8 @@
       </h1>
     </div>
 
-    <div >
+    <div v-else>
+
       <div class="flex column">
         
         <h1 class="chart-title">Hosting Summary</h1>
