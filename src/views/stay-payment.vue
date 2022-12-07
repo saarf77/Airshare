@@ -10,7 +10,7 @@
                     <h3>Good price</h3>
                 </div>
                 <div class="deal-content">
-                    <p>Your dates are $194 less than the avg. nightly rate over the last 3 months.</p>
+                    <p>Your dates are <span>${{getDiscount}}</span> less than the avg. nightly rate over the last 3 months.</p>
                 </div>
             </section>
 
@@ -96,6 +96,7 @@
     </section>
 </template>
 <script>
+    import {utilService} from '../services/util.service.js'
 export default {
     data() {
         return {
@@ -111,6 +112,9 @@ export default {
         // this.oreder = currOrder
     },
     computed: {
+        getDiscount(){
+            return utilService.getRandomIntInclusive(100 , 250)
+        },
         stayName() {
             return (this.currStay) ? this.currStay.name : this.stayName;
         },

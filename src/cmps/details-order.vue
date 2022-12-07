@@ -344,10 +344,9 @@ export default {
       console.log(currOrder)
      let order =  this.$store.dispatch({ type: "saveOrder", order:currOrder });
      console.log('HELLLOOO',order)
-     order.then(res => this.$router.push('/payment/' + res._id))
+     order.then(res => this.$router.push('/payment/' + res._id ))
       ElMessage.success('Order send!')
-      // this.$router.push('/payment/')
-      // setTimeout(() => this.$router.push('/'), 1000);
+     
     },
     onDatePicked(day) {
       if (this.currDates.isFirst) {
