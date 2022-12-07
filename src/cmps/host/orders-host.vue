@@ -3,14 +3,33 @@
         <tr class="border-bottom">
             <!-- <td>user</td> -->
             <td class="text-center buyer"><img src="img"> <span>Yusi</span></td>
-            <td class="text-center" :class="color">{{ hostOrder.status }}</td>
-            <td class="text-center">{{getGuestsAmount(hostOrder)}} </td>
+            <td class="status text-center" :class="statusClass(hostOrder)">{{ hostOrder.status }}</td>
+            <td class="text-center">{{ getGuestsAmount(hostOrder) }} </td>
             <!-- <td class="text-center">{{ getEndDate(hostOrder) }}</td> -->
-            <td class="text-center">{{ getBookingDate(hostOrder)}}</td>
-            <td class="text-center">{{summarySize(hostOrder)}}</td>
-            <td class="text-center">${{hostOrder.totalPrice.toFixed(2)}}</td>
-            <td class="text-center">Action </td>
-            <td class="text-center">{{ getStartDate(hostOrder)}}-{{getEndDate(hostOrder)}}</td>
+            <td class="text-center">{{ getBookingDate(hostOrder) }}</td>
+            <td class="text-center">{{ summarySize(hostOrder) }}</td>
+            <td class="text-center">${{ hostOrder.totalPrice.toFixed(2) }}</td>
+            <td class="text-center">
+                 <el-button v-if="hostOrder.status === 'pending'" @click.prevent="approve(hostOrder)"
+                    size="small" type="success" circle><span class="material-icons">
+                        done
+                    </span>
+                </el-button>
+                <el-button v-if="hostOrder.status === 'pending'" @click.prevent="pending(hostOrder)" size="small" type="info"
+                    circle>
+                    <span class="material-icons">close</span>
+                </el-button>
+                <el-button v-if="hostOrder.status === 'declined'" @click.prevent="approve(hostOrder)" size="small" type="success"
+                    circle>
+                    <span class="material-icons">
+                        done
+                    </span>
+                </el-button>
+                <el-button v-if="hostOrder.status === 'approved'" @click.prevent="decline(hostOrder)" size="small" type="danger"
+                    circle><span class="material-icons">close </span>
+                </el-button>
+            </td>
+            <td class="text-center">{{ getStartDate(hostOrder) }}-{{ getEndDate(hostOrder) }}</td>
         </tr>
     </div>
 </template>
@@ -23,7 +42,7 @@ export default {
         return {
             img: '',
             currOrder: null,
-            guests:0,
+            guests: 0,
         };
     },
     created() {
@@ -33,20 +52,30 @@ export default {
         getHostOrders() {
             return this.$store.getters.getOrders
         },
-        color(){
-            
-        }
+        color() {
+
+        },
         
+
+
 
     },
     methods: {
+        statusClass(orders) {
+            console.log(orders)
+            let currOrder = this.getHostOrders.filter(order => order === orders)
+            console.log(currOrder)
+            if (currOrder[0].status === 'pending') return 'status-pending'
+            if (currOrder[0].status === 'approved') return 'status-approved'
+            if (currOrder[0].status === 'declined') return 'status-decline'
+        },
         summarySize(orders) {
             let currOrder = this.getHostOrders.filter(order => order === orders)
             // console.log(currOrder.stay)
             if (currOrder[0].stay.name.length > 13) {
-            let desc = currOrder[0].stay.name.slice(0, 13) + '...'
-           return desc
-        }
+                let desc = currOrder[0].stay.name.slice(0, 13) + '...'
+                return desc
+            }
             return currOrder[0].stay.name
         },
         getStartDate(orders) {
@@ -67,9 +96,9 @@ export default {
             let booking = new Date(bookingDate).toLocaleDateString()
             return booking
         },
-        getGuestsAmount(orders){
+        getGuestsAmount(orders) {
             let currOrder = this.getHostOrders.filter(order => order === orders)
-            const {adults,children,pets,infants} = currOrder[0].guests
+            const { adults, children, pets, infants } = currOrder[0].guests
             console.log(adults)
             let amount = adults + children + pets + infants
             return amount
@@ -82,13 +111,29 @@ export default {
             currOrder.then(res => this.img = res.buyer.imgUrl)
             return this.img
         },
-        approve() {
-            const order = JSON.parse(JSON.stringify(this.hostOrder))
-            this.$store.dispatch({ type: "saveOrder", order, status: 'approved' })
+        pending(orders) {
+            
+            let currOrder = this.getHostOrders.filter(order => order === orders)
+            let order = currOrder[0]
+            console.log('IM FROM PENDING',order)
+            // const order = JSON.parse(JSON.stringify(this.hostOrder))
+            this.$store.dispatch({ type: "saveOrder", order , status: 'approved' })
         },
-        decline() {
-            const order = JSON.parse(JSON.stringify(this.hostOrder))
-            this.$store.dispatch({ type: "saveOrder", order, status: 'declined' })
+        approve(order) {
+            console.log('asdafgawgwfa',order)
+            let currOrder = this.getHostOrders.filter(o => o === order)
+            console.log(currOrder)
+            let or = currOrder[0]
+            console.log('IM FROM APPROVE',or)
+            // const order = JSON.parse(JSON.stringify(this.hostOrder))
+            this.$store.dispatch({ type: "saveOrder", order:or , status: 'approved' })
+        },
+        decline(orders) {
+            let currOrder = this.getHostOrders.filter(order => order === orders)
+            let order = currOrder[0]
+            console.log('IM FROM DECLINE',order)
+            // const order = JSON.parse(JSON.stringify(this.hostOrder))
+            this.$store.dispatch({ type: "saveOrder", order , status: 'declined' })
         },
     }
 };

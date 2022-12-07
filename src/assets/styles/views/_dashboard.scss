@@ -115,6 +115,26 @@
 *:has(.dashboard-container) .main-header {
     height: 80px;
 }
+.status{
+    background-color: #bacbf3;
+    border-radius: 5px;
+    width: 90px;
+    height: 20px;
+}
+.status-decline {
+    background-color: #fdf5f6;
+    color: #bb6f7c;
+  }
+
+  .status-approved {
+    background-color: #45e4934f;
+    color: #039e42;
+  }
+
+  .status-pending {
+    background-color: #88daf5;
+    color: #1a7ffa;
+  }
 
 
 .border-bottom {
