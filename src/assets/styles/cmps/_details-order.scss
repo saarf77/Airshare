@@ -278,6 +278,16 @@ input {
                 color: black;
                 font-size: 10px;
         }
+        
+        div[class*="vc-popover-content-wrapper"]{
+                width: 100% !important;
+                top: 43% !important;
+                left: -13% !important;
+                z-index: 1 !important;
+        }
+        .vc-popover-content.direction-bottom.vc-container{
+                width: auto;
+        }
 
         .date-picker {
                 display: flex;
