@@ -4,34 +4,76 @@ import {svgService} from '../services/svg.service.js';
 
 
 export default {
-              computed: {
-                keyboardSvg(){
+       props: ['currStay'],
+       data(){
+              return{
+                     currDates: {
+                            startDay: 0,
+                            endDay: 0,
+                            daysNum: 0,
+                            isFirst: true,
+                     },
+                     hasDates: false,
+              }
+       },
+       computed: {
+              keyboardSvg(){
                      return svgService.getSvgIcon('keyboardIcon');
-                }
               },
-              components:{
+              currStayLocation(){
+                     let stayLoc = '';
+                     if(this.currStay?.loc?.city?.length > 0){
+                            stayLoc = this.currStay.loc.city;
+                     } else if(this.currStay?.loc?.country?.length > 0){
+                            stayLoc = this.currStay.loc.country;
+                     } else if(this.currStay?.name?.length > 0){
+                            stayLoc = this.currStay.name;
+                     }
+                     return stayLoc;
+              },
+              stayStartDate(){
+                     return (this.currDates.startDay)? new Date(this.currDates.startDay).toLocaleDateString() : 'starting date';
+              },
+              stayEndDate(){
+                     return (this.currDates.endDay)? new Date(this.currDates.endDay).toLocaleDateString() : 'ending date';
+              },
+       },
+       components:{
                      svgService,
               },
-              methods:{
-                     sendDayToOrder(day){
-                            eventBus.emit('getDateFromSchedule', day);
-                     },
+       methods:{
+              sendDayToOrder(day){
+                     eventBus.emit('getDateFromSchedule', day);
+                     this.calcDayNum(day);
+              },
+              calcDayNum(day){
+                     if(this.currDates.isFirst){
+                            this.currDates.startDay =  new Date(day.id).getTime();
+                            this.currDates.isFirst = false;
+                     } else{
+                            this.currDates.endDay = new Date(day.id).getTime();
+                            this.currDates.isFirst = true;
+                            this.currDates.daysNum = Math.ceil((this.currDates.endDay - this.currDates.startDay)/86400000);
+                            if(!this.hasDates) this.hasDates=  true;
+                     }
               }
+              
        }
+}
 </script>
 
 <template>
        <section class="schedule-display">
               <div class="details-title"> 
                      <div class="schedule-transcription">
-                            <span class="night-num">7</span>
+                            <span class="night-num">{{currDates.daysNum}}</span>
                             <span> nights in </span>
-                            <span class="general-area-name">puk-landia city</span>
+                            <span class="general-area-name"> {{currStayLocation}}</span>
                      </div>
                      <div class="schedule-dates">
-                            <span class="first-night-date"> Dec 4, 2022</span>
-                            <span> - </span>
-                            <span class="last-night-date">Dec 9, 2022</span>
+                            <span class="first-night-date">  {{stayStartDate}}  </span>
+                            <span class="bar-br" :class="{hide: hasDates}">   -   </span>
+                            <span class="last-night-date">  {{stayEndDate}}  </span>
                      </div>
               </div>
               <section class="dates-picker"></section>
@@ -41,6 +83,5 @@ export default {
                      <button class="use-keyboard-btn" v-html="keyboardSvg"></button>
                      <button class="clear-btn">Clear dates</button>
               </div>
-            
         </section>
 </template>

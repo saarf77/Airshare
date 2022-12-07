@@ -187,6 +187,7 @@
 import { svgService } from '../services/svg.service.js';
 import { ElMessage } from 'element-plus';
 import { utilService } from '../services/util.service.js';
+import { eventBus } from '../services/event-bus.service';
 
 export default {
   name: ' order-details',
@@ -223,6 +224,7 @@ export default {
   components: {
     svgService,
     utilService,
+    eventBus
   },
   computed: {
     btnStatus() {
@@ -375,6 +377,8 @@ export default {
         this.$refs.elOrderBtn.classList += ' hidden'
       }
     }
+  }, created(){
+      eventBus.on('getDateFromSchedule', this.onDatePicked);
   }
 };
 </script>
