@@ -181,7 +181,7 @@
         </div>
         <div class="filter-footer">
             <button>Clear all</button>
-            <button @click.stop.prevent="setFilter">Show 29 stays</button>
+            <button @click.stop.prevent="setFilter">Show 29 homes</button>
         </div>
     </form>
 </template>
