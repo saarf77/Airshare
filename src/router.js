@@ -7,6 +7,7 @@ import loginSignup from './views/login-signup.vue'
 import stayDetails from './views/stay-details.vue'
 import userDetails from './views/user-details.vue'
 import dashboard from './views/host-dashboard.vue'
+import userTrips from './views/user-trips.vue'
 import userWishlist from './views/user-wishlist.vue'
 import stayPayment from './views/stay-payment.vue'
 
@@ -52,6 +53,11 @@ const routes = [
     path: '/dashboard/:id?',
     name: 'host-dashboard',
     component: dashboard
+  },
+  {
+    path: '/trip/:id?',
+    name: 'user-trips',
+    component: userTrips
   },
   { 
     path: '/wishlist',

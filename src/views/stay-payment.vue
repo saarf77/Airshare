@@ -46,7 +46,7 @@
             <div class="top-section">
 
                 <div class="details-img">
-                    <img :src="order.stay.img[0]">
+                    <img :src="setImg">
                 </div>
                 <div class="second">
                     <div class="host-img">
@@ -54,7 +54,7 @@
                         <img :src="setHostImg">
                     </div>
 
-                    <div class="stay-name">{{ order.stay.name }}
+                    <div class="stay-name">{{ setName }}
                     </div>
                 </div>
             </div>
@@ -70,23 +70,23 @@
                 </div>
                 <div class="price">
                     <span>price for {{ totalNights }} nights </span>
-                    <span>${{ order.priceObj.basePrice }} </span>
+                    <span>${{ basePrice }} </span>
                 </div>
                 <div class="price">
                     <span>Cleaning fee </span>
-                    <span>${{ order.priceObj.CleaningFee }} </span>
+                    <span>${{ cleaningPrice }} </span>
                 </div>
                 <div class="price">
                     <span>Service fee </span>
-                    <span>${{ order.priceObj.serviceFee }} </span>
+                    <span>${{ servicesPrice }} </span>
                 </div>
                 <div class="price">
                     <span>Taxes </span>
-                    <span>${{ order.priceObj.taxes }} </span>
+                    <span>${{ taxesPrice }} </span>
                 </div>
                 <div class="price total">
                     <span>Total price </span>
-                    <span>${{ order.totalPrice }} </span>
+                    <span>${{ totalPrice }} </span>
                 </div>
 
             </div>
@@ -108,11 +108,32 @@ export default {
         }
     },
     created() {
-        let currOrder = this.$store.dispatch({ type: "getOrderById", orderId: this.$route.params.id });
-        currOrder.then(res => this.setOrder(res))
+        this.$store.dispatch({ type: "getOrderById", orderId: this.$route.params.id });
+        // currOrder.then(res => this.setOrder(res))
         // this.oreder = currOrder
     },
     computed: {
+        basePrice(){
+           return (this.setOrder?.priceObj?.basePrice)?this.setOrder.priceObj.basePrice.toLocaleString():''
+        },
+        servicesPrice(){
+           return (this.setOrder?.priceObj?.serviceFee)?this.setOrder.priceObj.serviceFee.toLocaleString():''
+        },
+        cleaningPrice(){
+           return (this.setOrder?.priceObj?.CleaningFee)?this.setOrder.priceObj.CleaningFee.toLocaleString():''
+        },
+        taxesPrice(){
+           return (this.setOrder?.priceObj?.taxes)?this.setOrder.priceObj.taxes.toLocaleString():''
+        },
+        totalPrice(){
+            return (this.setOrder?.totalPrice)? this.setOrder.totalPrice.toLocaleString():''
+        },
+        setName(){
+         return (this.setOrder?.stay?.name)?this.setOrder.stay.name:''
+        },
+        setOrder(){
+            return this.$store.getters.getCurrOrder
+        },
         getDiscount(){
             return utilService.getRandomIntInclusive(100 , 250)
         },
@@ -123,35 +144,40 @@ export default {
             return 'https://res.cloudinary.com/sprint4-triman/image/upload/v1669793675/elon_mask_ltbtp6.jpg'
         },
         totalNights() {
-            let time = this.order.startDate - this.order.endDate
+            let timeStart = (this.setOrder?.startDate)?this.setOrder.startDate:''
+            let timeEnd = (this.setOrder?.endDate)?this.setOrder.endDate:''
+            let time = timeStart - timeEnd
             let days = (time * - 1) / (1000 * 60 * 60 * 24)
 
-            const { adults, children, infants, pets } = this.order.guests
+            const { adults, children, infants, pets } = (this.setOrder?.guests)?this.setOrder?.guests:''
             let guests = adults + children + infants + pets
             this.guests = guests
             return days
         },
         setDatesStart() {
-            let dateStart = new Date(this.order.startDate)
+            let dateStart = new Date((this.setOrder?.startDate)?this.setOrder.startDate:'')
             let date = dateStart.toLocaleDateString()
             return date
         },
         setDatesEnd() {
-            let dateEnd = new Date(this.order.endDate)
+            let dateEnd = new Date((this.setOrder?.endDate)?this.setOrder.endDate:'')
             let date = dateEnd.toLocaleDateString()
             return date
         },
+        setImg(){
+            return (this.setOrder?.stay?.img[0])?this.setOrder.stay.img[0]:''
+        }
     },
     methods: {
         backToPage(){
             this.$router.push('/')
             ElMessage.success('Order sent!')
         },
-        setOrder(currOrder) {
-            this.order = currOrder
-            console.log(this.order);
+        // setOrder(currOrder) {
+        //     this.order = currOrder
+        //     console.log(this.order);
 
-        },
+        // },
 
 
 

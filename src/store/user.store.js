@@ -17,10 +17,12 @@ export const userStore = {
     },
     mutations: {
         setLoggedinUser(state, { user }) {
+            console.log('FROM LOGGED',user)
             // Yaron: needed this workaround as for score not reactive from birth
             state.loggedinUser = (user)? {...user} : null
         },
         setWatchedUser(state, { user }) {
+            console.log('FROM WATCHED',user)
             state.watchedUser = user
         },       
         setUsers(state, { users }) {
@@ -68,6 +70,7 @@ export const userStore = {
             // TODO: loading
             try {
                 const users = await userService.getUsers()
+                console.log('THIS IS WHAT IM LOOKING ',users)
                 commit({ type: 'setUsers', users })
             } catch (err) {
                 console.log('userStore: Error in loadUsers', err)
@@ -76,6 +79,7 @@ export const userStore = {
         },        
         async loadAndWatchUser({ commit }, { userId }) {
             try {
+                console.log('HI IM FROM LOADHATRA',userId)
                 const user = await userService.getById(userId)
                 commit({ type: 'setWatchedUser', user })
                 
