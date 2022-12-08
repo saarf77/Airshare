@@ -64,7 +64,7 @@
     .stared {
         display: flex;
         align-items: center;
-        gap: 2px;
+        gap: 6px;
     }
 
     .stared::before {
@@ -78,6 +78,13 @@
         padding-block-start: 12px;
         line-height: 18px;
         font-size: 0.95rem;
+        .stared-con{
+            font-size: 15px !important;
+            font-family: 'Cereal'!important;
+            font-weight: 100 !important;
+            
+
+        }
 
         .location-info {
             color: #222222;
@@ -105,8 +112,9 @@
         //     justify-content: flex-start !important;
         //     flex-wrap: wrap !important;
         // }
+        
         .price {
-            margin-top: 5px;
+            margin-top: 3px;
             display: flex;
             gap: 2.5px;
             font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;

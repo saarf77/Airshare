@@ -36,7 +36,7 @@
       <div class="modal-btns-container" @click="openConfirm">
         <div class="cell"></div>
         <div class="cell"></div>
-        <div  @click="openConfirm" class="btn-container">
+        <div @click="openConfirm" class="btn-container">
           <div v-for="i in 100" class="cell"></div>
           <div class="content">
             <button type="submit" class="action-btn">
@@ -54,6 +54,27 @@
 
   <section class="order-container sticky" :class="{ extended: this.hasCalcPrice }">
     <div class="order-form-header">
+      <div class="price">
+        <span class="currency">${{ pricePerNight }}</span>
+        <span class="night">night</span>
+      </div>
+
+      <div class="review-rating">
+        <span class="stared">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
+            focusable="false" style="display: block; height: 12px; width: 12px; fill: currentcolor;">
+            <path
+              d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
+              fill-rule="evenodd"></path>
+          </svg>
+          <span>
+            {{ currRate }} 
+          </span> ·
+          <span class="reviews-amount">
+            {{ reviewsAmount }} reviews
+          </span> 
+        </span>
+      </div>
     </div>
     <div class="order-data">
       <v-date-picker color="gray" is-range :columns="2" @dayclick="onDatePicked">
@@ -226,7 +247,20 @@ export default {
     utilService,
     eventBus
   },
+  created() {
+    console.log('HEY', this.orderStay)
+  },
   computed: {
+    reviewsAmount(){
+      // return this.orderStay.reviews.length
+      return (this.orderStay?.reviews?.length)?this.orderStay.reviews.length : '0'
+    },
+    currRate(){
+      return 4.65
+    },
+    pricePerNight() {
+      return (this.orderStay?.price)?this.orderStay.price : '0'
+    },
     btnStatus() {
       return (this.currDates.startDay + this.currDates.endDay !== 0) ? '<span>Reserve</span>' : '<span>Check availability</span>';
     },
@@ -321,7 +355,7 @@ export default {
         stay: {
           _id: this.orderStay._id,
           name: this.orderStay.name,
-          img:this.orderStay.imgUrls
+          img: this.orderStay.imgUrls
         },
         host: {
           id: this.orderStay.host._id,
@@ -334,19 +368,19 @@ export default {
           imgUrl: '',
         },
         priceObj: {
-        basePrice:this.priceObj.basePrice,
-        CleaningFee: this.priceObj.CleaningFee,
-        serviceFee:this.priceObj.serviceFee,
-        taxes:this.priceObj.taxes ,
+          basePrice: this.priceObj.basePrice,
+          CleaningFee: this.priceObj.CleaningFee,
+          serviceFee: this.priceObj.serviceFee,
+          taxes: this.priceObj.taxes,
         },
         msgs: [],
       }
       console.log(currOrder)
-     let order =  this.$store.dispatch({ type: "saveOrder", order:currOrder });
-     console.log('HELLLOOO',order)
-     order.then(res => this.$router.push('/payment/' + res._id ))
+      let order = this.$store.dispatch({ type: "saveOrder", order: currOrder });
+      console.log('HELLLOOO', order)
+      order.then(res => this.$router.push('/payment/' + res._id))
       ElMessage.success('Confirm order!')
-     
+
     },
     onDatePicked(day) {
       if (this.currDates.isFirst) {
@@ -376,9 +410,10 @@ export default {
         this.$refs.elOrderBtn.classList += ' hidden'
       }
     }
-  }, created(){
-      eventBus.on('getDateFromSchedule', this.onDatePicked);
-  }
+  },
+  // created(){
+  //     eventBus.on('getDateFromSchedule', this.onDatePicked);
+  // }
 };
 </script>
   

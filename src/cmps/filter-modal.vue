@@ -200,8 +200,8 @@ export default {
             data: [80, 150, 250],
             filterBy: {
                 range: [0, 1],
-                rooms: 0,
-                beds: 0,
+                rooms: 'any',
+                beds: 'any',
                 type: [],
                 amenities: [],
             },
