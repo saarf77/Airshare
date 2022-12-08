@@ -22,8 +22,6 @@
         </div>
 
         <table v-if="showOrders" class="content-table">
-
-
           <thead>
             <tr class="border-bottom">
               <th class="title-thead">Guest </th>
@@ -42,7 +40,6 @@
             <orders-host />
           </tbody>
         </table>
-
         <table v-if="showStays" class="content-table">
           <thead>
             <tr>
@@ -90,7 +87,13 @@ export default {
       showStays: false,
       showOrders: true,
       // hostOrders:[]
+       tableData: [
+  {
+
+  },
+]
     };
+    
   },
   created() {
     this.$store.dispatch({ type: 'loadOrders' , hostId: '622f3404e36c59e6164fb63a'});
@@ -205,3 +208,5 @@ export default {
   },
 };
 </script>
+
+

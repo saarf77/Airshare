@@ -32,7 +32,7 @@
                 <div class="user-nav-in">
                   <a href="#/" @click="logDemo" v-if="!getLogInUser">Messages</a>
                   <!-- v-if todo -->
-                  <a href="#/wishList" @click="showMenu = !showMenu">Wish List</a>
+                  <a href="#/wishlist" @click="showMenu = !showMenu">Wish List</a>
                   <a href="#/dashboard" @click="showMenu = !showMenu">Dashboard</a>
                   <!-- <a href="#/wishList" @click="showMenu = !showMenu" class="a1" v-if="getLogInUser">Wish List</a>
                   <a href="#/dashboard" @click="showMenu = !showMenu" v-if="getLogInUser">Dashboard</a> -->
