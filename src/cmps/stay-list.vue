@@ -2,20 +2,18 @@
     <section class="stay-list-container">
       <!-- <button @click="toAddStay()">Add Stay</button> -->
       <ul class="stay-list clean-list stay-list-layout">
-        <stay-preview3 v-for="stay in stays" :key="stay._id" :stay="stay" />
+        <stay-preview  v-if="currStays" v-for="stay in currStays" :key="stay._id" :previewStay="stay" />
       </ul>
     </section>
   </template>
   
   <script>
-  import stayPreview3 from "./stay-preview3.vue"
+  import stayPreview from "./stay-preview.vue"
   
   export default {
-    props: {
-      stays: Array,
-    },
+    props:['currStays'],
     components: {
-      stayPreview3,
+      stayPreview,
     },
     methods: {
       toAddStay() {
