@@ -91,9 +91,15 @@ export const stayStore = {
                 throw err
             }
         },
-        async loadStays(context) {
+        async loadStays(context , {userId}) {
             try {
-                var filterBy = context.state.filterBy ? context.state.filterBy : ''
+                var filterBy ={}
+                console.log(userId)
+                if(userId){
+                    filterBy.byUserId = userId
+                }
+                console.log("🚀 ~ file: stay.store.js:97 ~ loadStays ~ filterBy", filterBy)
+                // var filterBy = context.state.filterBy ? context.state.filterBy : ''
                 const stays = await stayService.query(filterBy)
                 context.commit({ type: 'setStays', stays })
                 console.log(stays)

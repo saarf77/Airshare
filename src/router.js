@@ -49,7 +49,7 @@ const routes = [
     component: stayPayment
   },
   {
-    path: '/dashboard',
+    path: '/dashboard/:id?',
     name: 'host-dashboard',
     component: dashboard
   },
