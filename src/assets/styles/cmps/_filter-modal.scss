@@ -15,7 +15,7 @@
     .filter-header {
         display: flex;
         align-items: center;
-        height: 10%;
+        height: 9.8%;
         border-bottom: 1px solid #dddddd;
 
         .close-filter {
@@ -227,7 +227,7 @@ span.el-radio-button__inner {
 
 .amenities-filter {
     padding: 46px 0;
-    border-bottom: 1px solid #dddddd;
+    // border-bottom: 1px solid #dddddd;
 
     .amenities-title {
         padding-bottom: 36px;
@@ -286,12 +286,19 @@ span.el-radio-button__inner {
     font-size: 16px!important;
     line-height: 20px!important;
     height: 72px;
-    margin: 2px;
+    margin: -6px;
 }
 .filter-footer button:nth-child(1){
+    cursor: pointer;
     text-decoration: underline;
     font-size: 1em;
     font-weight: 700;
+    background-color: white;
+    color: $clr1;
+    &:hover{
+        background-color: $clr8;
+        border-radius: 10px;
+    }
 }
 .filter-footer button:nth-child(2){
     background: #222222;
@@ -300,6 +307,7 @@ span.el-radio-button__inner {
     text-align: center;
     width: 161px;
     font-weight: $bold;
+    border-top: 1px solid rgb(235,235,235)!important;    
     font-family: 'Circular',-apple-system,'BlinkMacSystemFont','Roboto','Helvetica Neue',sans-serif;;
     height: 48px;
     align-items: end;
