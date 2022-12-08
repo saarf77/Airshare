@@ -26,6 +26,7 @@ import detailsPhotosDisplay from '../cmps/details-photos-display.vue';
 import detailsDescription from '../cmps/details-description.vue';
 import detailsSchedule from '../cmps/details-schedule.vue';
 import detailsOrder from '../cmps/details-order.vue';
+import {fakeReviews} from '../services/stay.service.local.js'; //remove me
 
 export default {
     data(){
@@ -155,11 +156,16 @@ export default {
             return svgService.getSvgIcon('emptyHeart') + '<span> Save </span>';
         },
         reviewsObject(){
-            let reviews = null;
-            if(this.reviewsCount){
-                reviews =  {list: this.currStay.reviews, starRate: this.calcStarRate};
-            };
-            return reviews; 
+            /*fake*/
+            let currFakeReviews = fakeReviews; //remove me
+            if(currFakeReviews){ return currFakeReviews; }
+            return '';
+            
+            // let reviews = null;
+            // if(this.reviewsCount){
+            //     reviews =  {list: this.currStay.reviews, starRate: this.calcStarRate};
+            // };
+            // return reviews; 
         },
         locAddress(){
             return (this.currStay?.loc?.address?.length > 0)? this.currStay?.loc?.address : ' ';
@@ -174,7 +180,9 @@ export default {
         detailsPhotosDisplay,
         detailsDescription,
         detailsSchedule,
-        detailsOrder
+        detailsOrder,
+        fakeReviews, //remove me
+
     }
 }
 
