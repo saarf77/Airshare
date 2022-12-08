@@ -2,7 +2,9 @@
     <form class="form-filter">
         <div class="filter-header">
             <div class="close-filter">
-                <span @click="closeModal"><img src="../assets/icons/close-icon.svg"></span>
+                <button>
+                    <span @click="closeModal"><img src="../assets/icons/close-icon.svg"></span>
+                </button>
             </div>
             <h2>Filters</h2>
         </div>
@@ -181,7 +183,7 @@
         </div>
         <div class="filter-footer">
             <button>Clear all</button>
-            <button @click.stop.prevent="setFilter">Show 29 stays</button>
+            <button @click.stop.prevent="setFilter">Show 29 homes</button>
         </div>
     </form>
 </template>
@@ -200,8 +202,8 @@ export default {
             data: [80, 150, 250],
             filterBy: {
                 range: [0, 1],
-                rooms: 0,
-                beds: 0,
+                rooms: 'any',
+                beds: 'any',
                 type: [],
                 amenities: [],
             },
@@ -219,6 +221,8 @@ export default {
         },
         closeModal() {
             this.$emit('onClickAway')
+            event.preventDefault()
+
         },
         setBorder(type) {
             if (this.filterBy.type.includes(type)) {

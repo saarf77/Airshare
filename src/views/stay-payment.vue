@@ -10,7 +10,7 @@
                     <h3>Good price</h3>
                 </div>
                 <div class="deal-content">
-                    <p>Your dates are $194 less than the avg. nightly rate over the last 3 months.</p>
+                    <p>Your dates are <span>${{getDiscount}}</span> less than the avg. nightly rate over the last 3 months.</p>
                 </div>
             </section>
 
@@ -32,7 +32,7 @@
                 </div>
 
             </section>
-            <div class="btn-container">
+            <div @click="backToPage" class="btn-container">
                 <div v-for="i in 100" class="cell"></div>
                 <div class="content">
                     <button type="submit" class="action-btn">
@@ -54,8 +54,7 @@
                         <img :src="setHostImg">
                     </div>
 
-                    <div class="stay-name">
-                        {{ order.stay.name }}
+                    <div class="stay-name">{{ order.stay.name }}
                     </div>
                 </div>
             </div>
@@ -97,6 +96,8 @@
     </section>
 </template>
 <script>
+    import {utilService} from '../services/util.service.js'
+    import { ElMessage } from 'element-plus';
 export default {
     data() {
         return {
@@ -112,6 +113,9 @@ export default {
         // this.oreder = currOrder
     },
     computed: {
+        getDiscount(){
+            return utilService.getRandomIntInclusive(100 , 250)
+        },
         stayName() {
             return (this.currStay) ? this.currStay.name : this.stayName;
         },
@@ -139,6 +143,10 @@ export default {
         },
     },
     methods: {
+        backToPage(){
+            this.$router.push('/')
+            ElMessage.success('Order sent!')
+        },
         setOrder(currOrder) {
             this.order = currOrder
             console.log(this.order);

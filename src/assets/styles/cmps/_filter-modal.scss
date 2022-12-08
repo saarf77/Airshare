@@ -15,25 +15,31 @@
     .filter-header {
         display: flex;
         align-items: center;
-        height: 10%;
+        height: 9.8%;
         border-bottom: 1px solid #dddddd;
 
         .close-filter {
             flex: .8;
-            padding: 0 24px;
-            img{
-                height: 16px;
-                width: 16px;
+            padding: 0 10px;
+            button{
+                padding-top: 10px;
+                background-color: #fff;
+                img{
+                    // height: 16px;
+                    width: 16px;
+                }
             }
+            button:hover{
+                background-color: $clr8;
+                border-radius: 50%;
+                // height: 24px !important;
+                // width: 24px !important;
+                text-align: center;
+                cursor: pointer;
+            }
+
         }
-        span:hover{
-            background-color: #a6a6a6;
-            border-radius: 50%;
-            height: 24px !important;
-            width: 24px !important;
-            text-align: center;
-            cursor: pointer;
-        }
+       
         
         h2 {
             flex: 1;
@@ -58,7 +64,7 @@
 
     h2 {
         margin-bottom: 0.3em;
-        font-family: Cereal;
+        font-family: Cereal, Helvetica, sans-serif;
         font-size: 1.25em;
     }
     p{
@@ -148,7 +154,7 @@ input:focus-within {
         font-family: Cereal;
         font-weight: 300;
         font-size: 17px;
-        margin: 0 0 0.4em;
+        // margin: 0 0 0.4em;
     }
 
     // .any:nth-child(2){
@@ -185,9 +191,9 @@ span.el-radio-button__inner {
     border-bottom: 1px solid #dddddd;
 
     h2 {
-        font-family: Cereal;
+        font-family: Cereal, Helvetica, sans-serif;
         font-size: 22.8px;
-        font-weight: 400;
+        // font-weight: 400;
         padding-bottom: 18px;
     }
 
@@ -227,14 +233,14 @@ span.el-radio-button__inner {
 
 .amenities-filter {
     padding: 46px 0;
-    border-bottom: 1px solid #dddddd;
+    // border-bottom: 1px solid #dddddd;
 
     .amenities-title {
         padding-bottom: 36px;
     }
     h2{
-        font-family: Cereal;
-        font-weight:500;
+        font-family: Cereal, Helvetica, sans-serif;
+        // font-weight:500;
         font-size: 23px;
     }
     .essentials h3 {
@@ -286,12 +292,19 @@ span.el-radio-button__inner {
     font-size: 16px!important;
     line-height: 20px!important;
     height: 72px;
-    margin: 2px;
+    margin: -6px;
 }
 .filter-footer button:nth-child(1){
+    cursor: pointer;
     text-decoration: underline;
     font-size: 1em;
     font-weight: 700;
+    background-color: white;
+    color: $clr1;
+    &:hover{
+        background-color: $clr8;
+        border-radius: 10px;
+    }
 }
 .filter-footer button:nth-child(2){
     background: #222222;
@@ -300,6 +313,7 @@ span.el-radio-button__inner {
     text-align: center;
     width: 161px;
     font-weight: $bold;
+    border-top: 1px solid rgb(235,235,235)!important;    
     font-family: 'Circular',-apple-system,'BlinkMacSystemFont','Roboto','Helvetica Neue',sans-serif;;
     height: 48px;
     align-items: end;

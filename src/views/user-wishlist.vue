@@ -1,8 +1,7 @@
 <template>
-    <div  v-if="!stays"><img class="loader" src="../assets/icons/loader.gif" alt="" srcset=""></div>
-    <div v-else>
-
-        <div class="logIn" v-if="!loggedinUser">
+    <!-- <div  ><img class="loader" src="../assets/icons/loader.gif" alt="" srcset=""></div> -->
+    <div >
+        <div class="logIn" >
             <h1>log in first
                 <router-link to="/login">
 
@@ -10,10 +9,10 @@
                 </router-link>
             </h1>
         </div>
-        <h1 class="text-center" v-else>My wishlist:</h1>
+        <h1 class="text-center">My wishlist:</h1>
         <div class="container">
 
-            <stay-list class="container" :stays="wishStays" />
+            <!-- <stay-list class="container" :stays="wishStays" /> -->
         </div>
     </div>
 </template>

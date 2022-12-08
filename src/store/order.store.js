@@ -28,6 +28,9 @@ export const orderStore = {
         state.orders = orders
       },
       addOrder(state, { order }) {
+        console.log(order)
+        console.log(state)
+        console.log(state.orders)
         state.orders.push(order)
       },
   
@@ -68,7 +71,7 @@ export const orderStore = {
       },
       async saveOrder(context, { order }) {
         try {
-            console.log(order)
+            console.log('IM FROM STORE',order)
           const isEdit = (order.id?.length > 0)
           const savedOrder = await orderService.save(order)
           context.commit({ type: isEdit ? 'updateOrder' : 'addOrder', order: savedOrder })

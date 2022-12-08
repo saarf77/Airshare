@@ -20,8 +20,9 @@ export const stayService = {
 }
 window.ss = stayService
 
-async function query(filterBy = { txt: '', price: 0 }) {
-    return httpService.get(STORAGE_KEY, filterBy)
+async function query(filterBy = '') {
+  console.log("🚀 ~ file: stay.service.js:25 ~ query ~ filterBy", filterBy)
+    return await httpService.get(STORAGE_KEY, filterBy)
 
     // var cars = await storageService.query(STORAGE_KEY)
     // if (filterBy.txt) {
@@ -34,14 +35,14 @@ async function query(filterBy = { txt: '', price: 0 }) {
     // return cars
 
 }
-function getById(id) {
+async function getById(id) {
     // return storageService.get(STORAGE_KEY, carId)
-    return httpService.get(`stay/${id}`)
+    return await httpService.get(`stay/${id}`)
 }
 
 async function remove(id) {
     // await storageService.remove(STORAGE_KEY, carId)
-    return httpService.delete(`stay/${id}`)
+    return await httpService.delete(`stay/${id}`)
 }
 async function save(entity) {
     var savedEntity

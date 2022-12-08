@@ -15,7 +15,7 @@ header {
     transition: all 500ms ease-out;
     a.logo {
       flex: 1 1 0%;
-      padding-inline-end: 79px;
+      // padding-inline-end: 79px;
       // margin-left: 55px;
     }
 
@@ -235,7 +235,7 @@ header {
   flex-direction: column;
   position: absolute;
   top: 80px;
-  right: 20px;
+  right: 15%;
   background-color: #fff;
   border-radius: 12px 12px;
   width: 244px;

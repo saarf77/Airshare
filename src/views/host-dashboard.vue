@@ -10,7 +10,8 @@
       </h1>
     </div>
 
-    <div >
+    <div v-else>
+
       <div class="flex column">
         
         <h1 class="chart-title">Hosting Summary</h1>
@@ -22,27 +23,24 @@
         </div>
 
         <table v-if="showOrders" class="content-table">
-
-
           <thead>
-            <tr class="border_bottom">
-              <th class="title-thead">Time </th>
+            <tr class="border-bottom">
               <th class="title-thead">Guest </th>
-              <th class="title-thead">Stay name </th>
-              <th class="title-thead">Check In </th>
-              <th class="title-thead">Check Out </th>
               <th class="title-thead text-center">Status </th>
-              <th class="title-thead text-center">Revenue </th>
               <th class="title-thead text-center">Guests </th>
+              <!-- <th class="title-thead">Check Out </th> -->
+              <th class="title-thead">Booking</th>
+              <th class="title-thead">Stay name </th>
+              <th class="title-thead text-center">Revenue </th>
               <th class="title-thead text-center">Action </th>
+              <th class="title-thead">Check In/ Out </th>
             </tr>
           </thead>
           <div></div>
           <tbody>
-            <orders-host v-for="hostOrder in getHostOrders" :key="hostOrder._id" :hostOrder="hostOrder" />
+            <orders-host />
           </tbody>
         </table>
-
         <table v-if="showStays" class="content-table">
           <thead>
             <tr>
@@ -90,10 +88,18 @@ export default {
       showStays: false,
       showOrders: true,
       // hostOrders:[]
+       tableData: [
+  {
+
+  },
+]
     };
+    
   },
   created() {
-    this.$store.dispatch({ type: 'loadOrders' , hostId: '622f3404e36c59e6164fb63a'});
+    this.$store.dispatch({ type: 'loadOrders' , hostId: this.$route.params.id});
+    this.$store.dispatch({ type: 'loadStays' , userId: this.$route.params.id});
+
     // hostId: this.getLogInUser._id
     // this.$store.dispatch({ type: 'setFilterBy', filterBy: { hostID: this.getLogInUser._id } });
 
@@ -205,3 +211,5 @@ export default {
   },
 };
 </script>
+
+

@@ -33,7 +33,7 @@ export default {
         return{
             currStay: null,
             host: null,
-            
+            hostImg:'https://res.cloudinary.com/sprint4-triman/image/upload/v1669793675/elon_mask_ltbtp6.jpg'
         }
     }, 
     created() {
@@ -57,10 +57,16 @@ export default {
         
     },
     computed: {
+        // hostImg(){
+        //     return (this.currStay?.host?.pictureUrl)?this.hostImg = this.currStay.host.pictureUrl:''
+        // },
         stayName(){
+        //   let photo =  (this.currStay?.host?.pictureUrl)?this.hostImg = this.currStay.host.pictureUrl:''
+        //   this.hostImg = photo
             return (this.currStay) ? this.currStay.name : this.stayName;
         },
         staySummary(){
+            
             if(this.currStay === null || this.currStay?.summary?.length < 1) return;
             
             let { summary } = this.currStay;
@@ -134,7 +140,8 @@ export default {
             return (this.currStay?.imgUrls?.length > 0)? this.currStay.imgUrls : [];
         },
         hostImg(){
-            return (this.host?.imgUrl)? this.host?.imgUrl : '#';
+            return (this.currStay?.host?.pictureUrl)? this.currStay.host.pictureUrl:'https://res.cloudinary.com/sprint4-triman/image/upload/v1669793675/elon_mask_ltbtp6.jpg'
+            // return (this.host?.imgUrl)? this.host?.imgUrl : '#';
         },
         hostedBy(){
             return (this.currStay?.host?.fullname)? this.currStay?.host?.fullname : '';
