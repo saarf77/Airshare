@@ -1,6 +1,17 @@
+
+<template>
+    <section class="reviews-display">
+         <div class="details-title" v-html="svgBlackStar">
+         </div>
+         <div class="stay-attributes" v-html="stayAttributesHtml">
+         </div>
+         <div class="stay-reviews-board" ref="reviewsBoardContainer" v-html="reviewsBoardHtml">
+         </div>
+     </section>
+</template>
+
 <script>
 import {svgService} from '../services/svg.service.js';
-import {stayService} from '../services/demo-data.service.js';
 
 export default {
     props: ['reviewsList'],
@@ -26,8 +37,9 @@ export default {
             if(this.currStayReviews[id]?.content?.length > 0){
                 var currLines = [];
 
-                currTxt = this.currStayReviews[id].content;
-                const elBoard = this.$refs.reviewsBoardContainer;
+                 currTxt = this.currStayReviews[id].content;
+                 const elBoard = this.$refs.reviewsBoardContainer;
+                 if(elBoard){
                 this.reviewWidth = elBoard.offsetWidth/2
                 let fontSize = parseFloat(window.getComputedStyle(elBoard, null).getPropertyValue('font-size'));
                 let maxLettersPerLine = Math.floor((this.reviewWidth / fontSize * 2))
@@ -62,6 +74,9 @@ export default {
                     currLines.push(currTxt.substring(0,idx));
                     currTxt = currTxt.substring(idx, currTxt.length);
                 }
+                }
+                
+                
             }
             return currLines.join();
             },
@@ -117,25 +132,25 @@ export default {
         reviewsList:{
             handler(newVal) {
                 // TODO: add the reviews back by updating the storage
-                // if(newVal?.list.length > 0){
-                //     this.currStayStarRating = (newVal.list.reduce((acc, review) => acc + parseFloat(review.starRate), 0)/newVal.list.length).toFixed(1) ;
-                //     this.currStayAttributes.cleanlinessRating = (newVal.list.reduce((acc, review) => acc + review.attributes.cleanliness, 0)/newVal.list.length).toFixed(1);
-                //     this.currStayAttributes.communicationRating = (newVal.list.reduce((acc, review) => acc + review.attributes.communication, 0)/newVal.list.length).toFixed(1);
-                //     this.currStayAttributes.checkInRating = (newVal.list.reduce((acc, review) => acc += review.attributes.checkIn, 0)/newVal.list.length).toFixed(1);
-                //     this.currStayAttributes.accuracyRating = (newVal.list.reduce((acc, review) => acc += review.attributes.accuracy, 0)/newVal.list.length).toFixed(1);
-                //     this.currStayAttributes.locationRating = (newVal.list.reduce((acc, review) => acc += review.attributes.location, 0)/newVal.list.length).toFixed(1);
-                //     this.currStayAttributes.valueRating = (newVal.list.reduce((acc, review) => acc += review.attributes.value, 0)/newVal.list.length).toFixed(1);
-                //     this.currStayReviews = newVal.list;
-                //     this.usersImgUrls = [];
-                //     let hostPromise;
-                //     newVal.list.forEach(review => {
-                //         hostPromise = stayService.getById(review.user_id, 'users-db')
-                //         hostPromise.then((res)=>{
-                //             this.reviewsUsers.push(res[0]);
-                //         });
-                //     });
+                if(newVal?.list?.length > 0){
+                    this.currStayStarRating = (newVal.list.reduce((acc, review) => acc + parseFloat(review.starRate), 0)/newVal.list.length).toFixed(1) ;
+                    this.currStayAttributes.cleanlinessRating = (newVal.list.reduce((acc, review) => acc + review.attributes.cleanliness, 0)/newVal.list.length).toFixed(1);
+                    this.currStayAttributes.communicationRating = (newVal.list.reduce((acc, review) => acc + review.attributes.communication, 0)/newVal.list.length).toFixed(1);
+                    this.currStayAttributes.checkInRating = (newVal.list.reduce((acc, review) => acc += review.attributes.checkIn, 0)/newVal.list.length).toFixed(1);
+                    this.currStayAttributes.accuracyRating = (newVal.list.reduce((acc, review) => acc += review.attributes.accuracy, 0)/newVal.list.length).toFixed(1);
+                    this.currStayAttributes.locationRating = (newVal.list.reduce((acc, review) => acc += review.attributes.location, 0)/newVal.list.length).toFixed(1);
+                    this.currStayAttributes.valueRating = (newVal.list.reduce((acc, review) => acc += review.attributes.value, 0)/newVal.list.length).toFixed(1);
+                    this.currStayReviews = newVal.list;
+                    this.usersImgUrls = [];
+                    let hostPromise;
+                    newVal.list.forEach(review => {
+                        hostPromise = stayService.getById(review.user_id, 'users-db')
+                        hostPromise.then((res)=>{
+                            this.reviewsUsers.push(res[0]);
+                        });
+                    });
 
-                // }
+                }
 
                
             },
@@ -144,18 +159,21 @@ export default {
     },
     components:{
         svgService,
-        stayService,
+    },
+    created(){
+        if(this.reviewsList?.length > 0){
+                    this.currStayStarRating = (this.reviewsList.reduce((acc, review) => acc + parseFloat(review.starRate), 0)/this.reviewsList.length).toFixed(1) ;
+                    this.currStayAttributes.cleanlinessRating = (this.reviewsList.reduce((acc, review) => acc + review.attributes.cleanliness, 0)/this.reviewsList.length).toFixed(1);
+                    this.currStayAttributes.communicationRating = (this.reviewsList.reduce((acc, review) => acc + review.attributes.communication, 0)/this.reviewsList.length).toFixed(1);
+                    this.currStayAttributes.checkInRating = (this.reviewsList.reduce((acc, review) => acc += review.attributes.checkIn, 0)/this.reviewsList.length).toFixed(1);
+                    this.currStayAttributes.accuracyRating = (this.reviewsList.reduce((acc, review) => acc += review.attributes.accuracy, 0)/this.reviewsList.length).toFixed(1);
+                    this.currStayAttributes.locationRating = (this.reviewsList.reduce((acc, review) => acc += review.attributes.location, 0)/this.reviewsList.length).toFixed(1);
+                    this.currStayAttributes.valueRating = (this.reviewsList.reduce((acc, review) => acc += review.attributes.value, 0)/this.reviewsList.length).toFixed(1);
+                    this.currStayReviews = this.reviewsList;
+                    this.usersImgUrls = [];
+                    this.reviewsList.forEach(review => { this.reviewsUsers.push(review.user)});
+
+                }
     }
 }
 </script>
-
-<template>
-       <section class="reviews-display">
-            <div class="details-title" v-html="svgBlackStar">
-            </div>
-            <div class="stay-attributes" v-html="stayAttributesHtml">
-            </div>
-            <div class="stay-reviews-board" ref="reviewsBoardContainer" v-html="reviewsBoardHtml">
-            </div>
-        </section>
-</template>

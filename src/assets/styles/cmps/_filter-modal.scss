@@ -19,22 +19,27 @@
         border-bottom: 1px solid #dddddd;
 
         .close-filter {
-            border-radius: 50%;
             flex: .8;
-            padding: 0 24px;
-            img{
-                height: 16px;
-                width: 16px;
+            padding: 0 10px;
+            button{
+                padding-top: 10px;
+                background-color: #fff;
+                img{
+                    // height: 16px;
+                    width: 16px;
+                }
             }
+            button:hover{
+                background-color: $clr8;
+                border-radius: 50%;
+                // height: 24px !important;
+                // width: 24px !important;
+                text-align: center;
+                cursor: pointer;
+            }
+
         }
-        span:hover{
-            background-color: $clr8;
-            border-radius: 50%;
-            height: 24px !important;
-            width: 24px !important;
-            text-align: center;
-            cursor: pointer;
-        }
+       
         
         h2 {
             flex: 1;

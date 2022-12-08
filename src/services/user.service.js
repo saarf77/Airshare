@@ -140,6 +140,7 @@ function getDemoUsers(){
                
                "_id": "7N4OEdLC2BfjT",
                "name": "Heavy Metal",
+               "password": "ironMaiden",
                "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670099516/user-11_zytml0.png",
                "propertiesId": []
         },
@@ -147,30 +148,35 @@ function getDemoUsers(){
                
                "_id": "7hlo5eR0X666L",
                "name": "Game of Chairs",
+               "password": "excitedX",
                "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670099516/user-12_wslgxy.png",
                "propertiesId": []
         },
         {
                "_id": "a4D67ti7Jv8jI",
                "name": "Mind Mistress",
+               "password": "burn66",
                "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670099517/user-13_zeuri6.png",
                "propertiesId": []
         },
         {
                "_id": "0ftUf74t6ZUzu",
                "name": "White Wires 49",
+               "password": "spiderfriend",
                "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670099517/user-14_ow2as4.png",
                "propertiesId": []
         },
         {
                "_id": "6fun6fun6fun6",
                "name": "ForTheFun",
+               "password": "boom!!!!",
                "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670099517/user-15_intfaj.png",
                "propertiesId": []
         },
         {
                "_id": "Hl6Kk4Ce9yrMr",
                "name": "rouge474",
+               "password": "drain",
                "imgUrl": "https://res.cloudinary.com/dj88xudav/image/upload/v1670100293/user-16_twzwub.png",
                "propertiesId": []
         }   

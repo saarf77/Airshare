@@ -2,7 +2,9 @@
     <form class="form-filter">
         <div class="filter-header">
             <div class="close-filter">
-                <span @click="closeModal"><img src="../assets/icons/close-icon.svg"></span>
+                <button>
+                    <span @click="closeModal"><img src="../assets/icons/close-icon.svg"></span>
+                </button>
             </div>
             <h2>Filters</h2>
         </div>
@@ -219,6 +221,8 @@ export default {
         },
         closeModal() {
             this.$emit('onClickAway')
+            event.preventDefault()
+
         },
         setBorder(type) {
             if (this.filterBy.type.includes(type)) {
