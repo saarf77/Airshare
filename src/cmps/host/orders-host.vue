@@ -46,7 +46,8 @@ export default {
         };
     },
     created() {
-        this.$store.dispatch({ type: 'loadOrders', hostId: '622f3402e36c59e6164fac46' });
+        console.log(this.$route.params.id)
+        // this.$store.dispatch({ type: 'loadOrders', hostId: this.$route.params.id });
     },
     computed: {
         getHostOrders() {
@@ -62,9 +63,9 @@ export default {
     },
     methods: {
         statusClass(orders) {
-            console.log(orders)
+            // console.log(orders)
             let currOrder = this.getHostOrders.filter(order => order === orders)
-            console.log(currOrder)
+            // console.log(currOrder)
             if (currOrder[0].status === 'pending') return 'status-pending'
             if (currOrder[0].status === 'approved') return 'status-approved'
             if (currOrder[0].status === 'declined') return 'status-decline'
@@ -99,7 +100,7 @@ export default {
         getGuestsAmount(orders) {
             let currOrder = this.getHostOrders.filter(order => order === orders)
             const { adults, children, pets, infants } = currOrder[0].guests
-            console.log(adults)
+            // console.log(adults)
             let amount = adults + children + pets + infants
             return amount
 

@@ -97,7 +97,9 @@ export default {
     
   },
   created() {
-    this.$store.dispatch({ type: 'loadOrders' , hostId: '622f3404e36c59e6164fb63a'});
+    this.$store.dispatch({ type: 'loadOrders' , hostId: this.$route.params.id});
+    this.$store.dispatch({ type: 'loadStays' , userId: this.$route.params.id});
+
     // hostId: this.getLogInUser._id
     // this.$store.dispatch({ type: 'setFilterBy', filterBy: { hostID: this.getLogInUser._id } });
 
