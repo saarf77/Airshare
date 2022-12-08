@@ -95,7 +95,7 @@
     </div>
 </div> -->
 
-    <div @click="sendOrder" class="btn-container">
+    <div @click="sendOrder" ref="elOrderBtn" class="btn-container">
       <div v-for="i in 100" class="cell"></div>
       <div class="content">
         <button type="submit" class="action-btn" v-html="btnStatus"></button>
@@ -345,7 +345,7 @@ export default {
      let order =  this.$store.dispatch({ type: "saveOrder", order:currOrder });
      console.log('HELLLOOO',order)
      order.then(res => this.$router.push('/payment/' + res._id ))
-      ElMessage.success('Order send!')
+      ElMessage.success('Confirm order!')
      
     },
     onDatePicked(day) {

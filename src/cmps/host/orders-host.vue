@@ -15,7 +15,7 @@
                         done
                     </span>
                 </el-button>
-                <el-button v-if="hostOrder.status === 'pending'" @click.prevent="pending(hostOrder)" size="small" type="info"
+                <el-button v-if="hostOrder.status === 'pending'" @click.prevent="decline(hostOrder)" size="small" type="info"
                     circle>
                     <span class="material-icons">close</span>
                 </el-button>
@@ -111,29 +111,30 @@ export default {
             currOrder.then(res => this.img = res.buyer.imgUrl)
             return this.img
         },
-        pending(orders) {
+        // pending(orders) {
             
-            let currOrder = this.getHostOrders.filter(order => order === orders)
-            let order = currOrder[0]
-            console.log('IM FROM PENDING',order)
-            // const order = JSON.parse(JSON.stringify(this.hostOrder))
-            this.$store.dispatch({ type: "saveOrder", order , status: 'approved' })
-        },
+        //     let currOrder = this.getHostOrders.filter(order => order === orders)
+        //     let order = currOrder[0]
+        //     console.log('IM FROM PENDING',order)
+        //     // const order = JSON.parse(JSON.stringify(this.hostOrder))
+        //     this.$store.dispatch({ type: "saveOrder", order , status: 'approved' })
+        // },
         approve(order) {
             console.log('asdafgawgwfa',order)
-            let currOrder = this.getHostOrders.filter(o => o === order)
-            console.log(currOrder)
-            let or = currOrder[0]
-            console.log('IM FROM APPROVE',or)
+            // let currOrder = this.getHostOrders.filter(o => o === order)
+            // console.log(currOrder)
+            // let or = currOrder[0]
+            order.status = 'approved'
+            console.log('IM FROM APPROVE',order)
             // const order = JSON.parse(JSON.stringify(this.hostOrder))
-            this.$store.dispatch({ type: "saveOrder", order:or , status: 'approved' })
+            this.$store.dispatch({ type: "saveOrder", order})
         },
-        decline(orders) {
-            let currOrder = this.getHostOrders.filter(order => order === orders)
-            let order = currOrder[0]
+        decline(order) {
+            // let currOrder = this.getHostOrders.filter(order => order === orders)
+            // let order = currOrder[0]
             console.log('IM FROM DECLINE',order)
             // const order = JSON.parse(JSON.stringify(this.hostOrder))
-            this.$store.dispatch({ type: "saveOrder", order , status: 'declined' })
+            this.$store.dispatch({ type: "saveOrder", order })
         },
     }
 };

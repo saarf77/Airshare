@@ -32,7 +32,7 @@
                 </div>
 
             </section>
-            <div class="btn-container">
+            <div @click="backToPage" class="btn-container">
                 <div v-for="i in 100" class="cell"></div>
                 <div class="content">
                     <button type="submit" class="action-btn">
@@ -97,6 +97,7 @@
 </template>
 <script>
     import {utilService} from '../services/util.service.js'
+    import { ElMessage } from 'element-plus';
 export default {
     data() {
         return {
@@ -142,6 +143,10 @@ export default {
         },
     },
     methods: {
+        backToPage(){
+            this.$router.push('/')
+            ElMessage.success('Order sent!')
+        },
         setOrder(currOrder) {
             this.order = currOrder
             console.log(this.order);
