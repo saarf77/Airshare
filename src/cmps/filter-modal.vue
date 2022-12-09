@@ -16,14 +16,14 @@
 
                 <HistogramSlider @change="setRange" @start="startRange" :width="650" :hist-slider-gap="0" :bar-height="100" :bar-width="12"
                     :bar-radius="0" :line-height="1" :bar-color="'#b0b0b0'" :primary-color="'#b0b0b0'"
-                    :label-color="'#bdd6f8'" :holder-color="'#dddddd'" :handel-color="'#ffffff'" :data="data" :min="min"
+                    :label-color="'#bdd6f8'" :holder-color="'#dddddd'" :handel-color="'#ffffff'" :data="data" :min="0"
                     :max="max" />
                 <div class="form-inputs">
                     <div class="inner-price">
                         <label for="min">min price</label>
                         <div class="flex form-input">
                             <span>$</span>
-                            <input v-model="filterBy.range[0]" type="number" name="min" :min="min" >
+                            <input v-model="filterBy.price[0]" type="number" name="min" :min="min" >
                         </div>
                     </div>
                     <div class="between-prices">-</div>
@@ -31,7 +31,7 @@
                         <label for="max">max price</label>
                         <div class="flex form-input">
                             <span>$</span>
-                            <input v-model="filterBy.range[1]" type="number" name="max" :max="max">
+                            <input v-model="filterBy.price[1]" type="number" name="max" :max="max">
                         </div>
                         <!-- <el-input-number v-model="filterBy.max" :min="min" :max="max" size="small" :controls="false"
                             @change="handleChange" /> -->
@@ -46,40 +46,40 @@
                 <h3>Bedrooms</h3>
                 <el-radio-group>
                     <label class="el-radio-button">
-                        <input v-model="filterBy.rooms" type="radio" class="el-radio-button__original-radio"
+                        <input v-model="filterBy.bedrooms" type="radio" class="el-radio-button__original-radio"
                             value="any">
                         <span class="el-radio-button__inner any">Any</span>
                     </label>
                     <label class="el-radio-button">
-                        <input v-model="filterBy.rooms" type="radio" class="el-radio-button__original-radio" value="1">
+                        <input v-model="filterBy.bedrooms" type="radio" class="el-radio-button__original-radio" value="1">
                         <span class="el-radio-button__inner">1</span>
                     </label>
                     <label class="el-radio-button">
-                        <input v-model="filterBy.rooms" type="radio" class="el-radio-button__original-radio" value="2">
+                        <input v-model="filterBy.bedrooms" type="radio" class="el-radio-button__original-radio" value="2">
                         <span class="el-radio-button__inner">2</span>
                     </label>
                     <label class="el-radio-button">
-                        <input v-model="filterBy.rooms" type="radio" class="el-radio-button__original-radio" value="3">
+                        <input v-model="filterBy.bedrooms" type="radio" class="el-radio-button__original-radio" value="3">
                         <span class="el-radio-button__inner">3</span>
                     </label>
                     <label class="el-radio-button">
-                        <input v-model="filterBy.rooms" type="radio" class="el-radio-button__original-radio" value="4">
+                        <input v-model="filterBy.bedrooms" type="radio" class="el-radio-button__original-radio" value="4">
                         <span class="el-radio-button__inner">4</span>
                     </label>
                     <label class="el-radio-button">
-                        <input v-model="filterBy.rooms" type="radio" class="el-radio-button__original-radio" value="5">
+                        <input v-model="filterBy.bedrooms" type="radio" class="el-radio-button__original-radio" value="5">
                         <span class="el-radio-button__inner">5</span>
                     </label>
                     <label class="el-radio-button">
-                        <input v-model="filterBy.rooms" type="radio" class="el-radio-button__original-radio" value="6">
+                        <input v-model="filterBy.bedrooms" type="radio" class="el-radio-button__original-radio" value="6">
                         <span class="el-radio-button__inner">6</span>
                     </label>
                     <label class="el-radio-button">
-                        <input v-model="filterBy.rooms" type="radio" class="el-radio-button__original-radio" value="7">
+                        <input v-model="filterBy.bedrooms" type="radio" class="el-radio-button__original-radio" value="7">
                         <span class="el-radio-button__inner">7</span>
                     </label>
                     <label class="el-radio-button">
-                        <input v-model="filterBy.rooms" type="radio" class="el-radio-button__original-radio" value="8">
+                        <input v-model="filterBy.bedrooms" type="radio" class="el-radio-button__original-radio" value="8">
                         <span class="el-radio-button__inner">8+</span>
                     </label>
                     <!-- <label v-for="item in 8" class="el-radio-button">
@@ -197,12 +197,12 @@ export default {
     data() {
         return {
             min: 0,
-            max: 300,
+            max: 1000,
             isActive: false,
-            data: [80, 150, 250],
+            data: [0 , 80, 150, 250],
             filterBy: {
-                range: [0, 1],
-                rooms: 'any',
+                price: [0, 1],
+                bedrooms: 'any',
                 beds: 'any',
                 type: [],
                 amenities: [],
@@ -212,12 +212,12 @@ export default {
     },
     methods: {
         startRange($event){
-            this.filterBy.range[0] = $event.from
-            this.filterBy.range[1] = $event.to
+            this.filterBy.price[0] = $event.from
+            this.filterBy.price[1] = $event.to
         },
         setRange($event) {
-            this.filterBy.range[0] = $event.from
-            this.filterBy.range[1] = $event.to
+            this.filterBy.price[0] = $event.from
+            this.filterBy.price[1] = $event.to
         },
         closeModal() {
             this.$emit('onClickAway')

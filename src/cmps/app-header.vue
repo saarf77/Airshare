@@ -171,6 +171,7 @@ export default {
       this.showMenu = !this.showMenu
     },
     setFilter(filterBy) {
+      this.$router.push({ path: '/', query: { ...filterBy } });
       this.$store.dispatch({ type: 'setFilter', filterBy })
     },
     expendForm(value) {
