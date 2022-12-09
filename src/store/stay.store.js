@@ -32,7 +32,7 @@ export const stayStore = {
     state: {
         stays: [],
         filterBy: null,
-        labels: stayService.getLabels(),
+        labels:null,
         maps: stayService.getMaps(),
 
     },
@@ -69,8 +69,22 @@ export const stayStore = {
             if (!stay.msgs) stay.msgs = []
             stay.msgs.push(msg)
         },
+        setLabels(state,{labels}){
+            state.labels = labels
+        }
     },
     actions: {
+       async setLabelsList(context){
+        try {
+           let labels = await stayService.getLabels()
+            context.commit({ type: 'setLabels', labels })
+            return labels
+        } catch (err) {
+            console.log('stayStore: Error in labelsStay', err)
+            throw err
+        }
+    },
+
         async addStay(context, { stay }) {
             try {
                 stay = await stayService.save(stay)
@@ -93,13 +107,17 @@ export const stayStore = {
         },
         async loadStays(context , {userId}) {
             try {
-                var filterBy ={}
+                var filterBy = context.state.filterBy ? context.state.filterBy : {}
+                console.log(filterBy.propertyType)
                 console.log(userId)
                 if(userId){
                     filterBy.byUserId = userId
                 }
+                if(filterBy.propertyType){
+                    filterBy = filterBy.propertyType
+                    console.log('IM FROM HEREEERERE',filterBy);
+                }
                 console.log("🚀 ~ file: stay.store.js:97 ~ loadStays ~ filterBy", filterBy)
-                // var filterBy = context.state.filterBy ? context.state.filterBy : ''
                 const stays = await stayService.query(filterBy)
                 context.commit({ type: 'setStays', stays })
                 console.log(stays)
@@ -108,9 +126,21 @@ export const stayStore = {
                 throw err
             }
         },
+        // async loadFilteredStays(context , {filterBy}) {
+        //     try {
+        //         console.log("🚀 ~ file: stay.store.js:97 ~ loadStays ~ filterBy", filterBy)
+        //         // var filterBy = context.state.filterBy ? context.state.filterBy : ''
+        //         const stays = await stayService.query(filterBy)
+        //         context.commit({ type: 'setStays', stays })
+        //         console.log(stays)
+        //     } catch (err) {
+        //         console.log('stayStore: Error in loadStays', err)
+        //         throw err
+        //     }
+        // },
         setFilter({ commit, dispatch }, { filterBy }) {
             commit({ type: 'setFilter', filterBy })
-            dispatch({ type: 'loadStays' })
+            dispatch({ type: 'loadStays'})
         },
         async removeStay(context, { stayId }) {
             try {

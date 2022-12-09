@@ -126,6 +126,7 @@ export default {
         //     }
         //     this.$emit('setFilter', {...this.filterBy})
         //   },
+        
         setFilter() {
             this.$emit('setFilter', { ...this.filterBy })
         },

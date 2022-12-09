@@ -303,8 +303,8 @@ export default {
       this.isShow = !this.isShow;
       eventBus.emit('overlay', this.isShow);
       eventBus.emit('getFilterStay');
-      let url = `/explore?location=${this.filterBy.where}`;
-      this.$router.push(url);
+      this.$router.push({ path: '/', query: { ...this.filterBy } });
+      this.$store.dispatch({ type: 'setFilter',filterBy: this.filterBy.where })
 
       this.$emit('expendForm', false);
     },
@@ -318,17 +318,7 @@ export default {
     dropDownMenu() {
       this.showModal = true;
     },
-    // setNumberGuests(){
-    //    let guestNum = this.filterBy.guests.reduce((acc,num) => acc + num)
-    //    return guestNum 
-    // },
-    // guestsCount() {
-    //     const { children, adults, Infants , pets } = this.filterBy.guests
-
-    //     const guestsCount = children + adults + Infants + pets;
-    //     if (guestsCount >= 1) return guestsCount + ' guests';
-    //     else return 'Add guests';
-    //   },
+    
     updateGuests(type, number) {
       if (this.filterBy.guests[type] === 0 && number === -1) return
       this.filterBy.guests[type] += number;
