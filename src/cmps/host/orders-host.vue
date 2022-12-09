@@ -2,20 +2,20 @@
     <div v-for="hostOrder in getHostOrders" :key="hostOrder._id">
         <tr class="border-bottom">
             <!-- <td>user</td> -->
-            <td class="text-center buyer"><img src="img"> <span>Yusi</span></td>
-            <td class="status text-center" :class="statusClass(hostOrder)">{{ hostOrder.status }}</td>
+            <td class="text-center buyer"><img :src="getUserImg(hostOrder)"> <span>{{getUserName(hostOrder)}}</span></td>
+            <td class="status text-center" :class="statusClass(hostOrder)">{{ statusDisplay(hostOrder) }}</td>
             <td class="text-center">{{ getGuestsAmount(hostOrder) }} </td>
             <!-- <td class="text-center">{{ getEndDate(hostOrder) }}</td> -->
             <td class="text-center">{{ getBookingDate(hostOrder) }}</td>
             <td class="text-center">{{ summarySize(hostOrder) }}</td>
-            <td class="text-center">${{ hostOrder.totalPrice.toFixed(2) }}</td>
+            <td class="text-center">${{ totalPrice(hostOrder) }}</td>
             <td class="text-center">
                  <el-button v-if="hostOrder.status === 'pending'" @click.prevent="approve(hostOrder)"
                     size="small" type="success" circle><span class="material-icons">
                         done
                     </span>
                 </el-button>
-                <el-button v-if="hostOrder.status === 'pending'" @click.prevent="decline(hostOrder)" size="small" type="info"
+                <el-button v-if="hostOrder.status === 'pending'" @click.prevent="decline(hostOrder)" size="small" type="danger"
                     circle>
                     <span class="material-icons">close</span>
                 </el-button>
@@ -103,14 +103,20 @@ export default {
             // console.log(adults)
             let amount = adults + children + pets + infants
             return amount
-
         },
-        getUserImg(orders) {
-            console.log(orders)
-
-            let currOrder = this.getHostOrders.filter(order => order === orders)
-            currOrder.then(res => this.img = res.buyer.imgUrl)
-            return this.img
+        totalPrice(order){
+            return order.totalPrice.toFixed(2)
+        },
+        statusDisplay(order){
+           return order.status
+        },
+        getUserName(order){
+            return order.buyer.fullname
+        },
+        getUserImg(order) {
+            // let currOrder = this.getHostOrders.filter(order => order === orders)
+            // currOrder.then(res => this.img = res.buyer.imgUrl)
+            return order.buyer.imgUrl
         },
         // pending(orders) {
             

@@ -5,16 +5,26 @@ import { orderService } from '../services/order.service.js'
 export const orderStore = {
     state: {
       orders: [],
+      currOrder:null,
       filterBy: null,
     },
     getters: {
       getOrders(state) {
         return state.orders
       },
+      getCurrOrder(state){
+        console.log('IM FROM GETTER',state.currOrder)
+        return state.currOrder
+      }
     },
     mutations: {
       setOrders(state, { orders }) {
         state.orders = orders
+      },
+      setCurrOrder(state ,{order}){
+        console.log('IM FROM MUTATION',order)
+        state.currOrder = order
+
       },
       setFilterBy(state, { filterBy }) {
         state.filterBy = filterBy
@@ -52,7 +62,9 @@ export const orderStore = {
       },
       async getOrderById(context, { orderId }) {
         try {
-          return await orderService.getById(orderId)
+          const order = await orderService.getById(orderId)
+          context.commit({ type: 'setCurrOrder', order: order })
+          return order
         } catch (err) {
           console.log(err)
         }

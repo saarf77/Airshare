@@ -2,7 +2,7 @@
   <div class="dashboard-container">
     <!-- <div class="logIn"> -->
     <div class="logIn" v-if="!getLogInUser">
-      <h1 class="login-msg">In order to see your hosting summary, 
+      <h1 class="login-msg">In order to see your hosting summary,
         you must log in first
         <router-link to="/login">
           <span class="under-line">login here</span>
@@ -13,7 +13,7 @@
     <div v-else>
 
       <div class="flex column">
-        
+
         <h1 class="chart-title">Hosting Summary</h1>
         <div class="top-dashboard-title flex">
           <button @click="showOrder" class="top-btn"> Orders</button>
@@ -41,6 +41,7 @@
             <orders-host />
           </tbody>
         </table>
+        
         <table v-if="showStays" class="content-table">
           <thead>
             <tr>
@@ -56,8 +57,8 @@
           </tbody>
         </table>
       </div>
-      <div class="graphs">  
-        <chart-host v-if="showGraphs"/>
+      <div v-if="showGraphs" class="graphs">
+        <chart-host  />
       </div>
     </div>
     <!-- <wishlist-host/> -->
@@ -80,25 +81,25 @@ export default {
   },
   data() {
     return {
-      showWishLists:false,
-      showGraphs:false,
+      showWishLists: false,
+      showGraphs: false,
       orders: null,
       stays: null,
       hostStays: null,
       showStays: false,
       showOrders: true,
       // hostOrders:[]
-       tableData: [
-  {
+      tableData: [
+        {
+
+        },
+      ]
+    };
 
   },
-]
-    };
-    
-  },
   created() {
-    this.$store.dispatch({ type: 'loadOrders' , hostId: this.$route.params.id});
-    this.$store.dispatch({ type: 'loadStays' , userId: this.$route.params.id});
+    this.$store.dispatch({ type: 'loadOrders', hostId: this.$route.params.id });
+    this.$store.dispatch({ type: 'loadStays', userId: this.$route.params.id });
 
     // hostId: this.getLogInUser._id
     // this.$store.dispatch({ type: 'setFilterBy', filterBy: { hostID: this.getLogInUser._id } });
@@ -110,11 +111,11 @@ export default {
     //   return this.$store.getters.getOrders
     // },
     getSumReviews() {
-            return this.$store.getters.getTotalReviews
-        },
-        getAvgRate() {
-            return this.$store.getters.getAvgRate
-        }, 
+      return this.$store.getters.getTotalReviews
+    },
+    getAvgRate() {
+      return this.$store.getters.getAvgRate
+    },
     getLogInUser() {
       return this.$store.getters.loggedinUser;
     },
@@ -122,7 +123,7 @@ export default {
       // this.hostOrders = this.$store.getters.getOrders
       console.log(this.$store.getters.getOrders)
       return this.$store.getters.getOrders
-      
+
     },
     getHostStays() {
       return this.$store.getters.getStays

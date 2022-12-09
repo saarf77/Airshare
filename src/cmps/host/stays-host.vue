@@ -1,9 +1,10 @@
 <template>
+    <div v-for="stay in getUserStays" :key="stay._id">
     <tr class="row-table border_bottom">
         <!-- <td><img class="stay-image" :src=imageUrl></td> -->
-        <!-- <td>{{ hostStay.name }}</td> -->
-        <!-- <td>${{ hostStay.price }}</td> -->
-        <!-- <td>{{ hostStay.address.street }}</td> -->
+        <td>{{ getStayName(stay)}}</td>
+        <td>{{ pricePerNight(stay) }}</td>
+        <td>{{ getAddress(stay) }}</td>
         <td>
             <el-button><span class="material-icons-outlined">
                     edit
@@ -11,7 +12,8 @@
         </td>
 
     </tr>
-
+   
+</div>
 </template>
 
 <script>
@@ -27,6 +29,24 @@ export default {
 
     },
     computed: {
+        getAddress(stay){
+            return stay.loc.address
+        },
+        pricePerNight(stay){
+            return stay.price
+        },
+        getStayName(stay) {
+            // console.log(currOrder.stay)
+            if (stay.name.length > 13) {
+                let desc = stay.name.slice(0, 13) + '...'
+                return desc
+            }
+            return stay.name
+        },
+        getUserStays() {
+            return this.$store.getters.stays
+        },
+        
     },
     methods: {
         approve() {

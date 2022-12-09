@@ -68,11 +68,11 @@
               fill-rule="evenodd"></path>
           </svg>
           <span>
-            {{ calcStarRate}} 
+            {{ currRate }}
           </span> ·
           <span class="reviews-amount">
             {{ reviewsAmount }} reviews
-          </span> 
+          </span>
         </span>
       </div>
     </div>
@@ -249,14 +249,14 @@ export default {
   },
   created() {
     console.log('HEY', this.orderStay)
+    this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
   },
   computed: {
-    reviewsAmount(){
-      // return this.orderStay.reviews.length
-      return (this.orderStay?.reviews?.length)?this.orderStay.reviews.length : '0'
+    currUser() {
+      return this.$store.getters.watchedUser
     },
     pricePerNight() {
-      return (this.orderStay?.price)?this.orderStay.price : '0'
+      return (this.orderStay?.price) ? this.orderStay.price : '0'
     },
     btnStatus() {
       return (this.currDates.startDay + this.currDates.endDay !== 0) ? '<span>Reserve</span>' : '<span>Check availability</span>';
@@ -343,7 +343,8 @@ export default {
       this.isShow = false;
     },
     sendOrder() {
-      console.log(this.orderStay.host)
+      console.log('alaa',this.orderStay.host)
+      console.log('HEYAYAYA', this.currUser)
       let currOrder = {
         createdAt: Date.now(),
         totalPrice: this.totalPrice,
@@ -359,7 +360,8 @@ export default {
         stay: {
           _id: this.orderStay._id,
           name: this.orderStay.name,
-          img: this.orderStay.imgUrls
+          img: this.orderStay.imgUrls,
+          address:this.orderStay.loc.address
         },
         host: {
           id: this.orderStay.host._id,
@@ -367,9 +369,9 @@ export default {
           fullname: this.orderStay.host.fullname,
         },
         buyer: {
-          _id: '',
-          fullname: '',
-          imgUrl: '',
+          _id: this.currUser._id,
+          fullname: this.currUser.name,
+          imgUrl: this.currUser.imgUrl,
         },
         priceObj: {
           basePrice: this.priceObj.basePrice,
@@ -379,9 +381,7 @@ export default {
         },
         msgs: [],
       }
-      console.log(currOrder)
       let order = this.$store.dispatch({ type: "saveOrder", order: currOrder });
-      console.log('HELLLOOO', order)
       order.then(res => this.$router.push('/payment/' + res._id))
       ElMessage.success('Confirm order!')
 
