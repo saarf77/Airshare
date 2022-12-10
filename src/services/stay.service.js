@@ -22,7 +22,7 @@ window.ss = stayService
 
 async function query(filterBy = '') {
   console.log("🚀 ~ file: stay.service.js:25 ~ query ~ filterBy", filterBy)
-    return await httpService.get(STORAGE_KEY, filterBy)
+    return await httpService.get(STORAGE_KEY,  filterBy)
 
     // var cars = await storageService.query(STORAGE_KEY)
     // if (filterBy.txt) {

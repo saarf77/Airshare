@@ -3,8 +3,8 @@
 
     <carousel :settings="settings" :breakpoints="breakpoints" :adjustable-height="true" :transition="300"
       :items-to-show="10" snapAlign="start">
-      <slide v-for="(label, idx) in labelsList" ref="labels" :key="label" @click="filter(label.propertyType)">
-        <div class="labels">
+      <slide v-for="(label, idx) in getLabelList" ref="labels" :key="label" >
+        <div @click="filter(label.propertyType)" class="labels">
           <img class="property-type-img" :src="utilService.getImgUrlFilter(label.src)" />
           <span>{{ label.propertyType }}</span>
         </div>
@@ -74,15 +74,19 @@ export default {
 
       this.filterBy.propertyType = []
       this.filterBy.propertyType.push(value)
-      this.$store.dispatch({ type: 'setFilterBy', filterBy: this.filterBy });
+      console.log("🚀 ~ file: search-labels.vue:77 ~ filter ~ filterBy", this.filterBy)
+      this.$router.push({ path: '/', query: { ...this.filterBy } });
+      this.$store.dispatch({ type: 'setFilter', filterBy: this.filterBy });
     },
   },
 
   created() {
-    this.labelsList = this.$store.getters.getLabels;
+    this.$store.dispatch({type:'setLabelsList'});
   },
   computed: {
-
+    getLabelList(){
+      return this.$store.getters.getLabels;
+    }
   },
   components: {
     Carousel,

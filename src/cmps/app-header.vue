@@ -32,8 +32,9 @@
                 <div class="user-nav-in">
                   <a href="#/" @click="logDemo" v-if="!getLogInUser">Messages</a>
                   <!-- v-if todo -->
+                  <a @click="loggedinUser">Dashboard</a>
                   <a href="#/wishlist" @click="showMenu = !showMenu">Wish List</a>
-                  <a href="#/dashboard" @click="showMenu = !showMenu">Dashboard</a>
+                  <a @click="usersTrips">Trips</a>
                   <!-- <a href="#/wishList" @click="showMenu = !showMenu" class="a1" v-if="getLogInUser">Wish List</a>
                   <a href="#/dashboard" @click="showMenu = !showMenu" v-if="getLogInUser">Dashboard</a> -->
                   <a href="#/login" @click="showMenu = !showMenu" v-if="!getLogInUser">Sign up</a>
@@ -113,6 +114,7 @@ export default {
     eventBus.on('staysLength', data => {
       this.staysLength = data
     });
+    
   },
 
   destroyed() {
@@ -121,6 +123,9 @@ export default {
   },
 
   computed: {
+    getCurrUser(){
+      return this.$store.getters.watchedUser
+    },
     getCheckinDate() {
       return this.checkinDate;
     },
@@ -131,6 +136,9 @@ export default {
       if (!this.guests) return "Add guests";
       return this.guests;
     },
+    // toDashboard(){
+    //   this.$router.push(`/dashboard/${user.id}`)
+    // },
     headerLocation() {
       let { params, path } = this.$route || {};
       this.isExplore = path !== '/';
@@ -150,7 +158,20 @@ export default {
   },
 
   methods: {
+    usersTrips(){
+      var user = this.$store.getters.loggedinUser;
+      console.log(user)
+      this.$router.push(`/trip/${user._id}`)
+      this.showMenu = !this.showMenu
+    },
+    loggedinUser() {
+      var user = this.$store.getters.loggedinUser;
+      console.log(user)
+      this.$router.push(`/dashboard/${user._id}`)
+      this.showMenu = !this.showMenu
+    },
     setFilter(filterBy) {
+      this.$router.push({ path: '/', query: { ...filterBy } });
       this.$store.dispatch({ type: 'setFilter', filterBy })
     },
     expendForm(value) {

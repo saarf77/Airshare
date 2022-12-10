@@ -13,7 +13,6 @@ export default {
             let html = '';
             if(this.currAmenities?.length > 0){
                 let amenitiesLength = (this.currAmenities.length < 10)? this.currAmenities.length : 10;
-                console.log(this.currAmenities)
                 for (let i = 0; i < amenitiesLength; i++) {
                     html +=  `<div class="amenitie-wrapper"> ${svgService.getSvgIcon(this.currAmenities[i].svgName)}<span class="icon-txt">${this.currAmenities[i].txt}</span></div>`;
                 }

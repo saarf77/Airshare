@@ -387,9 +387,3 @@ var v = {
         },
  ]
 }
-
-/*
-review.by.imgUrl = `https://avatars.dicebear.com/api/adventurer/your-${utilService.makeId(
-    6
-    )}-seed.svg`
-*/

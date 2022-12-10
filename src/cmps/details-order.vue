@@ -68,11 +68,11 @@
               fill-rule="evenodd"></path>
           </svg>
           <span>
-            {{ currRate }} 
+            {{ currRate }}
           </span> ·
           <span class="reviews-amount">
             {{ reviewsAmount }} reviews
-          </span> 
+          </span>
         </span>
       </div>
     </div>
@@ -194,11 +194,11 @@
     <div class="error-report" v-html="errorReport"></div>
     <div class="price-section">
       <div class="calming-alert">You won't be charged yet</div>
-      <div><span>Base price:</span><span>{{ this.priceObj.basePrice }}$</span></div>
-      <div><span>Cleaning fee:</span><span> {{ this.priceObj.CleaningFee }}$</span></div>
-      <div><span>Service fee:</span><span> {{ this.priceObj.serviceFee }}$</span></div>
-      <div><span>Taxes: </span><span> {{ this.priceObj.taxes }}$</span></div>
-      <div><span>Total price:</span><span>{{ totalPrice }}$</span></div>
+      <div><span>Base price:</span><span>{{ this.priceObj.basePrice.toLocaleString() }}$</span></div>
+      <div><span>Cleaning fee:</span><span> {{ this.priceObj.CleaningFee.toLocaleString() }}$</span></div>
+      <div><span>Service fee:</span><span> {{ this.priceObj.serviceFee.toLocaleString() }}$</span></div>
+      <div><span>Taxes: </span><span> {{ this.priceObj.taxes.toLocaleString() }}$</span></div>
+      <div><span>Total price:</span><span>{{ totalPrice.toLocaleString() }}$</span></div>
     </div>
   </section>
 </template>
@@ -248,18 +248,27 @@ export default {
     eventBus
   },
   created() {
-    console.log('HEY', this.orderStay)
+    if(this.loggedinUser?._id){
+      this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
+    }
   },
   computed: {
-    reviewsAmount(){
-      // return this.orderStay.reviews.length
-      return (this.orderStay?.reviews?.length)?this.orderStay.reviews.length : '0'
+    currUser() {
+      return this.$store.getters.watchedUser
     },
-    currRate(){
+    loggedinUser() {
+      return this.$store.getters.loggedinUser;
+    },
+    reviewsAmount() {
+      // return this.orderStay.reviews.length
+      return (this.orderStay?.reviews?.length) ? this.orderStay.reviews.length : '0'
+    },
+    
+    currRate() {
       return 4.65
     },
     pricePerNight() {
-      return (this.orderStay?.price)?this.orderStay.price : '0'
+      return (this.orderStay?.price) ? this.orderStay.price : '0'
     },
     btnStatus() {
       return (this.currDates.startDay + this.currDates.endDay !== 0) ? '<span>Reserve</span>' : '<span>Check availability</span>';
@@ -285,6 +294,14 @@ export default {
       if (this.currDates.endDay === 0) return "Add date";
       return new Date(this.currDates.endDay).toLocaleDateString()
     },
+    calcStarRate(){
+      let currRate = 'new'
+      if(this.orderStay?.reviews?.length > 0){
+        currRate = (this.orderStay.reviews.reduce((acc, review) => acc + parseFloat(review.starRate), 0)/this.orderStay.reviews.length).toFixed(1) ;
+      }
+      return currRate;
+       
+    }
   },
   methods: {
     calcPayments() {
@@ -332,14 +349,14 @@ export default {
       if (this.guestsObj.infants > 0) this.guestTxt += `, ${this.guestsObj.infants} infants `;
       if (this.guestsObj.pets > 0) this.guestTxt += `, ${this.guestsObj.pets} pets `;
       this.calcPayments();
-      console.log('this.priceObj.basePrice', this.priceObj.basePrice);
 
     },
     onClickAway(event) {
       this.isShow = false;
     },
     sendOrder() {
-      console.log(this.orderStay.host)
+      console.log('alaa',this.orderStay.host)
+      console.log('HEYAYAYA', this.currUser)
       let currOrder = {
         createdAt: Date.now(),
         totalPrice: this.totalPrice,
@@ -355,7 +372,8 @@ export default {
         stay: {
           _id: this.orderStay._id,
           name: this.orderStay.name,
-          img: this.orderStay.imgUrls
+          img: this.orderStay.imgUrls,
+          address:this.orderStay.loc.address
         },
         host: {
           id: this.orderStay.host._id,
@@ -363,9 +381,9 @@ export default {
           fullname: this.orderStay.host.fullname,
         },
         buyer: {
-          _id: '',
-          fullname: '',
-          imgUrl: '',
+          _id: this.currUser._id,
+          fullname: this.currUser.name,
+          imgUrl: this.currUser.imgUrl,
         },
         priceObj: {
           basePrice: this.priceObj.basePrice,
@@ -375,9 +393,7 @@ export default {
         },
         msgs: [],
       }
-      console.log(currOrder)
       let order = this.$store.dispatch({ type: "saveOrder", order: currOrder });
-      console.log('HELLLOOO', order)
       order.then(res => this.$router.push('/payment/' + res._id))
       ElMessage.success('Confirm order!')
 
