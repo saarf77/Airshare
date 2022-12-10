@@ -254,6 +254,7 @@ export default {
   },
   computed: {
     currUser() {
+      console.log('this.$store.getters.watchedUser', this.$store.getters.watchedUser);
       return this.$store.getters.watchedUser
     },
     loggedinUser() {
@@ -351,8 +352,6 @@ export default {
       this.isShow = false;
     },
     sendOrder() {
-      console.log('alaa',this.orderStay.host)
-      console.log('HEYAYAYA', this.currUser)
       let currOrder = {
         createdAt: Date.now(),
         totalPrice: this.totalPrice,
@@ -410,8 +409,7 @@ export default {
       if (this.currDates.endDay + this.currDates.startDay !== 0) this.error = '';
     },
     openConfirm() {
-      if (this.currDates.endDay + this.currDates.startDay === 0) this.error = 'please select dates';
-      console.log(this.error);
+      (this.currDates.endDay + this.currDates.startDay === 0)? this.error = 'please select dates': sendOrder();
     }
   },
   watch: {
