@@ -427,9 +427,9 @@ export default {
       }
     }
   },
-  // created(){
-  //     eventBus.on('getDateFromSchedule', this.onDatePicked);
-  // }
-};
+  created(){
+    eventBus.on('getDateFromSchedule', this.onDatePicked);
+  }
+}
 </script>
   
