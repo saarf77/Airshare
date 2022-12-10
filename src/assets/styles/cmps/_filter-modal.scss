@@ -189,19 +189,20 @@ span.el-radio-button__inner {
     padding-bottom: 45px;
     padding: 32px 0;
     border-bottom: 1px solid #dddddd;
-
+    
     h2 {
         font-family: Cereal, Helvetica, sans-serif;
         font-size: 22.8px;
         // font-weight: 400;
         padding-bottom: 18px;
     }
-
+    
     .active {
         border: 2.5px solid black !important;
     }
-
+    
     .property-type:hover {
+        transition: .3s ;
         border: 1.5px solid black;
     }
 
@@ -257,6 +258,26 @@ span.el-radio-button__inner {
     }
 
 }
+
+// .el-checkbox-button.is-checked .el-checkbox-button__inner {
+//     color: var(--el-checkbox-button-checked-text-color);
+//     background-color: #f2f2;
+//     border-color: var(--el-checkbox-button-checked-border-color);
+//     box-shadow: -1px 0 0 0 var(--el-color-primary-light-7);
+// }
+
+// .el-checkbox_input.is-focus:not(.is-checked){
+//     background-color: black;
+// }
+// .el-checkbox-button.is-checked{
+//     color: red;
+//     background-color: black;
+//     border-color: red;
+//     box-shadow: -1px 0 0 0 var(--el-color-primary-light-7);
+// }
+// .el-checkbox{
+//     --el-checkbox-checked-bg-color: red
+// }
 
 .el-checkbox__original {
     opacity: 1;

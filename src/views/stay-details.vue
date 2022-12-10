@@ -40,6 +40,7 @@ export default {
         ;(async () => {
             try{
                 this.currStay = await stayService.getById(this.$route.params.id, 'stays-db');
+                //console.log('Stay from params:', this.currStay );
             }catch (err) {
                 console.log('details page: can\'t get stay by using this id ', err);
                 throw err;
@@ -49,6 +50,7 @@ export default {
         ;(async () => {
             try{
                 this.host = await stayService.getById(this.$route.params.id, 'stays-owner');
+                //console.log('host from params:', this.host );
             }catch (err) {
                 console.log('details page: can\'t get user by using this id ', err);
                 throw err;
@@ -106,7 +108,6 @@ export default {
             return (this.currStay?.bathrooms > 0) ? this.currStay.bathrooms : '0';
         },
         stayAmenities(){
-            //(this.currStay?.amenities.length > 0) ? console.log(this.currStay.amenities) : console.log(this.currStay.amenities);
             return (this.currStay?.amenities.length > 0) ? this.currStay.amenities : [];
         },
         calcStarRate(){
@@ -163,16 +164,10 @@ export default {
             return svgService.getSvgIcon('emptyHeart') + '<span> Save </span>';
         },
         reviewsObject(){
-            /*fake*/
-            let currFakeReviews = fakeReviews; //remove me
-            if(currFakeReviews){ return currFakeReviews; }
-            return '';
-            
-            // let reviews = null;
-            // if(this.reviewsCount){
-            //     reviews =  {list: this.currStay.reviews, starRate: this.calcStarRate};
-            // };
-            // return reviews; 
+            if(this.currStay?.reviews?.length){
+                return JSON.parse(JSON.stringify(this.currStay.reviews));
+            }
+            return [];
         },
         locAddress(){
             return (this.currStay?.loc?.address?.length > 0)? this.currStay?.loc?.address : ' ';
