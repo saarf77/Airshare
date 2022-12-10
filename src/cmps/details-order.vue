@@ -262,6 +262,7 @@ export default {
       // return this.orderStay.reviews.length
       return (this.orderStay?.reviews?.length) ? this.orderStay.reviews.length : '0'
     },
+    
     currRate() {
       return 4.65
     },

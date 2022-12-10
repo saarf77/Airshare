@@ -47,7 +47,7 @@
                 <el-radio-group>
                     <label class="el-radio-button">
                         <input v-model="filterBy.bedrooms" type="radio" class="el-radio-button__original-radio"
-                            value="any">
+                            value="0">
                         <span class="el-radio-button__inner any">Any</span>
                     </label>
                     <label class="el-radio-button">
@@ -91,7 +91,7 @@
                 <h3>Beds</h3>
                 <el-radio-group :fill="'#222222'">
                     <label class="el-radio-button">
-                        <input v-model="filterBy.beds" type="radio" class="el-radio-button__original-radio" value="any">
+                        <input v-model="filterBy.beds" type="radio" class="el-radio-button__original-radio" value="0">
                         <span class="el-radio-button__inner any">Any</span>
                     </label>
                     <label class="el-radio-button">
@@ -199,11 +199,11 @@ export default {
             min: 0,
             max: 1000,
             isActive: false,
-            data: [0 , 80, 150, 250],
+            data: [0, 80, 150, 250],
             filterBy: {
                 price: [0, 1],
-                bedrooms: 'any',
-                beds: 'any',
+                bedrooms: '0',
+                beds: '0',
                 type: [],
                 amenities: [],
             },
