@@ -256,6 +256,17 @@ export default {
     currUser() {
       return this.$store.getters.watchedUser
     },
+    loggedinUser() {
+      return this.$store.getters.loggedinUser;
+    },
+    reviewsAmount() {
+      // return this.orderStay.reviews.length
+      return (this.orderStay?.reviews?.length) ? this.orderStay.reviews.length : '0'
+    },
+    
+    currRate() {
+      return 4.65
+    },
     pricePerNight() {
       return (this.orderStay?.price) ? this.orderStay.price : '0'
     },
