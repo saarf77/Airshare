@@ -28,57 +28,54 @@ export default {
                 valueRating: 0,
             },
             reviewsUsers: [],
-            reviewWidth: 0,
         }
     },
     methods:{
-        getReviewTxt(id){
-            var currTxt = '';
-            if(this.currStayReviews[id]?.content?.length > 0){
-                var currLines = [];
-
-                 currTxt = this.currStayReviews[id].content;
-                 const elBoard = this.$refs.reviewsBoardContainer;
-                 if(elBoard){
-                this.reviewWidth = elBoard.offsetWidth/2
-                let fontSize = parseFloat(window.getComputedStyle(elBoard, null).getPropertyValue('font-size'));
-                let maxLettersPerLine = Math.floor((this.reviewWidth / fontSize * 2))
-                let quitWhile = false;
-                let idx;
-
-               
-                if(currTxt.length > (maxLettersPerLine * 3)){
-                    idx = currTxt.indexOf('.', (maxLettersPerLine * 3));
-                    currTxt = currTxt.substring(0,idx) + '...';
-                }
-
-                while(!quitWhile){
+        getReviewTxt(idx){
+                var currTxt = '';
+                if(this.reviewsList[idx]?.content?.length > 0){
+                    var currLines = [];
+                    currTxt = this.reviewsList[idx].content;
+                 
+                    if(this.reviewWidth > 0){
                     
-                    if(currTxt.length < maxLettersPerLine){
-                        currLines.push(currTxt + '...');
-                        quitWhile = true;
-                        break;
+                        let fontSize = parseFloat(window.getComputedStyle(this.$refs.reviewsBoardContainer, null).getPropertyValue('font-size'));
+                        let maxLettersPerLine = this.reviewWidth / fontSize
+                        let quitWhile = false;
+                        let strIdx;
+
+                        if(currTxt.length > (maxLettersPerLine * 3)){
+                            strIdx = currTxt.indexOf('.', (maxLettersPerLine * 3));
+                            currTxt = currTxt.substring(0,strIdx) + '...';
+                        }
+
+                        while(!quitWhile){
+                            
+                            if(currTxt.length < maxLettersPerLine){
+                                currLines.push(currTxt + '...');
+                                quitWhile = true;
+                                break;
+                            }
+
+                            strIdx = 0;
+                            strIdx = currTxt.lastIndexOf('.', maxLettersPerLine);
+
+                            if(currTxt.lastIndexOf(',', maxLettersPerLine) > strIdx){
+                                strIdx = currTxt.lastIndexOf(',', maxLettersPerLine);
+                            }
+
+                            if(currTxt.lastIndexOf(' ', maxLettersPerLine) > idx){
+                                strIdx = currTxt.lastIndexOf(' ', maxLettersPerLine);
+                            }
+
+                            currLines.push(currTxt.substring(0,strIdx));
+                            currTxt = currTxt.substring(strIdx, currTxt.length);
+                        }
+
+                        currTxt = currLines.join(' ');
                     }
-
-                    idx = 0;
-                    idx = currTxt.lastIndexOf('.', maxLettersPerLine);
-
-                    if(currTxt.lastIndexOf(',', maxLettersPerLine) > idx){
-                        idx = currTxt.lastIndexOf(',', maxLettersPerLine);
-                    }
-
-                    if(currTxt.lastIndexOf(' ', maxLettersPerLine) > idx){
-                        idx = currTxt.lastIndexOf(' ', maxLettersPerLine);
-                    }
-
-                    currLines.push(currTxt.substring(0,idx));
-                    currTxt = currTxt.substring(idx, currTxt.length);
                 }
-                }
-                
-                
-            }
-            return currLines.join();
+                return currTxt;
             },
             getDateMonthNYear(currDate){
                 return new Date(currDate).toLocaleString('default', { month: 'long' }) + ' ' + new Date(currDate).getFullYear();
@@ -86,6 +83,13 @@ export default {
         },
         
     computed: {
+        reviewWidth(){
+            let currWidth = 0;
+            if(this.$refs?.reviewsBoardContainer){
+                currWidth = (this.$refs.reviewsBoardContainer.offsetWidth/2)*0.8
+            }
+            return currWidth;
+        },
     svgBlackStar(){
             const svgHtml = svgService.getSvgIcon('blackStarIcon') + `<span class="average-reviews">${this.currStayStarRating}</span>·
             <span class="reviewers-count">${this.currStayReviews.length}</span>reviews`
@@ -114,12 +118,12 @@ export default {
         },
         reviewsBoardHtml(){
             let strHtml = '';
-            if(this.currStayReviews?.length > 0 && this.reviewsUsers?.length > 0 ){
+            if(this.reviewsList.length > 0){
                 for (let i = 0; i < 6; i++) {
-                    if(this.currStayReviews[i] && this.reviewsUsers[i]){
-                        strHtml += `<div class="review-item"><div class="user-card"><img class="user-image" src="${this.reviewsUsers[i].imgUrl}">
-                            <span class="user-name">${this.reviewsUsers[i].name}</span>
-                            <span class="post-date">${this.getDateMonthNYear(this.currStayReviews[i].reviewPostDate)}</span></div>
+                    if(this.reviewsList[i]){
+                        strHtml += `<div class="review-item"><div class="user-card"><img class="user-image" src="${this.reviewsList[i].user.imgUrl}">
+                            <span class="user-name">${this.reviewsList[i].user.name}</span>
+                            <span class="post-date">${this.getDateMonthNYear(this.reviewsList[i].reviewPostDate)}</span></div>
                             <div class="review-content" style="width: ${this.reviewWidth}px">${this.getReviewTxt(i)}</div></div>`;
                     }
                 }
@@ -130,30 +134,17 @@ export default {
     }, 
     watch:{
         reviewsList:{
-            handler(newVal) {
-                // TODO: add the reviews back by updating the storage
-                if(newVal?.list?.length > 0){
-                    this.currStayStarRating = (newVal.list.reduce((acc, review) => acc + parseFloat(review.starRate), 0)/newVal.list.length).toFixed(1) ;
-                    this.currStayAttributes.cleanlinessRating = (newVal.list.reduce((acc, review) => acc + review.attributes.cleanliness, 0)/newVal.list.length).toFixed(1);
-                    this.currStayAttributes.communicationRating = (newVal.list.reduce((acc, review) => acc + review.attributes.communication, 0)/newVal.list.length).toFixed(1);
-                    this.currStayAttributes.checkInRating = (newVal.list.reduce((acc, review) => acc += review.attributes.checkIn, 0)/newVal.list.length).toFixed(1);
-                    this.currStayAttributes.accuracyRating = (newVal.list.reduce((acc, review) => acc += review.attributes.accuracy, 0)/newVal.list.length).toFixed(1);
-                    this.currStayAttributes.locationRating = (newVal.list.reduce((acc, review) => acc += review.attributes.location, 0)/newVal.list.length).toFixed(1);
-                    this.currStayAttributes.valueRating = (newVal.list.reduce((acc, review) => acc += review.attributes.value, 0)/newVal.list.length).toFixed(1);
-                    this.currStayReviews = newVal.list;
-                    console.log('form list -watch:', this.currStayReviews);
-                    this.usersImgUrls = [];
-                    let hostPromise;
-                    newVal.list.forEach(review => {
-                        hostPromise = stayService.getById(review.user_id, 'users-db')
-                        hostPromise.then((res)=>{
-                            this.reviewsUsers.push(res[0]);
-                        });
-                    });
-
+            handler(newVal, oldVal) {
+                if(newVal?.length > 0){
+                    this.currStayStarRating = (newVal.reduce((acc, review) => acc + parseFloat(review.starRate), 0)/newVal.length).toFixed(1) ;
+                    this.currStayAttributes.cleanlinessRating = (newVal.reduce((acc, review) => acc + review.attributes.cleanliness, 0)/newVal.length).toFixed(1);
+                    this.currStayAttributes.communicationRating = (newVal.reduce((acc, review) => acc + review.attributes.communication, 0)/newVal.length).toFixed(1);
+                    this.currStayAttributes.checkInRating = (newVal.reduce((acc, review) => acc += review.attributes.checkIn, 0)/newVal.length).toFixed(1);
+                    this.currStayAttributes.accuracyRating = (newVal.reduce((acc, review) => acc += review.attributes.accuracy, 0)/newVal.length).toFixed(1);
+                    this.currStayAttributes.locationRating = (newVal.reduce((acc, review) => acc += review.attributes.location, 0)/newVal.length).toFixed(1);
+                    this.currStayAttributes.valueRating = (newVal.reduce((acc, review) => acc += review.attributes.value, 0)/newVal.length).toFixed(1);
+                    this.currStayReviews = newVal;
                 }
-
-               
             },
             deep: true
         }
@@ -161,20 +152,5 @@ export default {
     components:{
         svgService,
     },
-    created(){
-        if(this.reviewsList?.length > 0){
-                    this.currStayStarRating = (this.reviewsList.reduce((acc, review) => acc + parseFloat(review.starRate), 0)/this.reviewsList.length).toFixed(1) ;
-                    this.currStayAttributes.cleanlinessRating = (this.reviewsList.reduce((acc, review) => acc + review.attributes.cleanliness, 0)/this.reviewsList.length).toFixed(1);
-                    this.currStayAttributes.communicationRating = (this.reviewsList.reduce((acc, review) => acc + review.attributes.communication, 0)/this.reviewsList.length).toFixed(1);
-                    this.currStayAttributes.checkInRating = (this.reviewsList.reduce((acc, review) => acc += review.attributes.checkIn, 0)/this.reviewsList.length).toFixed(1);
-                    this.currStayAttributes.accuracyRating = (this.reviewsList.reduce((acc, review) => acc += review.attributes.accuracy, 0)/this.reviewsList.length).toFixed(1);
-                    this.currStayAttributes.locationRating = (this.reviewsList.reduce((acc, review) => acc += review.attributes.location, 0)/this.reviewsList.length).toFixed(1);
-                    this.currStayAttributes.valueRating = (this.reviewsList.reduce((acc, review) => acc += review.attributes.value, 0)/this.reviewsList.length).toFixed(1);
-                    this.currStayReviews = this.reviewsList;
-                    this.usersImgUrls = [];
-                    this.reviewsList.forEach(review => { this.reviewsUsers.push(review.user)});
-                    console.log('form list -created:', this.currStayReviews);
-                }
-    }
 }
 </script>
