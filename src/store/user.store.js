@@ -70,7 +70,7 @@ export const userStore = {
             // TODO: loading
             try {
                 const users = await userService.getUsers()
-                console.log('THIS IS WHAT IM LOOKING ',users)
+                // console.log('THIS IS WHAT IM LOOKING ',users)
                 commit({ type: 'setUsers', users })
             } catch (err) {
                 console.log('userStore: Error in loadUsers', err)
@@ -79,7 +79,7 @@ export const userStore = {
         },        
         async loadAndWatchUser({ commit }, { userId }) {
             try {
-                console.log('HI IM FROM LOADHATRA',userId)
+                // console.log('HI IM FROM LOADHATRA',userId)
                 const user = await userService.getById(userId)
                 commit({ type: 'setWatchedUser', user })
                 

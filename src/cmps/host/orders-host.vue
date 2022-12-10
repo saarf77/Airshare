@@ -3,7 +3,7 @@
         <tr class="border-bottom">
             <!-- <td>user</td> -->
             <td class="text-center buyer"><img :src="getUserImg(hostOrder)"> <span>{{getUserName(hostOrder)}}</span></td>
-            <td class="status text-center" :class="statusClass(hostOrder)">{{ statusDisplay(hostOrder) }}</td>
+            <td class="status text-center" :class="statusClass(hostOrder)">{{ hostOrder.status }}</td>
             <td class="text-center">{{ getGuestsAmount(hostOrder) }} </td>
             <!-- <td class="text-center">{{ getEndDate(hostOrder) }}</td> -->
             <td class="text-center">{{ getBookingDate(hostOrder) }}</td>
@@ -35,7 +35,7 @@
 </template>
   
 <script>
-
+import {socketService} from '../../services/socket.service.js'
 export default {
     // prop:['hostOrder'],
     data() {
@@ -46,20 +46,12 @@ export default {
         };
     },
     created() {
-        console.log(this.$route.params.id)
-        // this.$store.dispatch({ type: 'loadOrders', hostId: this.$route.params.id });
+
     },
     computed: {
         getHostOrders() {
             return this.$store.getters.getOrders
         },
-        color() {
-
-        },
-        
-
-
-
     },
     methods: {
         statusClass(orders) {
@@ -127,21 +119,21 @@ export default {
         //     this.$store.dispatch({ type: "saveOrder", order , status: 'approved' })
         // },
         approve(order) {
-            console.log('asdafgawgwfa',order)
-            // let currOrder = this.getHostOrders.filter(o => o === order)
-            // console.log(currOrder)
-            // let or = currOrder[0]
-            order.status = 'approved'
-            console.log('IM FROM APPROVE',order)
-            // const order = JSON.parse(JSON.stringify(this.hostOrder))
-            this.$store.dispatch({ type: "saveOrder", order})
+            const newOrder = JSON.parse(JSON.stringify(order))
+            
+            newOrder.status = 'approved'
+
+            this.$store.dispatch({ type: "saveOrder", order:newOrder})
+            console.log(order._id)
+            socketService.emit('status changed', order._id)
         },
         decline(order) {
+            const newOrder = JSON.parse(JSON.stringify(order))
             // let currOrder = this.getHostOrders.filter(order => order === orders)
             // let order = currOrder[0]
-            console.log('IM FROM DECLINE',order)
+            newOrder.status = 'declined'
             // const order = JSON.parse(JSON.stringify(this.hostOrder))
-            this.$store.dispatch({ type: "saveOrder", order })
+            this.$store.dispatch({ type: "saveOrder", order:newOrder  })
         },
     }
 };

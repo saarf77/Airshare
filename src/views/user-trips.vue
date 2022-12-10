@@ -11,12 +11,15 @@
         </thead>
 
         <tbody>
-            <div v-for="trip in tripOrders" :key="trip._id">
+            <div v-for="trip in getOrders" :key="trip._id">
                 <tr class="row-table border_bottom">
                     <!-- <td><img class="stay-image" :src=imageUrl></td> -->
-                    <td>{{ getStayName(trip) }}</td>
-                    <td>{{ pricePerNight(trip) }}</td>
-                    <td>{{ getAddress(trip) }}</td>
+                    <!-- <td>{{ trip.loc.address }}</td>
+                    <td>{{ trip.totalPrice }}</td>
+                    <td>{{ getAddress(trip) }}</td> -->
+                    <td></td>
+                    <td></td>
+                    <pre>{{trip}}</pre>
                 </tr>
             </div>
         </tbody>
@@ -24,19 +27,40 @@
 </template>
 
 <script>
+    import {socketService} from '../services/socket.service.js'
 export default {
     data() {
         return {
-           tripOrders:[],
+            tripOrders: [],
         }
     },
-    
+    created() {
+        socketService.on('update trips' , this.loadTrips)
+        this.$store.dispatch({ type: 'loadOrders', buyerId: this.$route.params.id });
+    },
+
     computed: {
-        getAddress(trip){
-            return trip.loc.address
+        getOrders(){
+            return this.$store.getters.getOrders
         },
-        pricePerNight(trip){
-            return trip.totalPrice
+
+        getStayName(trip) {
+            // console.log(currOrder.stay)
+            if (trip.stay.name > 13) {
+                let desc = trip.stay.name.slice(0, 13) + '...'
+                return desc
+            }
+            return trip.stay.name
+        },
+
+    },
+    methods: {
+        loadTrips(orderId){
+            console.log("🚀 ~ file: user-trips.vue:59 ~ loadTrips ~ orderId", orderId)
+           let order = this.getOrders.find(order => order._id === orderId)
+           if(order){
+               this.$store.dispatch({ type: 'loadOrders', buyerId: this.$route.params.id });
+            }
         },
         getStayName(trip) {
             // console.log(currOrder.stay)
@@ -46,14 +70,7 @@ export default {
             }
             return trip.stay.name
         },
-        getUserStays() {
-            let orders = this.$store.getters.getOrders
-            let userId = this.$route.params.id
-            let filteredTrips = orders.filter(order => order.buyer._id === userId)
-            this.tripOrders = filteredTrips
-        },
-        
-    },
+    }
 }
 </script>
 

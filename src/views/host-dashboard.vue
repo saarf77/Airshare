@@ -53,7 +53,7 @@
             </tr>
           </thead>
           <tbody>
-            <stays-host v-for="hostStay in getHostStays" :key="hostStay._id" :hostStay="hostStay" />
+            <stays-host />
           </tbody>
         </table>
       </div>
