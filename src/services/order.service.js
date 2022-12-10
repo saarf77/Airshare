@@ -18,8 +18,9 @@ export const orderService = {
 window.orderService = orderService
 
 
- async function query(hostId) {
-  return await httpService.get(ORDERS_KEY, hostId)
+ async function query(hostId,buyerId) {
+  console.log("🚀 ~ file: order.service.js:22 ~ query ~ buyerId", buyerId)
+  return await httpService.get(ORDERS_KEY, {hostId,buyerId})
 }
 async function getById(id) {
   // return storageService.get(ORDERS_KEY, carId)

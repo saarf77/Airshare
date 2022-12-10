@@ -50,9 +50,10 @@ export const orderStore = {
       },
     },
     actions: {
-      async loadOrders(context , hostId) {
+      async loadOrders(context , {hostId,buyerId}) {
+        console.log("🚀 ~ file: order.store.js:54 ~ loadOrders ~ buyerId", buyerId)
         try {
-          const orders = await orderService.query(hostId)
+          const orders = await orderService.query(hostId,buyerId)
           console.log(orders)
           context.commit({ type: 'setOrders', orders: orders })
           return orders
@@ -84,7 +85,7 @@ export const orderStore = {
       async saveOrder(context, { order }) {
         try {
             console.log('IM FROM STORE',order)
-          const isEdit = (order.id?.length > 0)
+          const isEdit = (order._id?.length > 0)
           const savedOrder = await orderService.save(order)
           context.commit({ type: isEdit ? 'updateOrder' : 'addOrder', order: savedOrder })
           return savedOrder

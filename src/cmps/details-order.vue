@@ -377,7 +377,7 @@ export default {
           fullname: this.orderStay.host.fullname,
         },
         buyer: {
-          _id: this.currUser._id,
+          _id: this.currUser.id,
           fullname: this.currUser.name,
           imgUrl: this.currUser.imgUrl,
         },

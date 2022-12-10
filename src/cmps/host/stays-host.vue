@@ -3,8 +3,8 @@
     <tr class="row-table border_bottom">
         <!-- <td><img class="stay-image" :src=imageUrl></td> -->
         <td>{{ getStayName(stay)}}</td>
-        <td>{{ pricePerNight(stay) }}</td>
-        <td>{{ getAddress(stay) }}</td>
+        <td>{{ stay.price }}</td>
+        <td>{{ stay.loc.address }}</td>
         <td>
             <el-button><span class="material-icons-outlined">
                     edit
@@ -21,9 +21,9 @@ export default {
     name: ' stays-host',
 
     data() {
-        return {
-            imageUrl: utilService.getImgUrl(this.hostStay.imgUrls[0]),
-        }
+        // return {
+        //     imageUrl: utilService.getImgUrl(this.hostStay.imgUrls[0]),
+        // }
     },
     created() {
 
@@ -35,20 +35,21 @@ export default {
         pricePerNight(stay){
             return stay.price
         },
-        getStayName(stay) {
-            // console.log(currOrder.stay)
-            if (stay.name.length > 13) {
-                let desc = stay.name.slice(0, 13) + '...'
-                return desc
-            }
-            return stay.name
-        },
+       
         getUserStays() {
             return this.$store.getters.stays
         },
         
     },
     methods: {
+        getStayName(stay) {
+            console.log(stay);
+            if (stay.name.length > 13) {
+                let desc = stay.name.slice(0, 13) + '...'
+                return desc
+            }
+            return stay.name
+        },
         approve() {
             this.hostOrder.status = "approved"
             const order = JSON.parse(JSON.stringify(this.hostOrder))
