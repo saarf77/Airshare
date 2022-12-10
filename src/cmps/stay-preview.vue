@@ -60,6 +60,8 @@
     
 <script>
 // import { ref } from 'vue'
+import { utilService } from '../services/util.service'
+
 export default {
     name: 'stay-preview',
     props: ['previewStay'],
@@ -73,7 +75,7 @@ export default {
         //
     },
     components: {
-        // customCard,
+        utilService,
     },
     computed:{
         summarySize() {
@@ -94,7 +96,10 @@ export default {
         },
         currRate(){
             // return (this.previewStay?.rate > 0) ? this.previewStay.rate : '0';
-            return 4.65
+            if(utilService.getRandomIntInclusive(0,1) === 0){
+                return 4.5 + utilService.getRandomIntInclusive(0,5)/10
+            }
+            return 4.5 + utilService.getRandomIntInclusive(1,50)/100
         },
         currRooms(){
             return (this.previewStay?.bedrooms > 0) ? this.previewStay.bedrooms : '0';

@@ -1,7 +1,7 @@
 .location-container {
     
     max-width: fit-content;
-    height: 68vh;
+    height: 450px;
     background: white;
     position: absolute;
     top: 80px;
@@ -41,6 +41,7 @@
     margin: auto;
     max-height: 352px;
     margin-bottom: 30px;
+    margin-block-start: 10px;
 }
 
 .popup-rt-side {
@@ -80,7 +81,6 @@
 
 .location-container{
     max-width:fit-content;
-    height: 68vh;
     background-color: #ffffff;
     position: absolute;
     top: 80px;
