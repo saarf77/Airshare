@@ -248,13 +248,21 @@ export default {
     eventBus
   },
   created() {
-    if(this.loggedinUser?._id){
-      this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
-    }
+    console.log('asmdojasfijusdnigfnas',this.loggedinUser);
+    // if(this.loggedinUser._id){
+    //   this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
+    // }
   },
   computed: {
     currUser() {
+<<<<<<< HEAD
       console.log('this.$store.getters.watchedUser', this.$store.getters.watchedUser);
+=======
+      if(this.loggedinUser?._id){
+      this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
+    }
+    // let new = this.$store.getters.watchedUser
+>>>>>>> 4a4b391a44e5d46f4eaa91914b11aec5f149ced5
       return this.$store.getters.watchedUser
     },
     loggedinUser() {
@@ -352,6 +360,11 @@ export default {
       this.isShow = false;
     },
     sendOrder() {
+<<<<<<< HEAD
+=======
+      // console.log('alaa',this.orderStay.host)
+      console.log('HEYAYAYA', this.currUser)
+>>>>>>> 4a4b391a44e5d46f4eaa91914b11aec5f149ced5
       let currOrder = {
         createdAt: Date.now(),
         totalPrice: this.totalPrice,
@@ -376,7 +389,7 @@ export default {
           fullname: this.orderStay.host.fullname,
         },
         buyer: {
-          _id: this.currUser.id,
+          _id: this.currUser._id,
           fullname: this.currUser.name,
           imgUrl: this.currUser.imgUrl,
         },
