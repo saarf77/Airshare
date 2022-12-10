@@ -248,8 +248,9 @@ export default {
     eventBus
   },
   created() {
-    console.log('HEY', this.orderStay)
-    this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
+    if(this.loggedinUser?._id){
+      this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
+    }
   },
   computed: {
     currUser() {

@@ -424,4 +424,34 @@ function formatData() {
 }
 
 mister red Orin id : WbYTQf8YP2ezO
+
+const fs = require('fs')
+
+
+const stays = require('./stays.json')
+
+formatData()
+
+
+function formatData() {
+
+    var newStays = stays.map(stay => {
+        stay.flag = stay.flags.png
+        delete stay.flags
+        return stay
+    })
+
+    // newStays = newStays.filter(stay => stay.flag)
+
+
+    fs.writeFile('countries.json', JSON.stringify(newStays, null, 2), 'utf8', err => {
+        if (err) {
+            console.log('err: ', err);
+            return
+        }
+        console.log('hopa!!!');
+    })
+
+}
+
 */
