@@ -248,12 +248,17 @@ export default {
     eventBus
   },
   created() {
-    if(this.loggedinUser?._id){
-      this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
-    }
+    console.log('asmdojasfijusdnigfnas',this.loggedinUser);
+    // if(this.loggedinUser._id){
+    //   this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
+    // }
   },
   computed: {
     currUser() {
+      if(this.loggedinUser?._id){
+      this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
+    }
+    // let new = this.$store.getters.watchedUser
       return this.$store.getters.watchedUser
     },
     loggedinUser() {
@@ -355,7 +360,7 @@ export default {
       this.isShow = false;
     },
     sendOrder() {
-      console.log('alaa',this.orderStay.host)
+      // console.log('alaa',this.orderStay.host)
       console.log('HEYAYAYA', this.currUser)
       let currOrder = {
         createdAt: Date.now(),
@@ -381,7 +386,7 @@ export default {
           fullname: this.orderStay.host.fullname,
         },
         buyer: {
-          _id: this.currUser.id,
+          _id: this.currUser._id,
           fullname: this.currUser.name,
           imgUrl: this.currUser.imgUrl,
         },

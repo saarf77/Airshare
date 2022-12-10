@@ -108,8 +108,6 @@ export const stayStore = {
         async loadStays(context , {userId}) {
             try {
                 var filterBy = context.state.filterBy ? context.state.filterBy : {}
-                console.log(filterBy.propertyType)
-                console.log(userId)
                 if(userId){
                     filterBy.byUserId = userId
                 }
