@@ -68,7 +68,7 @@
               fill-rule="evenodd"></path>
           </svg>
           <span>
-            {{ currRate }}
+            {{ calcStarRate }}
           </span> ·
           <span class="reviews-amount">
             {{ reviewsAmount }} reviews
@@ -268,10 +268,6 @@ export default {
       // return this.orderStay.reviews.length
       return (this.orderStay?.reviews?.length) ? this.orderStay.reviews.length : '0'
     },
-    
-    currRate() {
-      return 4.65
-    },
     pricePerNight() {
       return (this.orderStay?.price) ? this.orderStay.price : '0'
     },
@@ -311,7 +307,7 @@ export default {
   methods: {
     calcPayments() {
       if (this.hasCalcPrice) {
-        let pricePerDay = (this.guestsObj.adults + this.guestsObj.children) * 150;
+        let pricePerDay = (this.guestsObj.adults + this.guestsObj.children) * this.pricePerNight;
         this.priceObj.basePrice = this.currDates.daysNum * pricePerDay;
         this.priceObj.serviceFee = parseFloat(((this.priceObj.basePrice + this.priceObj.CleaningFee) * 1 / 7.05).toFixed(2));
         this.priceObj.taxes = parseFloat(((this.priceObj.basePrice + this.priceObj.CleaningFee + this.priceObj.serviceFee) * 0.07).toFixed(2));
