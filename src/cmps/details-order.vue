@@ -194,11 +194,11 @@
     <div class="error-report" v-html="errorReport"></div>
     <div class="price-section">
       <div class="calming-alert">You won't be charged yet</div>
-      <div><span>Base price:</span><span>{{ this.priceObj.basePrice }}$</span></div>
-      <div><span>Cleaning fee:</span><span> {{ this.priceObj.CleaningFee }}$</span></div>
-      <div><span>Service fee:</span><span> {{ this.priceObj.serviceFee }}$</span></div>
-      <div><span>Taxes: </span><span> {{ this.priceObj.taxes }}$</span></div>
-      <div><span>Total price:</span><span>{{ totalPrice }}$</span></div>
+      <div><span>Base price:</span><span>{{ this.priceObj.basePrice.toLocaleString() }}$</span></div>
+      <div><span>Cleaning fee:</span><span> {{ this.priceObj.CleaningFee.toLocaleString() }}$</span></div>
+      <div><span>Service fee:</span><span> {{ this.priceObj.serviceFee.toLocaleString() }}$</span></div>
+      <div><span>Taxes: </span><span> {{ this.priceObj.taxes.toLocaleString() }}$</span></div>
+      <div><span>Total price:</span><span>{{ totalPrice.toLocaleString() }}$</span></div>
     </div>
   </section>
 </template>
@@ -248,8 +248,9 @@ export default {
     eventBus
   },
   created() {
-    console.log('HEY', this.orderStay)
-    this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
+    if(this.loggedinUser?._id){
+      this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
+    }
   },
   computed: {
     currUser() {
@@ -293,6 +294,14 @@ export default {
       if (this.currDates.endDay === 0) return "Add date";
       return new Date(this.currDates.endDay).toLocaleDateString()
     },
+    calcStarRate(){
+      let currRate = 'new'
+      if(this.orderStay?.reviews?.length > 0){
+        currRate = (this.orderStay.reviews.reduce((acc, review) => acc + parseFloat(review.starRate), 0)/this.orderStay.reviews.length).toFixed(1) ;
+      }
+      return currRate;
+       
+    }
   },
   methods: {
     calcPayments() {
@@ -340,7 +349,6 @@ export default {
       if (this.guestsObj.infants > 0) this.guestTxt += `, ${this.guestsObj.infants} infants `;
       if (this.guestsObj.pets > 0) this.guestTxt += `, ${this.guestsObj.pets} pets `;
       this.calcPayments();
-      console.log('this.priceObj.basePrice', this.priceObj.basePrice);
 
     },
     onClickAway(event) {
