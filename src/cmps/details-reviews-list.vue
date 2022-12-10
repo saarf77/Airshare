@@ -141,6 +141,7 @@ export default {
                     this.currStayAttributes.locationRating = (newVal.list.reduce((acc, review) => acc += review.attributes.location, 0)/newVal.list.length).toFixed(1);
                     this.currStayAttributes.valueRating = (newVal.list.reduce((acc, review) => acc += review.attributes.value, 0)/newVal.list.length).toFixed(1);
                     this.currStayReviews = newVal.list;
+                    console.log('form list -watch:', this.currStayReviews);
                     this.usersImgUrls = [];
                     let hostPromise;
                     newVal.list.forEach(review => {
@@ -172,7 +173,7 @@ export default {
                     this.currStayReviews = this.reviewsList;
                     this.usersImgUrls = [];
                     this.reviewsList.forEach(review => { this.reviewsUsers.push(review.user)});
-
+                    console.log('form list -created:', this.currStayReviews);
                 }
     }
 }
