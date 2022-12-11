@@ -52,7 +52,9 @@ export const stayStore = {
             state.stays = stays
         },
         setFilter(state,{filterBy}){
-            state.filterBy = filterBy
+            console.log("🚀 ~ file: stay.store.js:55 ~ setFilter ~ filterBy", filterBy)
+            let prevFilter = state.filterBy
+            state.filterBy = {...prevFilter,...filterBy}
           },
         addStay(state, { stay }) {
             state.stays.push(stay)

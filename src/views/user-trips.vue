@@ -14,12 +14,12 @@
             <div v-for="trip in getOrders" :key="trip._id">
                 <tr class="row-table border_bottom">
                     <!-- <td><img class="stay-image" :src=imageUrl></td> -->
-                    <!-- <td>{{ trip.loc.address }}</td>
+                    <td>{{ getStayName(trip) }}</td>
                     <td>{{ trip.totalPrice }}</td>
-                    <td>{{ getAddress(trip) }}</td> -->
-                    <td></td>
-                    <td></td>
-                    <pre>{{trip}}</pre>
+                    <td>{{ trip.status }}</td> 
+                    <td>{{ getStartDate(trip)}}</td>
+                    <td>{{getEndDate(trip)}}</td>
+                    <!-- <pre>{{trip}}</pre> -->
                 </tr>
             </div>
         </tbody>
@@ -44,17 +44,29 @@ export default {
             return this.$store.getters.getOrders
         },
 
-        getStayName(trip) {
-            // console.log(currOrder.stay)
-            if (trip.stay.name > 13) {
-                let desc = trip.stay.name.slice(0, 13) + '...'
-                return desc
-            }
-            return trip.stay.name
-        },
+        // getStayName(trip) {
+        //     // console.log(currOrder.stay)
+        //     if (trip.stay.name > 13) {
+        //         let desc = trip.stay.name.slice(0, 13) + '...'
+        //         return desc
+        //     }
+        //     return trip.stay.name
+        // },
 
     },
     methods: {
+        getStartDate(trip) {
+            // let currOrder = this.getHostOrders.filter(order => order === orders)
+            let startDate = trip.startDate
+            let checkin = new Date(startDate).toLocaleDateString()
+            return checkin
+        },
+        getEndDate(trip) {
+            // let currOrder = this.getHostOrders.filter(order => order === orders)
+            let endDate = trip.endDate
+            let checkout = new Date(endDate).toLocaleDateString()
+            return checkout
+        },
         loadTrips(orderId){
             console.log("🚀 ~ file: user-trips.vue:59 ~ loadTrips ~ orderId", orderId)
            let order = this.getOrders.find(order => order._id === orderId)
