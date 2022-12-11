@@ -304,7 +304,7 @@ export default {
       eventBus.emit('overlay', this.isShow);
       eventBus.emit('getFilterStay');
       this.$router.push({ path: '/', query: { ...this.filterBy } });
-      this.$store.dispatch({ type: 'setFilter',filterBy: this.filterBy.where })
+      this.$store.dispatch({ type: 'setFilter',filterBy: this.filterBy })
 
       this.$emit('expendForm', false);
     },
