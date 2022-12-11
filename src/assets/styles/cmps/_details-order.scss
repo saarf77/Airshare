@@ -83,6 +83,7 @@
 }
 
 .details-page .order-container[class*="extended"] {
+        z-index: 500;
         height: 496px;
         font-size: 16px !important;
         color: rgb(34, 34, 34) !important;
@@ -145,6 +146,8 @@
 }
 
 .details-page .order-container:not([class*="extended"]) {
+        z-index: 500;
+
         .price-section {
                 display: none;
         }
