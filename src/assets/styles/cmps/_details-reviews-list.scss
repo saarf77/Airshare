@@ -114,6 +114,7 @@
                                         color: $clr1;
                                         font-family: Cereal-bold;
                                         font-size: 0.95em;
+                                        line-height: 17px;
                                 }
                 
                                 .post-date{
@@ -123,6 +124,7 @@
                                         color: lighten($color: $clr7, $amount: 20) ;
                                         font-family: Cereal;
                                         font-size: 0.83em;
+                                        padding-top: 1px;
                                 }
                         
                         }
