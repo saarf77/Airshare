@@ -29,13 +29,13 @@ export default {
       return this.$store.getters.loggedinUser
     },
     stays() {
-      this.$store.dispatch({ type: 'loadStays' })
+      // this.$store.dispatch({ type: 'loadStays' })
       return this.$store.getters.stays
     }
   },
-  // created() {
-  //   this.$store.dispatch({ type: 'loadStays' })
-  // },
+  created() {
+    this.$store.dispatch({ type: 'loadStays' })
+  },
   methods: {
     async setFilter(filterBy) {
       try {

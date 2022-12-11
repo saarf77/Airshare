@@ -50,7 +50,7 @@ export default {
         ;(async () => {
             try{
                 this.host = await stayService.getById(this.$route.params.id, 'stays-owner');
-                //console.log('host from params:', this.host );
+                console.log('host from params:', this.host );
             }catch (err) {
                 console.log('details page: can\'t get user by using this id ', err);
                 throw err;
