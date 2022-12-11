@@ -3,7 +3,7 @@
         <div class="left-side">
 
             <div class="payment-title">
-                <h1>Request to book</h1>
+                <h1>Thank you for booking</h1>
             </div>
             <section class="good-deal">
                 <div class="title">
@@ -36,7 +36,7 @@
                 <div v-for="i in 100" class="cell"></div>
                 <div class="content">
                     <button type="submit" class="action-btn">
-                        <span>Confirm order</span>
+                        <span>Look for more homes</span>
                     </button>
                 </div>
             </div>

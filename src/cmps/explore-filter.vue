@@ -25,7 +25,7 @@
               :rows="1" v-model="filterBy.date" is-range>
               <template v-slot="{ inputValue, inputEvents }">
                 <div class="flex justify-center items-center">
-                  <div @click.native="activeTab('checkin')" class="checkin" data-field="checkin"
+                  <div  @click.native="activeTab('checkin')" class="checkin" data-field="checkin"
                     :class="{ 'hover-btn': isExpend ? isHover : !isHover, 'active-btn': startActive }">
                     <label for="checkin">Check in</label>
                     <!-- <date-picker :placeholder="getCheckinDate" @input="renderDates($event)" v-model="checkinDate" range></date-picker> -->

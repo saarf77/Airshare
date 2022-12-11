@@ -12,7 +12,10 @@ export const userStore = {
     },
     getters: {
         users({ users }) { return users },
-        loggedinUser({ loggedinUser }) { return loggedinUser },
+        loggedinUser({ loggedinUser }) {
+             console.log("🚀 ~ file: user.store.js:16 ~ loggedinUser ~ loggedinUser", loggedinUser)
+             return loggedinUser 
+            },
         watchedUser({ watchedUser }) { 
             console.log("🚀 ~ file: user.store.js:17 ~ watchedUser ~ watchedUser", watchedUser)
             // console.log(watchedUser)
