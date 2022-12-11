@@ -19,9 +19,9 @@
                 <explore-filter :isExpend="isExpend" @expend-form="expendForm" />
             </div>
             <div class="last-section-nav flex align-center">
-              <a class="right-header become-host" href="/#/login">Airshare your home</a>
+              <!-- <a class="right-header become-host" href="/#/login">Airshare your home</a> -->
 
-              <a class="right-header" href="/#/explore"><img class="explore-btn" src="../assets/icons/en.svg" /></a>
+              <!-- <a class="right-header" href="/#/explore"><img class="explore-btn" src="../assets/icons/en.svg" /></a> -->
               <div class="user-menu-btn">
                 <button @click="showMenu = true" class="nav-btn expend flex">
                   <img class="menu-btn" src="../assets/icons/menu.svg" />

@@ -64,6 +64,14 @@
 
 // Order
 
+.total-price{
+        padding-top: 24px !important;
+        font-size: 16px !important;
+        
+        .total{
+                text-decoration: none !important;
+        }
+}
 .order-details {
         border: 1px solid rgb(221, 221, 221);
         border-radius: 12px;
@@ -71,10 +79,15 @@
         box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
         flex-direction: column;
         width: 600px;
+        
 }
 
 .details-page .order-container[class*="extended"] {
         height: 496px;
+        font-size: 16px !important;
+        color: rgb(34, 34, 34) !important;
+        font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+        font-weight: 400 !important;
 
         .price-section {
                 display: flex;
@@ -84,9 +97,9 @@
                         align-self: center;
                         font-family: Cereal;
                         color: $minorTxt;
-                        font-size: 0.9em;
-
-                        margin-block-start: 5px;
+                        font-size: 0.875rem;
+                        margin-block-start: 8px;
+                        color: rgb(34, 34, 34);
                 }
 
                 >:not(.calming-alert) {
@@ -94,7 +107,7 @@
                         flex-direction: row;
                         justify-content: space-between;
 
-                        margin-block-start: 10px;
+                        margin-block-start: 11px;
 
                         font-family: Cereal;
                         font-size: 0.97em;
@@ -111,7 +124,7 @@
                         justify-content: space-between;
 
                         margin-block-start: 15px;
-                        border-block-start: 2px solid $clr6 ;
+                        border-block-start: 1px solid $clr6 ;
                         padding-block-start: 5px;
 
                         font-family: Cereal;
