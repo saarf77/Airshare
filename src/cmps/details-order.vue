@@ -107,15 +107,6 @@
     <div class="cell"></div>
     <div class="cell"></div>
 
-    <!-- <div @click="orderConfirm" class="btn-container" ref="elOrderBtn">
-    <div v-for="i in 100" class="cell"></div>
-    <div class="content">
-        <button class="action-btn" v-html="btnStatus">
-        </button>
-        
-    </div>
-</div> -->
-
     <div @click="sendOrder" ref="elOrderBtn" class="btn-container">
       <div v-for="i in 100" class="cell"></div>
       <div class="content">
@@ -356,8 +347,11 @@ export default {
       this.isShow = false;
     },
     sendOrder() {
+<<<<<<< HEAD
+=======
       // console.log('alaa',this.orderStay.host)
       console.log('HEYAYAYA', this.currUser)
+>>>>>>> 4a4b391a44e5d46f4eaa91914b11aec5f149ced5
       let currOrder = {
         createdAt: Date.now(),
         totalPrice: this.totalPrice,
