@@ -114,11 +114,9 @@ export const stayStore = {
                 if(filterBy.propertyType){
                     filterBy = filterBy.propertyType
                     console.log('IM FROM HEREEERERE',filterBy);
-                }
-                console.log("🚀 ~ file: stay.store.js:97 ~ loadStays ~ filterBy", filterBy)
+                }                
                 const stays = await stayService.query(filterBy)
-                context.commit({ type: 'setStays', stays })
-                console.log(stays)
+                context.commit({ type: 'setStays', stays })    
             } catch (err) {
                 console.log('stayStore: Error in loadStays', err)
                 throw err
