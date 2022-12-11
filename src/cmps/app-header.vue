@@ -167,7 +167,7 @@ export default {
     loggedinUser() {
       var user = this.$store.getters.loggedinUser;
       console.log(user)
-      this.$router.push(`/dashboard/${user._id}`)
+      this.$router.push(`/dashboard/${user.id}`)
       this.showMenu = !this.showMenu
     },
     setFilter(filterBy) {

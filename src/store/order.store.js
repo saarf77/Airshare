@@ -38,9 +38,6 @@ export const orderStore = {
         state.orders = orders
       },
       addOrder(state, { order }) {
-        console.log(order)
-        console.log(state)
-        console.log(state.orders)
         state.orders.push(order)
       },
   
