@@ -5,7 +5,7 @@
     width: 450px;
     height: 500px;
     // margin: 32px auto 10px;
-    
+
     margin-left: 76px;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
 
@@ -52,7 +52,8 @@
         }
     }
 }
-*:has(.payment-page)header{
+
+*:has(.payment-page)header {
     height: auto;
 }
 
@@ -61,10 +62,10 @@
     // justify-content: space-evenly;
     justify-content: center;
     translate: 0% 15%;
-   
-.payment-title{
-    margin-bottom: 20px;
-}
+
+    .payment-title {
+        margin-bottom: 20px;
+    }
 }
 
 .left-side {
@@ -75,12 +76,10 @@
 
 .good-deal {
     padding-inline: 24px;
-    border: 1.5px solid #717171;
+    border: 1px solid rgba(0, 0, 0, 0.1882352941);;
     border-radius: 24px;
     padding-block-start: 20px;
-    box-shadow: -17px 5px 44px -3px rgba(0,0,0,0.19);
--webkit-box-shadow: -17px 5px 44px -3px rgba(0,0,0,0.19);
--moz-box-shadow: -17px 5px 44px -3px rgba(0,0,0,0.19);
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
 
     .deal-content {
         padding-top: 10px;
