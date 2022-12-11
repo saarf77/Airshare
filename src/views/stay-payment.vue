@@ -50,7 +50,7 @@
                 </div>
                 <div class="second">
                     <div class="host-img">
-                        <img :src="setHostImg">
+                        <!-- <img :src="setHostImg"> -->
                     </div>
 
                     <div class="stay-name">{{ setName }}
