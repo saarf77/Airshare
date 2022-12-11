@@ -194,11 +194,11 @@
     <div class="error-report" v-html="errorReport"></div>
     <div class="price-section">
       <div class="calming-alert">You won't be charged yet</div>
-      <div><span>Base price:</span><span>{{ this.priceObj.basePrice.toLocaleString() }}$</span></div>
-      <div><span>Cleaning fee:</span><span> {{ this.priceObj.CleaningFee.toLocaleString() }}$</span></div>
-      <div><span>Service fee:</span><span> {{ this.priceObj.serviceFee.toLocaleString() }}$</span></div>
-      <div><span>Taxes: </span><span> {{ this.priceObj.taxes.toLocaleString() }}$</span></div>
-      <div><span>Total price:</span><span>{{ totalPrice.toLocaleString() }}$</span></div>
+      <div><span>Base price</span><span>${{ this.priceObj.basePrice.toLocaleString() }}</span></div>
+      <div><span>Cleaning fee</span><span> ${{ this.priceObj.CleaningFee.toLocaleString() }}</span></div>
+      <div><span>Service fee</span><span> ${{ this.priceObj.serviceFee.toLocaleString() }}</span></div>
+      <div><span>Taxes </span><span> ${{ this.priceObj.taxes.toLocaleString() }}</span></div>
+      <div class="total-price"><span class="total" >Total</span><span>${{ totalPrice.toLocaleString() }}</span></div>
     </div>
   </section>
 </template>
@@ -415,8 +415,7 @@ export default {
       if (this.currDates.endDay + this.currDates.startDay !== 0) this.error = '';
     },
     openConfirm() {
-      if (this.currDates.endDay + this.currDates.startDay === 0) this.error = 'please select dates';
-      console.log(this.error);
+      (this.currDates.endDay + this.currDates.startDay === 0)? this.error = 'please select dates': sendOrder();
     }
   },
   watch: {
