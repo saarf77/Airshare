@@ -347,11 +347,7 @@ export default {
       this.isShow = false;
     },
     sendOrder() {
-<<<<<<< HEAD
-=======
-      // console.log('alaa',this.orderStay.host)
-      console.log('HEYAYAYA', this.currUser)
->>>>>>> 4a4b391a44e5d46f4eaa91914b11aec5f149ced5
+
       let currOrder = {
         createdAt: Date.now(),
         totalPrice: this.totalPrice,
