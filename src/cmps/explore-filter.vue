@@ -320,7 +320,7 @@ export default {
     },
     
     updateGuests(type, number) {
-      if (this.filterBy.guests[type] === 0 && number === -1) return
+      if (this.filterBy.guests[type] === 0 && number === -1) return 
       this.filterBy.guests[type] += number;
 
       let guestsNum = this.filterBy.guests.adults + this.filterBy.guests.children + this.filterBy.guests.infants + this.filterBy.guests.pets

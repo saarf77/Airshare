@@ -124,7 +124,8 @@ export default {
             this.isLiked = !this.isLiked
         },
         showStayDetails() {
-            this.$router.push('/stay/' + this.previewStay._id);
+            //add event bus
+            this.$router.push('/stay/' + this.previewStay._id + '?');
         },
         imageUrl(name) {
             return new URL(`/src/img/${name}.jpg`, import.meta.url)
