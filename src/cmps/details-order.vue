@@ -68,7 +68,7 @@
               fill-rule="evenodd"></path>
           </svg>
           <span>
-            {{ currRate }}
+            {{ calcStarRate }}
           </span> ·
           <span class="reviews-amount">
             {{ reviewsAmount }} reviews
@@ -248,12 +248,21 @@ export default {
     eventBus
   },
   created() {
-    if(this.loggedinUser?._id){
-      this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
-    }
+    console.log('asmdojasfijusdnigfnas',this.loggedinUser);
+    // if(this.loggedinUser._id){
+    //   this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
+    // }
   },
   computed: {
     currUser() {
+<<<<<<< HEAD
+      console.log('this.$store.getters.watchedUser', this.$store.getters.watchedUser);
+=======
+      if(this.loggedinUser?._id){
+      this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
+    }
+    // let new = this.$store.getters.watchedUser
+>>>>>>> 4a4b391a44e5d46f4eaa91914b11aec5f149ced5
       return this.$store.getters.watchedUser
     },
     loggedinUser() {
@@ -262,10 +271,6 @@ export default {
     reviewsAmount() {
       // return this.orderStay.reviews.length
       return (this.orderStay?.reviews?.length) ? this.orderStay.reviews.length : '0'
-    },
-    
-    currRate() {
-      return 4.65
     },
     pricePerNight() {
       return (this.orderStay?.price) ? this.orderStay.price : '0'
@@ -306,7 +311,7 @@ export default {
   methods: {
     calcPayments() {
       if (this.hasCalcPrice) {
-        let pricePerDay = (this.guestsObj.adults + this.guestsObj.children) * 150;
+        let pricePerDay = (this.guestsObj.adults + this.guestsObj.children) * this.pricePerNight;
         this.priceObj.basePrice = this.currDates.daysNum * pricePerDay;
         this.priceObj.serviceFee = parseFloat(((this.priceObj.basePrice + this.priceObj.CleaningFee) * 1 / 7.05).toFixed(2));
         this.priceObj.taxes = parseFloat(((this.priceObj.basePrice + this.priceObj.CleaningFee + this.priceObj.serviceFee) * 0.07).toFixed(2));
@@ -355,8 +360,11 @@ export default {
       this.isShow = false;
     },
     sendOrder() {
-      console.log('alaa',this.orderStay.host)
+<<<<<<< HEAD
+=======
+      // console.log('alaa',this.orderStay.host)
       console.log('HEYAYAYA', this.currUser)
+>>>>>>> 4a4b391a44e5d46f4eaa91914b11aec5f149ced5
       let currOrder = {
         createdAt: Date.now(),
         totalPrice: this.totalPrice,
@@ -414,8 +422,7 @@ export default {
       if (this.currDates.endDay + this.currDates.startDay !== 0) this.error = '';
     },
     openConfirm() {
-      if (this.currDates.endDay + this.currDates.startDay === 0) this.error = 'please select dates';
-      console.log(this.error);
+      (this.currDates.endDay + this.currDates.startDay === 0)? this.error = 'please select dates': sendOrder();
     }
   },
   watch: {
@@ -427,9 +434,9 @@ export default {
       }
     }
   },
-  // created(){
-  //     eventBus.on('getDateFromSchedule', this.onDatePicked);
-  // }
-};
+  created(){
+    eventBus.on('getDateFromSchedule', this.onDatePicked);
+  }
+}
 </script>
   

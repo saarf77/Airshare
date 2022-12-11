@@ -246,7 +246,7 @@ export default {
     },
 
     showList() {
-      this.$store.dispatch({ type: 'setFilterBy', filterBy: {} })
+      this.$store.dispatch({ type: 'setFilter', filterBy: {} })
     }
 
   },

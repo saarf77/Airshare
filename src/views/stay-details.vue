@@ -145,7 +145,7 @@ export default {
             // return (this.host?.imgUrl)? this.host?.imgUrl : '#';
         },
         hostedBy(){
-            return (this.currStay?.host?.fullname)? this.currStay?.host?.fullname : '';
+            return (this.currStay?.host?.name)? this.currStay.host.name : '';
         },
         stayAchievements(){
             return (this.currStay?.achievements?.length > 0)? this.currStay.achievements : [];

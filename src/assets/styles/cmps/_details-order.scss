@@ -176,8 +176,10 @@
         box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
 
         .guest-add {
+                width: fit-content;
+
                 position: absolute;
-                top: 162px;
+                top: 194px;
                 left: 50%;
                 transform: translate(-50%);
 
@@ -185,6 +187,7 @@
                 background-color: $clr3;
                 border-radius: 4px;
                 box-shadow: rgb(0 0 0 / 15%) 0px 2px 6px, rgb(0 0 0 / 7%) 0px 0px 0px 1px;
+                padding-block-start: 15px;
 
                 >* {
 
@@ -228,6 +231,17 @@
 
                 .guests-container {
                         padding-block-start: 15px;
+                }
+
+        
+
+                .row-card {
+                        padding: 0;
+                        font-size: 16px;
+                        margin-bottom: 16px;
+                        color: rgb(113, 113, 113);
+                        border: none !important;
+                        justify-content: space-between;
                 }
         }
 
@@ -350,23 +364,6 @@ span.reviews {
 }
 
 
-.guest-add {
-        margin-top: 15px;
-        width: fit-content;
-
-        .row-card {
-                padding: 0;
-                font-size: 16px;
-                margin-bottom: 16px;
-                color: rgb(113, 113, 113);
-                border: none !important;
-                justify-content: space-between;
-        }
-
-
-
-}
-
 .order-form-header {
         .review-rating{
                 display: flex;
@@ -387,7 +384,9 @@ span.reviews {
         .night{
                 font-size: 16px;
                 font-family: 'Cereal';
-                font-weight: $light;
+                font-weight: 700;
+                opacity: 0.6;
+                padding-inline-start: 7px;
         }
         .stared {
                 color: #222222;
@@ -399,6 +398,8 @@ span.reviews {
         .reviews-amount{
                 text-decoration: underline;
                 color: rgb(113, 113, 113);
+                font-weight: 700;
+                opacity: 0.7
         }
 
         .stared::before {

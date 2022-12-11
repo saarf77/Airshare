@@ -78,4 +78,3 @@ function getImgUrl(file) {
     const imgUrl = new URL(`../assets/maps/${file}`, import.meta.url);
     return imgUrl;
   }
-   

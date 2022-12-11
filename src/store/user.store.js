@@ -13,7 +13,11 @@ export const userStore = {
     getters: {
         users({ users }) { return users },
         loggedinUser({ loggedinUser }) { return loggedinUser },
-        watchedUser({ watchedUser }) { return watchedUser }
+        watchedUser({ watchedUser }) { 
+            console.log("🚀 ~ file: user.store.js:17 ~ watchedUser ~ watchedUser", watchedUser)
+            // console.log(watchedUser)
+            return watchedUser 
+        }
     },
     mutations: {
         setLoggedinUser(state, { user }) {
@@ -22,8 +26,9 @@ export const userStore = {
             state.loggedinUser = (user)? {...user} : null
         },
         setWatchedUser(state, { user }) {
-            console.log('FROM WATCHED',user)
             state.watchedUser = user
+            console.log('FROM WATCHED',state.watchedUser)
+
         },       
         setUsers(state, { users }) {
             state.users = users
@@ -70,7 +75,7 @@ export const userStore = {
             // TODO: loading
             try {
                 const users = await userService.getUsers()
-                console.log('THIS IS WHAT IM LOOKING ',users)
+                // console.log('THIS IS WHAT IM LOOKING ',users)
                 commit({ type: 'setUsers', users })
             } catch (err) {
                 console.log('userStore: Error in loadUsers', err)
@@ -81,6 +86,7 @@ export const userStore = {
             try {
                 console.log('HI IM FROM LOADHATRA',userId)
                 const user = await userService.getById(userId)
+                console.log('im from loadWatch',user)
                 commit({ type: 'setWatchedUser', user })
                 
             } catch (err) {
