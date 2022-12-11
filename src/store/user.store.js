@@ -45,6 +45,7 @@ export const userStore = {
     },
     actions: {
         async login({ commit }, { userCred }) {
+            console.log("🚀 ~ file: user.store.js:48 ~ login ~ userCred", userCred)
             try {
                 const user = await userService.login(userCred)
                 commit({ type: 'setLoggedinUser', user })

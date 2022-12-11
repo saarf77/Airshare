@@ -256,7 +256,7 @@ export default {
   computed: {
     currUser() {
       // if(this.loggedinUser?._id){
-      this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
+      // this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
     // }
     // let new = this.$store.getters.watchedUser
       return this.$store.getters.watchedUser
@@ -377,9 +377,9 @@ export default {
           address:this.orderStay.loc.address
         },
         host: {
-          id: this.orderStay.host._id,
+          id: this.orderStay.host.id,
           imgUrl: this.orderStay.host.pictureUrl,
-          fullname: this.orderStay.host.fullname,
+          fullname: this.orderStay.host.name,
         },
         buyer: {
           _id: this.currUser._id,
