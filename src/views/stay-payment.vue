@@ -50,7 +50,6 @@
                 </div>
                 <div class="second">
                     <div class="host-img">
-                        <!-- <img :src="order.host.imgUrl"> -->
                         <img :src="setHostImg">
                     </div>
 
@@ -106,6 +105,7 @@ export default {
             order: null,
             guests: 0
         }
+        
     },
     created() {
         this.$store.dispatch({ type: "getOrderById", orderId: this.$route.params.id });
@@ -166,13 +166,15 @@ export default {
         },
         setImg(){
             return (this.setOrder?.stay?.img[0])?this.setOrder.stay.img[0]:''
-        }
+        },
+        
     },
     methods: {
         backToPage(){
             this.$router.push('/')
             ElMessage.success('Order sent!')
         },
+        
         // setOrder(currOrder) {
         //     this.order = currOrder
         //     console.log(this.order);

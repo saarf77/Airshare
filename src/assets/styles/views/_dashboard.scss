@@ -1,6 +1,6 @@
 .dashboard-container {
-
-    background-color: $clr8;
+    
+    // background-color: $clr8;
     // min-height: 75vh;
     display: grid;
     grid-template-columns: 80px 1fr 80px;
@@ -17,17 +17,18 @@
 
     .top-dashboard-title {
         gap: 20px;
-
+        display: flex;
+        justify-content: center;
         //buttons top
         .top-btn {
 
             text-transform: uppercase;
             cursor: pointer;
             font-family: Cereal-medium;
-            font-size: 1rem;
+            font-size: 1.1rem;
             background-color: $clr7;
             border-radius: 5px;
-            width: 120px;
+            width: 350px;
             height: 40px;
             margin: 10px 0px;
 
@@ -54,7 +55,7 @@
 
     table {
         margin: 5;
-        border: 1px solid $clr2;
+        border: 1px solid $clr6;
         background-color: white;
         // text-align: left;
         border-collapse: separate;
@@ -105,6 +106,7 @@
 
     .chart-title {
         color: $clr2;
+        margin: 40px 0px 30px;
     }
 }
 
@@ -166,3 +168,95 @@
 //     font-family: 'Cereal';
 //     font-weight: 700;
 // }
+
+.dashboard-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .main-layout-homepage {
+    padding-bottom: 45px;
+  }
+  
+  .dashboard-title {
+    padding-bottom: 25px;
+    padding-top: 25px;
+  }
+  
+  .cards-dashboard-container {
+    justify-content: space-between;
+    margin-bottom: 25px;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .bar-container {
+    box-shadow: #0000001f 0 6px 16px;
+    border-radius: 15px;
+    padding: 25px;
+    width: 350px;
+  }
+  
+  .pie-container {
+    box-shadow: #0000001f 0 6px 16px;
+    border-radius: 15px;
+    padding: 25px;
+    width: 350px;
+  }
+  
+  .stats-card {
+    box-shadow: #0000001f 0 6px 16px;
+    border-radius: 15px;
+    padding: 25px;
+    width: 350px;
+  }
+  
+  .bar-header {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  
+  .pie-header {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  
+  canvas {
+    height: 180px;
+    width: 307px;
+  }
+  
+  .dashboard-stats .cards-dashboard-container .stats-card h1 {
+    text-align: center;
+    padding-bottom: 30px;
+  }
+  
+  .details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .rev-stat {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 25px;
+    font-size: 1.1428571429em;
+    font-weight: 600;
+  }
+  
+  .canceled-stat {
+    color: #9d0001;
+  }
+  
+  .total-stat {
+    color: #00811e;
+  }
+  
+  .pending-stat {
+    color: navy;
+  }
+  
+

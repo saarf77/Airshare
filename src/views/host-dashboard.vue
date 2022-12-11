@@ -18,7 +18,7 @@
         <div class="top-dashboard-title flex">
           <button @click="showOrder" class="top-btn"> Orders</button>
           <button @click="showStay" class="top-btn"> My Stays</button>
-          <button @click="showGraph" class="top-btn"> Graphs</button>
+          <button @click="showGraph" class="top-btn"> Dashboard</button>
           <button @click="showWishList" class="top-btn"> Wishlist</button>
         </div>
 

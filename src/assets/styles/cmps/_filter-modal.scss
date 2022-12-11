@@ -307,7 +307,7 @@ span.el-radio-button__inner {
     display: flex!important;
     flex: 0 0 auto!important;
     border-top: 1px solid rgb(235,235,235)!important;
-    padding: 16px 24px!important;
+    padding: 48px 24px!important;
     align-items: center!important;
     justify-content: space-between!important;
     font-size: 16px!important;
@@ -345,4 +345,12 @@ span.el-radio-button__inner {
 .filter-footer button:nth-child(2):hover{
     background:black;
     cursor: pointer;
+}
+
+
+
+
+.irs-from, .irs-single, .irs-to{
+    visibility: hidden;
+    background-color: red;
 }

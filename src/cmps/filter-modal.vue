@@ -16,7 +16,7 @@
 
                 <HistogramSlider @change="setRange" @start="startRange" :width="650" :hist-slider-gap="0" :bar-height="100" :bar-width="12"
                     :bar-radius="0" :line-height="1" :bar-color="'#b0b0b0'" :primary-color="'#b0b0b0'"
-                    :label-color="'#bdd6f8'" :holder-color="'#dddddd'" :handel-color="'#ffffff'" :data="data" :min="0"
+                    :label-color="'hidden'" :holder-color="'#b0b0b0'" :handel-color="'#b0b0b0'" :data="data" :min="0"
                     :max="max" />
                 <div class="form-inputs">
                     <div class="inner-price">

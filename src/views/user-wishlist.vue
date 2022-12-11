@@ -1,14 +1,14 @@
 <template>
     <!-- <div  ><img class="loader" src="../assets/icons/loader.gif" alt="" srcset=""></div> -->
     <div >
-        <div class="logIn" >
+        <!-- <div class="logIn" >
             <h1>log in first
                 <router-link to="/login">
 
                     <span class="under-line">click Here</span>
                 </router-link>
             </h1>
-        </div>
+        </div> -->
         <h1 class="text-center">My wishlist:</h1>
         <div class="container">
 

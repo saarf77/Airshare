@@ -1,13 +1,55 @@
 <template>
-    <section class="dashboard">
-        <div class="orders">
-            <h1>Orders Status</h1>
-            <DoughnutChart :chartData="testData" :options="options" />
+    <section class="dashboard dashboard-stats">
+        <div class="cards-dashboard-container">
+          <div class="orders">
+              <div class="stats-card">
+                  <h1>Orders Status</h1>
+                  <DoughnutChart :chartData="testData" :options1="options1" />
+              </div>
+          </div>
+          <div class="stats-card">
+
+              <div class="revenue">
+                  <h1>Revenue Per Month</h1>
+                  <BarChart :options="options" :chartData="testData2"  />
+                </div>
+            </div>
+
+            <div class="stats-card">
+              <h1>Orders Managment 2022</h1>
+              <div class="details">
+                <div class="rev-stat">
+                  <span class="stat-head">Cancelations</span>
+                  <span class="canceled-stat">3.7%</span>
+                </div>
+                <div class="rev-stat">
+                  <span class="stat-head">Average Stay Time</span>
+                  <span class="total-stat">4 nights</span>
+                </div>
+                <div class="rev-stat">
+                  <span class="stat-head">airshare Fees</span>
+                  <span class="pending-stat">453$</span>
+                </div>
+            </div>
         </div>
-        <div class="revenue">
-            <h1>Revenue Per Month</h1>
-            <BarChart :chartData="testData2" :options="options" />
+        
+        <div class="stats-card">
+            <h1>Total revenue</h1>
+            <div class="details">
+                
+                <div class="rev-stat">
+                    <span class="stat-head">This Year</span>
+                    <span>$8,253</span>
+                </div>
+                <div class="rev-stat">
+                    <span class="stat-head">Total Income</span>
+                    <span>$22,553</span>
+                </div>
+
+          </div>
         </div>
+       
+      </div>
         </section>
   </template>
   
@@ -32,10 +74,10 @@
                     },
                 ],
             },
-            options: {
+            options1: {
                 plugins: {
                     legend: {
-                        display: false,
+                        display: true,
                     },
                 },
             },
@@ -51,7 +93,7 @@
             options: {
                 plugins: {
                     legend: {
-                        display: true,
+                        display: false,
                     },
                 },
             },
