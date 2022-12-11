@@ -107,15 +107,6 @@
     <div class="cell"></div>
     <div class="cell"></div>
 
-    <!-- <div @click="orderConfirm" class="btn-container" ref="elOrderBtn">
-    <div v-for="i in 100" class="cell"></div>
-    <div class="content">
-        <button class="action-btn" v-html="btnStatus">
-        </button>
-        
-    </div>
-</div> -->
-
     <div @click="sendOrder" ref="elOrderBtn" class="btn-container">
       <div v-for="i in 100" class="cell"></div>
       <div class="content">
@@ -256,7 +247,7 @@ export default {
   computed: {
     currUser() {
       // if(this.loggedinUser?._id){
-      this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
+      // this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
     // }
     // let new = this.$store.getters.watchedUser
       return this.$store.getters.watchedUser
@@ -356,8 +347,7 @@ export default {
       this.isShow = false;
     },
     sendOrder() {
-      // console.log('alaa',this.orderStay.host)
-      console.log('HEYAYAYA', this.currUser)
+
       let currOrder = {
         createdAt: Date.now(),
         totalPrice: this.totalPrice,
@@ -377,9 +367,9 @@ export default {
           address:this.orderStay.loc.address
         },
         host: {
-          id: this.orderStay.host._id,
+          id: this.orderStay.host.id,
           imgUrl: this.orderStay.host.pictureUrl,
-          fullname: this.orderStay.host.fullname,
+          fullname: this.orderStay.host.name,
         },
         buyer: {
           _id: this.currUser._id,
