@@ -133,7 +133,7 @@ export default {
 
    <template>
 
-    <section class="">
+    <section class="orders-layout">
 
         <div class="dashboard-order-container bold">
             <div class="dashboard-title booker">Guest</div>
