@@ -262,7 +262,8 @@
 .top-dashboard-title {
   gap: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  margin: 40px 70px 30px;
   height: 50px;
   //buttons top
   .top-btn {
@@ -325,6 +326,11 @@
   color: $clr2;
   margin: 40px 70px 30px;
 }
+.chart-title-trips {
+  color: $clr2;
+  
+}
+
 
 .dashboard-stats {
   display: flex;
@@ -422,10 +428,12 @@ canvas {
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
-  border-bottom: 1px solid #b0b0b0;
+  border-bottom: 1px solid #dddddd;
+  font-family: 'Cereal';
   
   &.bold{
     margin-top: 50px;
+    font-family: 'Cereal-bold' !important;
   }
 }
 
@@ -436,11 +444,12 @@ canvas {
 }
 
 .dashboard-order-container .date {
-  width: 80px;
+  width: 75px;
 }
 
 .dashboard-order-container .booker {
-  width: 100px;
+  width: 118px;
+  align-items:flex-start;
 }
 
 .dashboard-order-container .stay {
@@ -451,7 +460,7 @@ canvas {
 }
 
 .dashboard-order-container .dates {
-  width: 150px;
+  width: 90px;
 }
 
 .dashboard-order-container .nights {
@@ -459,7 +468,7 @@ canvas {
 }
 
 .dashboard-order-container .guests {
-  width: 60px;
+  width: 50px;
 }
 
 .dashboard-order-container .price {
@@ -476,6 +485,7 @@ canvas {
 
 .dashboard-order-container .actions {
   width: 160px;
+  text-align: end;
 }
 
 .ellipsis {
@@ -488,18 +498,25 @@ canvas {
 .actions-container {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  // gap: 0px;
 }
 
 .approve-btn {
   border: 1px solid #008300;
   background-color: #008300;
+  &:hover{
+    background-color:#519651 ;
+  }
 }
 
 .reject-btn {
   border: 1px solid #505050;
   background-color: #242424;
+  &:hover{
+    background-color:#565353 ;
+  }
 }
+
 
 .actions-container button {
   color: #fff;
@@ -508,15 +525,46 @@ canvas {
   transition: 0.1s;
   border-radius: 7px;
   opacity: 0.5;
+  cursor: pointer;
 }
 
 .buyer{
   gap: 8px;
   display: flex;
   align-items: center;
+  flex-direction: column;
   img{
-      height: 32px;
-      width: 32px;
+      height: 42px;
+      width: 42px;
+      border-radius: 50%;
   }
 }
+.status-pending{
+  color: rgb(12, 12, 123);
+  font-family: 'Cereal-medium';
+}
+.status-approved{
+  color: #00811e;
+  font-family: 'Cereal-medium';
+}
+.status-decline{
+  color: #9d0001;
+  font-family: 'Cereal-medium';
+}
 
+
+@media (max-width: calc($normal-breakpoint + 40px)) {
+
+  .stats-card {
+    box-shadow: #0000001f 0 6px 16px;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 350px;
+    width: 200px;
+    font-size:14px ;
+  }
+  .top-btn {
+    width: 150px !important;
+    font-size: 0.7em;
+  }
+}

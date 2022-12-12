@@ -1,29 +1,29 @@
 <template>
-    <section class=" main-layout">
-
+    <section class="main-layout">
+        <h1 class="chart-title-trips">My trips</h1>
 
         <div class="dashboard-order-container bold">
-    <div class="dashboard-title stay">Stay Name</div>
-    <div class="dashboard-title total">Price</div>
-    <div class="dashboard-title status">Status</div>
-    <div class="dashboard-title dates">Vacation Dates</div>
-    <div class="dashboard-title date">Booking</div>
-</div>
+            <div class="dashboard-title stay">Stay Name</div>
+            <div class="dashboard-title total">Price</div>
+            <div class="dashboard-title status">Status</div>
+            <div class="dashboard-title dates">Vacation Dates</div>
+            <div class="dashboard-title date">Booking</div>
+        </div>
 
 
-<section class="dashboard-order-container" v-for="trip in getOrders" :key="trip._id">
-    <div class="stay ellipsis">{{ getStayName(trip) }}</div>
-    <div class="total">${{ trip.totalPrice }}</div>
-    <div class="status">{{ trip.status }}</div>
-    <div class="dates">{{ getStartDate(trip) }}-{{ getEndDate(trip) }}</div>
-    <div class="date">{{ getBookingDate(trip) }}</div>
-    <!-- <div class="booker ellipsis buyer"><img :src="getUserImg(hostOrder)">
+        <section class="dashboard-order-container" v-for="trip in getOrders" :key="trip._id">
+            <div class="stay ellipsis">{{ getStayName(trip) }}</div>
+            <div class="total">${{ trip.totalPrice }}</div>
+            <div class="status">{{ trip.status }}</div>
+            <div class="dates">{{ getStartDate(trip) }}-{{ getEndDate(trip) }}</div>
+            <div class="date">{{ getBookingDate(trip) }}</div>
+            <!-- <div class="booker ellipsis buyer"><img :src="getUserImg(hostOrder)">
         <span>{{getUserName(hostOrder)}}</span>
     </div> -->
-<!-- <div class="guests">{{ getGuestsAmount(hostOrder) }} </div> -->
-<!-- <td><img class="stay-image" :src=imageUrl></td> -->
+            <!-- <div class="guests">{{ getGuestsAmount(hostOrder) }} </div> -->
+            <!-- <td><img class="stay-image" :src=imageUrl></td> -->
 
-</section>
+        </section>
 
         <!-- <tbody>
             <div v-for="trip in getOrders" :key="trip._id">
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-    import {socketService} from '../services/socket.service.js'
+import { socketService } from '../services/socket.service.js'
 export default {
     data() {
         return {
@@ -48,12 +48,12 @@ export default {
         }
     },
     created() {
-        socketService.on('update trips' , this.loadTrips)
+        socketService.on('update trips', this.loadTrips)
         this.$store.dispatch({ type: 'loadOrders', buyerId: this.$route.params.id });
     },
 
     computed: {
-        getOrders(){
+        getOrders() {
             return this.$store.getters.getOrders
         },
 
@@ -84,13 +84,13 @@ export default {
             // let currOrder = this.getHostOrders.filter(order => order === orders)
             let booking = trip.createdAt
             let created = new Date(booking).toLocaleDateString()
-            return created 
+            return created
         },
-        loadTrips(orderId){
+        loadTrips(orderId) {
             console.log("🚀 ~ file: user-trips.vue:59 ~ loadTrips ~ orderId", orderId)
-           let order = this.getOrders.find(order => order._id === orderId)
-           if(order){
-               this.$store.dispatch({ type: 'loadOrders', buyerId: this.$route.params.id });
+            let order = this.getOrders.find(order => order._id === orderId)
+            if (order) {
+                this.$store.dispatch({ type: 'loadOrders', buyerId: this.$route.params.id });
             }
         },
         getStayName(trip) {
