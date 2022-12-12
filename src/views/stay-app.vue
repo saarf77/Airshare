@@ -13,6 +13,8 @@ import stayList from '../cmps/stay-list.vue'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { stayService } from '../services/stay.service.js'
 import { getActionRemoveStay, getActionUpdateStay, getActionAddStayMsg } from '../store/stay.store'
+import { eventBus } from '../services/event-bus.service';
+
 export default {
   components: {
     // stayFilter,
@@ -21,7 +23,13 @@ export default {
   },
   data() {
     return {
-      stayToAdd: null
+      stayToAdd: null,
+      datesInfo: {
+        isFirst: true,
+        startDay: '',
+        endDay: ''
+      }
+      
     }
   },
   computed: {
@@ -31,10 +39,12 @@ export default {
     stays() {
       // this.$store.dispatch({ type: 'loadStays' })
       return this.$store.getters.stays
-    }
+    },
   },
   created() {
     this.$store.dispatch({ type: 'loadStays' })
+    eventBus.on('dayPicked', this.updateDateToParams);
+
   },
   methods: {
     async setFilter(filterBy) {
@@ -91,6 +101,19 @@ export default {
     },
     printStayToConsole(stay) {
       console.log('Stay msgs:', stay.msgs)
+    },  
+    updateDateToParams(day){
+      console.log(day);
+      if(this.datesInfo.isFirst){
+        this.datesInfo.startDay = day.id;
+        this.datesInfo.isFirst = false;
+      } else {
+        this.datesInfo.endDay = day.id;
+        this.datesInfo.isFirst = true;
+      }
+
+      this.$router.push('?sd=' + this.datesInfo.startDay + '&ed=' + this.datesInfo.endDay);
+
     }
   }
 
