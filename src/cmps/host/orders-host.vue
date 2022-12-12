@@ -136,8 +136,8 @@ export default {
     <section class="">
 
         <div class="dashboard-order-container bold">
-            <div class="dashboard-title date">Booking</div>
             <div class="dashboard-title booker">Guest</div>
+            <div class="dashboard-title date">Booking</div>
             <div class="dashboard-title stay">Stay</div>
             <div class="dashboard-title dates">Dates</div>
             <div class="dashboard-title guests">Guests</div>
@@ -148,10 +148,10 @@ export default {
         
         
         <section class="dashboard-order-container" v-for="hostOrder in getHostOrders" :key="hostOrder._id">
-            <div class="date">{{ getBookingDate(hostOrder) }}</div>
             <div class="booker ellipsis buyer"><img :src="getUserImg(hostOrder)">
                 <span>{{getUserName(hostOrder)}}</span>
             </div>
+            <div class="date">{{ getBookingDate(hostOrder) }}</div>
             <div class="stay ellipsis">{{ summarySize(hostOrder) }}</div>
             <div class="dates">{{ getStartDate(hostOrder) }}-{{ getEndDate(hostOrder) }}</div>
         <div class="guests">{{ getGuestsAmount(hostOrder) }} </div>
@@ -186,13 +186,13 @@ computed: {
     },
 },
 methods: {
-    statusClass(orders) {
+    statusClass(order) {
         // console.log(orders)
-        let currOrder = this.getHostOrders.filter(order => order === orders)
+        // let currOrder = this.getHostOrders.filter(order => order === orders)
         // console.log(currOrder)
-        if (currOrder[0].status === 'pending') return 'status-pending'
-        if (currOrder[0].status === 'approved') return 'status-approved'
-        if (currOrder[0].status === 'declined') return 'status-decline'
+        if (order.status === 'pending') return 'status-pending'
+        if (order.status === 'approved') return 'status-approved'
+        if (order.status === 'declined') return 'status-decline'
     },
     summarySize(orders) {
         let currOrder = this.getHostOrders.filter(order => order === orders)
