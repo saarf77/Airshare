@@ -115,16 +115,12 @@ export default {
             return (this.currStay?.amenities.length > 0) ? this.currStay.amenities : [];
         },
         calcStarRate() {
-            let rate = '0';
-            let counter = 0;
+            let rate = 0;
             if (this.currStay?.reviews?.length > 0) {
                 rate = this.currStay.reviews.map((review) => {
-                    return !isNaN(review.starRate) ? review.starRate : 0;
+                    return parseFloat(review.starRate);
                 });
-                counter = rate.length;
-                rate = rate.reduce((acc, num) => acc + num)
-                rate = rate / counter;
-                rate = rate.toFixed(2);
+                rate = (rate.reduce((acc, num) =>{return acc + num}, 0)/ this.currStay.reviews.length).toFixed(2);
             }
             return rate + '';
         },
