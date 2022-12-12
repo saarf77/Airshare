@@ -6,8 +6,7 @@
                 <h1>Thank you for booking</h1>
             </div>
             <section class="good-deal">
-                <div class="title">
-                    <h3>Good price</h3>
+                <div class="title" v-html="dealAndDiamond">
                 </div>
                 <div class="deal-content">
                     <p>Your dates are <span>${{getDiscount}}</span> less than the avg. nightly rate over the last 3 months.</p>
@@ -97,6 +96,8 @@
 <script>
     import {utilService} from '../services/util.service.js'
     import { ElMessage } from 'element-plus';
+    import { svgService } from '../services/svg.service.js';
+
 export default {
     data() {
         return {
@@ -113,6 +114,9 @@ export default {
         // this.oreder = currOrder
     },
     computed: {
+        dealAndDiamond(){
+            return `<h3>Good price</h3> ${svgService.getSvgIcon('diamond')}`;
+        },
         basePrice(){
            return (this.setOrder?.priceObj?.basePrice)?this.setOrder.priceObj.basePrice.toLocaleString():''
         },
@@ -174,15 +178,11 @@ export default {
             this.$router.push('/')
             ElMessage.success('Order sent!')
         },
-        
-        // setOrder(currOrder) {
-        //     this.order = currOrder
-        //     console.log(this.order);
-
-        // },
-
-
-
+    },
+    components:{
+        svgService,
+        ElMessage,
+        utilService
     }
 
 }
