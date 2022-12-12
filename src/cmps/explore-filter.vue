@@ -333,7 +333,8 @@ export default {
       // + <img src="../assets/icons/search-icon.svg" />
 
       const myWho = this.$refs.myWho;
-      myWho.textContent = this.guestsNum
+      myWho.textContent = this.guestsNum 
+      // + <img src="../assets/icons/search-icon.svg"/>
 
       this.$emit('expendForm', false);
     },
