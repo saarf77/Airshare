@@ -1,49 +1,42 @@
 <template>
-    <table class="content-table main-layout">
-        <!-- <thead>
-            <tr>
-                <th class="title-thead text-center"></th>
-                <th class="title-thead text-center">Stay name</th>
-                <th class="title-thead text-center">Total price payed</th>
-                <th class="title-thead text-center">Address</th>
-                <th class="title-thead text-center">Actions</th>
-            </tr>
-        </thead> -->
-
-        <el-table :data="tableData" style="width: 100%"  class="border-bottom">
-    <!-- <el-table-column fixed prop="Guest" label="Guest" width="140" /> -->
-    <el-table-column prop="Stay name" label="Stay name" width="735" />
-    <el-table-column prop="Price" label="Price" width="335" />
-    <el-table-column prop="Status" label="Status" width="355" />
-    <!-- <el-table-column prop="Guests" label="Guests" width="120" /> -->
-    <!-- <el-table-column prop="Booking" label="Booking" width="120" /> -->
-    <!-- <el-table-column prop="Action" label="Action" width="120" /> -->
-    <el-table-column prop="Check In/ Out" label="Check In/ Out" width="190" />
-    <!-- <el-table-column fixed="right" label="Operations" width="130">
-      <template #default>
-        <el-button link type="primary" size="small" @click=""
-          >Detail</el-button>
-        <el-button link type="primary" size="small">Edit</el-button>
-      </template>
-    </el-table-column> -->
-  </el-table>
+    <section class=" main-layout">
 
 
-        <tbody>
+        <div class="dashboard-order-container bold">
+    <div class="dashboard-title stay">Stay Name</div>
+    <div class="dashboard-title total">Price</div>
+    <div class="dashboard-title status">Status</div>
+    <div class="dashboard-title dates">Vacation Dates</div>
+    <div class="dashboard-title date">Booking</div>
+</div>
+
+
+<section class="dashboard-order-container" v-for="trip in getOrders" :key="trip._id">
+    <div class="stay ellipsis">{{ getStayName(trip) }}</div>
+    <div class="total">${{ trip.totalPrice }}</div>
+    <div class="status">{{ trip.status }}</div>
+    <div class="dates">{{ getStartDate(trip) }}-{{ getEndDate(trip) }}</div>
+    <div class="date">{{ getBookingDate(trip) }}</div>
+    <!-- <div class="booker ellipsis buyer"><img :src="getUserImg(hostOrder)">
+        <span>{{getUserName(hostOrder)}}</span>
+    </div> -->
+<!-- <div class="guests">{{ getGuestsAmount(hostOrder) }} </div> -->
+<!-- <td><img class="stay-image" :src=imageUrl></td> -->
+
+</section>
+
+        <!-- <tbody>
             <div v-for="trip in getOrders" :key="trip._id">
                 <tr class="row-table border-bottom">
-                    <!-- <td><img class="stay-image" :src=imageUrl></td> -->
                     <td>{{ getStayName(trip) }}</td>
                     <td>{{ trip.totalPrice }}</td>
                     <td>{{ trip.status }}</td> 
                     <td>{{ getStartDate(trip)}} - {{getEndDate(trip)}}</td>
                     <td>{{ getBookingDate(trip) }}</td> 
-                    <!-- <td>{{getEndDate(trip)}}</td> -->
-                    <!-- <pre>{{trip}}</pre> -->
                 </tr>
             </div>
-        </tbody>
-    </table>
+        </tbody> -->
+    </section>
 </template>
 
 <script>
@@ -102,8 +95,8 @@ export default {
         },
         getStayName(trip) {
             // console.log(currOrder.stay)
-            if (trip.stay.name > 13) {
-                let desc = trip.stay.name.slice(0, 13) + '...'
+            if (trip.stay.name > 20) {
+                let desc = trip.stay.name.slice(0, 20) + '...'
                 return desc
             }
             return trip.stay.name

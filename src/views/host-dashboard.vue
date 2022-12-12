@@ -229,20 +229,9 @@ export default {
               <orders-host />
           </section>
           
-          <table v-if="showStays" class="content-table">
-            <thead>
-              <tr>
-                <th class="title-thead"></th>
-                <th class="title-thead">Stay name</th>
-                <th class="title-thead">Price per night</th>
-                <th class="title-thead">Address</th>
-                <th class="title-thead">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
+          <div v-if="showStays" class="content-table">
               <stays-host />
-            </tbody>
-          </table>
+          </div>
         </div>
         <div v-if="showGraphs" class="graphs">
           <chart-host  />

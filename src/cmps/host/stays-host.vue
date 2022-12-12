@@ -13,6 +13,32 @@
 
     </tr>
    
+    <section class="">
+
+<div class="dashboard-order-container bold">
+    <div class="dashboard-title stay">Stay</div>
+    <div class="dashboard-title total">Total</div>
+    <div class="dashboard-title status">Status</div>
+    <div class="dashboard-title dates">Dates</div>
+    <div class="dashboard-title date">Booking</div>
+</div>
+
+
+<section class="dashboard-order-container" v-for="stay in getUserStays" :key="stay._id">
+    <div class="stay ellipsis">{{ getStayName(stay)}}</div>
+    <div class="total">${{ stay.price }}</div>
+    <div class="date">{{ getBookingDate(hostOrder) }}</div>
+    <div class="booker ellipsis buyer"><img :src="getUserImg(hostOrder)">
+        <span>{{getUserName(hostOrder)}}</span>
+    </div>
+    <div class="dates">{{ getStartDate(hostOrder) }}-{{ getEndDate(hostOrder) }}</div>
+<div class="guests">{{ getGuestsAmount(hostOrder) }} </div>
+<div class="status" :class="statusClass(hostOrder)">{{ hostOrder.status }}</div>
+
+</section>
+</section>
+
+
 </div>
 </template>
 
