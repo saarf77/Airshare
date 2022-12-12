@@ -321,9 +321,9 @@ input {
 
         div[class*="vc-popover-content-wrapper"] {
                 width: 100% !important;
-                top: 49% !important;
-                left: 57% !important;
-                z-index: 10 !important;
+                top: 203px !important;
+                left: 59% !important;
+                z-index: 50 !important;
         }
 
         .vc-popover-content.direction-bottom.vc-container {
@@ -339,11 +339,11 @@ input {
                         flex-direction: column;
                         gap: 5px;
                         padding: 11px 16px;
-                        z-index: 12;
-                        border: 1px solid rgba(0, 0, 0, 0.3137254902);;
-
+                        z-index: 1;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.3137254902);
                         &:last-of-type {
                                 border-left: 1px solid #00000050;
+                                
                         }
                 }
         }
@@ -397,7 +397,7 @@ span.reviews {
                 padding-inline-start: 4px;
                 color: rgb(34, 34, 34) !important;
         }
-
+        
         .stared {
                 color: #222222;
                 font-size: 14px;
@@ -419,5 +419,17 @@ span.reviews {
                 display: none;
                 content: 'none';
                 // font-family: 'Material Icons';
+        }
+}
+
+.order-data:has( .vc-popover-content .vc-title){
+        .date-picker{
+                .date-input{
+                        z-index: 500;
+                        border: 1px solid rgba(0, 0, 0, 0.3137254902);
+                        &:hover{
+                                border: 2px solid rgba(0, 0, 0, 0.9);
+                        }
+                }
         }
 }
