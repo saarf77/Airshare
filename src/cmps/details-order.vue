@@ -93,10 +93,16 @@
               </div>
             </div>
           </div>
-
-        
         </template>
       </v-date-picker>
+      <div class="trip-length">
+        <span class="night-num">{{this.currDates.daysNum}}</span>
+        <span> nights</span>
+        <div class="schedule-dates">
+          <span class="first-night-date">  {{stayStartDate}}  </span>
+          <span class="last-night-date">  {{stayEndDate}}  </span>
+        </div>
+      </div>
       <div @click="isShow = !isShow" class="guest-input">
         <label>GUESTS
           <div class="expand-order" @click="disableOrderBtn" v-html="orderArrow">
@@ -293,8 +299,13 @@ export default {
         currRate = (this.orderStay.reviews.reduce((acc, review) => acc + parseFloat(review.starRate), 0)/this.orderStay.reviews.length).toFixed(1) ;
       }
       return currRate;
-       
-    }
+    }, 
+    stayStartDate(){
+      return (this.currDates?.startDay)? new Date(this.currDates.startDay).toLocaleDateString() + ' - ': ' ';
+    },
+    stayEndDate(){
+      return (this.currDates?.endDay)? new Date(this.currDates.endDay).toLocaleDateString() : ' ';
+    },
   },
   methods: {
     calcPayments() {
@@ -399,7 +410,8 @@ export default {
         this.currDates.endDay = new Date(day.id).getTime();
         this.currDates.isFirst = true;
         this.hasCalcPrice = true;
-        this.currDates.daysNum = Math.ceil((this.currDates.endDay - this.currDates.startDay) / 86400000);
+        this.currDates.daysNum = (Math.ceil((this.currDates.endDay - this.currDates.startDay) > 0))? 
+        Math.ceil((this.currDates.endDay - this.currDates.startDay)/ 86400000) : '';
         this.calcPayments();
       }
 
