@@ -81,9 +81,21 @@
     padding-block-start: 20px;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
 
+    .title{
+        position: relative;
+        svg{
+            position: absolute;
+            top: 5px;
+            right: 0px;
+        }
+    }
     .deal-content {
         padding-top: 10px;
         font-family: 'Cereal';
+    }
+    .diamond{
+        right: 0;
+        top: 0;
     }
 }
 

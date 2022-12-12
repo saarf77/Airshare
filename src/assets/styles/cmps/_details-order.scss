@@ -64,14 +64,15 @@
 
 // Order
 
-.total-price{
+.total-price {
         padding-top: 24px !important;
         font-size: 16px !important;
-        
-        .total{
+
+        .total {
                 text-decoration: none !important;
         }
 }
+
 .order-details {
         border: 1px solid rgb(221, 221, 221);
         border-radius: 12px;
@@ -79,7 +80,7 @@
         box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
         flex-direction: column;
         width: 600px;
-        
+
 }
 
 .details-page .order-container[class*="extended"] {
@@ -236,7 +237,7 @@
                         padding-block-start: 15px;
                 }
 
-        
+
 
                 .row-card {
                         padding: 0;
@@ -272,7 +273,7 @@
         // align-items: center;
         justify-content: space-between;
         width: 100%;
-        
+
         margin-bottom: 26px;
         margin-top: 2px;
 
@@ -320,8 +321,8 @@ input {
 
         div[class*="vc-popover-content-wrapper"] {
                 width: 100% !important;
-                top: 50% !important;
-                left: -13% !important;
+                top: 49% !important;
+                left: 57% !important;
                 z-index: 10 !important;
         }
 
@@ -338,6 +339,8 @@ input {
                         flex-direction: column;
                         gap: 5px;
                         padding: 11px 16px;
+                        z-index: 12;
+                        border: 1px solid rgba(0, 0, 0, 0.3137254902);;
 
                         &:last-of-type {
                                 border-left: 1px solid #00000050;
@@ -349,7 +352,7 @@ input {
                 display: flex;
                 flex-direction: column;
                 gap: 5px;
-                border-top: 1px solid #00000050;
+                // border-top: 1px solid #00000050;
                 padding: 11px 16px;
                 position: relative;
         }
@@ -368,14 +371,15 @@ span.reviews {
 
 
 .order-form-header {
-        .review-rating{
+        .review-rating {
                 display: flex;
                 align-items: flex-end;
 
         }
+
         .price {
                 display: flex;
-                align-items: flex-end ;
+                align-items: flex-end;
                 gap: 3px;
 
                 .currency {
@@ -384,7 +388,8 @@ span.reviews {
                         font-weight: $bold;
                 }
         }
-        .night{
+
+        .night {
                 font-size: 16px;
                 font-family: 'Cereal';
                 font-weight: 400;
@@ -392,6 +397,7 @@ span.reviews {
                 padding-inline-start: 4px;
                 color: rgb(34, 34, 34) !important;
         }
+
         .stared {
                 color: #222222;
                 font-size: 14px;
@@ -399,7 +405,8 @@ span.reviews {
                 font-weight: $light;
 
         }
-        .reviews-amount{
+
+        .reviews-amount {
                 text-decoration: underline;
                 color: rgb(113, 113, 113);
                 font-weight: bold;

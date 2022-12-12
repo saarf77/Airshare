@@ -86,7 +86,6 @@
                 <input :placeholder="checkIn" :value="inputValue.start" v-on="inputEvents.start"
                   class="border px-2 py-1 w-32 rounded focus:outline-none focus:border-indigo-300" />
               </div>
-
               <div class="date-input">
                 <label>CHECK-OUT</label>
                 <input :placeholder="checkOut" :value="inputValue.end" v-on="inputEvents.end"
@@ -94,6 +93,8 @@
               </div>
             </div>
           </div>
+
+        
         </template>
       </v-date-picker>
       <div @click="isShow = !isShow" class="guest-input">
