@@ -22,7 +22,7 @@
         <div class="filter-option check">
           <div class="labels-wrap">
             <v-date-picker color="gray" trim-weeks is-expanded mode="date" :columns="$screens({ default: 1, lg: 2 })"
-              :rows="1" v-model="filterBy.date" is-range>
+              :rows="1" v-model="filterBy.date" is-range @dayclick="sendDate">
               <template v-slot="{ inputValue, inputEvents }">
                 <div class="flex justify-center items-center">
                   <div  @click.native="activeTab('checkin')" class="checkin" data-field="checkin"
@@ -241,6 +241,9 @@ export default {
     };
   },
   methods: {
+    sendDate(day){
+      eventBus.emit('dayPicked', day);
+    },
     // renderDates(event) {
     //   this.checkinDate = `${new Date(event[0]).getDate()}/${
     //     new Date(event[0]).getMonth() + 1

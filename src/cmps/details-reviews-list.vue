@@ -136,13 +136,13 @@ export default {
         reviewsList:{
             handler(newVal, oldVal) {
                 if(newVal?.length > 0){
-                    this.currStayStarRating = (newVal.reduce((acc, review) => acc + parseFloat(review.starRate), 0)/newVal.length).toFixed(1) ;
-                    this.currStayAttributes.cleanlinessRating = (newVal.reduce((acc, review) => acc + review.attributes.cleanliness, 0)/newVal.length).toFixed(1);
-                    this.currStayAttributes.communicationRating = (newVal.reduce((acc, review) => acc + review.attributes.communication, 0)/newVal.length).toFixed(1);
-                    this.currStayAttributes.checkInRating = (newVal.reduce((acc, review) => acc += review.attributes.checkIn, 0)/newVal.length).toFixed(1);
-                    this.currStayAttributes.accuracyRating = (newVal.reduce((acc, review) => acc += review.attributes.accuracy, 0)/newVal.length).toFixed(1);
-                    this.currStayAttributes.locationRating = (newVal.reduce((acc, review) => acc += review.attributes.location, 0)/newVal.length).toFixed(1);
-                    this.currStayAttributes.valueRating = (newVal.reduce((acc, review) => acc += review.attributes.value, 0)/newVal.length).toFixed(1);
+                    this.currStayStarRating = (newVal.reduce((acc, review) => acc + parseFloat(review.starRate), 0)/newVal.length).toFixed(2) ;
+                    this.currStayAttributes.cleanlinessRating = (newVal.reduce((acc, review) => acc + parseFloat(review.attributes.cleanliness), 0)/newVal.length).toFixed(2);
+                    this.currStayAttributes.communicationRating = (newVal.reduce((acc, review) => acc + parseFloat(review.attributes.communication), 0)/newVal.length).toFixed(2);
+                    this.currStayAttributes.checkInRating = (newVal.reduce((acc, review) => acc += parseFloat(review.attributes.checkIn), 0)/newVal.length).toFixed(2);
+                    this.currStayAttributes.accuracyRating = (newVal.reduce((acc, review) => acc += parseFloat(review.attributes.accuracy), 0)/newVal.length).toFixed(2);
+                    this.currStayAttributes.locationRating = (newVal.reduce((acc, review) => acc += parseFloat(review.attributes.location), 0)/newVal.length).toFixed(2);
+                    this.currStayAttributes.valueRating = (newVal.reduce((acc, review) => acc += parseFloat(review.attributes.value), 0)/newVal.length).toFixed(2);
                     this.currStayReviews = newVal;
                 }
             },

@@ -9,7 +9,7 @@
   
   <script>
   import stayPreview from "./stay-preview.vue"
-  
+
   export default {
     props:['currStays'],
     components: {

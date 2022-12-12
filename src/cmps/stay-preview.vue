@@ -68,15 +68,12 @@ export default {
     data() {
         return {
             isLiked: false,
-            summary:''
+            summary:'',
         }
-    },
-    created(){
-        //
     },
     components: {
         utilService,
-    },
+        },
     computed:{
         summarySize() {
             if (this.previewStay?.summary?.length > 32) {
@@ -121,7 +118,8 @@ export default {
         },
         showStayDetails() {
             //add event bus
-            this.$router.push('/stay/' + this.previewStay._id + '?');
+            console.log('this.$router.params====> ' + this.$router.params);
+            this.$router.push('/stay/' + this.previewStay._id);
         },
         imageUrl(name) {
             return new URL(`/src/img/${name}.jpg`, import.meta.url)
@@ -134,8 +132,8 @@ export default {
         },
         removeStay(stayId) {
             this.$emit('removeStay', stayId)
-        },
-    },
+        }
+    }
 }
 </script>
   
