@@ -32,7 +32,7 @@
                                 fill-rule="evenodd"></path>
                         </svg>
                         <span>
-                            {{ currRate }}
+                            {{ currRate }} ({{ getReviewsAmount }})
                         </span>
                     </span>
                 </div>
@@ -94,6 +94,9 @@ export default {
         },
         currCountry() {
             return (this.previewStay?.loc?.country?.length > 0) ? this.previewStay.loc.country : '';
+        },
+        getReviewsAmount(){
+            return (this.previewStay.reviews?.length)? this.previewStay.reviews?.length : 0
         },
         currRate() {
             // if (this.previewStay?.reviews.length > 0) {

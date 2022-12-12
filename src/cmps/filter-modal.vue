@@ -14,8 +14,8 @@
                 <h2>Price range</h2>
                 <p>The average nightly price is 220$</p>
 
-                <HistogramSlider @change="setRange" @start="startRange" :width="650" :hist-slider-gap="0" :bar-height="100" :bar-width="12"
-                    :bar-radius="0" :line-height="1" :bar-color="'#b0b0b0'" :primary-color="'#b0b0b0'"
+                <HistogramSlider @change="setRange" @start="startRange" :width="650" :hist-slider-gap="0" :bar-height="60" :bar-width="12"
+                   :hideFromTo="true" :bar-radius="0" :line-height="1" :bar-color="'#b0b0b0'" :primary-color="'#b0b0b0'"
                     :label-color="'hidden'" :holder-color="'#b0b0b0'" :handel-color="'#b0b0b0'" :data="data" :min="0"
                     :max="max" />
                 <div class="form-inputs">
@@ -183,7 +183,7 @@
         </div>
         <div class="filter-footer">
             <button>Clear all</button>
-            <button @click.stop.prevent="setFilter">Show 29 homes</button>
+            <button @click.stop.prevent="setFilter">Show homes</button>
         </div>
     </form>
 </template>
@@ -191,6 +191,7 @@
 <script>
 import HistogramSlider from "vue3-histogram-slider";
 import "vue3-histogram-slider/dist/histogram-slider.css";
+import { utilService } from "../services/util.service";
 
 export default {
     name: 'filter-modal',
@@ -199,7 +200,7 @@ export default {
             min: 0,
             max: 1000,
             isActive: false,
-            data: [0, 80, 150, 250],
+            data: [0,29,29,48,48,48,80,80,80,112,112,152,152,184,184,184,198,210,210,210,210,210,210,232,254,256,256,256,264,264,296,296,296,296,296,311,342,342,374,374,374,374,390,390,390,390,390,402,402,402,402,402,402,426,426,426,426,426,426,426,440,440,440,440,440,440,467,467,467,467,467,488,488,488,488,523,523,523,547,547,589,600,615,641,679,704,704,730,730,730,755,755,755,800,800,840,840,840,],
             filterBy: {
                 price: [0, 1],
                 bedrooms: '0',
@@ -210,7 +211,16 @@ export default {
 
         }
     },
+    created(){
+        // let stays = this.getStays
+        // console.log("🚀 ~ file: filter-modal.vue:215 ~ created ~ stays", stays)
+    // this.getStays?.forEach(stay=> this.data.push(stay.price))
+    },
     methods: {
+        getStays(){
+            return this.$store.getters.stays
+        },
+        
         startRange($event){
             this.filterBy.price[0] = $event.from
             this.filterBy.price[1] = $event.to
@@ -247,7 +257,11 @@ export default {
         },
     },
     computed: {
-
+        // getBarHeight(){
+        //     let height = utilService.getRandomIntInclusive(40,110)
+        //     console.log(height)
+        //     return height+100
+        // },
     },
     components: {
         HistogramSlider,

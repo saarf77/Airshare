@@ -2,9 +2,9 @@
   <div class="search-wrapper flex">
     <div v-show="!isExpend" data-expend="expend" @click.prevent="expendForm(true)"
       class="filter-preview flex align-center">
-      <div class="filter btn header-location">Anywhere</div>
-      <div class="filter btn header-time">Any week</div>
-      <div class="filter btn header-guests search guest-pad" value="hellow">Add guests
+      <div ref="myAnywhere" class="filter btn header-location" @click="openMap">Anywhere</div>
+      <div ref="myAnyweek" class="filter btn header-time">Any week</div>
+      <div ref="myWho" class="filter btn header-guests search guest-pad" value="hellow">Add guests
         <span class="search"><img src="../assets/icons/search-icon.svg" /></span>
       </div>
     </div>
@@ -227,6 +227,8 @@ export default {
         //       },
         //     ],
       },
+      monthNames: ["January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"],
 
       showModal: false,
       isShow: false,
@@ -239,6 +241,13 @@ export default {
       expend: this.isExpend,
       firstClick: null,
     };
+  },
+  computed:{
+    openMap(){
+      this.isActive = true;
+      this.isClicked = true
+      console.log( this.isActive);
+    }
   },
   methods: {
     // renderDates(event) {
@@ -305,6 +314,26 @@ export default {
       eventBus.emit('getFilterStay');
       this.$router.push({ path: '/', query: { ...this.filterBy } });
       this.$store.dispatch({ type: 'setFilter',filterBy: this.filterBy })
+      
+      const currentDate1 = this.filterBy.date.start
+      const currentDate2 = this.filterBy.date.end
+      const currentMonth = currentDate1.getMonth();
+      const currentMonthName = this.monthNames[currentMonth];
+      const day1 = currentDate1.getDay()
+      const day2 = currentDate2.getDay()
+      
+      const myAnywhere = this.$refs.myAnywhere;
+      myAnywhere.textContent = this.filterBy.where;
+      
+      console.log(currentMonthName)
+
+      const myAnyweek = this.$refs.myAnyweek;
+      myAnyweek.textContent = currentMonthName + '' + day1 + - + day2 
+      // need to check how to put the search icon in
+      // + <img src="../assets/icons/search-icon.svg" />
+
+      const myWho = this.$refs.myWho;
+      myWho.textContent = this.guestsNum
 
       this.$emit('expendForm', false);
     },

@@ -37,6 +37,7 @@
                     <td>{{ trip.totalPrice }}</td>
                     <td>{{ trip.status }}</td> 
                     <td>{{ getStartDate(trip)}} - {{getEndDate(trip)}}</td>
+                    <td>{{ getBookingDate(trip) }}</td> 
                     <!-- <td>{{getEndDate(trip)}}</td> -->
                     <!-- <pre>{{trip}}</pre> -->
                 </tr>
@@ -85,6 +86,12 @@ export default {
             let endDate = trip.endDate
             let checkout = new Date(endDate).toLocaleDateString()
             return checkout
+        },
+        getBookingDate(trip) {
+            // let currOrder = this.getHostOrders.filter(order => order === orders)
+            let booking = trip.createdAt
+            let created = new Date(booking).toLocaleDateString()
+            return created 
         },
         loadTrips(orderId){
             console.log("🚀 ~ file: user-trips.vue:59 ~ loadTrips ~ orderId", orderId)
