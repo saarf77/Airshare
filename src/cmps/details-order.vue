@@ -246,17 +246,12 @@ export default {
     eventBus
   },
   created() {
-    console.log('asmdojasfijusdnigfnas');
     // if(this.loggedinUser._id){
       // this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
     // }
   },
   computed: {
     currUser() {
-      // if(this.loggedinUser?._id){
-      // this.$store.dispatch({ type: "loadAndWatchUser", userId: this.loggedinUser._id })
-    // }
-    // let new = this.$store.getters.watchedUser
       return this.$store.getters.watchedUser
     },
     loggedinUser() {

@@ -1,7 +1,7 @@
 <template >
   <div class="labels-container">
 
-    <carousel :settings="settings" :breakpoints="breakpoints" :adjustable-height="true" :transition="300"
+    <carousel v-if="getLabelList" :settings="settings" :breakpoints="breakpoints" :adjustable-height="true" :transition="300"
       :items-to-show="10" snapAlign="start">
       <slide v-for="(label, idx) in getLabelList" ref="labels" :key="label" >
         <div @click="filter(label.propertyType)" class="labels">
@@ -23,12 +23,15 @@ import { ref, onMounted } from 'vue';
 const el = ref();
 
 onMounted(() => {
-  const prev = document.querySelector('.carousel__prev');
-  prev.style.visibility = 'hidden';
-  const next = document.querySelector('.carousel__next');
-  next.addEventListener('click', e => {
+  setTimeout(() => {
+    const prev = document.querySelector('.carousel__prev');
+    prev.style.visibility = 'hidden';
+    const next = document.querySelector('.carousel__next');
+    next.addEventListener('click', e => {
     prev.style.visibility = 'visible';
   });
+  }, 100);
+  
 });
 </script>
   

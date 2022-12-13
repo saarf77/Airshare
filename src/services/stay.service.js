@@ -216,27 +216,27 @@ function getLabels() {
     return [
       {
         "loc": "I'm flexible",
-        src: "src/assets/maps/flexible.jpeg"
+        src: "https://a0.muscache.com/pictures/f9ec8a23-ed44-420b-83e5-10ff1f071a13.jpg"
       },
       {
         "loc": "Europe",
-        src: "src/assets/maps/europe.webp"
+        src: "https://a0.muscache.com/im/pictures/66355b01-4695-4db9-b292-c149c46fb1ca.jpg?im_w=320"
       },
       {
         "loc": "France",
-        src: "src/assets/maps/france.webp"
+        src: "https://a0.muscache.com/im/pictures/f0ece7c0-d9b2-49d5-bb83-64173d29cbe3.jpg?im_w=320"
       },
       {
         "loc": "United States",
-        src: "src/assets/maps/united-state.webp"
+        src: "https://a0.muscache.com/im/pictures/4e762891-75a3-4fe1-b73a-cd7e673ba915.jpg?im_w=320"
       },
       {
         "loc": "United Kingdom",
-        src: "src/assets/maps/uk.webp"
+        src: "https://a0.muscache.com/im/pictures/ea5598d7-2b07-4ed7-84da-d1eabd9f2714.jpg?im_w=320"
       },
       {
         "loc": "South America",
-        src: "src/assets/maps/south-america.webp"
+        src: "https://a0.muscache.com/im/pictures/06a30699-aead-492e-ad08-33ec0b383399.jpg?im_w=320"
       },
   
     ]
