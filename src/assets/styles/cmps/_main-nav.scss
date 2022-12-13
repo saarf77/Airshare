@@ -196,6 +196,12 @@ nav.top-nav.flex.justify-space-between.align-center {
 
 .hide-expend {
   display: none;
+  .carousel__next {
+    transform: translate( 50%, -190%) !important;
+  }
+  .carousel__prev {
+    transform: translate( 50%, -180%) !important;
+  }
 }
 
 // .nav-wrapper {
