@@ -67,7 +67,7 @@
     <div v-if="headerLocation" :class="{ 'hide-expend': isExpend }"
       class="header-labels main-layout flex justify-space-between align-center">
       <!-- <div class="container"> -->
-        <div v-if="path === '/explore' || path === '/'" class="header-bottom flex justify-space-between">
+        <div v-if="!isExpend" class="header-bottom flex justify-space-between">
           <explore-labels v-if="!isExplore" />
           <h3 v-if="isExplore">Stays : {{ staysLength }}</h3>
           <div class="filter-wrapper">
@@ -171,8 +171,9 @@ export default {
       this.showMenu = !this.showMenu
     },
     setFilter(filterBy) {
-      this.$router.push({ path: '/', query: { ...filterBy } });
-      this.$store.dispatch({ type: 'setFilter', filterBy })
+      let filter = JSON.parse(JSON.stringify(filterBy))
+      this.$router.push({ path: '/', query: { ...filter } });
+      this.$store.dispatch({ type: 'setFilter', filter })
     },
     expendForm(value) {
       this.isExpend = value;
