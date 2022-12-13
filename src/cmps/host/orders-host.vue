@@ -1,135 +1,3 @@
-<!-- <template>
-    <div v-for="hostOrder in getHostOrders" :key="hostOrder._id">
-        <tr class="border-bottom">
-           
-            <td class="text-center buyer"><img :src="getUserImg(hostOrder)"> <span>{{getUserName(hostOrder)}}</span></td>
-            <td class="status text-center" :class="statusClass(hostOrder)">{{ hostOrder.status }}</td>
-            <td class="text-center">{{ getGuestsAmount(hostOrder) }} </td>
-          
-            <td class="text-center">{{ getBookingDate(hostOrder) }}</td>
-            <td class="text-center">{{ summarySize(hostOrder) }}</td>
-            <td class="text-center">${{ totalPrice(hostOrder) }}</td>
-            <td class="text-center">
-                 <el-button v-if="hostOrder.status === 'pending'" @click.prevent="approve(hostOrder)"
-                    size="small" type="success" circle><span class="material-icons">
-                        done
-                    </span>
-                </el-button>
-                <el-button v-if="hostOrder.status === 'pending'" @click.prevent="decline(hostOrder)" size="small" type="danger"
-                    circle>
-                    <span class="material-icons">close</span>
-                </el-button>
-                <el-button v-if="hostOrder.status === 'declined'" @click.prevent="approve(hostOrder)" size="small" type="success"
-                    circle>
-                    <span class="material-icons">
-                        done
-                    </span>
-                </el-button>
-                <el-button v-if="hostOrder.status === 'approved'" @click.prevent="decline(hostOrder)" size="small" type="danger"
-                    circle><span class="material-icons">close </span>
-                </el-button>
-            </td>
-            <td class="text-center">{{ getStartDate(hostOrder) }}-{{ getEndDate(hostOrder) }}</td>
-        </tr>
-    </div>
-</template>
-  
-<script>
-import {socketService} from '../../services/socket.service.js'
-export default {
- 
-    data() {
-        return {
-            img: '',
-            currOrder: null,
-            guests: 0,
-        };
-    },
-    created() {
-
-    },
-    computed: {
-        getHostOrders() {
-            return this.$store.getters.getOrders
-        },
-    },
-    methods: {
-        statusClass(orders) {
-          
-            let currOrder = this.getHostOrders.filter(order => order === orders)
-      
-            if (currOrder[0].status === 'pending') return 'status-pending'
-            if (currOrder[0].status === 'approved') return 'status-approved'
-            if (currOrder[0].status === 'declined') return 'status-decline'
-        },
-        summarySize(orders) {
-            let currOrder = this.getHostOrders.filter(order => order === orders)
-         
-            if (currOrder[0].stay.name.length > 13) {
-                let desc = currOrder[0].stay.name.slice(0, 13) + '...'
-                return desc
-            }
-            return currOrder[0].stay.name
-        },
-        getStartDate(orders) {
-            let currOrder = this.getHostOrders.filter(order => order === orders)
-            let startDate = currOrder[0].startDate
-            let checkin = new Date(startDate).toLocaleDateString()
-            return checkin
-        },
-        getEndDate(orders) {
-            let currOrder = this.getHostOrders.filter(order => order === orders)
-            let endDate = currOrder[0].endDate
-            let checkout = new Date(endDate).toLocaleDateString()
-            return checkout
-        },
-        getBookingDate(orders) {
-            let currOrder = this.getHostOrders.filter(order => order === orders)
-            let bookingDate = currOrder[0].createdAt
-            let booking = new Date(bookingDate).toLocaleDateString()
-            return booking
-        },
-        getGuestsAmount(orders) {
-            let currOrder = this.getHostOrders.filter(order => order === orders)
-            const { adults, children, pets, infants } = currOrder[0].guests
-          
-            let amount = adults + children + pets + infants
-            return amount
-        },
-        totalPrice(order){
-            return order.totalPrice.toFixed(2)
-        },
-        statusDisplay(order){
-           return order.status
-        },
-        getUserName(order){
-            return order.buyer.fullname
-        },
-        getUserImg(order) {
-           
-            return order.buyer.imgUrl
-        },
-   
-        approve(order) {
-            const newOrder = JSON.parse(JSON.stringify(order))
-            
-            newOrder.status = 'approved'
-
-            this.$store.dispatch({ type: "saveOrder", order:newOrder})
-            console.log(order._id)
-            socketService.emit('status changed', order._id)
-        },
-        decline(order) {
-            const newOrder = JSON.parse(JSON.stringify(order))
-           
-            newOrder.status = 'declined'
-           
-            this.$store.dispatch({ type: "saveOrder", order:newOrder  })
-        },
-    }
-};
-</script>
-   -->
 
    <template>
 
@@ -229,7 +97,9 @@ methods: {
         return amount
     },
     totalPrice(order){
-        return order.totalPrice.toFixed(2)
+        // return order.totalPrice.toFixed(2)
+        return (order?.totalPrice)? order.totalPrice.toLocaleString():''
+
     },
     statusDisplay(order){
        return order.status
@@ -261,11 +131,11 @@ methods: {
     },
     decline(order) {
         const newOrder = JSON.parse(JSON.stringify(order))
-        // let currOrder = this.getHostOrders.filter(order => order === orders)
-        // let order = currOrder[0]
+
         newOrder.status = 'declined'
-        // const order = JSON.parse(JSON.stringify(this.hostOrder))
+
         this.$store.dispatch({ type: "saveOrder", order:newOrder  })
+        socketService.emit('status changed', order._id)
     },
 }
 };

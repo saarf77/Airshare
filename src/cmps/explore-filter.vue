@@ -318,20 +318,20 @@ export default {
       this.$router.push({ path: '/', query: { ...this.filterBy } });
       this.$store.dispatch({ type: 'setFilter',filterBy: this.filterBy })
       
-      const currentDate1 = this.filterBy.date.start
-      const currentDate2 = this.filterBy.date.end
-      const currentMonth = currentDate1.getMonth();
-      const currentMonthName = this.monthNames[currentMonth];
-      const day1 = currentDate1.getDay()
-      const day2 = currentDate2.getDay()
+      // const currentDate1 = this.filterBy.date.start
+      // const currentDate2 = this.filterBy.date.end
+      // const currentMonth = currentDate1.getMonth();
+      // const currentMonthName = this.monthNames[currentMonth];
+      // const day1 = currentDate1.getDay()
+      // const day2 = currentDate2.getDay()
       
       const myAnywhere = this.$refs.myAnywhere;
       myAnywhere.textContent = this.filterBy.where;
       
       console.log(currentMonthName)
 
-      const myAnyweek = this.$refs.myAnyweek;
-      myAnyweek.textContent = currentMonthName + '' + day1 + - + day2 
+      // const myAnyweek = this.$refs.myAnyweek;
+      // myAnyweek.textContent = currentMonthName + '' + day1 + - + day2 
       // need to check how to put the search icon in
       // + <img src="../assets/icons/search-icon.svg" />
 
