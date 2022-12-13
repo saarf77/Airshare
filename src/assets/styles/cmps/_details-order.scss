@@ -144,6 +144,15 @@
         .btn-container.hidden {
                 display: none;
         }
+
+        div[class*="vc-popover-content-wrapper"]{
+                top: 203px !important;
+        }
+
+        
+        .trip-length {
+                top: 60px;
+        }
 }
 
 .details-page .order-container:not([class*="extended"]) {
@@ -321,7 +330,7 @@ input {
 
         div[class*="vc-popover-content-wrapper"] {
                 width: 100% !important;
-                top: 203px !important;
+                top: 130px !important;
                 left: 59% !important;
                 z-index: 50 !important;
         }
@@ -355,6 +364,10 @@ input {
                 // border-top: 1px solid #00000050;
                 padding: 11px 16px;
                 position: relative;
+        }
+
+        .trip-length{
+                display: none;
         }
 }
 
@@ -432,4 +445,35 @@ span.reviews {
                         }
                 }
         }
+
+        .trip-length {
+                display: block;
+                position: absolute;
+                top: 85px;
+                left: -60%;
+
+                z-index: 600;
+                
+                >span {
+                        font-family: Cereal;
+                        color: $clr1;
+                        font-size: 1.2em;
+                        font-weight: 700;
+                }
+
+                .schedule-dates{
+                        display: flex;
+                        flex-direction: row;
+                        margin-block-start: 5px;
+
+                        >span {
+                                font-family: Cereal;
+                                color: lighten($color: $clr1, $amount: 42) ;
+                                font-size: 0.8em;
+                                font-weight: 100;
+                        }
+                }
+        }
+
+        
 }

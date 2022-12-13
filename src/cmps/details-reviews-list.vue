@@ -40,19 +40,13 @@ export default {
                     if(this.reviewWidth > 0){
                     
                         let fontSize = parseFloat(window.getComputedStyle(this.$refs.reviewsBoardContainer, null).getPropertyValue('font-size'));
-                        let maxLettersPerLine = this.reviewWidth / fontSize
+                        let maxLettersPerLine = (this.reviewWidth / fontSize)
                         let quitWhile = false;
                         let strIdx;
-
-                        if(currTxt.length > (maxLettersPerLine * 3)){
-                            strIdx = currTxt.indexOf('.', (maxLettersPerLine * 3));
-                            currTxt = currTxt.substring(0,strIdx) + '...';
-                        }
 
                         while(!quitWhile){
                             
                             if(currTxt.length < maxLettersPerLine){
-                                currLines.push(currTxt + '...');
                                 quitWhile = true;
                                 break;
                             }
@@ -64,15 +58,26 @@ export default {
                                 strIdx = currTxt.lastIndexOf(',', maxLettersPerLine);
                             }
 
-                            if(currTxt.lastIndexOf(' ', maxLettersPerLine) > idx){
+                            if(currTxt.lastIndexOf(' ', maxLettersPerLine) > strIdx){
                                 strIdx = currTxt.lastIndexOf(' ', maxLettersPerLine);
                             }
 
                             currLines.push(currTxt.substring(0,strIdx));
                             currTxt = currTxt.substring(strIdx, currTxt.length);
+                            
+                        }
+                        
+                        currTxt = '';
+                        for (let i = 0; i < 10; i++) {
+                            if(currLines[i]){
+                                currTxt += currLines[i];
+                            }
                         }
 
-                        currTxt = currLines.join(' ');
+                        if(currTxt[currTxt.length -1] !== '.' && currTxt[currTxt.length -1] !== ','){
+                            currTxt += '.';
+                        }
+                        
                     }
                 }
                 return currTxt;
