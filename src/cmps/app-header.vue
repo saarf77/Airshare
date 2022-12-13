@@ -32,7 +32,7 @@
                 <div class="user-nav-in">
                   <a href="#/" @click="logDemo" v-if="!getLogInUser">Messages</a>
                   <!-- v-if todo -->
-                  <a @click="loggedinUser">Dashboard</a>
+                  <a @click="loggedinUser()">Dashboard</a>
                   <a href="#/wishlist" @click="showMenu = !showMenu">Wish List</a>
                   <a @click="usersTrips">Trips</a>
                   <!-- <a href="#/wishList" @click="showMenu = !showMenu" class="a1" v-if="getLogInUser">Wish List</a>
@@ -184,7 +184,7 @@ export default {
     logout() {
       this.$store.dispatch({ type: 'logout' });
       // this.$router.push("/")
-      this.loggedinUser = null;
+      // this.loggedinUser = null;
       this.showMenu = false;
     },
     async logDemo() {
