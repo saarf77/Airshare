@@ -1,40 +1,35 @@
-// .container {
-//     max-width: 1500px;
-//     padding: 10px;
+
+// .main-container {
+//     display: grid;
+//     grid-template-columns: 20px 1fr 20px;
+
+//     > * {
+//         grid-column: 2;
+
+//         &.full {
+//             grid-column: 1 /-1;
+//         }
+//     }
+
+//     @include for-narrow-layout {
+//         grid-template-columns: 
+//             minmax(20px, 1fr)
+//             minmax(auto, $mobile-breakpoint)
+//             minmax(20px, 1fr);
+//     }
+//     @include for-normal-layout {
+//         grid-template-columns: 
+//             minmax(20px, 1fr)
+//             minmax(auto, $narrow-breakpoint)
+//             minmax(20px, 1fr);
+//     }
+//     @include for-wide-layout {
+//         grid-template-columns: 
+//             minmax(20px, 1fr)
+//             minmax(auto, $normal-breakpoint)
+//             minmax(20px, 1fr);
+//     }
 // }
-
-
-.main-container {
-    display: grid;
-    grid-template-columns: 20px 1fr 20px;
-
-    > * {
-        grid-column: 2;
-
-        &.full {
-            grid-column: 1 /-1;
-        }
-    }
-
-    @include for-narrow-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $mobile-breakpoint)
-            minmax(20px, 1fr);
-    }
-    @include for-normal-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $narrow-breakpoint)
-            minmax(20px, 1fr);
-    }
-    @include for-wide-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $normal-breakpoint)
-            minmax(20px, 1fr);
-    }
-}
 
 .card-grid {
     display: grid;
@@ -42,4 +37,134 @@
     grid-gap: 20px;
 }
 
+.container {
+    max-width: 1900px;
+    width: 100%;
+    margin: auto;
+  
+    .container.header-bottom {
+      height: 78px;
+      box-sizing: content-box;
+      padding-block-start: 20px;
+    }
+    .carousel {
+      position: relative;
+      text-align: center;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+  .inner-container {
+    max-width: 1128px;
+    width: 100%;
+    margin: auto;
+  }
+  
+  .main-container {
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+  
+    > * {
+      grid-column: 2;
+  
+      &.full {
+        grid-column: 1 /-1;
+      }
+    }
+  
+    @include for-narrow-layout {
+      grid-template-columns: minmax(20px, 1fr) minmax(auto, $mobile-breakpoint) minmax(20px, 1fr);
+    }
+  
+    @include for-normal-layout {
+      grid-template-columns: minmax(20px, 1fr) minmax(auto, $narrow-breakpoint) minmax(20px, 1fr);
+    }
+  
+    @include for-wide-layout {
+      grid-template-columns: minmax(20px, 1fr) minmax(auto, $normal-breakpoint) minmax(20px, 1fr);
+    }
+  }
+  
+  @media screen and (max-width: 1600px) {
+    .container {
+      width: calc(100% - 80px);
+      .list-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+    }
+  }
+  
+  @media screen and (max-width: 1447px) {
+    .container {
+      width: calc(100% - 80px);
+    }
+  }
+  @media (max-width: 1128px) {
+    .container {
+      .list-container {
+        grid-gap: 34px 13px;
+        .preview-wrapper {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+  
+  @media screen and (max-width: 813px) {
+    header nav a.logo {
+      flex: 0 1 0%;
+      padding-inline-end: 20px;
+      h1 {
+        display: none;
+      }
+    }
+  }
+  
+  @media (max-width: 650px) {
+    .container {
+      .list-container {
+        grid-gap: 34px 20px;
+        grid-template-columns: repeat(auto-fit, minmax(243px, 1fr));
+  
+        .preview {
+          .el-carousel {
+            max-height: 100%;
+            .img-wrapper img {
+              object-fit: cover;
+              aspect-ratio: 2 / 1;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .container {
+      .list-container {
+        grid-gap: 34px 0px;
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+  
+        .preview {
+          .el-carousel {
+            .img-wrapper {
+              height: 100%;
+              img {
+                object-fit: cover;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
 
+
+
+  
+
+
+  
