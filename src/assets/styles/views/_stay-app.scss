@@ -3,24 +3,24 @@
 //     max-width: 100%;
 //     // padding: 20px;
 // }
-.main-layout {
-    display: grid;
-    grid-template-columns: 80px 1fr 80px;
+// .main-layout {
+//     display: grid;
+//     grid-template-columns: 80px 1fr 80px;
 
-    >* {
-        grid-column: 2/3;
-    }
+//     >* {
+//         grid-column: 2/3;
+//     }
 
-    >*.full {
-        grid-column: 1 / -1;
-    }
+//     >*.full {
+//         grid-column: 1 / -1;
+//     }
 
-    // >*:not(.full) {
-    //     display: grid;
-    //     grid-auto-flow: dense;
-    //     grid-template-columns: repeat(6, 1fr);
-    // }
-}
+//     // >*:not(.full) {
+//     //     display: grid;
+//     //     grid-auto-flow: dense;
+//     //     grid-template-columns: repeat(6, 1fr);
+//     // }
+// }
 
 // .stay-app {
 //     display: grid;

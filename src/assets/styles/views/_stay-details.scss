@@ -4,10 +4,11 @@
        align-items: center;
        width: 100%;
        // padding-inline-end: 5px;
-       .user-nav{
-              top: 75px;
-              right: 20.5%; 
-       }
+       // .user-nav{
+       //        position:absolute;
+       //        top: 54px;
+       //        // right: 12.7
+       // }
 }
 
 
@@ -75,7 +76,7 @@ translate: -14%;
 *:has(.details-page)nav.top-nav.flex.justify-space-between.align-center {
        height: 80px;
        // width: 100vw;
-       padding-inline: 80px;
+       // padding-inline: 80px;
        width: 100%;
        overflow: hidden;
        flex: 1;

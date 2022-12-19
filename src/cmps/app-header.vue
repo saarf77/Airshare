@@ -27,21 +27,21 @@
                   <img class="menu-btn" src="../assets/icons/menu.svg" />
                   <img class="host-image" :src="userImg" />
                 </button>
-              </div>
-              <div class="user-nav" v-if="showMenu" v-click-away="closeModal">
-                <div class="user-nav-in">
-                  <a href="#/" @click="logDemo" v-if="!getLogInUser">Messages</a>
-                  <!-- v-if todo -->
-                  <a @click="loggedinUser()">Dashboard</a>
-                  <a href="#/wishlist" @click="showMenu = !showMenu">Wish List</a>
-                  <a @click="usersTrips">Trips</a>
-                  <!-- <a href="#/wishList" @click="showMenu = !showMenu" class="a1" v-if="getLogInUser">Wish List</a>
-                  <a href="#/dashboard" @click="showMenu = !showMenu" v-if="getLogInUser">Dashboard</a> -->
-                  <a href="#/login" @click="showMenu = !showMenu" v-if="!getLogInUser">Sign up</a>
-                  <a href="#/login" @click="showMenu = !showMenu" v-if="!getLogInUser">Log in</a>
-                  <a href="#/" @click="logDemo" v-if="!getLogInUser">Log Demo</a>
-                  <a href="#/become-a-host" @click="showMenu = !showMenu" v-if="!getLogInUser">airshare your home</a>
-                  <a @click="logout" v-if="getLogInUser">Logout</a>
+                <div class="user-nav" v-if="showMenu" v-click-away="closeModal">
+                  <div class="user-nav-in">
+                    <a href="#/" @click="logDemo" v-if="!getLogInUser">Messages</a>
+                    <!-- v-if todo -->
+                    <a @click="loggedinUser()">Dashboard</a>
+                    <a href="#/wishlist" @click="showMenu = !showMenu">Wish List</a>
+                    <a @click="usersTrips">Trips</a>
+                    <!-- <a href="#/wishList" @click="showMenu = !showMenu" class="a1" v-if="getLogInUser">Wish List</a>
+                    <a href="#/dashboard" @click="showMenu = !showMenu" v-if="getLogInUser">Dashboard</a> -->
+                    <a href="#/login" @click="showMenu = !showMenu" v-if="!getLogInUser">Sign up</a>
+                    <a href="#/login" @click="showMenu = !showMenu" v-if="!getLogInUser">Log in</a>
+                    <a href="#/" @click="logDemo" v-if="!getLogInUser">Log Demo</a>
+                    <a href="#/become-a-host" @click="showMenu = !showMenu" v-if="!getLogInUser">airshare your home</a>
+                    <a @click="logout" v-if="getLogInUser">Logout</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -71,7 +71,8 @@
           <explore-labels v-if="!isExplore" />
           <h3 v-if="isExplore">Stays : {{ staysLength }}</h3>
           <div class="filter-wrapper">
-            <div v-if="desktop" @click="isModal=true" class="stand-alone-filter">
+            <div v-if="desktop" @click="isModal=true" class=" stand-alone-filter">
+
               <img src="../assets/icons/filter-icon.svg" alt="" />
               <span class="filter-btn">Filters</span>
               <!-- <div v-if="isModal" class="overlay"></div> -->
@@ -102,7 +103,7 @@ export default {
       isExpend: false,
       showMenu: false,
       isExplore: false,
-      desktop: window.innerWidth > 750 ? true : false,
+      desktop: window.innerWidth > 780 ? true : false,
       path: null,
       country: '',
       staysLength: null
@@ -229,10 +230,10 @@ export default {
 
     handleResize() {
       const width = window.outerWidth;
-      if (width > 750) {
+      if (width > 780) {
         this.desktop = true;
       }
-      if (width < 750) {
+      if (width < 780) {
         this.desktop = false;
       }
     },
