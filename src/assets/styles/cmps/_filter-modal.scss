@@ -323,7 +323,8 @@ span.el-radio-button__inner {
     font-size: 16px!important;
     line-height: 20px!important;
     height: 72px;
-    margin: -6px;
+    margin: -25px;
+    margin-left: 0px;
 }
 .filter-footer button:nth-child(1){
     cursor: pointer;
@@ -364,3 +365,11 @@ span.el-radio-button__inner {
     visibility: hidden;
     background-color: red;
 }
+
+
+.el-checkbox__input.is-checked+.el-checkbox__label {
+    color: $clr7;
+  }
+.el-checkbox__input.is-checked+.el-checkbox__label {
+    color: $clr7;
+  }

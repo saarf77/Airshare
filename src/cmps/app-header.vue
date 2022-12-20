@@ -67,7 +67,7 @@
     <div v-if="headerLocation" :class="{ 'hide-expend': isExpend }"
       class="header-labels main-layout flex justify-space-between align-center">
       <!-- <div class="container"> -->
-        <div v-if="!isExpend" class="header-bottom flex justify-space-between">
+        <div v-if="!isExpend" class="header-bottom container flex justify-space-between">
           <explore-labels v-if="!isExplore" />
           <h3 v-if="isExplore">Stays : {{ staysLength }}</h3>
           <div class="filter-wrapper">
