@@ -38,7 +38,7 @@
                     <a href="#/dashboard" @click="showMenu = !showMenu" v-if="getLogInUser">Dashboard</a> -->
                     <a href="#/login" @click="showMenu = !showMenu" v-if="!getLogInUser">Sign up</a>
                     <a href="#/login" @click="showMenu = !showMenu" v-if="!getLogInUser">Log in</a>
-                    <a href="#/" @click="logDemo" v-if="!getLogInUser">Log Demo</a>
+                    <!-- <a href="#/" @click="logDemo" v-if="!getLogInUser">Log Demo</a> -->
                     <a href="#/become-a-host" @click="showMenu = !showMenu" v-if="!getLogInUser">airshare your home</a>
                     <a @click="logout" v-if="getLogInUser">Logout</a>
                   </div>
@@ -46,7 +46,7 @@
               </div>
             </div>
           </div>
-          <div v-if="!desktop" class="mobile-view">
+          <div v-if="!desktop" :class="{ sticky: isSticky }" class="mobile-view">
             <div class="mobile-nav">
               <div class="search-icon">
                 <span><img src="../assets/icons/search-icon.svg" @click="search" /></span>
@@ -57,7 +57,7 @@
 
               </div>
               <div class="adjustment-bar">
-                <span @click="isShow = !isShow"><img src="../assets/icons/adjustment-icon.svg" /></span>
+                <span @click="isModal= !isModal"><img src="../assets/icons/adjustment-icon.svg" /></span>
               </div>
             </div>
           </div>
@@ -71,7 +71,7 @@
           <explore-labels v-if="!isExplore" />
           <h3 v-if="isExplore">Stays : {{ staysLength }}</h3>
           <div class="filter-wrapper">
-            <div v-if="desktop" @click="isModal=true" class=" stand-alone-filter">
+            <div v-if="desktop" @click="isModal=true" class="stand-alone-filter">
 
               <img src="../assets/icons/filter-icon.svg" alt="" />
               <span class="filter-btn">Filters</span>
@@ -209,7 +209,9 @@ export default {
       this.isExpend = false
     },
     handleScroll(ev) {
+
       let pos = window.scrollY;
+      console.log(pos,'pos');
       if (pos === 0) {
         this.isSticky = false;
         this.isExpend = false;

@@ -215,7 +215,7 @@ export default {
   
       <div v-else>
   
-        <div class="flex column">
+        <div class="title-btn flex column">
   
           <h1 class="chart-title">Hosting Summary</h1>
           <div class="top-dashboard-title flex">

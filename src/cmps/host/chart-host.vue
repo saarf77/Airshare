@@ -1,8 +1,8 @@
 <template>
     <section class="dashboard dashboard-stats">
         <div class="cards-dashboard-container">
-          <div class="orders">
-              <div class="stats-card">
+            <div class="stats-card">
+           <div class="orders">
                   <h1>Orders Status</h1>
                   <DoughnutChart :chartData="testData" :options1="options1" />
               </div>
